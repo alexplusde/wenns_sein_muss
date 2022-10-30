@@ -10,7 +10,34 @@ class wsm_group extends \rex_yform_manager_dataset
 
     public static function getServices() {
 
-        return self::query()->find();
+        $groups =  self::query()->find();
+
+        $return = [];
+
+        foreach($groups as $group) {
+            $g["title"] = $group->title;
+            $g["description"] = $group->description;
+            $g["toggle"]['value'] = $group->name;
+            $g["toggle"]['enabled'] = $group->enabled;
+            $g["toggle"]['readonly'] = $group->required;
+
+            $services = wsm::query()->where("group", $group->id);
+
+            foreach ($services as $service) {
+                $s["cookie_table"]["col1"] = $service->service;
+                $s["cookie_table"]["col2"] = $service->service;
+                $s["cookie_table"]["col3"] = $service->service;
+                $s["cookie_table"]["col4"] = $service->service;
+            }
+            $g[] = $s;
+
+            $return[] = $g;
+        }
+
+        $return[] = ["title" => wsm::getConfig('settings_modal_block_more_title'), "description" => wsm::getConfig('settings_modal_block_more_description')];
+
+        return $return;
+
 
     }
     public static function getServicesAsJson() {
