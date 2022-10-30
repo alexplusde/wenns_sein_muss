@@ -1,7 +1,7 @@
 <script>
 {
     currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',     // current language of the notice (must also be defined in the "languages" object below)
-    autoLang: <?= wsm::getConfig('auto_lang') ?>,    // if enabled => use current client's browser language 
+    autoLang: 1, // <?= wsm::getConfig('auto_lang') ?>,    // if enabled => use current client's browser language 
                         // instead of currLang [OPTIONAL]
 
     services : /* <?= wsm_group::getServicesAsJson() ?> */  
@@ -52,9 +52,9 @@
 
         cc.run({
             gui_options: {
-                current_lang: <?= rex_clang::getCurrent()->getCode(); ?>,
-                auto_language: <?= wsm::getConfig('auto_lang') ?>,
-                force_consent: <?= wsm::getConfig('force_consent') ?>,
+                current_lang: "<?= rex_clang::getCurrent()->getCode(); ?>",
+                auto_language: 1, // <?= wsm::getConfig('auto_lang') ?>,
+                force_consent: 1, // <?= wsm::getConfig('force_consent') ?>,
                 page_scripts: true,
                 revision: 1,
                 consent_modal: {
@@ -68,7 +68,7 @@
                     // position: 'left',           // left/right
                     transition: 'slide'            // zoom/slide
                 }
-            }
+            },
             languages: {
                 'en': {
                     consent_modal: {
