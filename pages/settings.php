@@ -12,6 +12,10 @@ $field = $form->addInputField('text', 'imprint_id', null, ["class" => "form-cont
 $field->setLabel(rex_i18n::msg('wsm_config_imprint_id_label'));
 $field->setNotice(rex_i18n::msg('wsm_config_imprint_id_notice'));
 
+$field = $form->addInputField('text', 'auto_lang', null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('wsm_config_auto_lang_label'));
+$field->setNotice(rex_i18n::msg('wsm_config_auto_lang_notice'));
+
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
 $fragment->setVar('title', $addon->i18n('wenns_sein_muss_config'), false);

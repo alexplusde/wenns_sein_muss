@@ -19,8 +19,12 @@ page:
     icon: rex-icon rex-icon-check
 
 pages:
-    table:
-        title: translate:wenns_sein_muss_table
+    entry:
+        title: translate:wenns_sein_muss_entry
+        icon: rex-icon rex-check-sign
+        perm: admin
+    group:
+        title: translate:wenns_sein_muss_group
         icon: rex-icon rex-check-sign
         perm: admin
     docs:
@@ -38,3 +42,5 @@ pages:
 default_config:
     privacy_policy_id: 1
     imprint_id: 1
+    auto_lang: true
+    force_consent: false

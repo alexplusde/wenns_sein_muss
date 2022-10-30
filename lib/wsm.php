@@ -7,9 +7,12 @@ class wsm extends \rex_yform_manager_dataset
     {
         return $this->getValue('name');
     }
-
-    public static function domains($label, $value)
+    public static function getConfig($key) 
     {
-        return "xx".$label;
+        rex_config::get("wenns_sein_muss", $key);
+    }
+    public static function setConfig($key, $value) 
+    {
+        rex_config::set("wenns_sein_muss", $key, $value);
     }
 }
