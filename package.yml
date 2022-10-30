@@ -54,15 +54,15 @@ pages:
                 perm: admin
             consent:
                 title: translate:wenns_sein_muss_settings_consent
-                icon: rex-icon fa-gear
+                icon: rex-icon fa-eye
                 perm: admin
             text:
                 title: translate:wenns_sein_muss_settings_text
-                icon: rex-icon fa-gear
+                icon: rex-icon fa-font
                 perm: admin
             iframe:
                 title: translate:wenns_sein_muss_settings_iframe
-                icon: rex-icon fa-gear
+                icon: rex-icon fa-code
                 perm: admin
 
 default_config:
