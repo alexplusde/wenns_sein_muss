@@ -4,12 +4,13 @@ class rex_api_wsm extends rex_api_function
 {
     protected $published = true;
 
-    function execute()
+    public function execute()
     {
         // Parameter abrufen und auswerten
-        $consent = rex_request('action','string');
-        $hash = rex_request('hash','string');
+        $consent = rex_request('action', 'string');
+        $hash = rex_request('hash', 'string');
 
+        $dataset = [];
         if ($consent == "sendConsent") {
             $dataset = wsm_protocol::query()->Where("hash", $hash)->findOne();
 
@@ -30,4 +31,3 @@ class rex_api_wsm extends rex_api_function
         exit();
     }
 }
-?>

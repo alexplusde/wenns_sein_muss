@@ -4,7 +4,7 @@ echo rex_view::title(rex_i18n::msg('wenns_sein_muss_title'));
 
 $addon = rex_addon::get('wenns_sein_muss');
 
-$form = rex_config_form::factory($addon->name);
+$form = rex_config_form::factory($addon->getName());
 
 $field = $form->addLinkmapField('imprint_id');
 $field->setLabel('imprint_id');

@@ -4,7 +4,7 @@ echo rex_view::title(rex_i18n::msg('wenns_sein_muss_title'));
 
 $addon = rex_addon::get('wenns_sein_muss');
 
-$form = rex_config_form::factory($addon->name);
+$form = rex_config_form::factory($addon->getName());
 
 $field = $form->addInputField('text', 'iframe_notice', null, ["class" => "form-control"]);
 $field->setLabel(rex_i18n::msg('iframe_notice'));

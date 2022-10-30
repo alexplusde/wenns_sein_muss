@@ -2,23 +2,22 @@
 
 class rex_yform_value_domain extends rex_yform_value_abstract
 {
-
-    public static function domains() {
+    public static function domains() :array
+    {
         $domains = [0 => rex::getServer() . " [system]"];
 
         if (rex_addon::get('yrewrite')->isAvailable()) {
             $domains_sql = rex_sql::factory()->getArray('SELECT id, domain FROM rex_yrewrite_domain ORDER BY domain');
-            foreach($domains_sql as $domain) {
+            foreach ($domains_sql as $domain) {
                 $domains[$domain['id']] = $domain['domain'];
             }
-    
         };
         return $domains;
-
     }
-    public function enterObject()
+    public function enterObject() :void
     {
         $options = self::domains();
+        $multiple = 1;
 
         $values = $this->getValue();
         if (!is_array($values)) {
@@ -46,7 +45,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         }
 
         if ($this->needsOutput()) {
-            $this->params['form_output'][$this->getId()] = $this->parse('value.select.tpl.php', compact('options'));
+            $this->params['form_output'][$this->getId()] = $this->parse('value.select.tpl.php', compact('options', 'multiple'));
         }
 
         $this->setValue(implode(',', $this->getValue()));
@@ -81,7 +80,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         ];
     }
 
-    public static function getListValue($params)
+    public static function getListValue($params = []) :string
     {
         $return = [];
 
@@ -97,14 +96,14 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         return implode('<br />', $return);
     }
 
-    public static function getSearchField($params)
+    public static function getSearchField($params = []) :void
     {
         $options = self::domains();
         $options['(empty)'] = '(empty)';
         $options['!(empty)'] = '!(empty)';
 
         $new_select = new self();
-        $options = self::domains;
+        $options = self::domains();
 
         $params['searchForm']->setValueField(
             'select',
@@ -119,7 +118,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         );
     }
 
-    public static function getSearchFilter($params)
+    public static function getSearchFilter($params = []) :string
     {
         $sql = rex_sql::factory();
 

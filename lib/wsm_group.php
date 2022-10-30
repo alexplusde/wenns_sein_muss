@@ -5,10 +5,31 @@ class wsm_group extends \rex_yform_manager_dataset
 
     public function getName() :string
     {
-        return $this->getValue('name');
+        return (string)$this->getValue('name');
     }
 
-    public static function getServices()
+    public function getTitle() :string
+    {
+        return (string)$this->getValue('title');
+    }
+
+    public function getDescription() :string
+    {
+        return (string)$this->getValue('description');
+    }
+
+    public function getEnabled() :int
+    {
+        return (int)$this->getValue('enabled');
+    }
+
+    public function getRequired() :int
+    {
+        return (int)$this->getValue('required');
+    }
+
+
+    public static function getServices() :array
     {
         $return = [];
         $groups = [];
@@ -16,24 +37,24 @@ class wsm_group extends \rex_yform_manager_dataset
 
         foreach ($groups as $group) {
             $g = [];
-            $g["title"] = $group->title;
-            $g["description"] = $group->description;
-            $g["toggle"]['value'] = $group->name;
-            $g["toggle"]['enabled'] = $group->enabled;
-            $g["toggle"]['readonly'] = $group->required;
+            $g["title"] = $group->getTitle();
+            $g["description"] = $group->getDescription();
+            $g["toggle"]['value'] = $group->getName();
+            $g["toggle"]['enabled'] = $group->getEnabled();
+            $g["toggle"]['readonly'] = $group->getRequired();
 
             $services = [];
-            $services = wsm::query()->where("group", $group->id)->find();
+            $services = wsm::query()->where("group", $group->getId())->find();
 
             foreach ($services as $service) {
                 $entries = [];
-                $entries = wsm_entry::query()->where("f_id", $service->id)->find();
+                $entries = wsm_entry::query()->where("f_id", $service->getId())->find();
                 $s = [];
                 foreach ($entries as $entry) {
-                    $s["col1"] = $service->service;
-                    $s["col2"] = $entry->description;
-                    $s["col3"] = $entry->duration;
-                    $s["col4"] = $entry->type;
+                    $s["col1"] = $service->getService();
+                    $s["col2"] = $entry->getDescription();
+                    $s["col3"] = $entry->getDuration();
+                    $s["col4"] = $entry->getType();
                     $g["cookie_table"][] = $s;
                 }
             }
@@ -45,11 +66,11 @@ class wsm_group extends \rex_yform_manager_dataset
 
         return $return;
     }
-    public static function getServicesAsJson()
+    public static function getServicesAsJson() :string
     {
-        return json_encode(self::getServices(), true);
+        return json_encode(self::getServices(), 1);
     }
-    public static function getServicesAsRevisionHash()
+    public static function getServicesAsRevisionHash() :string
     {
         return md5(self::getServicesAsJson());
     }

@@ -2,7 +2,9 @@
 
 echo rex_view::title(rex_i18n::msg('wenns_sein_muss_title'));
 
-$yform = $this->getProperty('yform', []);
+$addon = rex_addon::get('wenns_sein_muss');
+
+$yform = $addon->getProperty('yform', []);
 $yform = $yform[\rex_be_controller::getCurrentPage()] ?? [];
 
 $table_name = 'rex_wenns_sein_muss_protocol';
