@@ -17,7 +17,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
     public function enterObject() :void
     {
         $options = self::domains();
-        $multiple = 1;
+        $multiple = true;
 
         $values = $this->getValue();
         if (!is_array($values)) {
@@ -53,7 +53,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
         $this->params['value_pool']['email'][$this->getName() . '_NAME'] = isset($options[$this->getValue()]) ? $options[$this->getValue()] : null;
 
-        if ($this->saveInDb()) {
+        if ($this->saveInDB()) {
             $this->params['value_pool']['sql'][$this->getName()] = $this->getValue();
         }
     }
@@ -80,7 +80,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         ];
     }
 
-    public static function getListValue($params = []) :string
+    public static function getListValue(array $params) :string
     {
         $return = [];
 
@@ -96,7 +96,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         return implode('<br />', $return);
     }
 
-    public static function getSearchField($params = []) :void
+    public static function getSearchField(array $params) :void
     {
         $options = self::domains();
         $options['(empty)'] = '(empty)';
@@ -118,7 +118,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         );
     }
 
-    public static function getSearchFilter($params = []) :string
+    public static function getSearchFilter(array $params) :string
     {
         $sql = rex_sql::factory();
 
@@ -127,7 +127,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $self = new self();
         $values = $self->getArrayFromString($params['value']);
 
-        $multiple = 1;
+        $multiple = true;
 
         $where = [];
         foreach ($values as $value) {
@@ -152,5 +152,6 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         if (count($where) > 0) {
             return ' ( ' . implode(' or ', $where) . ' )';
         }
+        return "";
     }
 }

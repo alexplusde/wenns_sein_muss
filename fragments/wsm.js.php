@@ -50,7 +50,7 @@
 					layout: '<?= wsm::getConfig('consent_modal_layout') ?>',
 					position: '<?= wsm::getConfig('consent_modal_position') ?>',
 					transition: '<?= wsm::getConfig('consent_modal_transition') ?>',
-					swap_buttons: <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?> ,
+					swap_buttons: Boolean( <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?> ),
 				},
 				settings_modal: {
 					layout: '<?= wsm::getConfig('settings_modal_layout') ?>',

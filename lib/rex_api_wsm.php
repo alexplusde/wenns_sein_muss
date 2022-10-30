@@ -10,11 +10,11 @@ class rex_api_wsm extends rex_api_function
         $consent = rex_request('action', 'string');
         $hash = rex_request('hash', 'string');
 
-        $dataset = [];
+        $dataset = null;
         if ($consent == "sendConsent") {
-            $dataset = wsm_protocol::query()->Where("hash", $hash)->findOne();
+            $dataset = wsm_protocol::query()->where("hash", $hash)->findOne();
 
-            if (!$dataset) {
+            if (!(bool)$dataset) {
                 $dataset = wsm_protocol::create();
             }
 

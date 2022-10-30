@@ -36,8 +36,8 @@ $select->addOption('zoom', 'zoom');
 $field = $form->addSelectField('consent_modal_swap_buttons', null, ['class'=>'form-control selectpicker']);
 $field->setLabel("consent_modal_swap_buttons");
 $select = $field->getSelect();
-$select->addOption('invert buttons', '1');
-$select->addOption('do not invert buttons', '0');
+$select->addOption('invert buttons', true);
+$select->addOption('do not invert buttons', false);
 
 $field = $form->addSelectField('settings_modal_layout', null, ['class'=>'form-control selectpicker']);
 $field->setLabel("settings_modal_layout");

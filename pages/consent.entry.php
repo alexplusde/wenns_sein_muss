@@ -20,7 +20,7 @@ $table_name = 'rex_wenns_sein_muss';
     ['table_name'=>$table_name]
 );
 
-
+// @phpstan-ignore-next-line
 $_REQUEST['table_name'] = $table_name;
 
 include \rex_path::plugin('yform', 'manager', 'pages/data_edit.php');
