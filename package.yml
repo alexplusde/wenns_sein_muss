@@ -15,7 +15,6 @@ requires:
 
 page:
     title: translate:wenns_sein_muss_title
-    prio: 100
     icon: rex-icon fa-check
 
 pages:
