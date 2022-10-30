@@ -10,7 +10,6 @@
         {
             currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
             autoLang: <?= (int)wsm::getConfig('auto_lang') ?>,
-
             services : /* <?= wsm_group::getServicesAsJson() ?> */  
             
             {
@@ -27,7 +26,7 @@
                     },
 
                     languages : {
-                        en : {
+                        <?= rex_clang::getCurrent()->getCode(); ?> : {
                             notice: '<?= wsm::getConfig('iframe_notice') ?>',
                             loadBtn: '<?= wsm::getConfig('iframe_load_btn') ?>',
                             loadAllBtn: '<?= wsm::getConfig('iframe_load_all_btn') ?>'
@@ -48,27 +47,17 @@
                     layout: '<?= wsm::getConfig('consent_modal_layout') ?>',
                     position: '<?= wsm::getConfig('consent_modal_position') ?>',
                     transition: '<?= wsm::getConfig('consent_modal_transition') ?>',
-                    swap_buttons:  <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?>
+                    swap_buttons:  <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?>,
                 },
                 settings_modal: {
-                    layout: '<?= wsm::getConfig('settings_modal_layout') ?>',                 // box/bar
-                    // position: 'left',           // left/right
-                    transition: '<?= wsm::getConfig('settings_modal_transition') ?>'            // zoom/slide
+                    layout: '<?= wsm::getConfig('settings_modal_layout') ?>',
+                    // position: 'left',
+                    transition: '<?= wsm::getConfig('settings_modal_transition') ?>'
                 }
-            },
-            
-            onAccept: function(){
-                if(cc.allowedCategory('analytics'))
-                    im.acceptService('all');
-            },
-            
-            onChange: function(){
-                if(!cc.allowedCategory('analytics'))
-                    im.rejectService('all');
             },
 
             languages: {
-                'en': {
+                '<?= rex_clang::getCurrent()->getCode(); ?>': {
                     consent_modal: {
                         title: '<?= wsm::getConfig('consent_modal_title') ?>',
                         description: '<?= wsm::getConfig('consent_modal_description') ?>' + '<button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
@@ -81,6 +70,17 @@
                             role: 'accept_necessary'        // 'settings' or 'accept_necessary'
                         }
                     },
+                    
+                    onAccept: function(){
+                        if(cc.allowedCategory('analytics'))
+                            im.acceptService('all');
+                    },
+                    
+                    onChange: function(){
+                        if(!cc.allowedCategory('analytics'))
+                            im.rejectService('all');
+                    },
+                    
                     settings_modal: {
                         title: '<?= wsm::getConfig('settings_modal_title') ?>',
                         save_settings_btn: '<?= wsm::getConfig('settings_modal_save_settigns_btn') ?>',
@@ -148,6 +148,3 @@
         
     });
 </script>
-<button type="button" data-cc="c-settings">Show cookie settings</button>
-<button type="button" data-cc="accept-all">Accept all cookies</button>
-<?= wsm::getConfig('consent_modal_primary_btn') ?>
