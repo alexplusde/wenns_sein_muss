@@ -8,14 +8,14 @@ class wsm_group extends \rex_yform_manager_dataset
         return $this->getValue('name');
     }
 
-    public static function getServices() 
+    public static function getServices()
     {
+        $return = [];
         $groups = [];
         $groups =  self::query()->find();
 
-        $return = [];
-
         foreach ($groups as $group) {
+            $g = [];
             $g["title"] = $group->title;
             $g["description"] = $group->description;
             $g["toggle"]['value'] = $group->name;
@@ -27,7 +27,7 @@ class wsm_group extends \rex_yform_manager_dataset
 
             foreach ($services as $service) {
                 $entries = [];
-                $entries = wsm_entry::query()->where("name", $service->id)->find();
+                $entries = wsm_entry::query()->where("f_id", $service->id)->find();
                 $s = [];
                 foreach ($entries as $entry) {
                     $s["col1"] = $service->service;
@@ -41,20 +41,16 @@ class wsm_group extends \rex_yform_manager_dataset
         }
         
 
-    $return[] = ["title" => wsm::getConfig('settings_modal_block_more_title'), "description" => wsm::getConfig('settings_modal_block_more_description')];
+        $return[] = ["title" => wsm::getConfig('settings_modal_block_more_title'), "description" => wsm::getConfig('settings_modal_block_more_description')];
 
-    return $return;
-
-
+        return $return;
     }
-    public static function getServicesAsJson() {
-
+    public static function getServicesAsJson()
+    {
         return json_encode(self::getServices(), true);
-
     }
-    public static function getServicesAsRevisionHash() {
-
+    public static function getServicesAsRevisionHash()
+    {
         return md5(self::getServicesAsJson());
-
     }
 }
