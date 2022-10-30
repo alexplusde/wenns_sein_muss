@@ -33,7 +33,24 @@ Demos: Siehe <https://github.com/orestbida/iframemanager>.
 
 ### Einstellungen
 
-folgt...
+#### Gruppen
+
+Erstelle Gruppen nach dem gewohnten Muster "Verpflichtend", "Tracking", "Analyse", "Statistik", etc.
+
+#### Drittanbieter
+
+Erstelle Einträge von erforderlichen und optionalen Drittanbieter-Diensten und weise ihnen die gewünschten Domains zu.
+
+#### Weitere Einstellungen
+
+Unter "Einstellungen" lassen sich Voreinstellungen anpassen und Textbausteine definieren, darunter:
+
+* Artikel-ID der Kontakt- und Impressums-Seite (wird verlinkt innerhalb des Cookie-Banners)
+* Artikel-ID der Datenschutz-Seite (wird verlinkt innerhalb des Cookie-Banners)
+
+#### Mehrsprachigkeit
+
+Das REDAXO-Addon Sprog eigenet sich hervoragend bei mehrsprachigen Websites, um Textbausteine in unterschiedlichen Sprachen zu verwalten. Trage anstelle der deutschen voreigenstellten Texte einen Sprog-Schlüssel ein, z.B. `{{ wsm.accept.all }}` und hinterlege die Übersetzung in Sprog. Die passende Sprache wird im Frontend anhand des aktuell gewählten clang-Codes gewählt und kann in `<html lang="XX">` überschrieben werden, falls nötig.
 
 ### Integration
 
