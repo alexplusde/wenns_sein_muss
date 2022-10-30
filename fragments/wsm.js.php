@@ -1,8 +1,7 @@
 <script>
 {
-    currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',     // current language of the notice (must also be defined in the "languages" object below)
-    autoLang: 1, // <?= wsm::getConfig('auto_lang') ?>,    // if enabled => use current client's browser language 
-                        // instead of currLang [OPTIONAL]
+    currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
+    autoLang: <?= (int)wsm::getConfig('auto_lang') ?>
 
     services : /* <?= wsm_group::getServicesAsJson() ?> */  
      
@@ -53,15 +52,15 @@
                 page_scripts: true,
                 revision: <?= wsm_group::getServicesAsRevisionHash(); ?>,
                 consent_modal: {
-                    layout: 'cloud',               // box/cloud/bar
-                    position: 'bottom center',     // bottom/middle/top + left/right/center
-                    transition: 'slide',           // zoom/slide
-                    swap_buttons: false            // enable to invert buttons
+                    layout: '<?= wsm::getConfig('consent_modal_layout') ?>',
+                    position: '<?= wsm::getConfig('consent_modal_position') ?>',
+                    transition: '<?= wsm::getConfig('consent_modal_transition') ?>',
+                    swap_buttons:  <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?>
                 },
                 settings_modal: {
-                    layout: 'box',                 // box/bar
+                    layout: '<?= wsm::getConfig('settings_modal_layout') ?>',                 // box/bar
                     // position: 'left',           // left/right
-                    transition: 'slide'            // zoom/slide
+                    transition: '<?= wsm::getConfig('settings_modal_transition') ?>'            // zoom/slide
                 }
             },
             languages: {

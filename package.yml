@@ -38,6 +38,23 @@ pages:
         icon: rex-icon fa-gear
         itemclass: pull-right
         perm: admin
+        subpages:
+            basic:
+                title: translate:wenns_sein_muss_settings_basic
+                icon: rex-icon fa-gear
+                perm: admin
+            consent:
+                title: translate:wenns_sein_muss_settings_consent
+                icon: rex-icon fa-gear
+                perm: admin
+            iframe:
+                title: translate:wenns_sein_muss_settings_iframe
+                icon: rex-icon fa-gear
+                perm: admin
+            text:
+                title: translate:wenns_sein_muss_settings_text
+                icon: rex-icon fa-gear
+                perm: admin
 
 default_config:
     privacy_policy_id: 1
@@ -60,6 +77,13 @@ default_config:
     settings_modal_cookie_table_headers_col4: Description
     settings_modal_block_more_title: More information
     settings_modal_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
+
+    consent_modal_layout: cloud
+    consent_modal_position: bottom center
+    consent_modal_transition: slide
+    consent_modal_swap_buttons: true
+    settings_modal_layout: box
+    settings_modal_transition: slide
 
     iframe_notice: Html <b>notice</b> message
     iframe_load_btn: Load video
