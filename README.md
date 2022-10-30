@@ -61,9 +61,10 @@ Das REDAXO-Addon Sprog eigenet sich hervoragend bei mehrsprachigen Websites, um 
 
 ### Integration
 
-1. Integriere `REX_WSM[css="1"]` im Template im `<head>`-Bereich, um das benötigte CSS zu laden.
-2. Integriere `REX_WSM[js="1"]` im Template vor dem schließenden `</body>`-Tag, um das benötigte JS zu laden.
+1. Integriere `REX_WSM[type="css"]` im Template im `<head>`-Bereich, um das benötigte CSS zu laden.
+2. Integriere `REX_WSM[type="js"]` im Template vor dem schließenden `</body>`-Tag, um das benötigte JS zu laden.
 3. (optional): Stelle deinen HTML-Ausgabe-Code in Templates, Modulen und Fragmenten auf den in <https://github.com/orestbida/cookieconsent> und <https://github.com/orestbida/iframemanager> empfohlenen Code um.
+4. Mit `REX_WSM[type="manage"]` erhält der Nutzer - bspw. auf der Datenschutz-Seite - nachträglich Kontrollmöglichkeiten.
 
 #### Beispiel-Scriptcode
 
