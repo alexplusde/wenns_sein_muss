@@ -8,11 +8,6 @@ class wsm_group extends \rex_yform_manager_dataset
         return $this->getValue('name');
     }
 
-    public static function domains($label, $value)
-    {
-        return "xx".$label;
-    }
-
     public static function getServices() {
 
         return self::query()->find();
