@@ -63,6 +63,9 @@ pages:
                 title: translate:wenns_sein_muss_settings_iframe
                 icon: rex-icon fa-code
                 perm: admin
+            demo:
+                title: translate:wenns_sein_muss_demo
+                perm: admin
 
 default_config:
     privacy_policy_id: 1

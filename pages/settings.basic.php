@@ -24,12 +24,3 @@ $fragment->setVar('class', 'edit', false);
 $fragment->setVar('title', $addon->i18n('wenns_sein_muss_config'), false);
 $fragment->setVar('body', $form->get(), false);
 echo $fragment->parse('core/page/section.php');
-
-
-
-
-$fragment = new rex_fragment();
-$fragment->setVar('class', 'danger', false);
-$fragment->setVar('title', $addon->i18n('wenns_sein_muss_demo'), false);
-$fragment->setVar('body', 'demnächst...', false);
-echo $fragment->parse('core/page/section.php');
