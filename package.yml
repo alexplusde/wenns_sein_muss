@@ -27,6 +27,10 @@ pages:
         title: translate:wenns_sein_muss_group
         icon: rex-icon rex-check-sign
         perm: admin
+    protocol:
+        title: translate:wenns_sein_muss_protocol
+        icon: rex-icon rex-check-sign
+        perm: admin
     docs:
         title: translate:wenns_sein_muss_docs
         subPath: README.md
@@ -47,12 +51,12 @@ pages:
                 title: translate:wenns_sein_muss_settings_consent
                 icon: rex-icon fa-gear
                 perm: admin
-            iframe:
-                title: translate:wenns_sein_muss_settings_iframe
-                icon: rex-icon fa-gear
-                perm: admin
             text:
                 title: translate:wenns_sein_muss_settings_text
+                icon: rex-icon fa-gear
+                perm: admin
+            iframe:
+                title: translate:wenns_sein_muss_settings_iframe
                 icon: rex-icon fa-gear
                 perm: admin
 
