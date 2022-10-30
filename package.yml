@@ -44,3 +44,23 @@ default_config:
     imprint_id: 1
     auto_lang: 1
     force_consent: 1
+
+    consent_modal_title: We use cookies!
+    consent_modal_description: Hi, this website uses essential cookies
+    consent_modail_primary_btn: Accept all
+    consent_modal_secondary_btn: Reject all
+    settings_modal_title: Cookie preferences
+    settings_modal_save_settigns_btn: Save settings
+    settings_modal_accept_all_btn: Accept all
+    settings_modal_reject_all_btn: Reject all
+    settings_modal_close_btn_label: Close
+    settings_modal_cookie_table_headers_col1: Name
+    settings_modal_cookie_table_headers_col2: Domain
+    settings_modal_cookie_table_headers_col3: Expiration
+    settings_modal_cookie_table_headers_col4: Description
+    settings_modal_block_more_title: More information
+    settings_modal_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
+
+    iframe_notice: Html <b>notice</b> message
+    iframe_load_btn: Load video
+    oframe_load_all_btn: Don't ask again

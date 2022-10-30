@@ -18,11 +18,6 @@
             iframe : {
                 allow : 'fullscreen',           // iframe's allow attribute
                 params : 'mute=1&start=21'      // iframe's url query parameters
-
-                // function run for each iframe configured with current service
-                onload : function(data_id, setThumbnail){
-                    console.log("loaded iframe with data-id=" + data_id);
-                }
             },
 
             // cookie is set if the current service is accepted
