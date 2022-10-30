@@ -15,12 +15,17 @@ class wsm_group extends \rex_yform_manager_dataset
 
     public static function getServices() {
 
-        return self::query();
+        return self::query()->find();
 
     }
     public static function getServicesAsJson() {
 
         return json_encode(self::getServices(), true);
+
+    }
+    public static function getServicesAsRevisionHash() {
+
+        return md5(self::getServicesAsJson());
 
     }
 }

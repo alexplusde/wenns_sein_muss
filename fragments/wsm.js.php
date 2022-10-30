@@ -48,10 +48,10 @@
         cc.run({
             gui_options: {
                 current_lang: "<?= rex_clang::getCurrent()->getCode(); ?>",
-                auto_language: 1, // <?= wsm::getConfig('auto_lang') ?>,
-                force_consent: 1, // <?= wsm::getConfig('force_consent') ?>,
+                auto_language: <?= (int)wsm::getConfig('auto_lang') ?>,
+                force_consent: <?= (int)wsm::getConfig('force_consent') ?>,
                 page_scripts: true,
-                revision: 1,
+                revision: <?= wsm_group::getServicesAsRevisionHash(); ?>,
                 consent_modal: {
                     layout: 'cloud',               // box/cloud/bar
                     position: 'bottom center',     // bottom/middle/top + left/right/center
@@ -147,3 +147,8 @@
 </script>
 <script defer src="<?= rex_url::addonAssets('wenns_sein_muss','cookieconsent/cookieconsent.js') ?>"></script>
 <script defer src="<?= rex_url::addonAssets('wenns_sein_muss', 'iframemanager/iframemanager.js') ?>"></script>
+<?php
+
+dump(wsm_group::getServices()); 
+
+?>
