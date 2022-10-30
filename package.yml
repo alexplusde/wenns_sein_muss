@@ -73,7 +73,7 @@ default_config:
 
     consent_modal_title: We use cookies!
     consent_modal_description: Hi, this website uses essential cookies
-    consent_modail_primary_btn: Accept all
+    consent_modal_primary_btn: Accept all
     consent_modal_secondary_btn: Reject all
     settings_modal_title: Cookie preferences
     settings_modal_save_settigns_btn: Save settings
@@ -96,4 +96,4 @@ default_config:
 
     iframe_notice: Html <b>notice</b> message
     iframe_load_btn: Load video
-    oframe_load_all_btn: Don't ask again
+    iframe_load_all_btn: Don't ask again

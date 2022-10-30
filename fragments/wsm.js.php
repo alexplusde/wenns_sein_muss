@@ -1,48 +1,41 @@
-<script>
-{
-    currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
-    autoLang: <?= (int)wsm::getConfig('auto_lang') ?>
-
-    services : /* <?= wsm_group::getServicesAsJson() ?> */  
-     
-    {
-        myservice : {
-
-            embedUrl: 'https://myservice_embed_url>/{data-id}',
-
-            // set valid url for automatic thumbnails   [OPTIONAL]
-            thumbnailUrl: 'https://<myservice_embed_thumbnail_url>/{data-id}',	
-
-            // global iframe settings (apply to all iframes relative to current service) [OPTIONAL]
-            iframe : {
-                allow : 'fullscreen',           // iframe's allow attribute
-                params : 'mute=1&start=21'      // iframe's url query parameters
-            },
-
-            // cookie is set if the current service is accepted
-            cookie : {
-                name : 'cc_youtube',            // cookie name
-                path : '/',                     // cookie path          [OPTIONAL]
-                samesite : 'lax',               // cookie samesite      [OPTIONAL]
-                domain : location.hostname      // cookie domain        [OPTIONAL]
-            },
-
-            languages : {
-                en : {
-                    notice: 'Html <b>notice</b> message',
-                    loadBtn: 'Load video',          // Load only current iframe
-                    loadAllBtn: 'Don\'t ask again'  // Load all iframes configured with this service + set cookie		
-                }
-            }
-        }
-    }
-}
-</script>
+<script src="<?= rex_url::addonAssets('wenns_sein_muss','cookieconsent/cookieconsent.js') ?>"></script>
+<script src="<?= rex_url::addonAssets('wenns_sein_muss', 'iframemanager/iframemanager.js') ?>"></script>
 <script>
     window.addEventListener('load', function(){
 
-        // obtain plugin
-        var cc = initCookieConsent();
+        var im = iframemanager();
+        const cc = initCookieConsent();
+
+        im.run(
+        {
+            currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
+            autoLang: <?= (int)wsm::getConfig('auto_lang') ?>,
+
+            services : /* <?= wsm_group::getServicesAsJson() ?> */  
+            
+            {
+                youtube : {
+
+                    embedUrl: 'https://www.youtube.com>/?v={data-id}',
+
+                    // set valid url for automatic thumbnails   [OPTIONAL]
+                    thumbnailUrl: 'https://thumbnail.youtube.com/?v={data-id}',	
+
+                    // cookie is set if the current service is accepted
+                    cookie : {
+                        name : 'cc_youtube'
+                    },
+
+                    languages : {
+                        en : {
+                            notice: '<?= wsm::getConfig('iframe_notice') ?>',
+                            loadBtn: '<?= wsm::getConfig('iframe_load_btn') ?>',
+                            loadAllBtn: '<?= wsm::getConfig('iframe_load_all_btn') ?>'
+                        }
+                    }
+                }
+            }
+        });
 
         cc.run({
             gui_options: {
@@ -50,7 +43,7 @@
                 auto_language: <?= (int)wsm::getConfig('auto_lang') ?>,
                 force_consent: <?= (int)wsm::getConfig('force_consent') ?>,
                 page_scripts: true,
-                revision: <?= wsm_group::getServicesAsRevisionHash(); ?>,
+                revision: '<?= wsm_group::getServicesAsRevisionHash(); ?>',
                 consent_modal: {
                     layout: '<?= wsm::getConfig('consent_modal_layout') ?>',
                     position: '<?= wsm::getConfig('consent_modal_position') ?>',
@@ -63,31 +56,42 @@
                     transition: '<?= wsm::getConfig('settings_modal_transition') ?>'            // zoom/slide
                 }
             },
+            
+            onAccept: function(){
+                if(cc.allowedCategory('analytics'))
+                    im.acceptService('all');
+            },
+            
+            onChange: function(){
+                if(!cc.allowedCategory('analytics'))
+                    im.rejectService('all');
+            },
+
             languages: {
                 'en': {
                     consent_modal: {
-                        title: 'We use cookies!',
-                        description: 'Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent. <button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
+                        title: '<?= wsm::getConfig('consent_modal_title') ?>',
+                        description: '<?= wsm::getConfig('consent_modal_description') ?>' + '<button type="button" data-cc="c-settings" class="cc-link">Let me choose</button>',
                         primary_btn: {
-                            text: 'Accept all',
+                            text: '<?= wsm::getConfig('consent_modal_primary_btn') ?>',
                             role: 'accept_all'              // 'accept_selected' or 'accept_all'
                         },
                         secondary_btn: {
-                            text: 'Reject all',
+                            text: '<?= wsm::getConfig('consent_modal_secondary_btn') ?>',
                             role: 'accept_necessary'        // 'settings' or 'accept_necessary'
                         }
                     },
                     settings_modal: {
-                        title: 'Cookie preferences',
-                        save_settings_btn: 'Save settings',
-                        accept_all_btn: 'Accept all',
-                        reject_all_btn: 'Reject all',
-                        close_btn_label: 'Close',
+                        title: '<?= wsm::getConfig('settings_modal_title') ?>',
+                        save_settings_btn: '<?= wsm::getConfig('settings_modal_save_settigns_btn') ?>',
+                        accept_all_btn: '<?= wsm::getConfig('settings_modal_accept_all_btn') ?>',
+                        reject_all_btn: '<?= wsm::getConfig('settings_modal_accept_all_btn') ?>',
+                        close_btn_label: '<?= wsm::getConfig('settings_modal_close_btn_label') ?>',
                         cookie_table_headers: [
-                            {col1: 'Name'},
-                            {col2: 'Domain'},
-                            {col3: 'Expiration'},
-                            {col4: 'Description'}
+                            {col1: '<?= wsm::getConfig('settings_modal_cookie_table_headers_col1') ?>'},
+                            {col2: '<?= wsm::getConfig('settings_modal_cookie_table_headers_col2') ?>'},
+                            {col3: '<?= wsm::getConfig('settings_modal_cookie_table_headers_col3') ?>'},
+                            {col4: '<?= wsm::getConfig('settings_modal_cookie_table_headers_col4') ?>'}
                         ],
                         blocks: [
                             {
@@ -133,8 +137,8 @@
                                     readonly: false
                                 }
                             }, {
-                                title: 'More information',
-                                description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>.',
+                                title: '<?= wsm::getConfig('settings_modal_block_more_title') ?>',
+                                description: '<?= wsm::getConfig('settings_modal_block_more_description') ?>',
                             }
                         ]
                     }
@@ -144,10 +148,6 @@
         
     });
 </script>
-<script defer src="<?= rex_url::addonAssets('wenns_sein_muss','cookieconsent/cookieconsent.js') ?>"></script>
-<script defer src="<?= rex_url::addonAssets('wenns_sein_muss', 'iframemanager/iframemanager.js') ?>"></script>
-<?php
-
-dump(wsm_group::getServices()); 
-
-?>
+<button type="button" data-cc="c-settings">Show cookie settings</button>
+<button type="button" data-cc="accept-all">Accept all cookies</button>
+<?= wsm::getConfig('consent_modal_primary_btn') ?>
