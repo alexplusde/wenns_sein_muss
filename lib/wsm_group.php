@@ -8,35 +8,42 @@ class wsm_group extends \rex_yform_manager_dataset
         return $this->getValue('name');
     }
 
-    public static function getServices() {
-
+    public static function getServices() 
+    {
+        $groups = [];
         $groups =  self::query()->find();
 
         $return = [];
 
-        foreach($groups as $group) {
+        foreach ($groups as $group) {
             $g["title"] = $group->title;
             $g["description"] = $group->description;
             $g["toggle"]['value'] = $group->name;
             $g["toggle"]['enabled'] = $group->enabled;
             $g["toggle"]['readonly'] = $group->required;
 
-            $services = wsm::query()->where("group", $group->id);
+            $services = [];
+            $services = wsm::query()->where("group", $group->id)->find();
 
             foreach ($services as $service) {
-                $s["cookie_table"]["col1"] = $service->service;
-                $s["cookie_table"]["col2"] = $service->service;
-                $s["cookie_table"]["col3"] = $service->service;
-                $s["cookie_table"]["col4"] = $service->service;
+                $entries = [];
+                $entries = wsm_entry::query()->where("name", $service->id)->find();
+                $s = [];
+                foreach ($entries as $entry) {
+                    $s["col1"] = $service->service;
+                    $s["col2"] = $entry->description;
+                    $s["col3"] = $entry->duration;
+                    $s["col4"] = $entry->type;
+                    $g["cookie_table"][] = $s;
+                }
             }
-            $g[] = $s;
-
             $return[] = $g;
         }
+        
 
-        $return[] = ["title" => wsm::getConfig('settings_modal_block_more_title'), "description" => wsm::getConfig('settings_modal_block_more_description')];
+    $return[] = ["title" => wsm::getConfig('settings_modal_block_more_title'), "description" => wsm::getConfig('settings_modal_block_more_description')];
 
-        return $return;
+    return $return;
 
 
     }
