@@ -42,5 +42,5 @@ pages:
 default_config:
     privacy_policy_id: 1
     imprint_id: 1
-    auto_lang: true
-    force_consent: false
+    auto_lang: 1
+    force_consent: 1
