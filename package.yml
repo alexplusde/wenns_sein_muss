@@ -19,18 +19,23 @@ page:
     icon: rex-icon rex-icon-check
 
 pages:
-    entry:
+    consent:
         title: translate:wenns_sein_muss_entry
         icon: rex-icon rex-check-sign
         perm: admin
-    group:
-        title: translate:wenns_sein_muss_group
-        icon: rex-icon rex-check-sign
-        perm: admin
-    protocol:
-        title: translate:wenns_sein_muss_protocol
-        icon: rex-icon rex-check-sign
-        perm: admin
+        subpages:
+            entry:
+                title: translate:wenns_sein_muss_entry
+                icon: rex-icon rex-check-sign
+                perm: admin
+            group:
+                title: translate:wenns_sein_muss_group
+                icon: rex-icon rex-check-sign
+                perm: admin
+            protocol:
+                title: translate:wenns_sein_muss_protocol
+                icon: rex-icon rex-check-sign
+                perm: admin
     docs:
         title: translate:wenns_sein_muss_docs
         subPath: README.md
