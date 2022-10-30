@@ -1,6 +1,6 @@
-# Wenn's sein muss? - REDAXO 5 Addon für Einwilligungen und Drittanbieter
+# [Wenn's sein muss!] - REDAXO 5 Addon für Einwilligungen und Auskunft von verwendeten Drittanbieter-Diensten
 
-Die neue Alternative, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.
+Die neue Alternative zum Consent Manager, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.
 
 * Geringe Dateigröße
 * Kompatibel zu (IE10+ *)
