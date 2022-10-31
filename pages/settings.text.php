@@ -62,18 +62,18 @@ $field->setLabel(rex_i18n::msg('consent_info_domain'));
 $field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
 $field->setLabel(rex_i18n::msg('consent_info_consented'));
 
-$field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_info_consented'));
-
 $field = $form->addInputField('text', 'consent_info_uuid', $value = null, ["class" => "form-control"]);
 $field->setLabel(rex_i18n::msg('consent_info_uuid'));
 
-$field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
+$field = $form->addInputField('text', 'consent_info_datestamp', $value = null, ["class" => "form-control"]);
 $field->setLabel(rex_i18n::msg('consent_info_datestamp'));
 
 
 $field = $form->addInputField('text', 'consent_info_open_settings', $value = null, ["class" => "form-control"]);
 $field->setLabel(rex_i18n::msg('consent_info_open_settings'));
+
+$field = $form->addInputField('text', 'consent_info_unknown', $value = null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('consent_info_unknown'));
 
 
 

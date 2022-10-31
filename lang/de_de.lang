@@ -44,3 +44,4 @@ consent_info_consented = Ihr aktueller Zustand
 consent_info_uuid = Ihre Einwilligungs-ID
 consent_info_datestamp = Einwilligungsdatum
 consent_info_open_settings = Einstellungen öffnen
+consent_info_unknown = Noch keine Einwilligung erteilt
