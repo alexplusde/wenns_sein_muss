@@ -16,20 +16,65 @@
 		im.run({
 			currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
 			// autoLang: <?= (int)wsm::getConfig('auto_lang') ?>,
-			services:
-
-			{
+			services: {
 				youtube: {
 
-					embedUrl: 'https://www.youtube.com>/?v={data-id}',
-					thumbnailUrl: 'https://thumbnail.youtube.com/?v={data-id}',
+					embedUrl: 'https://www.youtube-nocookie.com/embed/{data-id}',
+					thumbnailUrl: 'https://i3.ytimg.com/vi/{data-id}/hqdefault.jpg',
 					cookie: {
 						name: 'cc_youtube'
 					},
 
 					languages: {
-						<?= rex_clang::getCurrent()->getCode(); ?>
-						: {
+						en: {
+							notice: '<?= wsm::getConfig('iframe_notice') ?>',
+							loadBtn: '<?= wsm::getConfig('iframe_load_btn') ?>',
+							loadAllBtn: '<?= wsm::getConfig('iframe_load_all_btn') ?>'
+						}
+					}
+				},
+				vimeo: {
+					embedUrl: 'https://player.vimeo.com/video/{data-id}',
+
+					thumbnailUrl: function(id, setThumbnail) {
+
+						var url = "https://vimeo.com/api/v2/video/" + id + ".json";
+						var xhttp = new XMLHttpRequest();
+
+						xhttp.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+								var src = JSON.parse(this.response)[0].thumbnail_large;
+								setThumbnail(src);
+							}
+						};
+
+						xhttp.open("GET", url, true);
+						xhttp.send();
+					},
+					iframe: {
+						allow: 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen;',
+					},
+					cookie: {
+						name: 'cc_vimeo'
+					},
+					languages: {
+						en: {
+							notice: '<?= wsm::getConfig('iframe_notice') ?>',
+							loadBtn: '<?= wsm::getConfig('iframe_load_btn') ?>',
+							loadAllBtn: '<?= wsm::getConfig('iframe_load_all_btn') ?>'
+						}
+					}
+				},
+				google_maps: {
+					embedUrl: 'https://www.google.com/maps/embed/v1/place?key=API_KEY&q={data-id}',
+					iframe: {
+						allow: 'picture-in-picture; fullscreen;'
+					},
+					cookie: {
+						name: 'cc_maps'
+					},
+					languages: {
+						en: {
 							notice: '<?= wsm::getConfig('iframe_notice') ?>',
 							loadBtn: '<?= wsm::getConfig('iframe_load_btn') ?>',
 							loadAllBtn: '<?= wsm::getConfig('iframe_load_all_btn') ?>'
