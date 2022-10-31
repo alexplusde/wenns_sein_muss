@@ -45,7 +45,7 @@
 				// auto_language: <?= (int)wsm::getConfig('auto_lang') ?>,
 				force_consent: <?= (int)wsm::getConfig('force_consent') ?> ,
 				page_scripts: true,
-				revision: <?= wsm_group::getServicesAsRevisionHash(); ?> ,
+				revision: "<?= wsm_group::getServicesAsRevisionHash(); ?>",
 				consent_modal: {
 					layout: '<?= wsm::getConfig('consent_modal_layout') ?>',
 					position: '<?= wsm::getConfig('consent_modal_position') ?>',

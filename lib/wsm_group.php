@@ -49,9 +49,10 @@ class wsm_group extends \rex_yform_manager_dataset
             if (rex_addon::get('yrewrite')->isAvailable() && !rex::isSafeMode()) {
                 $domain_id = rex_yrewrite::getCurrentDomain()->getId();
             }
-            
-            $services = wsm::query()->where("group", $group->getId())->where('domain', $domain_id)->find();
+            $group_id = $group->getId();
+            $services = wsm::query()->whereRaw('(`group` = '.$group_id.' AND (FIND_IN_SET(`rex_domain`, 0) OR FIND_IN_SET(`rex_domain`, '.$domain_id.')))')->find();
 
+            
             foreach ($services as $service) {
                 $entries = [];
                 $entries = wsm_entry::query()->where("f_id", $service->getId())->find();

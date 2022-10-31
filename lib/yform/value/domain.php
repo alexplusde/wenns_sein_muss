@@ -4,7 +4,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
 {
     public static function domains() :array
     {
-        $domains = [0 => rex::getServer() . " [system]"];
+        $domains = [0 => rex::getServer() . " [alle]"];
 
         if (rex_addon::get('yrewrite')->isAvailable()) {
             $domains_sql = rex_sql::factory()->getArray('SELECT id, domain FROM rex_yrewrite_domain ORDER BY domain');
