@@ -96,7 +96,7 @@
 			// auto_language: "document",
 			force_consent: <?= (int)wsm::getConfig('force_consent') ?> ,
 			page_scripts: true,
-			revision: "<?= wsm_group::getServicesAsRevisionHash(); ?>",
+			revision: "<?= wsm::getServicesAsRevisionHash(); ?>",
 
 			gui_options: {
 
@@ -177,7 +177,7 @@
 								col4: '<?= wsm::getConfig('settings_modal_cookie_table_headers_col4') ?>'
 							}
 						],
-						blocks: <?= wsm_group::getServicesAsJson(); ?>
+						blocks: <?= wsm::getServicesAsJson(); ?>
 
 					}
 				}

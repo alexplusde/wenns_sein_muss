@@ -1,6 +1,6 @@
 wenns_sein_muss_title = Consent Management und Drittanbieter-Verwaltung
 
-# Konfigurationsformulare
+# Backend-Seiten
 wenns_sein_muss_config = Einstellungen
 wenns_sein_muss_settings = Einstellungen
 wenns_sein_muss_docs = Hilfe
@@ -13,13 +13,16 @@ wenns_sein_muss_settings_consent = Optik
 wenns_sein_muss_settings_text = Texte
 wenns_sein_muss_settings_iframe = Texte (iframe-Manager)
 
+# Labels Formularfelder
 wenns_sein_muss_demo = Demo-Daten importieren
 wenns_sein_muss_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
 wenns_sein_muss_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!
+
 consent_modal_title = Titel
 consent_modal_description = Einleitung
 consent_modal_primary_btn = "Alle zulassen"
 consent_modal_secondary_btn = "Alle ablehnen"
+
 settings_modal_title = Titel
 settings_modal_save_settigns_btn = "Auswahl speichern"
 settings_modal_accept_all_btn = "Alle zulassen"
