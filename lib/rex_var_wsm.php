@@ -1,6 +1,9 @@
 <?php
 /**
- *     REX_WSM[]
+ *     REX_WSM[type="css"]
+ *     REX_WSM[type="js"]
+ *     REX_WSM[type="manage"]
+ *     REX_WSM[type="iframe" service="youtube" id="###id###" params="###urlparams###" thumbnail="###urlthumbnail"]
  */
 class rex_var_wsm extends rex_var
 {
@@ -16,6 +19,9 @@ class rex_var_wsm extends rex_var
         }
         if ($this->hasArg('type') && $this->getArg('type') == "manage") {
             return self::quote($fragment->parse('wsm.manage.php'));
+        }
+        if ($this->hasArg('type') && $this->getArg('type') == "iframe") {
+            return self::quote(wsm::getIframe($this->getArg('service'), $this->getArg('id'), $this->getArg('params'), $this->getArg('thumbnail')));
         }
         return self::quote("");
     }
