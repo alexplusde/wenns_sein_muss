@@ -19,6 +19,12 @@ $select = $field->getSelect();
 $select->addOption('ja', '1');
 $select->addOption('nein', '0');
 
+$field = $form->addSelectField('iframemanager', null, ['class'=>'form-control selectpicker']);
+$field->setLabel("wsm_config_iframemanager_label");
+$select = $field->getSelect();
+$select->addOption('aktiviert', '1');
+$select->addOption('deaktiviert', '0');
+
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
 $fragment->setVar('title', $addon->i18n('wenns_sein_muss_config'), false);

@@ -72,6 +72,7 @@ default_config:
     imprint_id: 1
     auto_lang: 1
     force_consent: 1
+    iframemanager: 1
 
     consent_modal_title: We use cookies!
     consent_modal_description: Hi, this website uses essential cookies

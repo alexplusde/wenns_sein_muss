@@ -1,17 +1,23 @@
 <script
 	src="<?= rex_url::addonAssets('wenns_sein_muss', 'cookieconsent/cookieconsent.js') ?>">
 </script>
+<?php if (wsm::getConfig('iframemanager')) {?>
 <script
 	src="<?= rex_url::addonAssets('wenns_sein_muss', 'iframemanager/iframemanager.js') ?>">
 </script>
+<?php } ?>
 
 <?= rex_clang::getCurrent()->getCode(); ?>
 
 <script>
 	window.addEventListener('load', function() {
-
+		<?php if (wsm::getConfig('iframemanager')) {?>
 		var im = iframemanager();
+		<?php } ?>
+
 		const cc = initCookieConsent();
+
+		<?php if (wsm::getConfig('iframemanager')) {?>
 
 		im.run({
 			currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
@@ -83,6 +89,7 @@
 				}
 			}
 		});
+		<?php } ?>
 
 		cc.run({
 			current_lang: "<?= rex_clang::getCurrent()->getCode(); ?>",
@@ -113,24 +120,11 @@
 
 			onChange: function(cookie, changed_categories) {
 
-				var consent_uuid = document.cookie.match(
-					"cc_cookie={.*\"consent_uuid\":\"([0-9a-z\-]*)\".*}")[1];
-
 				var http = new XMLHttpRequest();
-				var url = '/';
-				var params = 'rex-api-call=wsm&consent_uuid=' + consent_uuid + '&cookies=' +
-					cookie_data;
-				http.open('POST', url, true);
-
-				//Send the proper header information along with the request
+				var params = 'rex-api-call=wsm&consent_uuid=' + cookie.consent_uuid +
+					'&cookies=' + encodeURIComponent(changed_categories);
+				http.open('POST', "/", true);
 				http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-				http.onreadystatechange =
-					function() { //Call a function when the state changes.
-						if (http.readyState == 4 && http.status == 200) {
-							console.log(http.responseText);
-						}
-					}
 				http.send(params);
 
 				if (!cc.allowedCategory('analytics'))
@@ -139,30 +133,13 @@
 
 			onFirstAction: function(user_preferences, cookie) {
 
-
 				var http = new XMLHttpRequest();
-				var url = '/';
 				var params = 'rex-api-call=wsm&consent_uuid=' + cookie.consent_uuid +
-					'&cookies=' + encodeURIComponent(user_preferences.accepted_categories);
-				http.open('POST', url, true);
-
-				//Send the proper header information along with the request
+					'&cookies=' + encodeURIComponent(user_preferences);
+				http.open('POST', "/", true);
 				http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-				http.onreadystatechange =
-					function() { //Call a function when the state changes.
-						if (http.readyState == 4 && http.status == 200) {
-							console.log(http.responseText);
-						}
-					}
 				http.send(params);
-				/*
-				console.log('User accept type:', user_preferences.accept_type);
-				console.log('User accepted these categories', user_preferences
-					.accepted_categories)
-				console.log('User reject these categories:', user_preferences
-					.rejected_categories);
-				console.log(cookie.consent_uuid); */
+
 			},
 
 
