@@ -6,9 +6,6 @@
 	src="<?= rex_url::addonAssets('wenns_sein_muss', 'iframemanager/iframemanager.js') ?>">
 </script>
 <?php } ?>
-
-<?= rex_clang::getCurrent()->getCode(); ?>
-
 <script>
 	window.addEventListener('load', function() {
 		<?php if (wsm::getConfig('iframemanager')) {?>
