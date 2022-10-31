@@ -15,7 +15,7 @@
 
 		im.run({
 			currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
-			// autoLang: <?= (int)wsm::getConfig('auto_lang') ?>,
+
 			services: {
 				youtube: {
 
@@ -85,18 +85,21 @@
 		});
 
 		cc.run({
+			current_lang: "<?= rex_clang::getCurrent()->getCode(); ?>",
+			// auto_language: "document",
+			force_consent: <?= (int)wsm::getConfig('force_consent') ?> ,
+			page_scripts: true,
+			revision: "<?= wsm_group::getServicesAsRevisionHash(); ?>",
+
 			gui_options: {
-				current_lang: "<?= rex_clang::getCurrent()->getCode(); ?>",
-				// auto_language: <?= (int)wsm::getConfig('auto_lang') ?>,
-				force_consent: <?= (int)wsm::getConfig('force_consent') ?> ,
-				page_scripts: true,
-				revision: "<?= wsm_group::getServicesAsRevisionHash(); ?>",
+
 				consent_modal: {
 					layout: '<?= wsm::getConfig('consent_modal_layout') ?>',
 					position: '<?= wsm::getConfig('consent_modal_position') ?>',
 					transition: '<?= wsm::getConfig('consent_modal_transition') ?>',
 					swap_buttons: Boolean( <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?> ),
 				},
+
 				settings_modal: {
 					layout: '<?= wsm::getConfig('settings_modal_layout') ?>',
 					transition: '<?= wsm::getConfig('settings_modal_transition') ?>'
@@ -164,7 +167,7 @@
 
 
 			languages: {
-				en: {
+				"de": {
 					consent_modal: {
 						title: '<?= wsm::getConfig('consent_modal_title') ?>',
 						description: '<?= wsm::getConfig('consent_modal_description') ?>' +

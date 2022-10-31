@@ -18,21 +18,21 @@ if (rex_addon::get('yrewrite')->isAvailable()) {
 		<script>
 			cookieconsent = initCookieConsent();
 
-			document.write(cookieconsent.get("categories"));
+			document.write(cookieconsent.get("categories") || "keine");
 		</script>
 	</mark> </p>
 <p>Ihre Einwilligungs-ID: <mark>
 		<script>
 			cookieconsent = initCookieConsent();
 
-			document.write(cookieconsent.get("consent_uuid"));
+			document.write(cookieconsent.get("consent_uuid") || "noch keine Einwilligung erfolgt");
 		</script>
 	</mark></p>
 <p>Einwilligungsdatum: <mark>
 		<script>
 			cookieconsent = initCookieConsent();
 
-			document.write(cookieconsent.get("consent_date"));
+			document.write(cookieconsent.get("consent_date") || "noch keine Einwilligung erfolgt");
 		</script>
 	</mark></p>
 
