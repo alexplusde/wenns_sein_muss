@@ -110,7 +110,6 @@
 
 			onChange: function(cookie, changed_categories) {
 
-				console.log("test");
 				var consent_uuid = document.cookie.match(
 					"cc_cookie={.*\"consent_uuid\":\"([0-9a-z\-]*)\".*}")[1];
 
@@ -136,13 +135,31 @@
 			},
 
 			onFirstAction: function(user_preferences, cookie) {
+
+
+				var http = new XMLHttpRequest();
+				var url = '/';
+				var params = 'rex-api-call=wsm&consent_uuid=' + cookie.consent_uuid +
+					'&cookies=' + encodeURIComponent(user_preferences.accepted_categories);
+				http.open('POST', url, true);
+
+				//Send the proper header information along with the request
+				http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+				http.onreadystatechange =
+					function() { //Call a function when the state changes.
+						if (http.readyState == 4 && http.status == 200) {
+							console.log(http.responseText);
+						}
+					}
+				http.send(params);
+				/*
 				console.log('User accept type:', user_preferences.accept_type);
 				console.log('User accepted these categories', user_preferences
 					.accepted_categories)
 				console.log('User reject these categories:', user_preferences
 					.rejected_categories);
-				console.log(user_preferences);
-				console.log(cookie);
+				console.log(cookie.consent_uuid); */
 			},
 
 
