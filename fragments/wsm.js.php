@@ -102,6 +102,49 @@
 					transition: '<?= wsm::getConfig('settings_modal_transition') ?>'
 				}
 			},
+			onAccept: function(cookie) {
+
+				if (cc.allowedCategory('analytics'))
+					im.acceptService('all');
+			},
+
+			onChange: function(cookie, changed_categories) {
+
+				console.log("test");
+				var consent_uuid = document.cookie.match(
+					"cc_cookie={.*\"consent_uuid\":\"([0-9a-z\-]*)\".*}")[1];
+
+				var http = new XMLHttpRequest();
+				var url = '/';
+				var params = 'rex-api-call=wsm&consent_uuid=' + consent_uuid + '&cookies=' +
+					cookie_data;
+				http.open('POST', url, true);
+
+				//Send the proper header information along with the request
+				http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+				http.onreadystatechange =
+					function() { //Call a function when the state changes.
+						if (http.readyState == 4 && http.status == 200) {
+							console.log(http.responseText);
+						}
+					}
+				http.send(params);
+
+				if (!cc.allowedCategory('analytics'))
+					im.rejectService('all');
+			},
+
+			onFirstAction: function(user_preferences, cookie) {
+				console.log('User accept type:', user_preferences.accept_type);
+				console.log('User accepted these categories', user_preferences
+					.accepted_categories)
+				console.log('User reject these categories:', user_preferences
+					.rejected_categories);
+				console.log(user_preferences);
+				console.log(cookie);
+			},
+
 
 			languages: {
 				en: {
@@ -118,17 +161,6 @@
 							role: 'accept_necessary' // 'settings' or 'accept_necessary'
 						}
 					},
-					/*
-					onAccept: function(){
-					    if(cc.allowedCategory('analytics'))
-					        im.acceptService('all');
-					},
-					
-					onChange: function(){
-					    if(!cc.allowedCategory('analytics'))
-					        im.rejectService('all');
-					},
-					*/
 					settings_modal: {
 						title: '<?= wsm::getConfig('settings_modal_title') ?>',
 						save_settings_btn: '<?= wsm::getConfig('settings_modal_save_settigns_btn') ?>',

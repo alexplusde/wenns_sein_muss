@@ -7,20 +7,19 @@ class rex_api_wsm extends rex_api_function
     public function execute()
     {
         // Parameter abrufen und auswerten
-        $consent = rex_request('action', 'string');
-        $hash = rex_request('hash', 'string');
+        $consent_uuid = rex_request('consent_uuid', 'string');
 
         $dataset = null;
-        if ($consent == "sendConsent") {
-            $dataset = wsm_protocol::query()->where("hash", $hash)->findOne();
+        if ($consent_uuid != "") {
+            $dataset = wsm_protocol::query()->where("hash", $consent_uuid)->findOne();
 
             if (!(bool)$dataset) {
                 $dataset = wsm_protocol::create();
             }
 
             $dataset
-            ->setValue('hash', $hash)
-            ->setValue('consentdate', "")
+            ->setValue('url', rex_yrewrite::getCurrentDomain()->getName())
+            ->setValue('hash', $consent_uuid)
             ->setValue('cookies', "")
             ->save();
         }
