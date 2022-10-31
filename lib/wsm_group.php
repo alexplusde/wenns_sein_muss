@@ -44,7 +44,13 @@ class wsm_group extends \rex_yform_manager_dataset
             $g["toggle"]['readonly'] = $group->getRequired();
 
             $services = [];
-            $services = wsm::query()->where("group", $group->getId())->find();
+
+            $domain_id = 0; // default
+            if (rex_addon::get('yrewrite')->isAvailable() && !rex::isSafeMode()) {
+                $domain_id = rex_yrewrite::getCurrentDomain()->getId();
+            }
+            
+            $services = wsm::query()->where("group", $group->getId())->where('domain', $domain_id)->find();
 
             foreach ($services as $service) {
                 $entries = [];
