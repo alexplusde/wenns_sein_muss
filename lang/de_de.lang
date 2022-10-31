@@ -38,3 +38,9 @@ settings_modal_block_more_description = Beschreibung
 iframe_notice = Hinweistext
 iframe_load_btn = Dieses Mal erlauben
 iframe_load_all_btn = Grundsätzlich erlauben
+
+consent_info_domain = Ihre Einwilligung trifft auf die folgenden Domains zu
+consent_info_consented = Ihr aktueller Zustand
+consent_info_uuid = Ihre Einwilligungs-ID
+consent_info_datestamp = Einwilligungsdatum
+consent_info_open_settings = Einstellungen öffnen

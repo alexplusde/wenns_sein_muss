@@ -54,6 +54,30 @@ $field->setLabel(rex_i18n::msg('settings_modal_block_more_title'));
 $field = $form->addInputField('text', 'settings_modal_block_more_description', $value = null, ["class" => "form-control"]);
 $field->setLabel(rex_i18n::msg('settings_modal_block_more_description'));
 
+$form->addFieldset('Einwilligungs-Protokoll');
+
+$field = $form->addInputField('text', 'consent_info_domain', $value = null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('consent_info_domain'));
+
+$field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('consent_info_consented'));
+
+$field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('consent_info_consented'));
+
+$field = $form->addInputField('text', 'consent_info_uuid', $value = null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('consent_info_uuid'));
+
+$field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('consent_info_datestamp'));
+
+
+$field = $form->addInputField('text', 'consent_info_open_settings', $value = null, ["class" => "form-control"]);
+$field->setLabel(rex_i18n::msg('consent_info_open_settings'));
+
+
+
+
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
 $fragment->setVar('title', $addon->i18n('wenns_sein_muss_config'), false);

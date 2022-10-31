@@ -1,6 +1,3 @@
-<button type="button" data-cc="c-settings">Show cookie settings</button>
-<button type="button" data-cc="accept-all">Accept all cookies</button>
-
 <?php
 
 $current = rex::getServer();
@@ -10,32 +7,33 @@ if (rex_addon::get('yrewrite')->isAvailable()) {
 };
 
 ?>
-<p>Ihre Einwilligung trifft auf die folgenden Domains zu:
+<p><?= wsm::getConfig("consent_info_domain") ?>
 	<mark><?= $current ?></mark>
 </p>
 
-<p>Ihr aktueller Zustand: <mark>
+<p><?= wsm::getConfig("consent_info_domain") ?>:
+	<mark>
 		<script>
 			cookieconsent = initCookieConsent();
 
 			document.write(cookieconsent.get("categories") || "keine");
 		</script>
 	</mark> </p>
-<p>Ihre Einwilligungs-ID: <mark>
+<p><?= wsm::getConfig("consent_info_domain") ?>:
+	<mark>
 		<script>
 			cookieconsent = initCookieConsent();
 
 			document.write(cookieconsent.get("consent_uuid") || "noch keine Einwilligung erfolgt");
 		</script>
 	</mark></p>
-<p>Einwilligungsdatum: <mark>
+<p><?= wsm::getConfig("consent_info_domain") ?>:
+	<mark>
 		<script>
 			cookieconsent = initCookieConsent();
 
 			document.write(cookieconsent.get("consent_date") || "noch keine Einwilligung erfolgt");
 		</script>
 	</mark></p>
-
-
-<h2>
-</h2>
+<button type="button"
+	data-cc="c-settings"><?= wsm::getConfig("consent_info_open_settings") ?></button>

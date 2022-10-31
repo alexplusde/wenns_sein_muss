@@ -100,3 +100,9 @@ default_config:
     iframe_notice: Html <b>notice</b> message
     iframe_load_btn: Load video
     iframe_load_all_btn: Don't ask again
+
+    consent_info_domain: Ihre Einwilligung trifft auf die folgenden Domains zu
+    consent_info_consented: Ihre aktuell gewählten Einstellungen
+    consent_info_uuid: Ihre Einwilligungs-ID (für Rückfragen)
+    consent_info_datestamp: Eingewilligt am...
+    consent_info_open_settings: Einstellungen öffnen
