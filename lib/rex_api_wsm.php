@@ -17,8 +17,15 @@ class rex_api_wsm extends rex_api_function
                 $dataset = wsm_protocol::create();
             }
 
+            $current = rex::getServer();
+
+            if (rex_addon::get('yrewrite')->isAvailable()) {
+                $current = rex_yrewrite::getCurrentDomain()->getName();
+            };
+    
+
             $dataset
-            ->setValue('url', rex_yrewrite::getCurrentDomain()->getName())
+            ->setValue('url', $current)
             ->setValue('hash', $consent_uuid)
             ->setValue('cookies', "")
             ->save();
