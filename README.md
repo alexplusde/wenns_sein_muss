@@ -13,6 +13,7 @@ Außerdem angepasst an REDAXO
 
 * Unkomplizierte Verwendung und Einrichtung mit REX_VARs
 * Basiert auf YForm - einfacher Import/Export von Drittanbieter-Informationen
+* Schlanker Addon-Code - und damit einfacher zu warten und weiterzuentwickeln
 * Kompatibel zu YRewrite - verwende bestehende Domains und Sprachen
 * Kompatibel zu Sprog - verwende Übersetzungen wie gewohnt aus Sprog
 
