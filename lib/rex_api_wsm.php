@@ -33,7 +33,6 @@ class rex_api_wsm extends rex_api_function
 
         // Artikel senden
         header('Content-Type: text/html; charset=UTF-8');
-        dump($dataset);
         exit();
     }
 }
