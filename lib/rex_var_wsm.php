@@ -23,6 +23,5 @@ class rex_var_wsm extends rex_var
         if ($this->hasArg('type') && $this->getArg('type') == "iframe") {
             return self::quote(wsm::getIframe($this->getArg('service'), $this->getArg('id'), $this->getArg('params'), $this->getArg('thumbnail')));
         }
-        return self::quote("");
     }
 }

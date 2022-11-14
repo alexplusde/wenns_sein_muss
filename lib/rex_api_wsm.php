@@ -6,6 +6,9 @@ class rex_api_wsm extends rex_api_function
 
     public function execute()
     {
+        if (rex_get("rex-api-call") !== "wsm") {
+            exit;
+        }
         // Parameter abrufen und auswerten
         $consent_uuid = rex_request('consent_uuid', 'string');
 
