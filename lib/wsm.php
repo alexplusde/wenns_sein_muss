@@ -72,8 +72,13 @@ class wsm extends \rex_yform_manager_dataset
     {
         return json_encode(self::getServices(), 1);
     }
-    public static function getServicesAsRevisionHash() :string
+    public static function getRevisionNumber() :string
     {
-        return md5(self::getServicesAsJson());
+        if ($latest = self::query()->select('updatedate')->orderBy('updatedate', 'DESC')->findOne()) {
+            dump($latest->getValue('updatedate'));
+     
+            return strtotime($latest->getValue('updatedate'));
+        }
+        return 0;
     }
 }

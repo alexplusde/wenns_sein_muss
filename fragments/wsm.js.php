@@ -93,7 +93,7 @@
 			// auto_language: "document",
 			force_consent: <?= (int)wsm::getConfig('force_consent') ?> ,
 			page_scripts: true,
-			revision: "<?= wsm::getServicesAsRevisionHash(); ?>",
+			revision: "<?= wsm::getRevisionNumber(); ?>",
 
 			gui_options: {
 
