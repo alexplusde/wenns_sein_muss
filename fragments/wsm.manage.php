@@ -44,14 +44,6 @@ if (rex_addon::get('yrewrite')->isAvailable()) {
 <button type="button" data-cc="show-consentModal"><?= wsm::getConfig("consent_info_open_modal") ?></button>
 <?php
 
-foreach(wsm_service::findScripts() as $script) {
-
-	$fragment = new rex_fragment();
-	$fragment->setVar('category', $script->getValue('group_name'));
-	$fragment->setVar('service', $script->getValue('service'));
-	$fragment->setVar('script', $script->getValue('script'), false);
-	echo $fragment->parse("wsm.script.php");
-
-}
+dump(wsm::getCategoriesAsJson());
 
 ?>

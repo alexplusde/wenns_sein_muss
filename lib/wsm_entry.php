@@ -1,6 +1,10 @@
 <?php
 class wsm_entry extends \rex_yform_manager_dataset
 {
+    public function getType() :string
+    {
+        return $this->getValue('type');
+    }
     public function getName() :string
     {
         return $this->getValue('name');
@@ -13,20 +17,19 @@ class wsm_entry extends \rex_yform_manager_dataset
     {
         return $this->getValue('duration');
     }
-    public function getType() :string
-    {
-        return $this->getValue('type');
-    }
 
     public static function findEntriesArray($service_id) {
 
         $entries = wsm_entry::query()->where("service_id", $service_id)->find();
         $return = [];
         foreach ($entries as $entry) {
-            $return["name"] = $entry->getName();
-            $return["description"] = $entry->getDescription();
-            $return["duration"] = $entry->getDuration();
-            $return["type"] = $entry->getType();
+            $e = [];
+            $e["name"] = $entry->getName();
+            $e["description"] = $entry->getDescription();
+            $e["duration"] = $entry->getDuration();
+            $e["type"] = $entry->getType();
+
+            $return[] = $e;
         }
         return $return;
     }

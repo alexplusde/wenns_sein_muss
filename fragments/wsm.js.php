@@ -88,31 +88,7 @@
 
 		sections: <?= wsm::getServicesAsJson() ?>,
 
-		categories: {
-			necessary: {
-				readOnly: true,
-				enabled: true,
-			},
-
-			statistics: {
-				services: {
-					youtube: {
-						label: 'Youtube Embed',
-						onAccept: () => wsm_im.acceptService('youtube'),
-						onReject: () => wsm_im.rejectService('youtube'),
-					},
-					vimeo: {
-						label: 'Vimeo Embed',
-						onAccept: () => wsm_im.acceptService('vimeo'),
-						onReject: () => wsm_im.rejectService('vimeo'),
-					},
-				},
-			},
-
-			preferences: {},
-			marketing: {},
-			unknown: {},
-		},
+		categories: <?= wsm::getCategoriesAsJson() ?>,
 
 		language: {
 			default: '<?= rex_clang::getCurrent()->getCode(); ?>',
@@ -157,3 +133,6 @@
 		});
 	}
 </script>
+<?php 
+echo wsm_fragment::getScripts();
+?>

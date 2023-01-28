@@ -10,45 +10,51 @@ class wsm_lang {
         $return['consentModal'] = self::getConsentModal();
         $return['preferencesModal'] = self::getPreferencesModal();
         
-        $services = [];
+        $sections = [];
 
-        $services[0]['title'] = "Somebody said ... cookies?";
-        $services[0]['description'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua";
+        /* Intro */
 
-        $services[1]['title'] = "Strictly necessary cookies <span class=\"pm__badge\">Always enabled</span>";
-        $services[1]['description'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-        $services[1]['linkedCategory'] = "necessary";
+        $sections[0]['title'] = wsm::getConfig('consent_modal_title');
+        $sections[0]['description'] = wsm::getConfig('consent_modal_description');
 
-        $services[2]['title'] = "Analytics cookies";
-        $services[2]['description'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-        $services[2]['linkedCategory'] = "analytics";
-        $services[2]['cookieTable']['headers']['name'] = wsm::getConfig('settings_modal_cookie_table_headers_col1');
-        $services[2]['cookieTable']['headers']['service'] = wsm::getConfig('settings_modal_cookie_table_headers_col2');
-        $services[2]['cookieTable']['headers']['description'] = wsm::getConfig('settings_modal_cookie_table_headers_col3');
-        $services[2]['cookieTable']['headers']['more'] = wsm::getConfig('settings_modal_cookie_table_headers_col4');
+        /* Gruppen, Drittanbieter und ihre Einträge */
 
-        $services[2]['cookieTable']['body'][0]['name'] = "im_youtube";
-        $services[2]['cookieTable']['body'][0]['description'] = "Used to remember if the user accepted the youtube service.";
-        $services[2]['cookieTable']['body'][0]['Service'] = "Youtube Embed";
+        $groups =  wsm_group::query()->find();
 
-        $services[2]['cookieTable']['body'][1]['name'] = "im_vimeo";
-        $services[2]['cookieTable']['body'][1]['description'] = "Used to remember if the user accepted the vimeo service.";
-        $services[2]['cookieTable']['body'][1]['Service'] = "Vimeo Embed";
+        foreach ($groups as $group) {
+            $g = [];
+            $g["title"] = $group->getTitle();
+            $g["description"] = $group->getDescription();
+            $g["linkedCategory"] = $group->getName();
 
-        $services[3]['title'] = "Advertisement cookies";
-        $services[3]['description'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-        $services[3]['linkedCategory'] = "ads";
+            $services = wsm_service::findServices($group->getId());
 
-        $services[4]['title'] = wsm::getConfig('settings_modal_block_more_title');
-        $services[4]['description'] = wsm::getConfig('settings_modal_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>.";
+            foreach ($services as $service) {
 
-        $return['preferencesModal']['services'] = $services;
+                $entries = wsm_entry::findEntriesArray($service->getId());
+
+                if (count($entries)) {
+                    $g["cookie_table"]["headers"]['name'] = "Name";
+                    $g["cookie_table"]["headers"]['description'] = "Description";
+                    $g["cookie_table"]["headers"]['duration'] = "Duration";
+                    $g["cookie_table"]["headers"]['type'] = "Type";
+                    $g["cookie_table"]["body"] = $entries;
+                }
+            }
+            $sections[] = $g;
+        }
+
+        /* Allgemeine Infos */
+
+        $sections[] = ['title' => wsm::getConfig('settings_modal_block_more_title'), 'description' => wsm::getConfig('settings_modal_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
+
+        $return['preferencesModal']['sections'] = $sections;
         
         return $return;
     }
     public static function getLangAsJson() :string
     {
-        return @json_encode(self::getLangAsArray());
+        return @json_encode(self::getLangAsArray(), JSON_PRETTY_PRINT);
     }
 
     private static function getConsentModal() {

@@ -16,7 +16,9 @@ class wsm
     public static function getServicesAsArray() :array
     {
         $return = [];
+
         $groups =  wsm_group::query()->find();
+
         foreach ($groups as $group) {
             $g = [];
             $g["title"] = $group->getTitle();
@@ -24,25 +26,67 @@ class wsm
             $g["linked_category"] = $group->getName();
 
             $services = wsm_service::findServices($group->getId());
-            foreach ($services as $service) {
-                $g["cookie_table"]["body"][] = wsm_entry::findEntriesArray($service->getId());
 
-                $g["cookie_table"]["headers"]['name'] = "Name";
-                $g["cookie_table"]["headers"]['description'] = "Description";
-                $g["cookie_table"]["headers"]['duration'] = "Duration";
-                $g["cookie_table"]["headers"]['type'] = "Type";
+            foreach ($services as $service) {
+
+                $entries = wsm_entry::findEntriesArray($service->getId());
+
+                    $g["cookie_table"]["headers"]['name'] = "Name";
+                    $g["cookie_table"]["headers"]['description'] = "Description";
+                    $g["cookie_table"]["headers"]['duration'] = "Duration";
+                    $g["cookie_table"]["headers"]['type'] = "Type";
+                    $g["cookie_table"]["body"] = $entries;
+
             }
-            $return[] = $g;
+            $sections[] = $g;
         }
+
         
-        $return[] = ["title" => wsm::getConfig('settings_modal_block_more_title'), "description" => wsm::getConfig('settings_modal_block_more_description')];
+        $sections[] = ['title' => wsm::getConfig('settings_modal_block_more_title'), 'description' => wsm::getConfig('settings_modal_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
 
         return $return;
     }
+    
 
     public static function getServicesAsJson() :string
     {
         return @json_encode(self::getServicesAsArray());
+    }
+
+    /* Auswahl-Liste an Gruppen und deren Services */
+
+    public static function getCategoriesAsArray() :array
+    {
+        $categories = [];
+
+        $groups =  wsm_group::query()->find();
+
+        foreach ($groups as $group) {
+            $g = [];
+            $g["readonly"] = $group->getRequired();
+            $g["enabled"] = $group->getEnabled();
+
+            $services = wsm_service::findServices($group->getId());
+
+            foreach ($services as $service) {
+
+                $s = [];
+                $s['label'] = $service->getService();
+                $s['onAccept'] = "<BEGIN_JS> () => wsm_im.acceptService('".rex_string::normalize($service->getService())."') <END_JS>";
+                $s['onReject'] = "<BEGIN_JS> () => wsm_im.rejectService('".rex_string::normalize($service->getService())."') <END_JS>";
+                $g[rex_string::normalize($service->getService())] = $s;
+     
+
+            }
+            $categories[rex_string::normalize($group->getName())] = $g;
+        }
+
+        return $categories;
+    }
+
+    public static function getCategoriesAsJson() :string
+    {
+        return @json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT);
     }
 
     /* Erhöhe mit jeder Änderung an Drittanbieter-Einstellungen die Revisionsnummer, um die Einwilligung erneut einzuholen */

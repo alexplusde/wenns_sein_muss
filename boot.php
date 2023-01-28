@@ -20,7 +20,7 @@ if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
 };
 
 rex_extension::register('YFORM_DATA_ADDED', ['wsm','yform_data_added']);
-rex_extension::register('YFORM_DATA_UPDATED', ['wsm','yform_data_added']);
+// rex_extension::register('YFORM_DATA_UPDATED', ['wsm','yform_data_added']);
 rex_extension::register('YFORM_DATA_DELETED', ['wsm','yform_data_deleted']);
 
 if (rex::isBackend())

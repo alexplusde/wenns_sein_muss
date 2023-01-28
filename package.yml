@@ -76,6 +76,7 @@ default_config:
     iframemanager: 1
     disable_page_interaction: 0
 
+
     consent_modal_title: We use cookies!
     consent_modal_description: Hi, this website uses essential cookies
     consent_modal_primary_btn: Accept all

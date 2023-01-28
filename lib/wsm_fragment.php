@@ -21,4 +21,16 @@ class wsm_fragment extends rex_fragment {
         $fragment = new self();
         return $fragment->parse('wsm.css.php');
     }    
+        
+    public static function getScripts() {
+        $output = "";
+        foreach (wsm_service::findScripts() as $script) {
+            $fragment = new rex_fragment();
+            $fragment->setVar('category', $script->getValue('group_name'));
+            $fragment->setVar('service', $script->getValue('service'));
+            $fragment->setVar('script', $script->getValue('script'), false);
+            $output.= $fragment->parse("wsm.script.php");
+        }
+        return $output;
+    }
 }
