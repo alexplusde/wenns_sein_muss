@@ -8,8 +8,8 @@ class rex_api_wsm extends rex_api_function
     {
 
         if (rex_get("wsm", 'string') === "log") {
-            self::log();
-            header('Content-Type: text/html; charset=UTF-8');
+            header('Content-Type: application/json; charset=UTF-8');
+            echo self::log();
         }
         if (rex_get("wsm", 'string') === "css") {
             echo wsm_fragment::getCss();
@@ -28,10 +28,10 @@ class rex_api_wsm extends rex_api_function
 
     private static function log() {
 
-        $consentId = rex_request('consentId', 'string');
+        $consentId = rex_post('consentId', 'string');
 
-        $dataset = null;
         if ($consentId != "") {
+
             $dataset = wsm_protocol::query()->where("consent_id", $consentId)->findOne();
 
             if (!(bool)$dataset) {
@@ -43,15 +43,17 @@ class rex_api_wsm extends rex_api_function
             if (rex_addon::get('yrewrite')->isAvailable()) {
                 $current = rex_yrewrite::getCurrentDomain()->getName();
             };
-    
-
+            
             $dataset
             ->setValue('url', $current)
             ->setValue('consent_id', $consentId)
-            ->setValue('accept_type', rex_request('acceptType', 'string'))
-            ->setValue('accepted_categories', rex_request('acceptedCategories', 'string'))
-            ->setValue('rejected_categories', rex_request('rejectedCategories', 'string'))
+            ->setValue('accept_type', rex_post('acceptType', 'string'))
+            ->setValue('accepted_categories', rex_post('acceptedCategories', 'string'))
+            ->setValue('rejected_categories', rex_post('rejectedCategories', 'string'))
             ->save();
+            
+            return json_encode($_POST);
+
         }
     }
 }

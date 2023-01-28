@@ -113,20 +113,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		const cookie = wsm_cc.getCookie();
 		const preferences = wsm_cc.getUserPreferences();
 
-		const userConsent = {
-			consentId: cookie.consentId,
-			acceptType: preferences.acceptType,
-			acceptedCategories: preferences.acceptedCategories,
-			rejectedCategories: preferences.rejectedCategories
-		};	
-    	console.log(JSON.stringify(userConsent));
+		let formData = new FormData();
+		formData.append('consentId', cookie.consentId);
+		formData.append('acceptType', preferences.acceptType);
+		formData.append('acceptedCategories', preferences.acceptedCategories);
+		formData.append('rejectedCategories', preferences.rejectedCategories);
 
 		fetch('/?rex-api-call=wsm&wsm=log', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(userConsent)
+			method: 'POST',
+			body: formData
 		});
 	}
 });
