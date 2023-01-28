@@ -74,8 +74,8 @@ class wsm
                 $s['label'] = $service->getService();
                 $s['onAccept'] = "<BEGIN_JS> () => wsm_im.acceptService('".rex_string::normalize($service->getService())."') <END_JS>";
                 $s['onReject'] = "<BEGIN_JS> () => wsm_im.rejectService('".rex_string::normalize($service->getService())."') <END_JS>";
+
                 $g['services'][rex_string::normalize($service->getService())] = $s;
-     
 
             }
             $categories[rex_string::normalize($group->getName())] = $g;

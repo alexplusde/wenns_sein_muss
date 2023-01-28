@@ -1,10 +1,7 @@
-<script
-	src="<?= rex_url::addonAssets('wenns_sein_muss', 'cookieconsent/cookieconsent.js') ?>">
-</script>
-<script
-	src="<?= rex_url::addonAssets('wenns_sein_muss', 'iframemanager/iframemanager.js') ?>">
-</script>
-<script>
+<script defer>
+
+window.addEventListener('DOMContentLoaded', (event) => {
+
 	const wsm_im = iframemanager();
 
 	wsm_im.run({
@@ -135,7 +132,7 @@
 			body: JSON.stringify(userConsent)
 		});
 	}
+    console.log('DOM fully loaded and parsed');
+});
+
 </script>
-<?php 
-echo wsm_fragment::getScripts();
-?>
