@@ -1,7 +1,7 @@
 <?php
 
-class wsm_lang {
-    
+class wsm_lang
+{
     /* Erhalte das passende JSON für die Ausgabe der Sprache Frontend */
 
     public static function getLangAsArray() :array
@@ -30,15 +30,14 @@ class wsm_lang {
             $services = wsm_service::findServices($group->getId());
 
             foreach ($services as $service) {
-
                 $entries = wsm_entry::findEntriesArray($service->getId());
 
                 if (count($entries)) {
-                    $g["cookie_table"]["headers"]['name'] = "Name";
-                    $g["cookie_table"]["headers"]['description'] = "Description";
-                    $g["cookie_table"]["headers"]['duration'] = "Duration";
-                    $g["cookie_table"]["headers"]['type'] = "Type";
-                    $g["cookie_table"]["body"] = $entries;
+                    $g["cookieTable"]["headers"]['name'] = "Name";
+                    $g["cookieTable"]["headers"]['description'] = "Description";
+                    $g["cookieTable"]["headers"]['duration'] = "Duration";
+                    $g["cookieTable"]["headers"]['type'] = "Type";
+                    $g["cookieTable"]["body"] = $entries;
                 }
             }
             $sections[] = $g;
@@ -57,8 +56,8 @@ class wsm_lang {
         return @json_encode(self::getLangAsArray(), JSON_PRETTY_PRINT);
     }
 
-    private static function getConsentModal() {
-
+    private static function getConsentModal()
+    {
         $consentModal = [];
         $consentModal["label"] = "Cookie Consent";
         $consentModal["title"] = wsm::getConfig('consent_modal_title');
@@ -70,10 +69,9 @@ class wsm_lang {
         $consentModal["footer"] = "<a href=\"#link\">Privacy Policy</a><a href=\"#link\">Terms and conditions</a>";
 
         return $consentModal;
-
     }
-    private static function getPreferencesModal() {
-
+    private static function getPreferencesModal()
+    {
         $preferencesModal = [];
         $preferencesModal["title"] = wsm::getConfig('settings_modal_title');
         $preferencesModal["acceptAllBtn"] = wsm::getConfig('settings_modal_accept_all_btn') ;
@@ -83,10 +81,10 @@ class wsm_lang {
         $preferencesModal["serviceCounterLabel"] = "Dienst|Dienste";
 
         return $preferencesModal;
-
     }
 
-    private static function getIframe() {
+    private static function getIframe()
+    {
         /*
         <?= wsm::getConfig('iframe_notice') ?>
         <?= wsm::getConfig('iframe_load_btn') ?>

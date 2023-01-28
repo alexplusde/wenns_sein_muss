@@ -1,8 +1,8 @@
 <?php
 class wsm
 {
-    public static function getDomainId() {
-
+    public static function getDomainId()
+    {
         $domain_id = 0; // default
 
         if (rex_addon::get('yrewrite')->isAvailable() && !rex::isSafeMode()) {
@@ -28,15 +28,13 @@ class wsm
             $services = wsm_service::findServices($group->getId());
 
             foreach ($services as $service) {
-
                 $entries = wsm_entry::findEntriesArray($service->getId());
 
-                    $g["cookie_table"]["headers"]['name'] = "Name";
-                    $g["cookie_table"]["headers"]['description'] = "Description";
-                    $g["cookie_table"]["headers"]['duration'] = "Duration";
-                    $g["cookie_table"]["headers"]['type'] = "Type";
-                    $g["cookie_table"]["body"] = $entries;
-
+                $g["cookieTable"]["headers"]['name'] = "Name";
+                $g["cookieTable"]["headers"]['description'] = "Description";
+                $g["cookieTable"]["headers"]['duration'] = "Duration";
+                $g["cookieTable"]["headers"]['type'] = "Type";
+                $g["cookieTable"]["body"] = $entries;
             }
             $sections[] = $g;
         }
@@ -69,14 +67,12 @@ class wsm
             $services = wsm_service::findServices($group->getId());
 
             foreach ($services as $service) {
-
                 $s = [];
                 $s['label'] = $service->getService();
                 $s['onAccept'] = "<BEGIN_JS> () => wsm_im.acceptService('".rex_string::normalize($service->getService())."') <END_JS>";
                 $s['onReject'] = "<BEGIN_JS> () => wsm_im.rejectService('".rex_string::normalize($service->getService())."') <END_JS>";
 
                 $g['services'][rex_string::normalize($service->getService())] = $s;
-
             }
             $categories[rex_string::normalize($group->getName())] = $g;
         }
@@ -88,8 +84,6 @@ class wsm
     {
         $code = @json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT, JSON_FORCE_OBJECT);
         return str_replace(['"<BEGIN_JS>', '<END_JS>"'], "", $code);
-
-
     }
 
     /* Erhöhe mit jeder Änderung an Drittanbieter-Einstellungen die Revisionsnummer, um die Einwilligung erneut einzuholen */
