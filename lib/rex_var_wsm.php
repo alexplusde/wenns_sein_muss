@@ -9,7 +9,7 @@ class rex_var_wsm extends rex_var
 {
     protected function getOutput()
     {
-        $fragment = new rex_fragment();
+        $fragment = new wsm_fragment();
 
         if ($this->hasArg('type') && $this->getArg('type') == "css") {
             return self::quote($fragment->parse('wsm.css.php'));
@@ -21,7 +21,7 @@ class rex_var_wsm extends rex_var
             return self::quote($fragment->parse('wsm.manage.php'));
         }
         if ($this->hasArg('type') && $this->getArg('type') == "iframe") {
-            return self::quote(wsm::getIframe($this->getArg('service'), $this->getArg('id'), $this->getArg('params'), $this->getArg('thumbnail')));
+            return self::quote(wsm_fragment::getIframe($this->getArg('service'), $this->getArg('id'), $this->getArg('params'), $this->getArg('thumbnail')));
         }
     }
 }

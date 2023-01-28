@@ -4,7 +4,7 @@ wenns_sein_muss_title = Consent Management und Drittanbieter-Verwaltung
 wenns_sein_muss_config = Einstellungen
 wenns_sein_muss_settings = Einstellungen
 wenns_sein_muss_docs = Hilfe
-wenns_sein_muss_entry = Drittanbieter
+wenns_sein_muss_service = Drittanbieter
 wenns_sein_muss_group = Gruppen
 wenns_sein_muss_protocol = Einwilligungs-Protokoll
 
@@ -44,4 +44,5 @@ consent_info_consented = Ihr aktueller Zustand
 consent_info_uuid = Ihre Einwilligungs-ID
 consent_info_datestamp = Einwilligungsdatum
 consent_info_open_settings = Einstellungen öffnen
+consent_info_open_modal = Hinweis öffnen
 consent_info_unknown = Noch keine Einwilligung erteilt
