@@ -63,8 +63,8 @@ class wsm
 
         foreach ($groups as $group) {
             $g = [];
-            $g["readonly"] = $group->getRequired();
-            $g["enabled"] = $group->getEnabled();
+            $g["readOnly"] = (bool)$group->getRequired();
+            $g["enabled"] = (bool)$group->getEnabled();
 
             $services = wsm_service::findServices($group->getId());
 
@@ -74,7 +74,7 @@ class wsm
                 $s['label'] = $service->getService();
                 $s['onAccept'] = "<BEGIN_JS> () => wsm_im.acceptService('".rex_string::normalize($service->getService())."') <END_JS>";
                 $s['onReject'] = "<BEGIN_JS> () => wsm_im.rejectService('".rex_string::normalize($service->getService())."') <END_JS>";
-                $g[rex_string::normalize($service->getService())] = $s;
+                $g['services'][rex_string::normalize($service->getService())] = $s;
      
 
             }
@@ -86,7 +86,10 @@ class wsm
 
     public static function getCategoriesAsJson() :string
     {
-        return @json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT);
+        $code = @json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT, JSON_FORCE_OBJECT);
+        return str_replace(['"<BEGIN_JS>', '<END_JS>"'], "", $code);
+
+
     }
 
     /* Erhöhe mit jeder Änderung an Drittanbieter-Einstellungen die Revisionsnummer, um die Einwilligung erneut einzuholen */

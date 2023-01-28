@@ -14,11 +14,11 @@
 		}) => {
 			if (eventSource.type === 'click') {
 				const servicesToAccept = [
-					...wsm_cc.getUserPreferences().acceptedServices['analytics'],
+					...wsm_cc.getUserPreferences().acceptedServices['preferences'],
 					...changedServices,
 				];
 
-				wsm_cc.acceptService(servicesToAccept, 'analytics');
+				wsm_cc.acceptService(servicesToAccept, 'preferences');
 			}
 		},
 
@@ -64,11 +64,12 @@
 			},
 		},
 	});
+
 	const wsm_cc = CookieConsent;
 
 	wsm_cc.run({
 		revision: <?= wsm::getRevisionNumber(); ?> ,
-		autoShow: false,
+		/* 		autoShow: false, */
 		disablePageInteraction: <?= wsm::getConfig('disable_page_interaction') ?? "false" ?> ,
 
 		guiOptions: {
@@ -79,9 +80,9 @@
 				flipButtons: <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?> ,
 			},
 			preferencesModal: {
-				layout: '<?= (int)wsm::getConfig('settings_modal_layout') ?>',
+				layout: '<?= wsm::getConfig('settings_modal_layout') ?>',
 				equalWeightButtons: true,
-				flipButtons: <?= (int)wsm::getConfig('consent_modal_swap_buttons') ?> ,
+				flipButtons: <?= (bool)wsm::getConfig('consent_modal_swap_buttons') ?> ,
 			},
 		},
 
@@ -89,6 +90,8 @@
 		sections: <?= wsm::getServicesAsJson() ?>,
 
 		categories: <?= wsm::getCategoriesAsJson() ?>,
+
+		
 
 		language: {
 			default: '<?= rex_clang::getCurrent()->getCode(); ?>',

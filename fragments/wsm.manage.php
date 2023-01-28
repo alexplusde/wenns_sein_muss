@@ -42,8 +42,16 @@ if (rex_addon::get('yrewrite')->isAvailable()) {
 <button type="button"
 	data-cc="show-preferencesModal"><?= wsm::getConfig("consent_info_open_settings") ?></button>
 <button type="button" data-cc="show-consentModal"><?= wsm::getConfig("consent_info_open_modal") ?></button>
-<?php
 
-dump(wsm::getCategoriesAsJson());
 
-?>
+<div data-service="youtube" data-id="5b35haQV7tU" data-autoscale></div>
+
+<br />
+
+<div
+  data-service="vimeo"
+  data-id="776749483"
+  data-title="Apple “Escape From The Office”"
+  data-autoscale
+></div>
+</div>

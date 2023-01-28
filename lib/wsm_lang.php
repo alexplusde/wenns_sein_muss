@@ -80,7 +80,7 @@ class wsm_lang {
         $preferencesModal["acceptNecessaryBtn"] = wsm::getConfig('settings_modal_reject_all_btn');
         $preferencesModal["savePreferencesBtn"] = wsm::getConfig('settings_modal_save_settigns_btn');
         $preferencesModal["closeIconLabel"] = wsm::getConfig('settings_modal_close_btn');
-        $preferencesModal["serviceCounterLabel"] = "Service|Services";
+        $preferencesModal["serviceCounterLabel"] = "Dienst|Dienste";
 
         return $preferencesModal;
 
