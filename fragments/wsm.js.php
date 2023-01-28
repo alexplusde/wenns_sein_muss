@@ -110,29 +110,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 	function logConsent() {
 
-		// Retrieve all the fields
 		const cookie = wsm_cc.getCookie();
 		const preferences = wsm_cc.getUserPreferences();
 
-		// In this example we're saving only 4 fields
 		const userConsent = {
 			consentId: cookie.consentId,
 			acceptType: preferences.acceptType,
 			acceptedCategories: preferences.acceptedCategories,
 			rejectedCategories: preferences.rejectedCategories
-		};
+		};	
+    	console.log(JSON.stringify(userConsent));
 
-		// Send the data to your backend
-		// replace "/your-endpoint-url" with your API
 		fetch('/?rex-api-call=wsm&wsm=log', {
-			method: 'POST',
+			method: 'GET',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(userConsent)
 		});
 	}
-    console.log('DOM fully loaded and parsed');
 });
 
 </script>
