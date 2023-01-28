@@ -27,11 +27,6 @@ $select->addOption('top left', 'top left');
 $select->addOption('top middle', 'top middle');
 $select->addOption('top right', 'top right');
 
-$field = $form->addSelectField('consent_modal_transition', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("consent_modal_transition");
-$select = $field->getSelect();
-$select->addOption('slide', 'slide');
-$select->addOption('zoom', 'zoom');
 
 $field = $form->addSelectField('consent_modal_swap_buttons', null, ['class'=>'form-control selectpicker']);
 $field->setLabel("consent_modal_swap_buttons");
@@ -45,11 +40,11 @@ $select = $field->getSelect();
 $select->addOption('box', 'box');
 $select->addOption('bar', 'bar');
 
-$field = $form->addSelectField('settings_modal_transition', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("settings_modal_transition");
+$field = $form->addSelectField('disable_page_interaction', null, ['class'=>'form-control selectpicker']);
+$field->setLabel("disable_page_interaction");
 $select = $field->getSelect();
-$select->addOption('slide', 'slide');
-$select->addOption('zoom', 'zoom');
+$select->addOption('disable page interaction', '1');
+$select->addOption('enable page interaction', '0');
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);

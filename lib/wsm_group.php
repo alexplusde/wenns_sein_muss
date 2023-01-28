@@ -1,6 +1,11 @@
 <?php
 class wsm_group extends \rex_yform_manager_dataset
 {
+    public function getGroup() :string
+    {
+        return (string)$this->getValue('group');
+    }
+
     public function getName() :string
     {
         return (string)$this->getValue('name');
