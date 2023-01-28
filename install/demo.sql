@@ -21,7 +21,7 @@ INSERT INTO `rex_wenns_sein_muss` (`id`, `group`, `service`, `privacy_policy_url
 (11,	'4',	'Test',	'',	'',	'0',	'');
 
 TRUNCATE `rex_wenns_sein_muss_entry`;
-INSERT INTO `rex_wenns_sein_muss_entry` (`id`, `type`, `name`, `description`, `duration`, `f_id`) VALUES
+INSERT INTO `rex_wenns_sein_muss_entry` (`id`, `type`, `name`, `description`, `duration`, `service_id`) VALUES
 (13,	'cookie',	'dasd',	'asdasda',	'sdasda',	'11'),
 (14,	'cookie',	'dassadasdasda',	'sdasdas',	'dasdas',	'11');
 
