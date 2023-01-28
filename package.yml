@@ -19,12 +19,12 @@ page:
 
 pages:
     consent:
-        title: translate:wenns_sein_muss_entry
+        title: translate:wenns_sein_muss_service
         icon: rex-icon fa-check
         perm: admin
         subpages:
-            entry:
-                title: translate:wenns_sein_muss_entry
+            service:
+                title: translate:wenns_sein_muss_service
                 icon: rex-icon fa-check
                 perm: admin
             group:
@@ -68,11 +68,13 @@ pages:
                 perm: admin
 
 default_config:
+    revision: 0
     privacy_policy_id: 1
     imprint_id: 1
     auto_lang: 1
     force_consent: 1
     iframemanager: 1
+    disable_page_interaction: 0
 
     consent_modal_title: We use cookies!
     consent_modal_description: Hi, this website uses essential cookies
@@ -92,10 +94,8 @@ default_config:
 
     consent_modal_layout: cloud
     consent_modal_position: bottom center
-    consent_modal_transition: slide
     consent_modal_swap_buttons: true
     settings_modal_layout: box
-    settings_modal_transition: slide
 
     iframe_notice: Html <b>notice</b> message
     iframe_load_btn: Load video
