@@ -23,13 +23,6 @@ INSERT INTO `rex_wenns_sein_muss_group` (`id`, `prio`, `name`, `title`, `descrip
 (4,	0,	'marketing',	'Marketing',	'###todo###',	0,	0),
 (5,	0,	'unknown',	'Nicht klassifiziert',	'Nicht klassifizierte Cookies und ähnliche Technologien versuchen wir aktuell zu klassifizieren und warten auf Informationen der Drittanbieter, die diese verwenden und darüber Auskunft geben können.',	0,	0);
 
-TRUNCATE `rex_wenns_sein_muss_protocol`;
-INSERT INTO `rex_wenns_sein_muss_protocol` (`id`, `url`, `consent_id`, `accept_type`, `accepted_categories`, `rejected_categories`, `consentdate`) VALUES
-(18,	'www.redaxo.local',	'fae51ac9-9816-4ba5-9060-a0055a74227b',	'necessary',	'necessary',	'preferences,statistics,marketing,unknown',	'2023-01-28 19:38:33'),
-(19,	'www.redaxo.local',	'7817539b-72d8-4f30-9a71-7d5ebcf4cea5',	'all',	'necessary,preferences,statistics,marketing,unknown',	'',	'2023-01-28 19:40:17'),
-(20,	'www.redaxo.local',	'f6b9bd74-204e-4ee1-aa11-e9ecf7c1c801',	'custom',	'necessary,preferences',	'statistics,marketing,unknown',	'2023-01-28 20:04:22'),
-(21,	'www.redaxo.local',	'3055463c-cbfb-489e-8b43-41f842c1817d',	'necessary',	'necessary',	'preferences,statistics,marketing,unknown',	'2023-01-28 20:08:11');
-
 TRUNCATE `rex_wenns_sein_muss_service`;
 INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_name`, `company_address`, `privacy_policy_url`, `thumbnail`, `rex_domain`, `script`, `updatedate`) VALUES
 (1,	3,	'Google Analytics',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://support.google.com/analytics/answer/6004245?hl=de',	'',	'0',	'',	'2022-12-17 15:13:00'),
