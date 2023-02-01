@@ -1,3 +1,5 @@
+-- Adminer 4.8.1 MySQL 10.4.24-MariaDB dump
+
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
@@ -5,35 +7,13 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-DROP TABLE IF EXISTS `rex_wenns_sein_muss_entry`;
-CREATE TABLE `rex_wenns_sein_muss_entry` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `type` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `duration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `service_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `f_id` (`service_id`),
-  CONSTRAINT `rex_wenns_sein_muss_entry_ibfk_1` FOREIGN KEY (`service_id`) REFERENCES `rex_wenns_sein_muss_service` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 TRUNCATE `rex_wenns_sein_muss_entry`;
 INSERT INTO `rex_wenns_sein_muss_entry` (`id`, `type`, `name`, `duration`, `description`, `service_id`) VALUES
 (20,	'cookie',	'_ga',	'1 Tag',	'Beispiel-Beschreibung',	17),
-(21,	'cookie',	'pixel.gif',	'1 Monat',	'Test',	17);
-
-DROP TABLE IF EXISTS `rex_wenns_sein_muss_group`;
-CREATE TABLE `rex_wenns_sein_muss_group` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `prio` int(11) NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT 0,
-  `required` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(21,	'cookie',	'pixel.gif',	'1 Monat',	'Test',	17),
+(22,	'cookie',	'im_youtube',	'6M',	'Speichert die Einwilligung über das Laden von YouTube-Videos durch einen iframe.',	10),
+(23,	'cookie',	'im_vimeo',	'6M',	'Speichert die Einwilligung über das Laden von YouTube-Videos durch einen iframe.',	10),
+(24,	'cookie',	'cc_cookie',	'6M',	'Speichert die gewählten Einstellungen in diesem Einwilligungs-Dialog.',	10);
 
 TRUNCATE `rex_wenns_sein_muss_group`;
 INSERT INTO `rex_wenns_sein_muss_group` (`id`, `prio`, `name`, `title`, `description`, `enabled`, `required`) VALUES
@@ -43,36 +23,12 @@ INSERT INTO `rex_wenns_sein_muss_group` (`id`, `prio`, `name`, `title`, `descrip
 (4,	0,	'marketing',	'Marketing',	'###todo###',	0,	0),
 (5,	0,	'unknown',	'Nicht klassifiziert',	'Nicht klassifizierte Cookies und ähnliche Technologien versuchen wir aktuell zu klassifizieren und warten auf Informationen der Drittanbieter, die diese verwenden und darüber Auskunft geben können.',	0,	0);
 
-DROP TABLE IF EXISTS `rex_wenns_sein_muss_protocol`;
-CREATE TABLE `rex_wenns_sein_muss_protocol` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `consent_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `accept_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `accepted_categories` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rejected_categories` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `consentdate` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 TRUNCATE `rex_wenns_sein_muss_protocol`;
-
-DROP TABLE IF EXISTS `rex_wenns_sein_muss_service`;
-CREATE TABLE `rex_wenns_sein_muss_service` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `group` int(11) NOT NULL,
-  `service` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `company_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `company_address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `privacy_policy_url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `thumbnail` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rex_domain` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `script` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `updatedate` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `group` (`group`),
-  KEY `rex_domain` (`rex_domain`(768))
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `rex_wenns_sein_muss_protocol` (`id`, `url`, `consent_id`, `accept_type`, `accepted_categories`, `rejected_categories`, `consentdate`) VALUES
+(18,	'www.redaxo.local',	'fae51ac9-9816-4ba5-9060-a0055a74227b',	'necessary',	'necessary',	'preferences,statistics,marketing,unknown',	'2023-01-28 19:38:33'),
+(19,	'www.redaxo.local',	'7817539b-72d8-4f30-9a71-7d5ebcf4cea5',	'all',	'necessary,preferences,statistics,marketing,unknown',	'',	'2023-01-28 19:40:17'),
+(20,	'www.redaxo.local',	'f6b9bd74-204e-4ee1-aa11-e9ecf7c1c801',	'custom',	'necessary,preferences',	'statistics,marketing,unknown',	'2023-01-28 20:04:22'),
+(21,	'www.redaxo.local',	'3055463c-cbfb-489e-8b43-41f842c1817d',	'necessary',	'necessary',	'preferences,statistics,marketing,unknown',	'2023-01-28 20:08:11');
 
 TRUNCATE `rex_wenns_sein_muss_service`;
 INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_name`, `company_address`, `privacy_policy_url`, `thumbnail`, `rex_domain`, `script`, `updatedate`) VALUES
@@ -82,8 +38,8 @@ INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_na
 (5,	2,	'Google Fonts',	'Google Ireland Limited',	'',	'https://policies.google.com/privacy?hl=de',	'',	'1',	'link = document.createElement(\'link\');\r\nlink.href = \'https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap\';\r\nlink.rel = \'stylesheet\';\r\n\r\ndocument.getElementsByTagName(\'head\')[0].appendChild(link);\r\n',	'2023-01-28 17:54:36'),
 (6,	2,	'Facebook',	' Meta Platforms Ireland Limited',	'4 Grand Canal Square, Dublin 2, Irland',	'https://www.facebook.com/privacy/policy/',	'',	'0',	'',	'2022-12-17 15:13:00'),
 (9,	2,	'Vimeo',	'Vimeo Inc.',	'555 West 18th Street, New York, New York 10011, USA',	'https://vimeo.com/privacy',	'',	'0',	'',	'2022-12-17 15:13:00'),
-(10,	1,	'Diese Website',	'',	'',	'',	'',	'0',	'',	'2022-12-17 15:13:00'),
-(13,	4,	'Google Ads',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy?hl=de',	'',	'0',	'<script>\r\n    console.log(\'\"ads\" category accepted\');\r\n</script>',	'2023-01-28 14:15:55'),
+(10,	1,	'Diese Website',	'',	'',	'',	'',	'0',	'',	'2023-01-28 19:34:24'),
+(13,	4,	'Google Ads',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy?hl=de',	'',	'0',	'<script>\r\n    confirm(\"Dieses Skript für Google Ads wurde erst nach Einwilligung geladen.\");\r\n</script>',	'2023-01-28 19:40:07'),
 (14,	4,	'LinkedIn',	'LinkedIn Corporation',	'2029 Stierlin Court, Mountain View, CA 94043, USA',	'https://www.linkedin.com/legal/privacy-policy',	'',	'0',	'',	'2022-12-17 15:13:00'),
 (15,	4,	'WhatsApp',	'WhatsApp Inc.',	'1601 Willow Road, Menlo Park, California 94025, USA',	'https://www.whatsapp.com/legal/#privacy-policy',	'',	'0',	'',	'2022-12-17 15:13:00'),
 (16,	4,	'Vimeo',	'Vimeo Inc.',	'555 West 18th Street, New York, New York 10011, USA',	'https://vimeo.com/privacy',	'',	'0',	'',	'2022-12-17 15:13:00'),
@@ -97,5 +53,3 @@ INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_na
 (25,	2,	'Google Tag Manager',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy?hl=de',	'',	'0',	'',	'2022-12-17 15:13:00'),
 (26,	2,	'Instagram',	'Meta Platforms Ireland Limited',	'4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland',	'https://instagram.com/about/legal/privacy/',	'',	'0',	'',	'2022-12-17 15:13:00'),
 (27,	2,	'Twitter',	'Twitter International Company',	'One Cumberland Place, Fenian Street, Dublin 2, D02 AX07, Irland',	'https://twitter.com/de/privacy',	'',	'0',	'',	'2022-12-17 15:13:00');
-
--- 2023-01-28 17:18:47
