@@ -2,6 +2,8 @@
 
 echo rex_view::title(rex_i18n::msg('wenns_sein_muss_title'));
 
+echo rex_view::info("Die aktuelle Revisionsnummer lautet: " . wsm::getRevisionNumber() ."(". wsm::getRevisionTimestamp().")");
+
 $addon = rex_addon::get('wenns_sein_muss');
 
 $yform = $addon->getProperty('yform', []);

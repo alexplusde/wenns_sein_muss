@@ -20,18 +20,18 @@ wenns_sein_muss_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes
 
 consent_modal_title = Titel
 consent_modal_description = Einleitung
-consent_modal_primary_btn = "Alle zulassen"
-consent_modal_secondary_btn = "Alle ablehnen"
+consent_modal_primary_btn = Alle zulassen
+consent_modal_secondary_btn = Alle ablehnen
 
 settings_modal_title = Titel
-settings_modal_save_settigns_btn = "Auswahl speichern"
-settings_modal_accept_all_btn = "Alle zulassen"
-settings_modal_reject_all_btn = "Alle ablehnen"
-settings_modal_close_btn_label = "Schließen"
-settings_modal_cookie_table_headers_col1 = "Name"
-settings_modal_cookie_table_headers_col2 = "Domain"
-settings_modal_cookie_table_headers_col3 = "Ablaufdatum"
-settings_modal_cookie_table_headers_col4 = "Beschreibung"
+settings_modal_save_settigns_btn = Auswahl speichern
+settings_modal_accept_all_btn = Alle zulassen
+settings_modal_reject_all_btn = Alle ablehnen
+settings_modal_close_btn_label = Schließen
+settings_modal_cookie_table_headers_col1 = Name
+settings_modal_cookie_table_headers_col2 = Domain
+settings_modal_cookie_table_headers_col3 = Ablaufdatum
+settings_modal_cookie_table_headers_col4 = Beschreibung
 settings_modal_block_more_title = Titel
 settings_modal_block_more_description = Beschreibung
 
