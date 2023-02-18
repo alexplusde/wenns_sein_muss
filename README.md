@@ -96,16 +96,26 @@ Das REDAXO-Addon Sprog eigenet sich hervoragend bei mehrsprachigen Websites, um 
 </script>
 ```
 
+##### Nachladen von Fonts nach Einwilligung (hinterlegt in den Einstellungen)
+
+```js
+link = document.createElement('link');
+link.href = 'https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap';
+link.rel = 'stylesheet';
+
+document.getElementsByTagName('head')[0].appendChild(link);
+```
+
 Siehe <https://github.com/orestbida/cookieconsent#how-to-blockmanage-scripts>.
 
 ##### Adhoc iFrame-Einwilligung
 
 ```html
 <div
-    data-service="<service-name>"	
+    data-service="<service-name>"
     data-id="<resource-id>"
     data-params="<iframe-query-parameters>"
-    data-thumbnail="<path-to-image>" 
+    data-thumbnail="<path-to-image>"
     data-autoscale>
 </div>
 ```
