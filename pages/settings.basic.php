@@ -6,13 +6,6 @@ $addon = rex_addon::get('wenns_sein_muss');
 
 $form = rex_config_form::factory($addon->getName());
 
-$field = $form->addLinkmapField('imprint_id');
-$field->setLabel('imprint_id');
-
-$field = $form->addLinkmapField('privacy_policy_id');
-$field->setLabel('privacy_policy_id');
-
-
 $field = $form->addSelectField('auto_lang', null, ['class'=>'form-control selectpicker']);
 $field->setLabel("wsm_config_auto_lang_label");
 $select = $field->getSelect();

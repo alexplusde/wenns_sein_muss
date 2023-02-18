@@ -35,6 +35,10 @@ pages:
                 title: translate:wenns_sein_muss_protocol
                 icon: rex-icon fa-user
                 perm: admin
+    domain:
+        title: translate:wenns_sein_muss_domain
+        icon: rex-icon fa-gear
+        perm: admin
     docs:
         title: translate:wenns_sein_muss_docs
         subPath: README.md
@@ -68,38 +72,42 @@ pages:
                 perm: admin
 
 default_config:
+    #settings page: basic
     revision: 0
-    privacy_policy_id: 1
-    imprint_id: 1
     auto_lang: 1
     force_consent: 1
     iframemanager: 1
     disable_page_interaction: 0
 
-
+    # settings page: consent
     consent_modal_title: We use cookies!
     consent_modal_description: Hi, this website uses essential cookies
     consent_modal_primary_btn: Accept all
     consent_modal_secondary_btn: Reject all
-    settings_modal_title: Cookie preferences
-    settings_modal_save_settigns_btn: Save settings
-    settings_modal_accept_all_btn: Accept all
-    settings_modal_reject_all_btn: Reject all
-    settings_modal_close_btn_label: Close
-    settings_modal_cookie_table_headers_col1: Name
-    settings_modal_cookie_table_headers_col2: Domain
-    settings_modal_cookie_table_headers_col3: Expiration
-    settings_modal_cookie_table_headers_col4: Description
-    settings_modal_block_consent_title: Einwilligungs-Protokoll
-    settings_modal_block_more_title: More information
-    settings_modal_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
 
-    settings_modal_service_counter_label: Dienst|Dienste
     consent_modal_layout: cloud
     consent_modal_position: bottom center
     consent_modal_swap_buttons: true
     settings_modal_layout: box
 
+    # settings page: text
+    settings_modal_title: Cookie preferences
+    settings_modal_save_settigns_btn: Save settings
+    settings_modal_accept_all_btn: Accept all
+    settings_modal_reject_all_btn: Reject all
+    settings_modal_close_btn_label: Close
+    settings_modal_service_counter_label: Dienst|Dienste
+    
+    settings_modal_cookie_table_headers_col1: Name
+    settings_modal_cookie_table_headers_col2: Domain
+    settings_modal_cookie_table_headers_col3: Expiration
+    settings_modal_cookie_table_headers_col4: Description
+
+    settings_modal_block_consent_title: Einwilligungs-Protokoll
+    settings_modal_block_more_title: More information
+    settings_modal_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
+
+    # settings page: iframe
     iframe_notice: Html <b>notice</b> message
     iframe_load_btn: Load video
     iframe_load_all_btn: Don't ask again

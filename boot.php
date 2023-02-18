@@ -31,7 +31,6 @@ if (rex::isBackend()) {
     rex_extension::register('YFORM_DATA_LIST', function ($ep) {
         if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_service") {
             $list = $ep->getSubject();
-            $list->removeColumn('entry_ids');
 
             $list->setColumnPosition('script', 3);
             $list->setColumnLabel('script', 'JS');
@@ -55,6 +54,21 @@ if (rex::isBackend()) {
                 function ($a) {
                     if ($a['list']->getValue('iframe') > 0) {
                         return '<i class="fa fa-play-circle-o"></i>';
+                    } else {
+                        return "";
+                    }
+                }
+            );
+
+            $list->setColumnPosition('entry_ids', 5);
+            $list->setColumnLabel('entry_ids', '🍪');
+            $list->setColumnFormat(
+                'entry_ids',
+                'custom',
+                function ($a) {
+                    $count = count(wsm_entry::query()->where('service_id', $a['list']->getValue('id'))->find());
+                    if ($count > 0) {
+                        return $count;
                     } else {
                         return "";
                     }
