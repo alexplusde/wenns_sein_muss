@@ -31,29 +31,56 @@ if (rex::isBackend()) {
     rex_extension::register('YFORM_DATA_LIST', function ($ep) {
         if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_service") {
             $list = $ep->getSubject();
+            $list->removeColumn('entry_ids');
 
             $list->setColumnPosition('script', 3);
+            $list->setColumnLabel('script', 'JS');
             $list->setColumnFormat(
                 'script',
                 'custom',
                 function ($a) {
                     if ($a['list']->getValue('script') != "") {
-                        return "🍟 ja";
+                        return '<i class="fa fa-code"></i>';
                     } else {
-                        return "🥔";
+                        return "";
                     }
                 }
             );
 
             $list->setColumnPosition('iframe', 4);
+            $list->setColumnLabel('iframe', 'IM');
             $list->setColumnFormat(
                 'iframe',
                 'custom',
                 function ($a) {
-                    if ($a['list']->getValue('iframe') != "") {
-                        return "🖼️";
+                    if ($a['list']->getValue('iframe') > 0) {
+                        return '<i class="fa fa-play-circle-o"></i>';
                     } else {
                         return "";
+                    }
+                }
+            );
+
+
+            $list->setColumnFormat(
+                'service',
+                'custom',
+                function ($a) {
+                        return ''.$a['list']->getValue('service').'<br /><small>'.$a['list']->getValue('company_address').'</small>';
+                }
+            );
+
+            $list->setColumnFormat(
+                'privacy_policy_url',
+                'custom',
+                function ($a) {
+                    $url = $a['list']->getValue('privacy_policy_url');
+                    if ($url != "" && strlen($url) >= 64) {
+                        return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.substr($url, 0, 64) .'...</a>';
+                    } else if ($url != "") {
+                        return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.$url.'</a>';
+                    } else {
+                        return "❌";
                     }
                 }
             );
