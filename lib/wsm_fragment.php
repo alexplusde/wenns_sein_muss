@@ -2,7 +2,7 @@
 
 class wsm_fragment extends rex_fragment
 {
-    public static function getIframe(string $data_service, int $data_id = "", $data_params = "", string $data_thumbnail = null)
+    public static function getIframe(string $data_service, int $data_id = 0, string $data_params = "", string $data_thumbnail = null)
     {
         $fragment = new self();
         $fragment->setVar("data-service", $data_service);

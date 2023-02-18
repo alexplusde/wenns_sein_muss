@@ -7,48 +7,30 @@ if (rex_addon::get('yrewrite')->isAvailable()) {
 };
 
 ?>
-<div class="container p-5">
-	<div class="row">
-		<div class="col-md-12">
-			<p><?= wsm::getConfig("consent_info_domain") ?>
+			<p><?= wsm::getConfigText("consent_info_domain") ?>
 				<mark><?= $current ?></mark>
 			</p>
 
-			<p><?= wsm::getConfig("consent_info_consented") ?>:
-				<mark>
-					<script>
-						document.write(CookieConsent.getCookie("categories"));
-					</script>
+			<p><?= wsm::getConfigText("consent_info_consented") ?>:
+				<mark data-wsm-manage="categories"><?= wsm::getConfigText("no_consent") ?>
 				</mark>
 			</p>
-			<p><?= wsm::getConfig("consent_info_uuid") ?>:
-				<mark>
-					<script>
-						document.write(CookieConsent.getCookie("consentId"));
-					</script>
+			<p><?= wsm::getConfigText("consent_info_uuid") ?>:
+				<mark data-wsm-manage="consentId"><?= wsm::getConfigText("no_consent") ?>
 				</mark>
 			</p>
-			<p><?= wsm::getConfig("consent_info_datestamp") ?>:
-				<mark>
-					<script>
-						document.write(CookieConsent.getCookie("consentTimestamp"));
-					</script>
+			<p><?= wsm::getConfigText("consent_info_datestamp") ?>:
+				<mark data-wsm-manage="consentTimestamp"><?= wsm::getConfigText("no_consent") ?>
 				</mark>
 			</p>
-			<p><?= wsm::getConfig("consent_info_datestamp") ?>:
-				<mark>
-					<script>
-						document.write(CookieConsent.getCookie("lastConsentTimestamp"));
-					</script>
+			<p><?= wsm::getConfigText("consent_info_datestamp") ?>:
+				<mark data-wsm-manage="lastConsentTimestamp"><?= wsm::getConfigText("no_consent") ?>
 				</mark>
 			</p>
 			<button type="button" class="btn btn-primary"
-				data-cc="show-preferencesModal"><?= wsm::getConfig("consent_info_open_settings") ?></button>
-			<button class="btn btn-secondary" type="button" data-cc="show-consentModal">Modal öffnen</button>
-
-		</div>
-	</div>
-</div>
+				data-cc="show-preferencesModal"><?= wsm::getConfigText("consent_info_open_settings") ?></button>
+			<button class="btn btn-secondary" type="button" data-cc="show-consentModal"><?= wsm::getConfigText("consent_info_open_modal") ?></button>
+<!-- Test -->
 <div class="container p-5">
 	<div class="row">
 
@@ -60,9 +42,5 @@ if (rex_addon::get('yrewrite')->isAvailable()) {
 			</div>
 		</div>
 
+		</div>
 	</div>
-
-
-	<br />
-
-</div>

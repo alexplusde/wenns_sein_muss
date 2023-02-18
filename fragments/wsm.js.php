@@ -20,50 +20,7 @@
 
 			currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
 
-			/*				services: <?= wsm::getIframeServicesAsJson() ?>
-			,
-			*/
-
-			services: {
-				youtube: {
-					embedUrl: 'https://www.youtube-nocookie.com/embed/{data-id}',
-					thumbnailUrl: 'https://i3.ytimg.com/vi/{data-id}/hqdefault.jpg',
-
-					iframe: {
-						allow: 'accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen;',
-					},
-
-					languages: {
-						de: {
-							notice: 'This content is hosted by a third party. By showing the external content you accept the <a rel="noreferrer noopener" href="https://www.youtube.com/t/terms" target="_blank">terms and conditions</a> of youtube.com.',
-							loadAllBtn: '<?= wsm::getConfig('settings_modal_accept_all_btn') ?>
-							',
-						},
-					},
-				},
-
-				vimeo: {
-					embedUrl: 'https://player.vimeo.com/video/{data-id}',
-					iframe: {
-						allow: 'fullscreen; picture-in-picture;',
-					},
-
-					thumbnailUrl: async (dataId, setThumbnail) => {
-						const url = `https://vimeo.com/api/v2/video/${dataId}.json`;
-						const response = await (await fetch(url)).json();
-						const thumbnailUrl = response[0]?.thumbnail_large;
-						thumbnailUrl && setThumbnail(thumbnailUrl);
-					},
-
-					languages: {
-						de: {
-							notice: 'This content is hosted by a third party. By showing the external content you accept the <a rel="noreferrer noopener" href="https://vimeo.com/terms" target="_blank">terms and conditions</a> of vimeo.com.',
-							loadBtn: 'Load once',
-							loadAllBtn: "Don't ask again",
-						},
-					},
-				},
-			},
+			services: <?= wsm::getIframeServicesAsJson() ?> ,
 
 		});
 

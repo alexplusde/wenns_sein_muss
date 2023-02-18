@@ -58,12 +58,12 @@ class wsm
 
         foreach ($services as $service) {
             $iframe = $service->getRelatedDataset('iframe');
-
+           
             $s['embedUrl'] = $iframe->getValue('embedUrl');
-            $s['thumbnail'] = $iframe->getValue('thumbnailUrl');
-            $s['iframe'] = $iframe->getValue('attributes');
-            $s['language'][rex_clang::getCurrent()->getCode()]['notice'] = 'This content is hosted by a third party. By showing the external content you accept the <a rel="noreferrer noopener" href="https://www.youtube.com/t/terms" target="_blank">terms and conditions</a> of youtube.com.';
-            $s['language'][rex_clang::getCurrent()->getCode()]['loadAllBtn'] = wsm::getConfig('settings_modal_accept_all_btn');
+            $s['thumbnail'] = urldecode(rex_getUrl(null, null, array ('rex-api-call' => "wsm_iframe", 'service' => rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
+//            $s['iframe'] = $iframe->getValue('attributes');
+            $s['languages'][rex_clang::getCurrent()->getCode()]['notice'] = 'This content is hosted by a third party. By showing the external content you accept the <a rel="noreferrer noopener" href="https://www.youtube.com/t/terms" target="_blank">terms and conditions</a> of youtube.com.';
+            $s['languages'][rex_clang::getCurrent()->getCode()]['loadAllBtn'] = wsm::getConfig('settings_modal_accept_all_btn');
             
             $return[rex_string::normalize($service->getValue('service'))] = $s;
         }
@@ -152,5 +152,36 @@ class wsm
     public static function setConfig(string $key, mixed $value) :bool
     {
         return rex_config::set("wenns_sein_muss", $key, $value);
+    }
+
+    /* Sprog */
+
+    public static function getConfigText(string $key) :string
+    {
+        $text = wsm::getConfig($key);
+
+        if ($text === null) {
+            return "no text availaible";
+        }
+
+        if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
+            return sprogdown($text);
+        }
+        
+        return $text;
+    }
+    public static function getTranslatedText(string $key) :string
+    {
+        $text = wsm::getConfig($key);
+
+        if ($text === null) {
+            return "no text availaible";
+        }
+
+        if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
+            return sprogdown($text);
+        }
+        
+        return $text;
     }
 }
