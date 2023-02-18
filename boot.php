@@ -80,7 +80,7 @@ if (rex::isBackend()) {
                 'service',
                 'custom',
                 function ($a) {
-                        return ''.$a['list']->getValue('service').'<br /><small>'.$a['list']->getValue('company_address').'</small>';
+                        return ''.$a['list']->getValue('service').'<br /><small><strong>'.$a['list']->getValue('company_name').'</strong></small><br /><small>'.$a['list']->getValue('company_address').'</small>';
                 }
             );
 

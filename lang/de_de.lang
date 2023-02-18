@@ -24,10 +24,10 @@ wsm_table_entry = ✔️ Einträge
 # Labels Tabellenfelder
 
 wsm_service_group = Gruppe
-wsm_service = Drittanbieter
+wsm_service = Name
 
-wsm_service_company_name = Unternehmensname
-wsm_service_company_url = Domain / URL
+wsm_service_company_name = Name des Unternehmens
+wsm_service_company_address = Anschrift
 wsm_service_privacy_policy_url = Datenschutzerklärung
 wsm_service_iframe = Iframe-Manager
 wsm_service_domain = Domain(s)
@@ -40,6 +40,11 @@ wsm_group_description = Erläuterung
 wsm_group_enabled = Vorauswahl
 wsm_group_required = Pflichtfeld
 
+wsm_entry_type = Typ
+wsm_entry_name = Name / Schlüssel
+wsm_entry_duration = Speicherdauer
+wsm_entry_description = Erläuterung
+
 wsm_protocol_website = Website
 wsm_protocol_consent_id = ID
 wsm_protocol_accept_type = Einwilligung
@@ -51,7 +56,9 @@ wsm_domain_id = Domain
 wsm_domain_privacy_policy_id = Datenschutzerklärung
 wsm_domain_imprint_id = Impressum
 
-
+wsm_iframe_key = Schlüssel
+wsm_iframe_thumbnail_url = Vorschau-URL (deprecated)
+wsm_iframe_embed_url = Embed-URL
 
 # Labels Einstellungen
 wenns_sein_muss_demo = Demo-Daten importieren
