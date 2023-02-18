@@ -20,6 +20,7 @@ wsm_table_domain = ✔️ Domains
 wsm_table_service = ✔️ Drittanbieter
 wsm_table_group = ✔️ Gruppen
 wsm_table_entry = ✔️ Einträge
+wsm_table_protocol = ✔️ Einwilligungs-Protokoll
 
 # Labels Tabellenfelder
 
@@ -50,6 +51,8 @@ wsm_protocol_consent_id = ID
 wsm_protocol_accept_type = Einwilligung
 wsm_protocol_accepted_categories = eingewilligt (Kategorie)
 wsm_protocol_rejected_categories = abgelehnt (Kategorie)
+wsm_protocol_accepted_services = eingewilligt (Drittanbieter)
+wsm_protocol_rejected_services = abgelehnt (Drittanbieter)
 wsm_protocol_consentdate = Zeitstempel
 
 wsm_domain_id = Domain
