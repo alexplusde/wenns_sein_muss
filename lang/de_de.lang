@@ -21,10 +21,39 @@ wsm_table_service = ✔️ Drittanbieter
 wsm_table_group = ✔️ Gruppen
 wsm_table_entry = ✔️ Einträge
 
+# Labels Tabellenfelder
+
+wsm_service_group = Gruppe
+wsm_service = Drittanbieter
+
+wsm_service_company_name = Unternehmensname
+wsm_service_company_url = Domain / URL
+wsm_service_privacy_policy_url = Datenschutzerklärung
+wsm_service_iframe = Iframe-Manager
+wsm_service_domain = Domain(s)
+wsm_service_entry_ids = Cookies, LocalStorage und Tracking-Bilder
+wsm_service_script = JavaScript (nach Einwilligung)
+
+wsm_group_name = Name
+wsm_group_title = Titel
+wsm_group_description = Erläuterung
+wsm_group_enabled = Vorauswahl
+wsm_group_required = Pflichtfeld
+
+wsm_protocol_website = Website
+wsm_protocol_consent_id = ID
+wsm_protocol_accept_type = Einwilligung
+wsm_protocol_accepted_categories = eingewilligt (Kategorie)
+wsm_protocol_rejected_categories = abgelehnt (Kategorie)
+wsm_protocol_consentdate = Zeitstempel
+
+wsm_domain_id = Domain
 wsm_domain_privacy_policy_id = Datenschutzerklärung
 wsm_domain_imprint_id = Impressum
 
-# Labels Formularfelder
+
+
+# Labels Einstellungen
 wenns_sein_muss_demo = Demo-Daten importieren
 wenns_sein_muss_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
 wenns_sein_muss_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!
