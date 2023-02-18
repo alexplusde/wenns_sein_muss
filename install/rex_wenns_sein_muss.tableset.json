@@ -724,7 +724,7 @@
         "table": {
             "status": 1,
             "table_name": "rex_wenns_sein_muss_iframe",
-            "name": "tanslate:wsm_table_iframe",
+            "name": "translate:wsm_table_iframe",
             "description": "",
             "list_amount": 50,
             "list_sortfield": "id",
