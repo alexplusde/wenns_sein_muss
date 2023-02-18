@@ -1,8 +1,8 @@
 <?php
 
-class wsm_fragment extends rex_fragment {
-    
-    public static function getIframe($data_service, $data_id = "", $data_params = "", $data_thumbnail = null)
+class wsm_fragment extends rex_fragment
+{
+    public static function getIframe(string $data_service, int $data_id = "", $data_params = "", string $data_thumbnail = null)
     {
         $fragment = new self();
         $fragment->setVar("data-service", $data_service);
@@ -20,9 +20,10 @@ class wsm_fragment extends rex_fragment {
     {
         $fragment = new self();
         return $fragment->parse('wsm.css.php');
-    }    
+    }
         
-    public static function getScripts() {
+    public static function getScripts()
+    {
         $output = "";
         foreach (wsm_service::findScripts() as $script) {
             $fragment = new rex_fragment();

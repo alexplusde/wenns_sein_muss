@@ -124,7 +124,7 @@ class wsm
         return self::getConfig('revision_timestamp') ?? "";
     }
 
-    public static function yform_data_added($ep)
+    public static function yform_data_added(rex_extension_point $ep)
     {
         $subject = $ep->getSubject();
 
@@ -134,7 +134,7 @@ class wsm
         }
         return;
     }
-    public static function yform_data_deleted($ep)
+    public static function yform_data_deleted(rex_extension_point $ep)
     {
         if ($ep->getParams()['table'] == "rex_wenns_sein_muss" || $ep->getParams()['table'] == "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] == "rex_wenns_sein_muss_group") {
             wsm::setConfig('revision', wsm::getConfig('revision')+1);

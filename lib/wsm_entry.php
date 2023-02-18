@@ -18,8 +18,8 @@ class wsm_entry extends \rex_yform_manager_dataset
         return $this->getValue('duration');
     }
 
-    public static function findEntriesArray($service_id) {
-
+    public static function findEntriesArray(int $service_id)
+    {
         $entries = wsm_entry::query()->where("service_id", $service_id)->find();
         $return = [];
         foreach ($entries as $entry) {
@@ -33,5 +33,4 @@ class wsm_entry extends \rex_yform_manager_dataset
         }
         return $return;
     }
-
 }
