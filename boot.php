@@ -100,5 +100,29 @@ if (rex::isBackend()) {
             );
 
         }
+        if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_group") {
+            $list = $ep->getSubject();
+
+            $list->setColumnFormat(
+                'description',
+                'custom',
+                function ($a) {
+                        return $a['list']->getValue('description');
+                }
+            );
+
+        }
+        if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_iframe") {
+            $list = $ep->getSubject();
+
+            $list->setColumnFormat(
+                'description',
+                'custom',
+                function ($a) {
+                        return $a['list']->getValue('description');
+                }
+            );
+
+        }
     });
 }
