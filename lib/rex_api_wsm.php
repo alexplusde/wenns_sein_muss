@@ -50,6 +50,8 @@ class rex_api_wsm extends rex_api_function
             ->setValue('accept_type', rex_post('acceptType', 'string'))
             ->setValue('accepted_categories', rex_post('acceptedCategories', 'string'))
             ->setValue('rejected_categories', rex_post('rejectedCategories', 'string'))
+            ->setValue('accepted_services', rex_post('acceptedServices', 'string'))
+            ->setValue('rejected_services', rex_post('rejectedServices', 'string'))
             ->save();
             
             return json_encode($_POST);

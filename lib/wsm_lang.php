@@ -43,9 +43,11 @@ class wsm_lang
             $sections[] = $g;
         }
 
-        /* Allgemeine Infos */
+        /* Einwilligungs-Protokoll darstellen */
+        $sections[] = ['title' => wsm::getConfigText('settings_modal_block_consent_title'), 'description' => '<p>consent id: <span id="consent-id">-</span></p><p>consent date: <span id="consent-timestamp">-</span></p><p>last update: <span id="last-consent-timestamp">-</span></p>'];
 
-        $sections[] = ['title' => wsm::getConfig('settings_modal_block_more_title'), 'description' => wsm::getConfigText('settings_modal_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
+        /* Allgemeine Infos */
+        $sections[] = ['title' => wsm::getConfigText('settings_modal_block_more_title'), 'description' => wsm::getConfigText('settings_modal_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
 
         $return['preferencesModal']['sections'] = $sections;
         
