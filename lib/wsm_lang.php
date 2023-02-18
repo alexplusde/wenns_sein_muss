@@ -34,6 +34,7 @@ class wsm_lang
 
                 if (count($entries)) {
                     $g["cookieTable"]["headers"]['name'] = "Name";
+                    $g["cookieTable"]["headers"]['service'] = "Service";
                     $g["cookieTable"]["headers"]['description'] = "Description";
                     $g["cookieTable"]["headers"]['duration'] = "Duration";
                     $g["cookieTable"]["headers"]['type'] = "Type";
@@ -61,13 +62,13 @@ class wsm_lang
     private static function getConsentModal()
     {
         $consentModal = [];
-        $consentModal["label"] = "Cookie Consent";
+        $consentModal["label"] = wsm::getConfigText('consent_modal_lable');
         $consentModal["title"] = wsm::getConfigText('consent_modal_title');
         $consentModal["description"] = wsm::getConfigText('consent_modal_description');
         $consentModal["acceptAllBtn"] = wsm::getConfigText('consent_modal_primary_btn');
         $consentModal["closeIconLabel"] = wsm::getConfigText('settings_modal_close_btn_label');
         $consentModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_modal_secondary_btn');
-        $consentModal["showPreferencesBtn"] = "Manage preferences";
+        $consentModal["showPreferencesBtn"] = wsm::getConfigText('consent_modal_primary_btn');
         $consentModal["footer"] = "<a href=\"#link\">Privacy Policy</a><a href=\"#link\">Terms and conditions</a>";
 
         return $consentModal;
@@ -80,20 +81,8 @@ class wsm_lang
         $preferencesModal["acceptNecessaryBtn"] = wsm::getConfigText('settings_modal_reject_all_btn');
         $preferencesModal["savePreferencesBtn"] = wsm::getConfigText('settings_modal_save_settigns_btn');
         $preferencesModal["closeIconLabel"] = wsm::getConfigText('settings_modal_close_btn');
-        $preferencesModal["serviceCounterLabel"] = "Dienst|Dienste";
+        $preferencesModal["serviceCounterLabel"] = wsm::getConfigText('settings_modal_service_counter_label');
 
         return $preferencesModal;
-    }
-
-    private static function getIframe()
-    {
-        /*
-        <?= wsm::getConfig('iframe_notice') ?>
-        <?= wsm::getConfig('iframe_load_btn') ?>
-        <?= wsm::getConfig('iframe_load_all_btn') ?>
-        <?= wsm::getConfig('iframe_notice') ?>
-        <?= wsm::getConfig('iframe_load_btn') ?>
-        <?= wsm::getConfig('iframe_load_all_btn') ?>
-        */
     }
 }

@@ -44,6 +44,20 @@ if (rex::isBackend()) {
                     }
                 }
             );
+
+            $list->setColumnPosition('iframe', 4);
+            $list->setColumnFormat(
+                'iframe',
+                'custom',
+                function ($a) {
+                    if ($a['list']->getValue('iframe') != "") {
+                        return "🖼️";
+                    } else {
+                        return "";
+                    }
+                }
+            );
+
         }
     });
 }

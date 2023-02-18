@@ -90,9 +90,11 @@ default_config:
     settings_modal_cookie_table_headers_col2: Domain
     settings_modal_cookie_table_headers_col3: Expiration
     settings_modal_cookie_table_headers_col4: Description
+    settings_modal_block_consent_title: Einwilligungs-Protokoll
     settings_modal_block_more_title: More information
     settings_modal_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
 
+    settings_modal_service_counter_label: Dienst|Dienste
     consent_modal_layout: cloud
     consent_modal_position: bottom center
     consent_modal_swap_buttons: true

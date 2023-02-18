@@ -161,7 +161,7 @@ class wsm
         $text = wsm::getConfig($key);
 
         if ($text === null) {
-            return "no text availaible";
+            return "missing config for key <code>". $key . "</code>";
         }
 
         if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
@@ -175,7 +175,7 @@ class wsm
         $text = wsm::getConfig($key);
 
         if ($text === null) {
-            return "no text availaible";
+            return "missing translation for key <code>". $key . "</code>";
         }
 
         if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
