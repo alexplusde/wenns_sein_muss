@@ -3,7 +3,7 @@
         "table": {
             "status": 1,
             "table_name": "rex_wenns_sein_muss_service",
-            "name": "\u2714\ufe0f Dienste und Drittanbieter",
+            "name": "translate:wsm_table_service",
             "description": "",
             "list_amount": 50,
             "list_sortfield": "group",
@@ -135,23 +135,27 @@
             "prepend": ""
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 8,
+            "prio": 9,
             "type_id": "value",
-            "type_name": "be_media",
-            "db_type": "text",
+            "type_name": "be_manager_relation",
+            "db_type": "int",
             "list_hidden": 0,
             "search": 0,
-            "name": "thumbnail",
-            "label": "Vorschau-Bild",
+            "name": "iframe",
+            "label": "Iframe Manager (2-Klick-L\u00f6sung)",
             "not_required": "",
-            "multiple": "0",
-            "notice": "",
-            "types": "jpg,png",
-            "preview": "0",
-            "category": ""
+            "attributes": "",
+            "notice": "Ausf\u00fcllen, wenn es sich um einen externen Dienst handelt, dessen Inhalte auch innerhalb der Website eingewilligt und nachgeladen werden sollen.",
+            "size": "",
+            "table": "rex_wenns_sein_muss_iframe",
+            "field": "",
+            "type": "2",
+            "empty_value": "",
+            "empty_option": "1",
+            "relation_table": ""
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 9,
+            "prio": 10,
             "type_id": "value",
             "type_name": "html",
             "db_type": "none",
@@ -163,7 +167,7 @@
             "html": "<\/div>\r\n    <div class=\"col-md-4\">"
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 10,
+            "prio": 11,
             "type_id": "value",
             "type_name": "domain",
             "db_type": "text",
@@ -176,7 +180,7 @@
             "notice": ""
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 11,
+            "prio": 12,
             "type_id": "value",
             "type_name": "html",
             "db_type": "none",
@@ -188,7 +192,7 @@
             "html": "<\/div><\/div>"
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 12,
+            "prio": 13,
             "type_id": "value",
             "type_name": "be_manager_relation",
             "db_type": "text",
@@ -208,7 +212,7 @@
             "relation_table": "rex_wenns_sein_muss_entry"
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 13,
+            "prio": 14,
             "type_id": "value",
             "type_name": "textarea",
             "db_type": "text",
@@ -223,7 +227,7 @@
             "notice": ""
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 14,
+            "prio": 15,
             "type_id": "validate",
             "type_name": "empty",
             "db_type": "",
@@ -235,7 +239,7 @@
             "message": "Geben Sie einen Namen an"
         }, {
             "table_name": "rex_wenns_sein_muss_service",
-            "prio": 15,
+            "prio": 16,
             "type_id": "value",
             "type_name": "datestamp",
             "db_type": "datetime",
@@ -253,7 +257,7 @@
         "table": {
             "status": 1,
             "table_name": "rex_wenns_sein_muss_group",
-            "name": "\u2714\ufe0f Cookie-Gruppen",
+            "name": "translate:wsm_table_group",
             "description": "",
             "list_amount": 50,
             "list_sortfield": "prio",
@@ -374,7 +378,7 @@
         "table": {
             "status": 1,
             "table_name": "rex_wenns_sein_muss_protocol",
-            "name": "\u2714\ufe0f Einwilligungs-Protokoll",
+            "name": "translate:wsm_table_protocol",
             "description": "",
             "list_amount": 50,
             "list_sortfield": "id",
@@ -464,6 +468,23 @@
             "type_id": "value",
             "type_name": "text",
             "db_type": "varchar(191)",
+            "list_hidden": 1,
+            "search": 0,
+            "name": "accepted_services",
+            "label": "translate:wsm_accepted_services",
+            "not_required": "",
+            "attributes": "",
+            "default": "",
+            "no_db": "0",
+            "notice": "",
+            "append": "",
+            "prepend": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_protocol",
+            "prio": 6,
+            "type_id": "value",
+            "type_name": "text",
+            "db_type": "varchar(191)",
             "list_hidden": 0,
             "search": 0,
             "name": "rejected_categories",
@@ -477,7 +498,24 @@
             "prepend": ""
         }, {
             "table_name": "rex_wenns_sein_muss_protocol",
-            "prio": 6,
+            "prio": 7,
+            "type_id": "value",
+            "type_name": "text",
+            "db_type": "varchar(191)",
+            "list_hidden": 1,
+            "search": 0,
+            "name": "rejected_services",
+            "label": "translate:wsm_rejected_services",
+            "not_required": "",
+            "attributes": "",
+            "default": "",
+            "no_db": "0",
+            "notice": "",
+            "append": "",
+            "prepend": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_protocol",
+            "prio": 8,
             "type_id": "value",
             "type_name": "datestamp",
             "db_type": "datetime",
@@ -491,7 +529,7 @@
             "format": "Y-m-d H:i:s"
         }, {
             "table_name": "rex_wenns_sein_muss_protocol",
-            "prio": 7,
+            "prio": 9,
             "type_id": "validate",
             "type_name": "unique",
             "db_type": "",
@@ -509,7 +547,7 @@
         "table": {
             "status": 1,
             "table_name": "rex_wenns_sein_muss_entry",
-            "name": "\u2714\ufe0f Cookie- und sonst. Eintr\u00e4ge",
+            "name": "translate:wsm:table_entry",
             "description": "",
             "list_amount": 50,
             "list_sortfield": "id",
@@ -680,6 +718,172 @@
             "empty_value": "",
             "empty_option": "0",
             "relation_table": ""
+        }]
+    },
+    "rex_wenns_sein_muss_iframe": {
+        "table": {
+            "status": 1,
+            "table_name": "rex_wenns_sein_muss_iframe",
+            "name": "tanslate:wsm_table_iframe",
+            "description": "",
+            "list_amount": 50,
+            "list_sortfield": "id",
+            "list_sortorder": "ASC",
+            "search": 0,
+            "hidden": 1,
+            "export": 1,
+            "import": 1,
+            "mass_deletion": 1,
+            "mass_edit": 1,
+            "schema_overwrite": 1,
+            "history": 0,
+            "createdate": "0000-00-00 00:00:00",
+            "updatedate": "0000-00-00 00:00:00",
+            "createuser": "",
+            "updateuser": ""
+        },
+        "fields": [{
+            "table_name": "rex_wenns_sein_muss_iframe",
+            "prio": 1,
+            "type_id": "value",
+            "type_name": "text",
+            "db_type": "varchar(191)",
+            "list_hidden": 0,
+            "search": 0,
+            "name": "key",
+            "label": "translate:wsm_iframe_key",
+            "not_required": "",
+            "attributes": "{\"required\":\"required\",\"pattern\":\"^[a-z0-9_]+\"}",
+            "default": "",
+            "no_db": "0",
+            "notice": "translate:wsm_iframe_key_notice",
+            "append": "",
+            "prepend": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_iframe",
+            "prio": 2,
+            "type_id": "value",
+            "type_name": "text",
+            "db_type": "varchar(191)",
+            "list_hidden": 0,
+            "search": 0,
+            "name": "thumbnailUrl",
+            "label": "translate:wsm_iframe_thumbnail_url",
+            "not_required": "",
+            "attributes": "{\"type\":\"url\"}",
+            "default": "",
+            "no_db": "0",
+            "notice": "z.B. <code>https:\/\/i3.ytimg.com\/vi\/{data-id}\/hqdefault.jpg<\/code>",
+            "append": "",
+            "prepend": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_iframe",
+            "prio": 3,
+            "type_id": "value",
+            "type_name": "text",
+            "db_type": "varchar(191)",
+            "list_hidden": 0,
+            "search": 0,
+            "name": "embedUrl",
+            "label": "translate:wsm_iframe_embed_url",
+            "not_required": "",
+            "attributes": "{\"type\":\"url\"}",
+            "default": "",
+            "no_db": "0",
+            "notice": "z.B. <code>https:\/\/www.youtube-nocookie.com\/embed\/{data-id}<\/code>",
+            "append": "",
+            "prepend": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_iframe",
+            "prio": 4,
+            "type_id": "value",
+            "type_name": "be_table",
+            "db_type": "text",
+            "list_hidden": 1,
+            "search": 0,
+            "name": "attributes",
+            "label": "translate:wsm_iframe_attributes",
+            "not_required": "",
+            "no_db": "0",
+            "notice": "z.B. <code>allow<\/code>: <code>accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen;<\/code>",
+            "columns": "Attribute,Werte"
+        }]
+    },
+    "rex_wenns_sein_muss_domain": {
+        "table": {
+            "status": 1,
+            "table_name": "rex_wenns_sein_muss_domain",
+            "name": "translate:wsm_table_domain",
+            "description": "",
+            "list_amount": 50,
+            "list_sortfield": "id",
+            "list_sortorder": "ASC",
+            "search": 0,
+            "hidden": 1,
+            "export": 1,
+            "import": 1,
+            "mass_deletion": 1,
+            "mass_edit": 1,
+            "schema_overwrite": 1,
+            "history": 0,
+            "createdate": "0000-00-00 00:00:00",
+            "updatedate": "0000-00-00 00:00:00",
+            "createuser": "",
+            "updateuser": ""
+        },
+        "fields": [{
+            "table_name": "rex_wenns_sein_muss_domain",
+            "prio": 1,
+            "type_id": "value",
+            "type_name": "domain",
+            "db_type": "text",
+            "list_hidden": 0,
+            "search": 0,
+            "name": "domain_id",
+            "label": "Domain",
+            "not_required": "",
+            "attributes": "",
+            "notice": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_domain",
+            "prio": 2,
+            "type_id": "value",
+            "type_name": "be_link",
+            "db_type": "text",
+            "list_hidden": 0,
+            "search": 0,
+            "name": "privacy_policy_id",
+            "label": "translate:wsm_domain_privacy_policy_id",
+            "not_required": "",
+            "multiple": "0",
+            "notice": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_domain",
+            "prio": 3,
+            "type_id": "value",
+            "type_name": "be_link",
+            "db_type": "text",
+            "list_hidden": 0,
+            "search": 0,
+            "name": "imprint_id",
+            "label": "translate:wsm_domain_imprint_id",
+            "not_required": "",
+            "multiple": "0",
+            "notice": ""
+        }, {
+            "table_name": "rex_wenns_sein_muss_domain",
+            "prio": 4,
+            "type_id": "validate",
+            "type_name": "unique",
+            "db_type": "",
+            "list_hidden": 1,
+            "search": 0,
+            "name": "domain_id",
+            "label": "",
+            "not_required": "",
+            "message": "translate:wsm_domain_id_unique",
+            "table": "",
+            "empty_option": "0"
         }]
     }
 }
