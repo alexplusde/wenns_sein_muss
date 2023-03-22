@@ -113,7 +113,7 @@ Siehe <https://github.com/orestbida/cookieconsent#api-methods> und <https://gith
 
 ## Lizenz
 
-MIT Lizenz, siehe [LICENSE.md](https://github.com/alexplusde/wenns_sein_muss/blob/master/LICENSE.md)  
+(c) 2023 alex+ Digitales Marketing - Alexander Walther. Alle Rechte vorbehalten.
 
 ## Autoren
 
