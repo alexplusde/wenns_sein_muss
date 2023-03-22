@@ -27,8 +27,8 @@ $form->addFieldset($addon->i18n('consent_settings'));
 $field = $form->addInputField('text', 'consent_settings_title', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_settings_title'));
 
-$field = $form->addInputField('text', 'consent_settings_save_settings', $value = null, ["class" => "form-control"]);
-$field->setLabel($addon->i18n('consent_settings_save_settings'));
+$field = $form->addInputField('text', 'consent_settings_save', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_save'));
 
 $field = $form->addInputField('text', 'consent_settings_accept_all', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_settings_accept_all'));

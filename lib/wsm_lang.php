@@ -103,7 +103,7 @@ class wsm_lang
         $preferencesModal["title"] = wsm::getConfigText('consent_settings_title');
         $preferencesModal["acceptAllBtn"] = wsm::getConfigText('consent_settings_accept_all') ;
         $preferencesModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_settings_reject_all');
-        $preferencesModal["savePreferencesBtn"] = wsm::getConfigText('consent_settings_save_settigns');
+        $preferencesModal["savePreferencesBtn"] = wsm::getConfigText('consent_settings_save');
         $preferencesModal["closeIconLabel"] = wsm::getConfigText('consent_settings_close');
         $preferencesModal["serviceCounterLabel"] = wsm::getConfigText('consent_settings_service_counter_badge');
 

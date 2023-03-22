@@ -97,7 +97,7 @@ default_config:
     # settings page: text
 
     consent_settings_title: Einstellungen
-    consent_settings_save_settings: speichern
+    consent_settings_save: speichern
     consent_settings_accept_all: Alle akzeptieren
     consent_settings_reject_all: Alle ablehnen
     consent_settings_close: Schließen
@@ -110,6 +110,7 @@ default_config:
 
     consent_info_domain: Einwilligungs-Protokoll
     consent_info_uuid: Ihre Einwilligungs-ID (für Rückfragen)
+    consent_info_unknown: Noch keine Einwilligung erteilt
     consent_info_datestamp: Eingewilligt am...
     consent_info_update_datestamp: Einwilligung zuletzt erneuert am...
     consent_info_more: Weitere Informationen

@@ -92,7 +92,7 @@ consent_modal_accept_necessary = Nur notwendige zulassen
 consent_settings = Einstellungs-Dialog
 
 consent_settings_title = Titel
-consent_settings_save_settings = Auswahl speichern
+consent_settings_save = Auswahl speichern
 consent_settings_accept_all = Alle zulassen
 consent_settings_reject_all = Alle ablehnen
 consent_settings_close = Schließen
