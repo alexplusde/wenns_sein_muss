@@ -21,6 +21,10 @@ if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
         'rex_wenns_sein_muss_iframe',
         wsm_iframe::class
     );
+    rex_yform_manager_dataset::setModelClass(
+        'rex_wenns_sein_muss_domain',
+        wsm_domain::class
+    );
 };
 
 // rex_extension::register('YFORM_DATA_ADDED', ['wsm','yform_data_added']);
@@ -80,7 +84,7 @@ if (rex::isBackend()) {
                 'service',
                 'custom',
                 function ($a) {
-                        return ''.$a['list']->getValue('service').'<br /><small><strong>'.$a['list']->getValue('company_name').'</strong></small><br /><small>'.$a['list']->getValue('company_address').'</small>';
+                    return ''.$a['list']->getValue('service').'<br /><small><strong>'.$a['list']->getValue('company_name').'</strong></small><br /><small>'.$a['list']->getValue('company_address').'</small>';
                 }
             );
 
@@ -91,14 +95,13 @@ if (rex::isBackend()) {
                     $url = $a['list']->getValue('privacy_policy_url');
                     if ($url != "" && strlen($url) >= 64) {
                         return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.substr($url, 0, 64) .'...</a>';
-                    } else if ($url != "") {
+                    } elseif ($url != "") {
                         return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.$url.'</a>';
                     } else {
                         return "❌";
                     }
                 }
             );
-
         }
         if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_group") {
             $list = $ep->getSubject();
@@ -107,10 +110,9 @@ if (rex::isBackend()) {
                 'description',
                 'custom',
                 function ($a) {
-                        return $a['list']->getValue('description');
+                    return $a['list']->getValue('description');
                 }
             );
-
         }
         if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_iframe") {
             $list = $ep->getSubject();
@@ -119,10 +121,9 @@ if (rex::isBackend()) {
                 'description',
                 'custom',
                 function ($a) {
-                        return $a['list']->getValue('description');
+                    return $a['list']->getValue('description');
                 }
             );
-
         }
     });
 }

@@ -70,7 +70,17 @@ class wsm_lang
         $consentModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_modal_accept_necessary');
         $consentModal["showPreferencesBtn"] = wsm::getConfigText('consent_modal_settings');
 
-        $consentModal["footer"] = "<a href=\"#link\">Privacy Policy</a><a href=\"#link\">Terms and conditions</a>";
+        $domain = wsm_domain::getCurrent();
+
+        if ($domain) {
+            $privacy_policy = $domain->getPrivacyPolicyArticle();
+            $imprint = $domain->getImprintArticle();
+        } else {
+            $privacy_policy = rex_article::get(wsm::getConfig("wsm_domain_imprint_id"));
+            $imprint = rex_article::get(wsm::getConfig("wsm_domain_privacy_policy_id"));
+        }
+        $consentModal["footer"] = '<a href="'.$privacy_policy->getUrl().'">'.$privacy_policy->getName().'</a>
+            <a href="'.$imprint->getUrl().'">'.$imprint->getName().'</a>';
 
         return $consentModal;
     }
