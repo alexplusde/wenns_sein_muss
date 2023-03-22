@@ -66,9 +66,10 @@ class wsm_lang
         $consentModal["title"] = wsm::getConfigText('consent_modal_title');
         $consentModal["description"] = wsm::getConfigText('consent_modal_description');
         $consentModal["acceptAllBtn"] = wsm::getConfigText('consent_modal_accept_all');
-        $consentModal["closeIconLabel"] = wsm::getConfigText('consent_modal_close_btn_label');
+        $consentModal["closeIconLabel"] = wsm::getConfigText('consent_modal_close');
         $consentModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_modal_accept_necessary');
         $consentModal["showPreferencesBtn"] = wsm::getConfigText('consent_modal_settings');
+
         $consentModal["footer"] = "<a href=\"#link\">Privacy Policy</a><a href=\"#link\">Terms and conditions</a>";
 
         return $consentModal;
@@ -77,11 +78,11 @@ class wsm_lang
     {
         $preferencesModal = [];
         $preferencesModal["title"] = wsm::getConfigText('consent_settings_title');
-        $preferencesModal["acceptAllBtn"] = wsm::getConfigText('consent_settings_accept_all_btn') ;
-        $preferencesModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_settings_reject_all_btn');
-        $preferencesModal["savePreferencesBtn"] = wsm::getConfigText('consent_settings_save_settigns_btn');
-        $preferencesModal["closeIconLabel"] = wsm::getConfigText('consent_settings_close_btn');
-        $preferencesModal["serviceCounterLabel"] = wsm::getConfigText('consent_settings_service_counter_label');
+        $preferencesModal["acceptAllBtn"] = wsm::getConfigText('consent_settings_accept_all') ;
+        $preferencesModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_settings_reject_all');
+        $preferencesModal["savePreferencesBtn"] = wsm::getConfigText('consent_settings_save_settigns');
+        $preferencesModal["closeIconLabel"] = wsm::getConfigText('consent_settings_close');
+        $preferencesModal["serviceCounterLabel"] = wsm::getConfigText('consent_settings_service_counter_badge');
 
         return $preferencesModal;
     }

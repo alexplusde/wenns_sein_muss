@@ -88,13 +88,17 @@ default_config:
     consent_modal_swap_buttons: true
     consent_settings_layout: box
 
+    consent_modal_open: Einstellungen öffnen
+    consent_settings_open: Einstellungen öffnen
+
     # settings page: text
+
     consent_settings_title: Einstellungen
-    consent_settings_save_settigns_btn: speichern
-    consent_settings_accept_all_btn: Alle akzeptieren
-    consent_settings_reject_all_btn: Alle ablehnen
-    consent_settings_close_btn_label: Schließen
-    consent_settings_service_counter_label: Dienst|Dienste
+    consent_settings_save_settings: speichern
+    consent_settings_accept_all: Alle akzeptieren
+    consent_settings_reject_all: Alle ablehnen
+    consent_settings_close: Schließen
+    consent_settings_service_counter_badge: Dienst|Dienste
     
     consent_settings_cookie_table_headers_col1: Name
     consent_settings_cookie_table_headers_col2: Domain

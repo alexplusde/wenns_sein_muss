@@ -56,8 +56,8 @@ wsm_protocol_rejected_services = abgelehnt (Drittanbieter)
 wsm_protocol_consentdate = Zeitstempel
 
 wsm_domain_id = Domain
-wsm_domain_privacy_policy_id = Datenschutzerklärung
 wsm_domain_imprint_id = Impressum
+wsm_domain_privacy_policy_id = Datenschutzerklärung
 
 wsm_iframe_key = Schlüssel
 wsm_iframe_thumbnail_url = Vorschau-URL (deprecated)
@@ -66,7 +66,9 @@ wsm_iframe_embed_url = Embed-URL
 # Einstellungsseite Basics
 
 wsm_config_auto_lang_label = Sprache automatisch erkennen
-wsm_config_iframemanager_label =  Iframe Manager aktivieren
+wsm_config_iframemanager_label =  Iframe Manager
+wsm_config_iframemanager_active = aktiviert
+wsm_config_iframemanager_inactive = deaktiviert
 
 # Einstellungsseite Layout
 
@@ -86,21 +88,26 @@ consent_modal_description = Einleitung
 consent_modal_settings = Einstellungen
 consent_modal_accept_all = Alle zulassen
 consent_modal_accept_necessary = Nur notwendige zulassen
-consent_modal_open = Modal öffnen
 
 consent_settings = Einstellungs-Dialog
 
 consent_settings_title = Titel
-consent_settings_save_settigns_btn = Auswahl speichern
-consent_settings_accept_all_btn = Alle zulassen
-consent_settings_reject_all_btn = Alle ablehnen
-consent_settings_close_btn_label = Schließen
+consent_settings_save_settings = Auswahl speichern
+consent_settings_accept_all = Alle zulassen
+consent_settings_reject_all = Alle ablehnen
+consent_settings_close = Schließen
+consent_settings_service_counter_badge = Dienst(e)
 consent_settings_cookie_table_headers_col1 = Name
 consent_settings_cookie_table_headers_col2 = Domain
 consent_settings_cookie_table_headers_col3 = Ablaufdatum
 consent_settings_cookie_table_headers_col4 = Beschreibung
 consent_settings_block_more_title = Titel
 consent_settings_block_more_description = Beschreibung
+consent_settings_service_counter_label = Dienst,Dienste
+
+consent_open = Buttons zum nachträglichen Öffnen der Dialoge
+consent_modal_open = Modal öffnen
+consent_settings_open = Einstellungen öffnen
 
 # Einstellungsseite Iframe Manager
 
