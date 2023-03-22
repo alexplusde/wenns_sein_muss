@@ -77,32 +77,33 @@ default_config:
     disable_page_interaction: 0
 
     # settings page: consent
-    consent_modal_title: We use cookies!
-    consent_modal_description: Hi, this website uses essential cookies
-    consent_modal_primary_btn: Accept all
-    consent_modal_secondary_btn: Reject all
+    consent_modal_title: Diese Webseite verwendet Cookies und Drittanbieter-Dienste
+    consent_modal_description: Cookies und vergleichbare Technologien werden verwendet, um den Betrieb der Website wie gewünscht zu ermöglichen. Mit Ihrer Einwilligung werden Inhalte von Drittanbietern und Partnern angezeigt, z.B. Videos, und Zugriffe auf unsere Website analysiert. Dabei werden technisch bedingt Informationen zu Ihrer Verwendung unserer Website an unsere Partner weitergegeben, die diese Informationen möglicherweise mit weiteren Daten zusammenführen.
+    consent_modal_settings: Einstellungen öffnen
+    consent_modal_accept_all: Alle akzeptieren
+    consent_modal_accept_necessary: Nur notwendige akzeptieren
 
     consent_modal_layout: cloud
     consent_modal_position: bottom center
     consent_modal_swap_buttons: true
-    settings_modal_layout: box
+    consent_settings_layout: box
 
     # settings page: text
-    settings_modal_title: Einstellungen
-    settings_modal_save_settigns_btn: speichern
-    settings_modal_accept_all_btn: Alle akzeptieren
-    settings_modal_reject_all_btn: Alle ablehnen
-    settings_modal_close_btn_label: Schließen
-    settings_modal_service_counter_label: Dienst|Dienste
+    consent_settings_title: Einstellungen
+    consent_settings_save_settigns_btn: speichern
+    consent_settings_accept_all_btn: Alle akzeptieren
+    consent_settings_reject_all_btn: Alle ablehnen
+    consent_settings_close_btn_label: Schließen
+    consent_settings_service_counter_label: Dienst|Dienste
     
-    settings_modal_cookie_table_headers_col1: Name
-    settings_modal_cookie_table_headers_col2: Domain
-    settings_modal_cookie_table_headers_col3: Ablauffrist
-    settings_modal_cookie_table_headers_col4: Beschreibung
+    consent_settings_cookie_table_headers_col1: Name
+    consent_settings_cookie_table_headers_col2: Domain
+    consent_settings_cookie_table_headers_col3: Ablauffrist
+    consent_settings_cookie_table_headers_col4: Beschreibung
 
-    settings_modal_block_consent_title: Einwilligungs-Protokoll
-    settings_modal_block_more_title: Weitere Informationen
-    settings_modal_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
+    consent_settings_block_consent_title: Einwilligungs-Protokoll
+    consent_settings_block_more_title: Weitere Informationen
+    consent_settings_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
 
     # settings page: iframe
     iframe_notice: Html <b>notice</b> message

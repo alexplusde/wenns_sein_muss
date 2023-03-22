@@ -7,13 +7,13 @@ $addon = rex_addon::get('wenns_sein_muss');
 $form = rex_config_form::factory($addon->getName());
 
 $field = $form->addSelectField('auto_lang', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("wsm_config_auto_lang_label");
+$field->setLabel(rex_i18n::msg("wsm_config_auto_lang_label"));
 $select = $field->getSelect();
 $select->addOption('ja', '1');
 $select->addOption('nein', '0');
 
 $field = $form->addSelectField('iframemanager', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("wsm_config_iframemanager_label");
+$field->setLabel(rex_i18n::msg("wsm_config_iframemanager_label"));
 $select = $field->getSelect();
 $select->addOption('aktiviert', '1');
 $select->addOption('deaktiviert', '0');

@@ -45,10 +45,10 @@ class wsm_lang
         }
 
         /* Einwilligungs-Protokoll darstellen */
-        $sections[] = ['title' => wsm::getConfigText('settings_modal_block_consent_title'), 'description' => '<p>consent id: <span id="consent-id">-</span></p><p>consent date: <span id="consent-timestamp">-</span></p><p>last update: <span id="last-consent-timestamp">-</span></p>'];
+        $sections[] = ['title' => wsm::getConfigText('consent_settings_block_consent_title'), 'description' => '<p>consent id: <span id="consent-id">-</span></p><p>consent date: <span id="consent-timestamp">-</span></p><p>last update: <span id="last-consent-timestamp">-</span></p>'];
 
         /* Allgemeine Infos */
-        $sections[] = ['title' => wsm::getConfigText('settings_modal_block_more_title'), 'description' => wsm::getConfigText('settings_modal_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
+        $sections[] = ['title' => wsm::getConfigText('consent_settings_block_more_title'), 'description' => wsm::getConfigText('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
 
         $return['preferencesModal']['sections'] = $sections;
         
@@ -65,10 +65,10 @@ class wsm_lang
         $consentModal["label"] = wsm::getConfigText('consent_modal_lable');
         $consentModal["title"] = wsm::getConfigText('consent_modal_title');
         $consentModal["description"] = wsm::getConfigText('consent_modal_description');
-        $consentModal["acceptAllBtn"] = wsm::getConfigText('consent_modal_primary_btn');
-        $consentModal["closeIconLabel"] = wsm::getConfigText('settings_modal_close_btn_label');
-        $consentModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_modal_secondary_btn');
-        $consentModal["showPreferencesBtn"] = wsm::getConfigText('consent_modal_primary_btn');
+        $consentModal["acceptAllBtn"] = wsm::getConfigText('consent_modal_accept_all');
+        $consentModal["closeIconLabel"] = wsm::getConfigText('consent_modal_close_btn_label');
+        $consentModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_modal_accept_necessary');
+        $consentModal["showPreferencesBtn"] = wsm::getConfigText('consent_modal_settings');
         $consentModal["footer"] = "<a href=\"#link\">Privacy Policy</a><a href=\"#link\">Terms and conditions</a>";
 
         return $consentModal;
@@ -76,12 +76,12 @@ class wsm_lang
     private static function getPreferencesModal()
     {
         $preferencesModal = [];
-        $preferencesModal["title"] = wsm::getConfigText('settings_modal_title');
-        $preferencesModal["acceptAllBtn"] = wsm::getConfigText('settings_modal_accept_all_btn') ;
-        $preferencesModal["acceptNecessaryBtn"] = wsm::getConfigText('settings_modal_reject_all_btn');
-        $preferencesModal["savePreferencesBtn"] = wsm::getConfigText('settings_modal_save_settigns_btn');
-        $preferencesModal["closeIconLabel"] = wsm::getConfigText('settings_modal_close_btn');
-        $preferencesModal["serviceCounterLabel"] = wsm::getConfigText('settings_modal_service_counter_label');
+        $preferencesModal["title"] = wsm::getConfigText('consent_settings_title');
+        $preferencesModal["acceptAllBtn"] = wsm::getConfigText('consent_settings_accept_all_btn') ;
+        $preferencesModal["acceptNecessaryBtn"] = wsm::getConfigText('consent_settings_reject_all_btn');
+        $preferencesModal["savePreferencesBtn"] = wsm::getConfigText('consent_settings_save_settigns_btn');
+        $preferencesModal["closeIconLabel"] = wsm::getConfigText('consent_settings_close_btn');
+        $preferencesModal["serviceCounterLabel"] = wsm::getConfigText('consent_settings_service_counter_label');
 
         return $preferencesModal;
     }

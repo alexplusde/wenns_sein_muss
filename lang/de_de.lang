@@ -63,27 +63,46 @@ wsm_iframe_key = Schlüssel
 wsm_iframe_thumbnail_url = Vorschau-URL (deprecated)
 wsm_iframe_embed_url = Embed-URL
 
-# Labels Einstellungen
-wenns_sein_muss_demo = Demo-Daten importieren
-wenns_sein_muss_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
-wenns_sein_muss_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!
+# Einstellungsseite Basics
+
+wsm_config_auto_lang_label = Sprache automatisch erkennen
+wsm_config_iframemanager_label =  Iframe Manager aktivieren
+
+# Einstellungsseite Layout
+
+consent_modal_layout = Layout (kleines Overlay)
+consent_modal_position = Position
+consent_modal_swap_buttons = Button-Reihenfolge umgekehren
+
+consent_settings_layout = Layout (Erweiterte Einstellungen)
+disable_page_interaction = Auswahl erzwingen?
+
+# Einstellungsseite Texte
+
+consent_modal = Kleines Overlay (Modal)
 
 consent_modal_title = Titel
 consent_modal_description = Einleitung
-consent_modal_primary_btn = Alle zulassen
-consent_modal_secondary_btn = Alle ablehnen
+consent_modal_settings = Einstellungen
+consent_modal_accept_all = Alle zulassen
+consent_modal_accept_necessary = Nur notwendige zulassen
+consent_modal_open = Modal öffnen
 
-settings_modal_title = Titel
-settings_modal_save_settigns_btn = Auswahl speichern
-settings_modal_accept_all_btn = Alle zulassen
-settings_modal_reject_all_btn = Alle ablehnen
-settings_modal_close_btn_label = Schließen
-settings_modal_cookie_table_headers_col1 = Name
-settings_modal_cookie_table_headers_col2 = Domain
-settings_modal_cookie_table_headers_col3 = Ablaufdatum
-settings_modal_cookie_table_headers_col4 = Beschreibung
-settings_modal_block_more_title = Titel
-settings_modal_block_more_description = Beschreibung
+consent_settings = Einstellungs-Dialog
+
+consent_settings_title = Titel
+consent_settings_save_settigns_btn = Auswahl speichern
+consent_settings_accept_all_btn = Alle zulassen
+consent_settings_reject_all_btn = Alle ablehnen
+consent_settings_close_btn_label = Schließen
+consent_settings_cookie_table_headers_col1 = Name
+consent_settings_cookie_table_headers_col2 = Domain
+consent_settings_cookie_table_headers_col3 = Ablaufdatum
+consent_settings_cookie_table_headers_col4 = Beschreibung
+consent_settings_block_more_title = Titel
+consent_settings_block_more_description = Beschreibung
+
+# Einstellungsseite Iframe Manager
 
 iframe_notice = Hinweistext
 iframe_load_btn = Dieses Mal erlauben
@@ -96,3 +115,10 @@ consent_info_datestamp = Einwilligungsdatum
 consent_info_open_settings = Einstellungen öffnen
 consent_info_open_modal = Hinweis öffnen
 consent_info_unknown = Noch keine Einwilligung erteilt
+
+# Einstellungsseite Demo-Import
+
+wenns_sein_muss_demo_import = Demo-Daten imporiteren (ohne jegliche Gewähr, projektspezifische Anpassungen müssen von Betreiber und Entwickler gemeinsam vorgenommen werden.)
+wenns_sein_muss_demo = Demo-Daten importieren
+wenns_sein_muss_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
+wenns_sein_muss_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!

@@ -1,13 +1,12 @@
 <?php
-
-echo rex_view::title(rex_i18n::msg('wenns_sein_muss_title'));
-
 $addon = rex_addon::get('wenns_sein_muss');
+
+echo rex_view::title($addon->i18n('wenns_sein_muss_title'));
 
 $form = rex_config_form::factory($addon->getName());
 
 $field = $form->addSelectField('consent_modal_layout', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("consent_modal_layout");
+$field->setLabel($addon->i18n("consent_modal_layout"));
 $select = $field->getSelect();
 $select->addOption('cloud', 'cloud');
 $select->addOption('box', 'box');
@@ -15,7 +14,7 @@ $select->addOption('bar', 'bar');
 
 
 $field = $form->addSelectField('consent_modal_position', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("consent_modal_position");
+$field->setLabel($addon->i18n("consent_modal_position"));
 $select = $field->getSelect();
 $select->addOption('bottom left', 'bottom left');
 $select->addOption('bottom middle', 'bottom middle');
@@ -29,19 +28,19 @@ $select->addOption('top right', 'top right');
 
 
 $field = $form->addSelectField('consent_modal_swap_buttons', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("consent_modal_swap_buttons");
+$field->setLabel($addon->i18n("consent_modal_swap_buttons"));
 $select = $field->getSelect();
 $select->addOption('invert buttons', true);
 $select->addOption('do not invert buttons', false);
 
-$field = $form->addSelectField('settings_modal_layout', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("settings_modal_layout");
+$field = $form->addSelectField('consent_settings_layout', null, ['class'=>'form-control selectpicker']);
+$field->setLabel($addon->i18n("consent_settings_layout"));
 $select = $field->getSelect();
 $select->addOption('box', 'box');
 $select->addOption('bar', 'bar');
 
 $field = $form->addSelectField('disable_page_interaction', null, ['class'=>'form-control selectpicker']);
-$field->setLabel("disable_page_interaction");
+$field->setLabel($addon->i18n("disable_page_interaction"));
 $select = $field->getSelect();
 $select->addOption('disable page interaction', '1');
 $select->addOption('enable page interaction', '0');

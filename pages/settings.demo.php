@@ -16,7 +16,7 @@ if ($func !== '') {
     }
 }
 $content = "";
-$content .= '<p>'.rex_i18n::msg('Demo-Daten imporiteren (aktuell wirklich nicht gedacht für die Verwendung!)').'</p>';
+$content .= '<p>'.rex_i18n::msg('wenns_sein_muss_demo_import').'</p>';
 $content .= '<p><a class="btn btn-primary" href="'.rex_url::currentBackendPage(['func' => 'setup'] + $csrf->getUrlParams()).'" data-confirm="'.rex_i18n::msg('wenns_sein_muss_demo_warning').'">'.rex_i18n::msg('wenns_sein_muss_demo').'</a></p>';
 
 $fragment = new rex_fragment();

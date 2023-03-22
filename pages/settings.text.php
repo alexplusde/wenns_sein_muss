@@ -1,79 +1,85 @@
 <?php
-
-echo rex_view::title(rex_i18n::msg('wenns_sein_muss_title'));
-
 $addon = rex_addon::get('wenns_sein_muss');
+
+echo rex_view::title($addon->i18n('wenns_sein_muss_title'));
+
 
 $form = rex_config_form::factory($addon->getName());
 
-$form->addFieldset('Modal');
+$form->addFieldset($addon->i18n('consent_modal'));
 
 $field = $form->addInputField('text', 'consent_modal_title', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_modal_title'));
+$field->setLabel($addon->i18n('consent_modal_title'));
 
 $field = $form->addInputField('text', 'consent_modal_description', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_modal_description'));
+$field->setLabel($addon->i18n('consent_modal_description'));
 
-$field = $form->addInputField('text', 'consent_modal_primary_btn', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_modal_primary_btn'));
+$field = $form->addInputField('text', 'consent_modal_settings', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_modal_settings'));
 
-$field = $form->addInputField('text', 'consent_modal_secondary_btn', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_modal_secondary_btn'));
+$field = $form->addInputField('text', 'consent_modal_accept_all', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_modal_accept_all'));
 
-$form->addFieldset('Einstellungs-Dialog');
+$field = $form->addInputField('text', 'consent_modal_accept_necessary', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_modal_accept_necessary'));
 
-$field = $form->addInputField('text', 'settings_modal_title', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_title'));
+$field = $form->addInputField('text', 'consent_modal_open', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_modal_open'));
 
-$field = $form->addInputField('text', 'settings_modal_save_settigns_btn', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_save_settigns_btn'));
+$form->addFieldset($addon->i18n('consent_settings'));
 
-$field = $form->addInputField('text', 'settings_modal_accept_all_btn', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_accept_all_btn'));
+$field = $form->addInputField('text', 'consent_settings_title', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_title'));
 
-$field = $form->addInputField('text', 'settings_modal_reject_all_btn', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_reject_all_btn'));
+$field = $form->addInputField('text', 'consent_settings_save_settigns_btn', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_save_settigns_btn'));
 
-$field = $form->addInputField('text', 'settings_modal_close_btn_label', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_close_btn_label'));
+$field = $form->addInputField('text', 'consent_settings_accept_all_btn', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_accept_all_btn'));
 
-$field = $form->addInputField('text', 'settings_modal_cookie_table_headers_col1', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_cookie_table_headers_col1'));
-$field = $form->addInputField('text', 'settings_modal_cookie_table_headers_col2', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_cookie_table_headers_col2'));
-$field = $form->addInputField('text', 'settings_modal_cookie_table_headers_col3', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_cookie_table_headers_col3'));
-$field = $form->addInputField('text', 'settings_modal_cookie_table_headers_col4', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_cookie_table_headers_col4'));
+$field = $form->addInputField('text', 'consent_settings_reject_all_btn', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_reject_all_btn'));
+
+$field = $form->addInputField('text', 'consent_settings_close_btn_label', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_close_btn_label'));
+
+$field = $form->addInputField('text', 'consent_settings_cookie_table_headers_col1', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_cookie_table_headers_col1'));
+$field = $form->addInputField('text', 'consent_settings_cookie_table_headers_col2', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_cookie_table_headers_col2'));
+$field = $form->addInputField('text', 'consent_settings_cookie_table_headers_col3', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_cookie_table_headers_col3'));
+$field = $form->addInputField('text', 'consent_settings_cookie_table_headers_col4', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_cookie_table_headers_col4'));
 
 $form->addFieldset('Weitere Informationen');
 
-$field = $form->addInputField('text', 'settings_modal_block_more_title', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_block_more_title'));
+$field = $form->addInputField('text', 'consent_settings_block_more_title', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_block_more_title'));
 
-$field = $form->addInputField('text', 'settings_modal_block_more_description', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('settings_modal_block_more_description'));
+$field = $form->addInputField('text', 'consent_settings_block_more_description', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_settings_block_more_description'));
 
 $form->addFieldset('Einwilligungs-Protokoll');
 
 $field = $form->addInputField('text', 'consent_info_domain', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_info_domain'));
+$field->setLabel($addon->i18n('consent_info_domain'));
 
 $field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_info_consented'));
+$field->setLabel($addon->i18n('consent_info_consented'));
 
 $field = $form->addInputField('text', 'consent_info_uuid', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_info_uuid'));
+$field->setLabel($addon->i18n('consent_info_uuid'));
 
 $field = $form->addInputField('text', 'consent_info_datestamp', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_info_datestamp'));
+$field->setLabel($addon->i18n('consent_info_datestamp'));
 
 
 $field = $form->addInputField('text', 'consent_info_open_settings', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_info_open_settings'));
+$field->setLabel($addon->i18n('consent_info_open_settings'));
 
 $field = $form->addInputField('text', 'consent_info_unknown', $value = null, ["class" => "form-control"]);
-$field->setLabel(rex_i18n::msg('consent_info_unknown'));
+$field->setLabel($addon->i18n('consent_info_unknown'));
 
 
 

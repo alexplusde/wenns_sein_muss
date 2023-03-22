@@ -40,7 +40,7 @@ class wsm
         }
 
         
-        $sections[] = ['title' => wsm::getConfig('settings_modal_block_more_title'), 'description' => wsm::getConfig('settings_modal_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
+        $sections[] = ['title' => wsm::getConfig('consent_settings_block_more_title'), 'description' => wsm::getConfig('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
 
         return $return;
     }
@@ -60,10 +60,10 @@ class wsm
             $iframe = $service->getRelatedDataset('iframe');
            
             $s['embedUrl'] = $iframe->getValue('embedUrl');
-            $s['thumbnail'] = urldecode(rex_getUrl(null, null, array ('rex-api-call' => "wsm_iframe", 'service' => rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
+            $s['thumbnail'] = urldecode(rex_getUrl(null, null, array('rex-api-call' => "wsm_iframe", 'service' => rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
 //            $s['iframe'] = $iframe->getValue('attributes');
             $s['languages'][rex_clang::getCurrent()->getCode()]['notice'] = 'This content is hosted by a third party. By showing the external content you accept the <a rel="noreferrer noopener" href="https://www.youtube.com/t/terms" target="_blank">terms and conditions</a> of youtube.com.';
-            $s['languages'][rex_clang::getCurrent()->getCode()]['loadAllBtn'] = wsm::getConfig('settings_modal_accept_all_btn');
+            $s['languages'][rex_clang::getCurrent()->getCode()]['loadAllBtn'] = wsm::getConfig('consent_settings_accept_all_btn');
             
             $return[rex_string::normalize($service->getValue('service'))] = $s;
         }
