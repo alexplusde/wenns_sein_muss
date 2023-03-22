@@ -109,19 +109,19 @@ consent_open = Buttons zum nachträglichen Öffnen der Dialoge
 consent_modal_open = Modal öffnen
 consent_settings_open = Einstellungen öffnen
 
+consent_info_domain = Einwilligungs-Protokoll
+consent_info_uuid = Ihre Einwilligungs-ID
+consent_info_datestamp = Eingewilligt am...
+consent_info_update_datestamp = Einwilligung zuletzt erneuert am...
+consent_info_unknown = Noch keine Einwilligung erteilt
+consent_info_more = Weitere Informationen
+
 # Einstellungsseite Iframe Manager
 
 iframe_notice = Hinweistext
+iframe_notice_more = Weitere Informationen
 iframe_load_btn = Dieses Mal erlauben
 iframe_load_all_btn = Grundsätzlich erlauben
-
-consent_info_domain = Ihre Einwilligung trifft auf die folgenden Domains zu
-consent_info_consented = Ihr aktueller Zustand
-consent_info_uuid = Ihre Einwilligungs-ID
-consent_info_datestamp = Einwilligungsdatum
-consent_info_open_settings = Einstellungen öffnen
-consent_info_open_modal = Hinweis öffnen
-consent_info_unknown = Noch keine Einwilligung erteilt
 
 # Einstellungsseite Demo-Import
 

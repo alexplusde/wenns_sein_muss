@@ -51,6 +51,10 @@ $field->setLabel($addon->i18n('consent_settings_cookie_table_headers_col3'));
 $field = $form->addInputField('text', 'consent_settings_cookie_table_headers_col4', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_settings_cookie_table_headers_col4'));
 
+$field = $form->addInputField('text', 'consent_info_more', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_info_more'));
+
+
 $form->addFieldset($addon->i18n('consent_open'));
 
 $field = $form->addInputField('text', 'consent_modal_open', $value = null, ["class" => "form-control"]);
@@ -59,27 +63,19 @@ $field->setLabel($addon->i18n('consent_modal_open'));
 $field = $form->addInputField('text', 'consent_settings_open', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_settings_open'));
 
-$form->addFieldset('Weitere Informationen');
-
-$field = $form->addInputField('text', 'consent_settings_block_more_title', $value = null, ["class" => "form-control"]);
-$field->setLabel($addon->i18n('consent_settings_block_more_title'));
-
-$field = $form->addInputField('text', 'consent_settings_block_more_description', $value = null, ["class" => "form-control"]);
-$field->setLabel($addon->i18n('consent_settings_block_more_description'));
-
 $form->addFieldset('Einwilligungs-Protokoll');
 
 $field = $form->addInputField('text', 'consent_info_domain', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_info_domain'));
-
-$field = $form->addInputField('text', 'consent_info_consented', $value = null, ["class" => "form-control"]);
-$field->setLabel($addon->i18n('consent_info_consented'));
 
 $field = $form->addInputField('text', 'consent_info_uuid', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_info_uuid'));
 
 $field = $form->addInputField('text', 'consent_info_datestamp', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_info_datestamp'));
+
+$field = $form->addInputField('text', 'consent_info_update_datestamp', $value = null, ["class" => "form-control"]);
+$field->setLabel($addon->i18n('consent_info_update_datestamp'));
 
 $field = $form->addInputField('text', 'consent_info_unknown', $value = null, ["class" => "form-control"]);
 $field->setLabel($addon->i18n('consent_info_unknown'));

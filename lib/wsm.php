@@ -20,12 +20,17 @@ class wsm
         $groups =  wsm_group::query()->find();
 
         foreach ($groups as $group) {
+            $services = wsm_service::findServices($group->getId());
+
+            if (count($services) == 0) {
+                continue;
+            }
+
             $g = [];
             $g["title"] = $group->getTitle();
             $g["description"] = $group->getDescription();
             $g["linked_category"] = $group->getName();
 
-            $services = wsm_service::findServices($group->getId());
 
             foreach ($services as $service) {
                 $entries = wsm_entry::findEntriesArray($service->getId());
@@ -40,7 +45,7 @@ class wsm
         }
 
         
-        $sections[] = ['title' => wsm::getConfig('consent_settings_block_more_title'), 'description' => wsm::getConfig('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
+        $sections[] = ['title' => wsm::getConfigText('consent_settings_block_more_title'), 'description' => wsm::getConfigText('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
 
         return $return;
     }
@@ -61,9 +66,10 @@ class wsm
            
             $s['embedUrl'] = $iframe->getValue('embedUrl');
             $s['thumbnail'] = urldecode(rex_getUrl(null, null, array('rex-api-call' => "wsm_iframe", 'service' => rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
-//            $s['iframe'] = $iframe->getValue('attributes');
-            $s['languages'][rex_clang::getCurrent()->getCode()]['notice'] = 'This content is hosted by a third party. By showing the external content you accept the <a rel="noreferrer noopener" href="https://www.youtube.com/t/terms" target="_blank">terms and conditions</a> of youtube.com.';
-            $s['languages'][rex_clang::getCurrent()->getCode()]['loadAllBtn'] = wsm::getConfig('consent_settings_accept_all_btn');
+//          $s['iframe'] = $iframe->getValue('attributes');
+            $s['languages'][rex_clang::getCurrent()->getCode()]['notice'] = rex_formatter::sprintf($service->getCompanyName(), wsm::getConfigText('iframe_notice')) .' <a rel="noreferrer noopener" href="'.$service->getValue('privacy_policy_url').'" target="_blank">'.wsm::getConfigText('iframe_notice_more').'</a>';
+            $s['languages'][rex_clang::getCurrent()->getCode()]['loadBtn'] = wsm::getConfigText('iframe_load_btn');
+            $s['languages'][rex_clang::getCurrent()->getCode()]['loadAllBtn'] = wsm::getConfigText('iframe_load_all_btn');
             
             $return[rex_string::normalize($service->getValue('service'))] = $s;
         }
@@ -95,6 +101,7 @@ class wsm
             foreach ($services as $service) {
                 $s = [];
                 $s['label'] = $service->getService();
+                /* <BEGIN JS> <END_JS> wird ersetzt, um aus dem zurückgegebenen String eine Funktion in JS zu machen */
                 $s['onAccept'] = "<BEGIN_JS> () => wsm_im.acceptService('".rex_string::normalize($service->getService())."') <END_JS>";
                 $s['onReject'] = "<BEGIN_JS> () => wsm_im.rejectService('".rex_string::normalize($service->getService())."') <END_JS>";
 
@@ -160,28 +167,14 @@ class wsm
     {
         $text = wsm::getConfig($key);
 
-        if ($text === null) {
-            return "missing config for key <code>". $key . "</code>";
-        }
-
         if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
-            return sprogdown($text);
+            return sprogdown($key);
         }
         
-        return $text;
-    }
-    public static function getTranslatedText(string $key) :string
-    {
-        $text = wsm::getConfig($key);
-
         if ($text === null) {
-            return "missing translation for key <code>". $key . "</code>";
+            return "missing text for key <code>". $key . "</code>";
         }
 
-        if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
-            return sprogdown($text);
-        }
-        
         return $text;
     }
 }

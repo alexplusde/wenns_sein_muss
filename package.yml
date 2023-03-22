@@ -105,17 +105,14 @@ default_config:
     consent_settings_cookie_table_headers_col3: Ablauffrist
     consent_settings_cookie_table_headers_col4: Beschreibung
 
-    consent_settings_block_consent_title: Einwilligungs-Protokoll
-    consent_settings_block_more_title: Weitere Informationen
-    consent_settings_block_more_description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#yourcontactpage">contact us</a>'
+    consent_info_domain: Einwilligungs-Protokoll
+    consent_info_uuid: Ihre Einwilligungs-ID (für Rückfragen)
+    consent_info_datestamp: Eingewilligt am...
+    consent_info_update_datestamp: Einwilligung zuletzt erneuert am...
+    consent_info_more: Weitere Informationen
 
     # settings page: iframe
-    iframe_notice: Html <b>notice</b> message
+    iframe_notice: Diese Inhalte werden von %s zur Verfügung gestellt. Es gelten die Nutzungsbedingungen und Datenschutzbestimmungen des Anbieters.
+    iframe_notice_more: Weitere Informationen
     iframe_load_btn: Diesmal anzeigen
     iframe_load_all_btn: Immer anzeigen
-
-    # consent_info_domain: Ihre Einwilligung trifft auf die folgenden Domains zu
-    # consent_info_consented: Ihre aktuell gewählten Einstellungen
-    # consent_info_uuid: Ihre Einwilligungs-ID (für Rückfragen)
-    # consent_info_datestamp: Eingewilligt am...
-    # consent_info_open_settings: Einstellungen öffnen

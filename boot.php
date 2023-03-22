@@ -125,5 +125,31 @@ if (rex::isBackend()) {
                 }
             );
         }
+        if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_domain") {
+            $list = $ep->getSubject();
+
+            $list->setColumnFormat(
+                'imprint_id',
+                'custom',
+                function ($a) {
+                    $id = $a['list']->getValue('imprint_id');
+                    if ($id && rex_article::get($id)) {
+                        return rex_article::get($id)->getName().'<br><small>'. rex_article::get($id)->getUrl().'</small>';
+                    }
+                    return "❌";
+                }
+            );
+            $list->setColumnFormat(
+                'privacy_policy_id',
+                'custom',
+                function ($a) {
+                    $id = $a['list']->getValue('privacy_policy_id');
+                    if ($id && rex_article::get($id)) {
+                        return rex_article::get($id)->getName().'<br><small>'. rex_article::get($id)->getUrl().'</small>';
+                    }
+                    return "❌";
+                }
+            );
+        }
     });
 }

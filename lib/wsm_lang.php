@@ -14,7 +14,6 @@ class wsm_lang
 
         /* Intro */
 
-        $sections[0]['title'] = wsm::getConfigText('consent_modal_title');
         $sections[0]['description'] = wsm::getConfigText('consent_modal_description');
 
         /* Gruppen, Drittanbieter und ihre Einträge */
@@ -28,7 +27,7 @@ class wsm_lang
             $g["linkedCategory"] = $group->getName();
 
             $services = wsm_service::findServices($group->getId());
-
+            
             foreach ($services as $service) {
                 $entries = wsm_entry::findEntriesArray($service->getId());
 
@@ -45,10 +44,24 @@ class wsm_lang
         }
 
         /* Einwilligungs-Protokoll darstellen */
-        $sections[] = ['title' => wsm::getConfigText('consent_settings_block_consent_title'), 'description' => '<p>consent id: <span id="consent-id">-</span></p><p>consent date: <span id="consent-timestamp">-</span></p><p>last update: <span id="last-consent-timestamp">-</span></p>'];
 
-        /* Allgemeine Infos */
-        $sections[] = ['title' => wsm::getConfigText('consent_settings_block_more_title'), 'description' => wsm::getConfigText('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
+        
+        $domain = wsm_domain::getCurrent();
+
+        if ($domain) {
+            $privacy_policy = $domain->getPrivacyPolicyArticle();
+            $imprint = $domain->getImprintArticle();
+        } else {
+            $privacy_policy = rex_article::get(wsm::getConfigText("wsm_domain_imprint_id"));
+            $imprint = rex_article::get(wsm::getConfigText("wsm_domain_privacy_policy_id"));
+        }
+
+        $sections[] = ['title' => wsm::getConfigText('consent_info_domain'), 'description' => '
+        <p>'.wsm::getConfigText('consent_info_uuid').': <span id="consent-id">'.wsm::getConfigText('consent_info_unknown').'</span></p>
+        <p>'.wsm::getConfigText('consent_info_datestamp').': <span id="consent-timestamp"></span></p>
+        <p>'.wsm::getConfigText('consent_info_update_datestamp').': <span id="last-consent-timestamp"></span></p>
+        <p>'.wsm::getConfigText('consent_info_more').': <a href="'.$privacy_policy->getUrl().'">'.$privacy_policy->getName().'</a>
+            <a href="'.$imprint->getUrl().'">'.$imprint->getName().'</a></p>'];
 
         $return['preferencesModal']['sections'] = $sections;
         
