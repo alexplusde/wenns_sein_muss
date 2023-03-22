@@ -5,6 +5,7 @@ wenns_sein_muss_config = Einstellungen
 wenns_sein_muss_settings = Einstellungen
 wenns_sein_muss_docs = Hilfe
 wenns_sein_muss_service = Drittanbieter
+wenns_sein_muss_iframe = Iframe-Manager
 wenns_sein_muss_group = Gruppen
 wenns_sein_muss_protocol = Einwilligungs-Protokoll
 wenns_sein_muss_domain = Impressum und Datenschutz
@@ -60,9 +61,8 @@ wsm_domain_imprint_id = Impressum
 wsm_domain_privacy_policy_id = Datenschutzerklärung
 
 wsm_iframe_key = Schlüssel
-wsm_iframe_thumbnail_url = Vorschau-URL (deprecated)
 wsm_iframe_embed_url = Embed-URL
-
+wsm_iframe_attributes = Attribute
 # Einstellungsseite Basics
 
 wsm_config_auto_lang_label = Sprache automatisch erkennen

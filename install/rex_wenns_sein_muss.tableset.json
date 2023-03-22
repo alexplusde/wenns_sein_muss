@@ -160,7 +160,7 @@
             "notice": "Ausf\u00fcllen, wenn es sich um einen externen Dienst handelt, dessen Inhalte auch innerhalb der Website eingewilligt und nachgeladen werden sollen.",
             "size": "",
             "table": "rex_wenns_sein_muss_iframe",
-            "field": "",
+            "field": "key",
             "type": "2",
             "empty_value": "",
             "empty_option": "1",
@@ -840,23 +840,6 @@
             "prepend": ""
         }, {
             "table_name": "rex_wenns_sein_muss_iframe",
-            "prio": 2,
-            "type_id": "value",
-            "type_name": "text",
-            "db_type": "varchar(191)",
-            "list_hidden": 0,
-            "search": 0,
-            "name": "thumbnailUrl",
-            "label": "translate:wsm_iframe_thumbnail_url",
-            "not_required": "",
-            "attributes": "{\"type\":\"url\"}",
-            "default": "",
-            "no_db": "0",
-            "notice": "z.B. <code>https:\/\/i3.ytimg.com\/vi\/{data-id}\/hqdefault.jpg<\/code>",
-            "append": "",
-            "prepend": ""
-        }, {
-            "table_name": "rex_wenns_sein_muss_iframe",
             "prio": 3,
             "type_id": "value",
             "type_name": "text",
@@ -872,20 +855,6 @@
             "notice": "z.B. <code>https:\/\/www.youtube-nocookie.com\/embed\/{data-id}<\/code>",
             "append": "",
             "prepend": ""
-        }, {
-            "table_name": "rex_wenns_sein_muss_iframe",
-            "prio": 4,
-            "type_id": "value",
-            "type_name": "be_table",
-            "db_type": "text",
-            "list_hidden": 1,
-            "search": 0,
-            "name": "attributes",
-            "label": "translate:wsm_iframe_attributes",
-            "not_required": "",
-            "no_db": "0",
-            "notice": "z.B. <code>allow<\/code>: <code>accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen;<\/code>",
-            "columns": "Attribute,Werte"
         }]
     }
 }

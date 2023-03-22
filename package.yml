@@ -28,6 +28,10 @@ pages:
                 title: translate:wenns_sein_muss_group
                 icon: rex-icon fa-asterisk
                 perm: admin
+            iframemanager:
+                title: translate:wenns_sein_muss_iframe
+                icon: rex-icon fa-play-circle-o
+                perm: admin
             protocol:
                 title: translate:wenns_sein_muss_protocol
                 icon: rex-icon fa-user
@@ -72,7 +76,6 @@ default_config:
     #settings page: basic
     revision: 0
     auto_lang: 1
-    force_consent: 1
     iframemanager: 1
     disable_page_interaction: 0
 
