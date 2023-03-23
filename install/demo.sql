@@ -7,6 +7,11 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+TRUNCATE `rex_wenns_sein_muss_domain`;
+INSERT INTO `rex_wenns_sein_muss_domain` (`id`, `domain_id`, `privacy_policy_id`, `imprint_id`) VALUES
+(1,	'0',	'5',	'4'),
+(2,	'0',	'5',	'4');
+
 TRUNCATE `rex_wenns_sein_muss_entry`;
 INSERT INTO `rex_wenns_sein_muss_entry` (`id`, `type`, `name`, `duration`, `description`, `service_id`) VALUES
 (1,	'cookie',	'_ga',	'1 Tag',	'Beispiel-Beschreibung',	17),
@@ -29,11 +34,9 @@ INSERT INTO `rex_wenns_sein_muss_group` (`id`, `prio`, `name`, `title`, `descrip
 (5,	5,	'unknown',	'Nicht klassifiziert',	'Nicht klassifizierte Cookies und ähnliche Technologien versuchen wir aktuell zu klassifizieren und warten auf Informationen der Drittanbieter, die diese verwenden und darüber Auskunft geben können.',	0,	0);
 
 TRUNCATE `rex_wenns_sein_muss_iframe`;
-INSERT INTO `rex_wenns_sein_muss_iframe` (`id`, `key`, `embedUrl`, `attributes`, `thumbnailUrl`) VALUES
-(5,	'youtube',	'https://www.youtube-nocookie.com/embed/{data-id}',	'[[\"allow\",\"accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen;\"]]',	'https://i3.ytimg.com/vi/{data-id}/hqdefault.jpg'),
-(6,	'vimeo',	'https://player.vimeo.com/video/{data-id}',	'[[\"allow\",\"fullscreen; picture-in-picture;\"]]',	'https://vimeo.com/api/v2/video/${dataId}.json');
-
-TRUNCATE `rex_wenns_sein_muss_protocol`;
+INSERT INTO `rex_wenns_sein_muss_iframe` (`id`, `key`, `embedUrl`) VALUES
+(5,	'youtube',	'https://www.youtube-nocookie.com/embed/{data-id}'),
+(6,	'vimeo',	'https://player.vimeo.com/video/{data-id}');
 
 TRUNCATE `rex_wenns_sein_muss_service`;
 INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_name`, `company_address`, `privacy_policy_url`, `iframe`, `rex_domain`, `script`, `updatedate`) VALUES
@@ -59,4 +62,4 @@ INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_na
 (26,	2,	'Instagram',	'Meta Platforms Ireland Limited',	'4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland',	'https://instagram.com/about/legal/privacy/',	0,	'',	'',	'2022-12-17 15:13:00'),
 (27,	2,	'Twitter',	'Twitter International Company',	'One Cumberland Place, Fenian Street, Dublin 2, D02 AX07, Irland',	'https://twitter.com/de/privacy',	0,	'',	'',	'2022-12-17 15:13:00');
 
--- 2023-03-22 23:32:40
+-- 2023-03-23 00:01:04
