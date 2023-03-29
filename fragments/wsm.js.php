@@ -28,6 +28,7 @@
 
 		wsm_cc.run({
 			revision: <?= wsm::getRevisionNumber(); ?> ,
+			page_scripts: true,
 			/* 		autoShow: false, */
 			disablePageInteraction: <?= wsm::getConfig('disable_page_interaction') ?? "false" ?> ,
 
