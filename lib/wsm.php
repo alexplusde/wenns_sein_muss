@@ -121,7 +121,7 @@ class wsm
 
     /* Erhöhe mit jeder Änderung an Drittanbieter-Einstellungen die Revisionsnummer, um die Einwilligung erneut einzuholen */
 
-    public static function getRevisionNumber() :int
+    public static function getRevisionNumber()
     {
         return self::getConfig('revision');
     }
@@ -168,9 +168,11 @@ class wsm
         $text = wsm::getConfig($key);
 
         if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
-            return sprogdown($key);
+            if ($key !== sprogdown($key)) {
+                $text = sprogdown($key);
+            }
         }
-        
+                
         if ($text === null) {
             return "missing text for key <code>". $key . "</code>";
         }
