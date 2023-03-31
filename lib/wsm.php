@@ -166,13 +166,13 @@ class wsm
     public static function getConfigText(string $key) :string
     {
         $text = wsm::getConfig($key);
-
+/*
         if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
-            if ($key !== sprogdown($key)) {
+            if ($key != sprogdown($key)) {
                 $text = sprogdown($key);
             }
         }
-                
+  */              
         if ($text === null) {
             return "missing text for key <code>". $key . "</code>";
         }
