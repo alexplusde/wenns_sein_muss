@@ -1,14 +1,14 @@
 package: wenns_sein_muss
-version: '4.0.0'
+version: '4.0.1'
 author: 'Alexander Walther'
 supportpage: https://github.com/alexplusde/wenns_sein_muss
 
 requires:
     php:
         version: '^8'
-    redaxo: ^5.13
+    redaxo: ^5.14
     packages:
-        yform: "^4"
+        yform: "^4.1"
 
 page:
     title: translate:wenns_sein_muss_title
