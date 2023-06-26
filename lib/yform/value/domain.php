@@ -11,7 +11,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
             foreach ($domains_sql as $domain) {
                 $domains[$domain['id']] = $domain['domain'];
             }
-        };
+        }
         return $domains;
     }
     public function enterObject() :void
