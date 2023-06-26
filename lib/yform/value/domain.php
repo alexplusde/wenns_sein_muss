@@ -84,7 +84,6 @@ class rex_yform_value_domain extends rex_yform_value_abstract
     {
         $return = [];
 
-        $new_select = new self();
         $values = self::domains();
 
         foreach (explode(',', $params['value']) as $k) {
