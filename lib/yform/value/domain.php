@@ -121,8 +121,6 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $self = new self();
         $values = $self->getArrayFromString($params['value']);
 
-        $multiple = true;
-
         $where = [];
         foreach ($values as $value) {
             switch ($value) {
@@ -133,12 +131,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
                     $where[] = ' ' . $sql->escapeIdentifier($field) . ' != ""';
                     break;
                 default:
-                    if ($multiple) {
-                        $where[] = ' ( FIND_IN_SET( ' . $sql->escape($value) . ', ' . $sql->escapeIdentifier($field) . ') )';
-                    } else {
-                        $where[] = ' ( ' . $sql->escape($value) . ' = ' . $sql->escapeIdentifier($field) . ' )';
-                    }
-
+                    $where[] = ' ( FIND_IN_SET( ' . $sql->escape($value) . ', ' . $sql->escapeIdentifier($field) . ') )';
                     break;
             }
         }
