@@ -99,11 +99,6 @@ class rex_yform_value_domain extends rex_yform_value_abstract
     public static function getSearchField(array $params) :void
     {
         $options = self::domains();
-        $options['(empty)'] = '(empty)';
-        $options['!(empty)'] = '!(empty)';
-
-        $new_select = new self();
-        $options = self::domains();
 
         $params['searchForm']->setValueField(
             'select',
