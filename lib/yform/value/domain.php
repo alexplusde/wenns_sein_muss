@@ -51,7 +51,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $this->setValue(implode(',', $this->getValue()));
 
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
-        $this->params['value_pool']['email'][$this->getName() . '_NAME'] = isset($options[$this->getValue()]) ? $options[$this->getValue()] : null;
+        $this->params['value_pool']['email'][$this->getName() . '_NAME'] = $options[$this->getValue()] ?? null;
 
         if ($this->saveInDB()) {
             $this->params['value_pool']['sql'][$this->getName()] = $this->getValue();
