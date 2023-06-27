@@ -11,7 +11,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
             foreach ($domains_sql as $domain) {
                 $domains[$domain['id']] = $domain['domain'];
             }
-        };
+        }
         return $domains;
     }
     public function enterObject() :void
@@ -21,7 +21,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
 
         $values = $this->getValue();
         if (!is_array($values)) {
-            $values = explode(',', $values);
+            $values = explode(',', (string)$values);
         }
 
         $real_values = [];
@@ -51,7 +51,7 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $this->setValue(implode(',', $this->getValue()));
 
         $this->params['value_pool']['email'][$this->getName()] = $this->getValue();
-        $this->params['value_pool']['email'][$this->getName() . '_NAME'] = isset($options[$this->getValue()]) ? $options[$this->getValue()] : null;
+        $this->params['value_pool']['email'][$this->getName() . '_NAME'] = $options[$this->getValue()] ?? null;
 
         if ($this->saveInDB()) {
             $this->params['value_pool']['sql'][$this->getName()] = $this->getValue();
@@ -84,7 +84,6 @@ class rex_yform_value_domain extends rex_yform_value_abstract
     {
         $return = [];
 
-        $new_select = new self();
         $values = self::domains();
 
         foreach (explode(',', $params['value']) as $k) {
@@ -99,22 +98,17 @@ class rex_yform_value_domain extends rex_yform_value_abstract
     public static function getSearchField(array $params) :void
     {
         $options = self::domains();
-        $options['(empty)'] = '(empty)';
-        $options['!(empty)'] = '!(empty)';
-
-        $new_select = new self();
-        $options = self::domains();
 
         $params['searchForm']->setValueField(
             'select',
             [
-            'name' => $params['field']->getName(),
-            'label' => $params['field']->getLabel(),
-            'options' => $options,
-            'multiple' => 1,
-            'size' => 5,
-            'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
-        ]
+                'name' => $params['field']->getName(),
+                'label' => $params['field']->getLabel(),
+                'options' => $options,
+                'multiple' => 1,
+                'size' => 5,
+                'notice' => rex_i18n::msg('yform_search_defaults_select_notice'),
+            ]
         );
     }
 
@@ -127,26 +121,13 @@ class rex_yform_value_domain extends rex_yform_value_abstract
         $self = new self();
         $values = $self->getArrayFromString($params['value']);
 
-        $multiple = true;
-
         $where = [];
         foreach ($values as $value) {
-            switch ($value) {
-                case '(empty)':
-                    $where[] = ' ' . $sql->escapeIdentifier($field) . ' = ""';
-                    break;
-                case '!(empty)':
-                    $where[] = ' ' . $sql->escapeIdentifier($field) . ' != ""';
-                    break;
-                default:
-                    if ($multiple) {
-                        $where[] = ' ( FIND_IN_SET( ' . $sql->escape($value) . ', ' . $sql->escapeIdentifier($field) . ') )';
-                    } else {
-                        $where[] = ' ( ' . $sql->escape($value) . ' = ' . $sql->escapeIdentifier($field) . ' )';
-                    }
-
-                    break;
-            }
+            $where[] = match ($value) {
+                '(empty)' => ' ' . $sql->escapeIdentifier($field) . ' = ""',
+                '!(empty)' => ' ' . $sql->escapeIdentifier($field) . ' != ""',
+                default => ' ( FIND_IN_SET( ' . $sql->escape($value) . ', ' . $sql->escapeIdentifier($field) . ') )',
+            };
         }
 
         if (count($where) > 0) {
