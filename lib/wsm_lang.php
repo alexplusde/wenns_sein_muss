@@ -89,8 +89,8 @@ class wsm_lang
             $privacy_policy = $domain->getPrivacyPolicyArticle();
             $imprint = $domain->getImprintArticle();
         } else {
-            $privacy_policy = rex_article::get(wsm::getConfig("wsm_domain_imprint_id"));
-            $imprint = rex_article::get(wsm::getConfig("wsm_domain_privacy_policy_id"));
+            $privacy_policy = rex_article::get(wsm::getConfig("wsm_domain_privacy_policy_id"));
+            $imprint = rex_article::get(wsm::getConfig("wsm_domain_imprint_id"));
         }
         $consentModal["footer"] = '<a href="'.$privacy_policy->getUrl().'">'.$privacy_policy->getName().'</a>
             <a href="'.$imprint->getUrl().'">'.$imprint->getName().'</a>';
