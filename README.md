@@ -96,7 +96,7 @@ Siehe <https://github.com/orestbida/cookieconsent#how-to-blockmanage-scripts>.
 ##### Adhoc iFrame-Einwilligung
 
 ```html
-<div>
+<div
     data-service="<service-name>"
     data-id="<resource-id>"
     data-params="<iframe-query-parameters>"
@@ -108,9 +108,12 @@ Siehe <https://github.com/orestbida/cookieconsent#how-to-blockmanage-scripts>.
 z.B. für YouTube
 
 ```html
-<div class="video" data-service="youtube"
+<div class="video"
+    data-service="youtube"
     data-id="dQw4w9WgXcQ"
-    data-params="loop=1&autoplay=0&mute=1" data-thumbnail="" data-autoscale data-ratio="16:9">
+    data-params="loop=1&autoplay=0&mute=1"
+    data-thumbnail=""
+    data-autoscale data-ratio="16:9">
 </div>
 ```
 
