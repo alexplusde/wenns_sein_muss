@@ -72,6 +72,9 @@ class wsm_lang
         return @json_encode(self::getLangAsArray(), JSON_PRETTY_PRINT);
     }
 
+    /**
+     * @throws rex_exception
+     */
     private static function getConsentModal()
     {
         $consentModal = [];
@@ -92,6 +95,15 @@ class wsm_lang
             $privacy_policy = rex_article::get(wsm::getConfig("wsm_domain_privacy_policy_id"));
             $imprint = rex_article::get(wsm::getConfig("wsm_domain_imprint_id"));
         }
+        
+        if (!$privacy_policy) {
+            throw new rex_exception('Privacy Policy Article not found');
+        }
+
+        if (!$imprint) {
+            throw new rex_exception('Imprint Article not found');
+        }
+
         $consentModal["footer"] = '<a href="'.$privacy_policy->getUrl().'">'.$privacy_policy->getName().'</a>
             <a href="'.$imprint->getUrl().'">'.$imprint->getName().'</a>';
 
