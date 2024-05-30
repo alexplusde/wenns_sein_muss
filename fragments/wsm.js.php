@@ -81,8 +81,8 @@
 			formData.append('acceptType', preferences.acceptType);
 			formData.append('acceptedCategories', preferences.acceptedCategories);
 			formData.append('rejectedCategories', preferences.rejectedCategories);
-			formData.append('acceptedServices', preferences.acceptedServices);
-			formData.append('rejectedServices', preferences.rejectedServices);
+			formData.append('acceptedServices', JSON.stringify(preferences.acceptedServices));
+			formData.append('rejectedServices', JSON.stringify(preferences.rejectedServices));
 
 			fetch('/?rex-api-call=wsm&wsm=log', {
 				method: 'POST',
