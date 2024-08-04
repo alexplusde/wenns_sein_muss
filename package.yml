@@ -44,12 +44,12 @@ pages:
         title: translate:wenns_sein_muss_docs
         subPath: README.md
         icon: rex-icon fa-info-circle
-        itemclass: pull-right
+        itemClass: pull-right
         perm: wenns_sein_muss[docs]
     settings:
         title: translate:wenns_sein_muss_settings
         icon: rex-icon fa-gear
-        itemclass: pull-right
+        itemClass: pull-right
         perm: admin
         subpages:
             basic:
