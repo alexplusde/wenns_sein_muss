@@ -21,6 +21,24 @@ Das Addon war ein großer 🌵 an Aufwand, deshalb unterstütze die Entwicklung 
 
 ## Features
 
+### Vergleich zu FriendsOfREDAXO \ Consent Manager
+
+# Tabelle mit Vergleich zwischen Consent Manager und "Wenns sein Muss" Addon für REDAXO
+
+| Feature | Consent Manager | Wenns sein Muss |
+|---------|-----------------|-----------------|
+| Opt-In für einzelne Kategorien | ✅ | ✅ |
+| Opt-Out für einzelne Kategorien | ✅ | ✅ |
+| Opt-In für einzelne Services |❌ | ✅ |
+| Opt-Out für einzelne Services | ❌ | ✅ |
+| Informationen zu einzelnen Cookies | ❌ | ✅ |
+| Mehrsprachigkeit | ✅ Eigene Oberfläche | ✅ Sprog / Wildcard |
+| Multidomain | ✅ Eigene Verwaltung | ✅ Durch YRewrite |
+| Anpassung der Texte | ✅ | ✅ |
+| Vorgefertigte Themes | ✅ | ❌ |
+| IFrame-Manager | ❌ | ✅ |
+| Adhoc-Einwilligung | ❌ | ✅ |
+
 ### Cookie-Consent-Hinweis
 
 ![Screenshot Modal](https://user-images.githubusercontent.com/3855487/227064026-477a77fb-7f25-43f8-bd94-b5666651fb50.png)
