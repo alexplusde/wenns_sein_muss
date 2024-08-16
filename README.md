@@ -135,6 +135,16 @@ z.B. für YouTube
 </div>
 ```
 
+z.B. für Google Maps
+
+```html
+<div class="video"
+    data-service="google_maps" 
+    data-id="!1m14!.....................de"
+    data-autoscale>
+</div>
+```
+
 Siehe <https://github.com/orestbida/iframemanager#configuration-options>.
 
 #### Weitere API-Methoden
