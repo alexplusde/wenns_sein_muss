@@ -138,7 +138,7 @@ z.B. für YouTube
 z.B. für Google Maps
 
 ```html
-<div class="video"
+<div class="maps"
     data-service="google_maps" 
     data-id="!1m14!.....................de"
     data-autoscale>
