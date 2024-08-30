@@ -1,0 +1,84 @@
+{
+    "rex_wenns_sein_muss_domain": {
+        "table": {
+            "status": 1,
+            "table_name": "rex_wenns_sein_muss_domain",
+            "name": "translate:wsm_table_domain",
+            "description": "",
+            "list_amount": 50,
+            "list_sortfield": "id",
+            "list_sortorder": "ASC",
+            "search": 0,
+            "hidden": 1,
+            "export": 1,
+            "import": 1,
+            "mass_deletion": 0,
+            "mass_edit": 0,
+            "schema_overwrite": 1,
+            "history": 0,
+            "createdate": "0000-00-00 00:00:00",
+            "updatedate": "0000-00-00 00:00:00",
+            "createuser": "",
+            "updateuser": ""
+        },
+        "fields": [
+            {
+                "table_name": "rex_wenns_sein_muss_domain",
+                "prio": 1,
+                "type_id": "value",
+                "type_name": "domain",
+                "db_type": "int",
+                "list_hidden": 0,
+                "search": 0,
+                "name": "domain_id",
+                "label": "translate:wsm_domain_id",
+                "not_required": "",
+                "attributes": "",
+                "notice": ""
+            },
+            {
+                "table_name": "rex_wenns_sein_muss_domain",
+                "prio": 2,
+                "type_id": "value",
+                "type_name": "be_link",
+                "db_type": "int",
+                "list_hidden": 0,
+                "search": 0,
+                "name": "privacy_policy_id",
+                "label": "translate:wsm_domain_privacy_policy_id",
+                "not_required": "",
+                "multiple": "0",
+                "notice": ""
+            },
+            {
+                "table_name": "rex_wenns_sein_muss_domain",
+                "prio": 3,
+                "type_id": "value",
+                "type_name": "be_link",
+                "db_type": "int",
+                "list_hidden": 0,
+                "search": 0,
+                "name": "imprint_id",
+                "label": "translate:wsm_domain_imprint_id",
+                "not_required": "",
+                "multiple": "0",
+                "notice": ""
+            },
+            {
+                "table_name": "rex_wenns_sein_muss_domain",
+                "prio": 4,
+                "type_id": "validate",
+                "type_name": "unique",
+                "db_type": "",
+                "list_hidden": 1,
+                "search": 0,
+                "name": "domain_id",
+                "label": "",
+                "not_required": "",
+                "table": "",
+                "empty_option": "0",
+                "message": "translate:wsm_domain_id_unique"
+            }
+        ]
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "rex_wenns_sein_muss_iframe": {
+        "table": {
+            "status": 1,
+            "table_name": "rex_wenns_sein_muss_iframe",
+            "name": "translate:wsm_table_iframe",
+            "description": "",
+            "list_amount": 50,
+            "list_sortfield": "id",
+            "list_sortorder": "ASC",
+            "search": 0,
+            "hidden": 1,
+            "export": 1,
+            "import": 1,
+            "mass_deletion": 0,
+            "mass_edit": 0,
+            "schema_overwrite": 1,
+            "history": 0,
+            "createdate": "0000-00-00 00:00:00",
+            "updatedate": "0000-00-00 00:00:00",
+            "createuser": "",
+            "updateuser": ""
+        },
+        "fields": [
+            {
+                "table_name": "rex_wenns_sein_muss_iframe",
+                "prio": 1,
+                "type_id": "value",
+                "type_name": "text",
+                "db_type": "text",
+                "list_hidden": 0,
+                "search": 0,
+                "name": "embedUrl",
+                "label": "translate:wsm_iframe_embed_url",
+                "not_required": "",
+                "attributes": "{\"type\":\"url\"}",
+                "default": "",
+                "no_db": "0",
+                "notice": "z.B. <code>https:\/\/www.youtube-nocookie.com\/embed\/{data-id}<\/code>",
+                "append": "",
+                "prepend": ""
+            },
+            {
+                "table_name": "rex_wenns_sein_muss_iframe",
+                "prio": 2,
+                "type_id": "value",
+                "type_name": "text",
+                "db_type": "varchar(191)",
+                "list_hidden": 0,
+                "search": 0,
+                "name": "key",
+                "label": "translate:wsm_iframe_key",
+                "not_required": "",
+                "attributes": "{\"required\":\"required\",\"pattern\":\"^[a-z0-9_]+\"}",
+                "default": "",
+                "no_db": "0",
+                "notice": "translate:wsm_iframe_key_notice",
+                "append": "",
+                "prepend": ""
+            }
+        ]
+    }
+}
