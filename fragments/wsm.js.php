@@ -87,6 +87,7 @@ use rex_clang;
 			formData.append('rejectedCategories', preferences.rejectedCategories);
 			formData.append('acceptedServices', JSON.stringify(preferences.acceptedServices));
 			formData.append('rejectedServices', JSON.stringify(preferences.rejectedServices));
+			formData.append('revision', cookie.revision);
 
 			fetch('/?rex-api-call=wsm&wsm=log', {
 				method: 'POST',

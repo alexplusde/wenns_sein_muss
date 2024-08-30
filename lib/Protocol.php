@@ -92,4 +92,15 @@ class Protocol extends \rex_yform_manager_dataset
         $this->setValue("consentdate", $value);
         return $this;
     }
+
+    /* Revision */
+    /** @api */
+    public function getRevision() : ?int {
+        return $this->getValue("revision");
+    }
+    /** @api */
+    public function setRevision(int $value) : self {
+        $this->setValue("revision", $value);
+        return $this;
+    }
 }
