@@ -1,6 +1,8 @@
 <?php
 
-class wsm_fragment extends rex_fragment
+namespace Alexplusde\WennsSeinMuss;
+
+class Fragment extends \rex_fragment
 {
     public static function getIframe(string $data_service, string $data_id = "", string $data_params = "", string $data_thumbnail = null)
     {
@@ -25,8 +27,8 @@ class wsm_fragment extends rex_fragment
     public static function getScripts()
     {
         $output = "";
-        foreach (wsm_service::findScripts() as $script) {
-            $fragment = new rex_fragment();
+        foreach (Service::findScripts() as $script) {
+            $fragment = new self;
             $fragment->setVar('category', $script->getValue('group_name'));
             $fragment->setVar('service', $script->getValue('service'));
             $fragment->setVar('script', $script->getValue('script'), false);

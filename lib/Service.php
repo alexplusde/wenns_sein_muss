@@ -1,5 +1,8 @@
 <?php
-class wsm_service extends \rex_yform_manager_dataset
+
+namespace Alexplusde\WennsSeinMuss;
+
+class Service extends \rex_yform_manager_dataset
 {
     public function getService() :string
     {

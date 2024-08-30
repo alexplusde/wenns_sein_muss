@@ -1,5 +1,8 @@
 <?php
-class wsm_entry extends \rex_yform_manager_dataset
+
+namespace Alexplusde\WennsSeinMuss;
+
+class Entry extends \rex_yform_manager_dataset
 {
     public function getType() :string
     {
@@ -20,8 +23,8 @@ class wsm_entry extends \rex_yform_manager_dataset
 
     public static function findEntriesArray(int $service_id)
     {
-        $service = wsm_service::get($service_id);
-        $entries = wsm_entry::query()->where("service_id", $service_id)->find();
+        $service = Service::get($service_id);
+        $entries = Entry::query()->where("service_id", $service_id)->find();
         $return = [];
         foreach ($entries as $entry) {
             $e = [];

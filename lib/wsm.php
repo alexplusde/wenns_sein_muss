@@ -1,12 +1,17 @@
 <?php
-class wsm
+
+namespace Alexplusde\WennsSeinMuss;
+
+use rex;
+
+class Wsm
 {
     public static function getDomainId()
     {
         $domain_id = 0; // default
 
-        if (rex_addon::get('yrewrite')->isAvailable() && !rex::isSafeMode()) {
-            $domain_id = rex_yrewrite::getCurrentDomain()->getId();
+        if (\rex_addon::get('yrewrite')->isAvailable() && !rex::isSafeMode()) {
+            $domain_id = \rex_yrewrite::getCurrentDomain()->getId();
         }
         return $domain_id;
     }
@@ -17,10 +22,10 @@ class wsm
     {
         $return = [];
 
-        $groups =  wsm_group::query()->find();
+        $groups =  Group::query()->find();
 
         foreach ($groups as $group) {
-            $services = wsm_service::findServices($group->getId());
+            $services = Service::findServices($group->getId());
 
             if (count($services) == 0) {
                 continue;
@@ -33,7 +38,7 @@ class wsm
 
 
             foreach ($services as $service) {
-                $entries = wsm_entry::findEntriesArray($service->getId());
+                $entries = Entry::findEntriesArray($service->getId());
 
                 $g["cookieTable"]["headers"]['name'] = "Name";
                 $g["cookieTable"]["headers"]['description'] = "Description";
@@ -45,7 +50,7 @@ class wsm
         }
 
         
-        $sections[] = ['title' => wsm::getConfigText('consent_settings_block_more_title'), 'description' => wsm::getConfigText('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
+        $sections[] = ['title' => Wsm::getConfigText('consent_settings_block_more_title'), 'description' => Wsm::getConfigText('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
 
         return $return;
     }
@@ -59,19 +64,19 @@ class wsm
     {
         $return = [];
 
-        $services =  wsm_service::query()->where("iframe", "0", ">")->find();
+        $services =  Service::query()->where("iframe", "0", ">")->find();
 
         foreach ($services as $service) {
             $iframe = $service->getRelatedDataset('iframe');
            
             $s['embedUrl'] = $iframe->getValue('embedUrl');
-            $s['thumbnail'] = urldecode(rex_getUrl(null, null, array('rex-api-call' => "wsm_iframe", 'service' => rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
+            $s['thumbnail'] = urldecode(rex_getUrl(null, null, array('rex-api-call' => "wsm_iframe", 'service' => \rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
 //          $s['iframe'] = $iframe->getValue('attributes');
-            $s['languages'][rex_clang::getCurrent()->getCode()]['notice'] = rex_formatter::sprintf($service->getCompanyName(), wsm::getConfigText('iframe_notice')) .' <a rel="noreferrer noopener" href="'.$service->getValue('privacy_policy_url').'" target="_blank">'.wsm::getConfigText('iframe_notice_more').'</a>';
-            $s['languages'][rex_clang::getCurrent()->getCode()]['loadBtn'] = wsm::getConfigText('iframe_load_btn');
-            $s['languages'][rex_clang::getCurrent()->getCode()]['loadAllBtn'] = wsm::getConfigText('iframe_load_all_btn');
+            $s['languages'][\rex_clang::getCurrent()->getCode()]['notice'] = \rex_formatter::sprintf($service->getCompanyName(), Wsm::getConfigText('iframe_notice')) .' <a rel="noreferrer noopener" href="'.$service->getValue('privacy_policy_url').'" target="_blank">'.Wsm::getConfigText('iframe_notice_more').'</a>';
+            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadBtn'] = Wsm::getConfigText('iframe_load_btn');
+            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadAllBtn'] = Wsm::getConfigText('iframe_load_all_btn');
             
-            $return[rex_string::normalize($service->getValue('service'))] = $s;
+            $return[\rex_string::normalize($service->getValue('service'))] = $s;
         }
         return $return;
     }
@@ -89,25 +94,25 @@ class wsm
     {
         $categories = [];
 
-        $groups =  wsm_group::query()->find();
+        $groups =  Group::query()->find();
 
         foreach ($groups as $group) {
             $g = [];
             $g["readOnly"] = (bool)$group->getRequired();
             $g["enabled"] = (bool)$group->getEnabled();
 
-            $services = wsm_service::findServices($group->getId());
+            $services = Service::findServices($group->getId());
 
             foreach ($services as $service) {
                 $s = [];
                 $s['label'] = $service->getService();
                 /* <BEGIN JS> <END_JS> wird ersetzt, um aus dem zurückgegebenen String eine Funktion in JS zu machen */
-                $s['onAccept'] = "<BEGIN_JS> () => wsm_im.acceptService('".rex_string::normalize($service->getService())."') <END_JS>";
-                $s['onReject'] = "<BEGIN_JS> () => wsm_im.rejectService('".rex_string::normalize($service->getService())."') <END_JS>";
+                $s['onAccept'] = "<BEGIN_JS> () => wsm_im.acceptService('".\rex_string::normalize($service->getService())."') <END_JS>";
+                $s['onReject'] = "<BEGIN_JS> () => wsm_im.rejectService('".\rex_string::normalize($service->getService())."') <END_JS>";
 
-                $g['services'][rex_string::normalize($service->getService())] = $s;
+                $g['services'][\rex_string::normalize($service->getService())] = $s;
             }
-            $categories[rex_string::normalize($group->getName())] = $g;
+            $categories[\rex_string::normalize($group->getName())] = $g;
         }
 
         return $categories;
@@ -131,21 +136,21 @@ class wsm
         return self::getConfig('revision_timestamp') ?? "";
     }
 
-    public static function yform_data_added(rex_extension_point $ep)
+    public static function yform_data_added(\rex_extension_point $ep)
     {
         $subject = $ep->getSubject();
 
         if ($subject && $subject->objparams['main_table'] == "rex_wenns_sein_muss" || $subject->objparams['main_table'] == "rex_wenns_sein_muss_entry" || $subject->objparams()['table'] == "rex_wenns_sein_muss_group") {
-            wsm::setConfig('revision', wsm::getConfig('revision')+1);
-            wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
+            Wsm::setConfig('revision', Wsm::getConfig('revision')+1);
+            Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
         return;
     }
-    public static function yform_data_deleted(rex_extension_point $ep)
+    public static function yform_data_deleted(\rex_extension_point $ep)
     {
         if ($ep->getParams()['table'] == "rex_wenns_sein_muss" || $ep->getParams()['table'] == "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] == "rex_wenns_sein_muss_group") {
-            wsm::setConfig('revision', wsm::getConfig('revision')+1);
-            wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
+            Wsm::setConfig('revision', Wsm::getConfig('revision')+1);
+            Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
         return;
     }
@@ -154,25 +159,33 @@ class wsm
     
     public static function getConfig(string $key) :mixed
     {
-        return rex_config::get("wenns_sein_muss", $key);
+        return \rex_config::get("wenns_sein_muss", $key);
     }
     public static function setConfig(string $key, mixed $value) :bool
     {
-        return rex_config::set("wenns_sein_muss", $key, $value);
+        return \rex_config::set("wenns_sein_muss", $key, $value);
     }
 
     /* Sprog */
 
-    public static function getConfigText(string $key) :string
+    public static function getConfigText(string $key, string $lang_code = "de") :string
     {
-        $text = wsm::getConfig($key);
-/*
-        if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
-            if ($key != sprogdown($key)) {
-                $text = sprogdown($key);
+        if(rex_get('lang')) {
+            $lang_code = rex_get('lang');
+        }
+        $rex_clangs = \rex_clang::getAll();
+        foreach($rex_clangs as $rex_clang) {
+            if($rex_clang->getCode() == $lang_code) {
+                $clang_id = $rex_clang->getId();
+                break;
             }
         }
-  */              
+        $text = Wsm::getConfig($key);
+        if (\rex_addon::get('sprog')->isAvailable() && !\rex::isSafeMode()) {
+            if ($key != sprogcard($key, $clang_id)) {
+                $text = sprogcard($key, $clang_id);
+            }
+        }
         if ($text === null) {
             return "missing text for key <code>". $key . "</code>";
         }

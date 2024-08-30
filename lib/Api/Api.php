@@ -1,6 +1,8 @@
 <?php
 
-class rex_api_wsm extends rex_api_function
+namespace Alexplusde\WennsSeinMuss;
+
+class Api extends \rex_api_function
 {
     protected $published = true;
 
@@ -12,14 +14,14 @@ class rex_api_wsm extends rex_api_function
             echo self::log();
         }
         if (rex_get("wsm", 'string') === "css") {
-            echo wsm_fragment::getCss();
+            echo Fragment::getCss();
         }
         if (rex_get("wsm", 'string') === "lang") {
             header('Content-Type: application/json; charset=UTF-8');
-            echo wsm_lang::getLangAsJson();
+            echo Lang::getLangAsJson();
         }
         if (rex_get("wsm", 'string') === "js") {
-            echo wsm_fragment::getJs();
+            echo Fragment::getJs();
         }
         exit();
     }
@@ -32,16 +34,16 @@ class rex_api_wsm extends rex_api_function
 
         if ($consentId != "") {
 
-            $dataset = wsm_protocol::query()->where("consent_id", $consentId)->findOne();
+            $dataset = Protocol::query()->where("consent_id", $consentId)->findOne();
 
             if (!(bool)$dataset) {
-                $dataset = wsm_protocol::create();
+                $dataset = Protocol::create();
             }
 
-            $current = rex::getServer();
+            $current = \rex::getServer();
 
-            if (rex_addon::get('yrewrite')->isAvailable()) {
-                $current = rex_yrewrite::getCurrentDomain()->getName();
+            if (\rex_addon::get('yrewrite')->isAvailable()) {
+                $current = \rex_yrewrite::getCurrentDomain()->getName();
             };
             
             $dataset

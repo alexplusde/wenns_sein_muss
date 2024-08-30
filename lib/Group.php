@@ -1,5 +1,8 @@
 <?php
-class wsm_group extends \rex_yform_manager_dataset
+
+namespace Alexplusde\WennsSeinMuss;
+
+class Group extends \rex_yform_manager_dataset
 {
     public function getGroup() :string
     {
