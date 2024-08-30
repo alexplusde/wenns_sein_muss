@@ -35,6 +35,9 @@ wsm_service_iframe = Iframe-Manager
 wsm_service_domain = Domain(s)
 wsm_service_entry_ids = Cookies, LocalStorage und Tracking-Bilder
 wsm_service_script = JavaScript (nach Einwilligung)
+wsm_service_status = Status
+wsm_service_status_draft = Entwurf
+wsm_service_status_published = Veröffentlicht
 
 wsm_group_name = Name
 wsm_group_title = Titel
