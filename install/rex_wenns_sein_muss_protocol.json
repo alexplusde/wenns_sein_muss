@@ -80,6 +80,22 @@
                 "table_name": "rex_wenns_sein_muss_protocol",
                 "prio": 4,
                 "type_id": "value",
+                "type_name": "integer",
+                "db_type": "int",
+                "list_hidden": 0,
+                "search": 0,
+                "name": "revision",
+                "label": "translate:wenns_sein_muss_protocol_revision",
+                "not_required": "",
+                "default": "",
+                "no_db": "0",
+                "notice": "",
+                "unit": "\ud83d\udd22"
+            },
+            {
+                "table_name": "rex_wenns_sein_muss_protocol",
+                "prio": 5,
+                "type_id": "value",
                 "type_name": "text",
                 "db_type": "varchar(191)",
                 "list_hidden": 0,
@@ -96,7 +112,7 @@
             },
             {
                 "table_name": "rex_wenns_sein_muss_protocol",
-                "prio": 5,
+                "prio": 6,
                 "type_id": "value",
                 "type_name": "text",
                 "db_type": "varchar(191)",
@@ -114,7 +130,7 @@
             },
             {
                 "table_name": "rex_wenns_sein_muss_protocol",
-                "prio": 6,
+                "prio": 7,
                 "type_id": "value",
                 "type_name": "text",
                 "db_type": "varchar(191)",
@@ -132,7 +148,7 @@
             },
             {
                 "table_name": "rex_wenns_sein_muss_protocol",
-                "prio": 7,
+                "prio": 8,
                 "type_id": "value",
                 "type_name": "text",
                 "db_type": "varchar(191)",
@@ -150,7 +166,7 @@
             },
             {
                 "table_name": "rex_wenns_sein_muss_protocol",
-                "prio": 8,
+                "prio": 9,
                 "type_id": "value",
                 "type_name": "datestamp",
                 "db_type": "datetime",
@@ -166,7 +182,7 @@
             },
             {
                 "table_name": "rex_wenns_sein_muss_protocol",
-                "prio": 9,
+                "prio": 10,
                 "type_id": "validate",
                 "type_name": "unique",
                 "db_type": "",

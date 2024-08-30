@@ -39,6 +39,7 @@ rex_sql_table::get(rex::getTable('wenns_sein_muss_protocol'))
     ->ensureColumn(new rex_sql_column('url', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('consent_id', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('accept_type', 'varchar(191)', false, ''))
+    ->ensureColumn(new rex_sql_column('revision', 'int(11)', true))
     ->ensureColumn(new rex_sql_column('accepted_categories', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('accepted_services', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('rejected_categories', 'varchar(191)', false, ''))
@@ -46,7 +47,7 @@ rex_sql_table::get(rex::getTable('wenns_sein_muss_protocol'))
     ->ensureColumn(new rex_sql_column('consentdate', 'datetime'))
     ->ensureIndex(new rex_sql_index('consent_id', ['consent_id']))
     ->ensure();
-    
+
 rex_sql_table::get(rex::getTable('wenns_sein_muss_service'))
     ->ensurePrimaryIdColumn()
     ->ensureColumn(new rex_sql_column('group', 'int(10) unsigned'))
