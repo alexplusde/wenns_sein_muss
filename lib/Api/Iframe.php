@@ -1,6 +1,12 @@
 <?php
 
-class rex_api_wsm_iframe extends rex_api_function
+namespace Alexplusde\Wsm;
+
+use rex_api_function;
+use rex_socket;
+use rex_response;
+
+class ApiWsmIframe extends rex_api_function
 {
     protected $published = true;
 

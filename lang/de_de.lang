@@ -141,7 +141,7 @@ wenns_sein_muss_sprog_imported = Alle Texte wurden durch Sprog-Keys ausgetauscht
 
 wenns_sein_muss_revision = Versionsnummer aktualisieren
 wenns_sein_muss_revision_updated = Die Versionsnummer wurde aktualisiert, bestehende Nutzer werden den Consent Manager erneut erhalten.
-
+wenns_sein_muss_revision_warning = Achtung, jetzt wird's ernst! Die Versionsnummer wird aktualisiert, bestehende Nutzer werden den Consent Manager erneut erhalten. Wirklich fortfahren?
 # Zusätzliche Hinweise: Domain
 
 wenns_sein_muss_error_no_domains = Es wurden keine Domains in YRewrite konfiguriert, die Verwaltung hierüber ist nicht notwendig. Wechsle in die {0}, um Aritkel für Impressum und Datenschutzerklärung festzulegen.

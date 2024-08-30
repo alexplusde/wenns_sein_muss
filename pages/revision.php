@@ -15,29 +15,14 @@ if ($func !== '') {
     }
 }
 
-/* Demo-Daten importieren */
+/* Revision updaten */
 
 $content = "";
-$content .= '<p>'.rex_i18n::msg('wenns_sein_muss_demo_import').'</p>';
-$content .= '<p><a class="btn btn-primary" href="'.rex_url::currentBackendPage(['func' => 'setup'] + $csrf->getUrlParams()).'" data-confirm="'.rex_i18n::msg('wenns_sein_muss_demo_warning').'">'.rex_i18n::msg('wenns_sein_muss_demo').'</a></p>';
+$content .= '<p>'.rex_i18n::msg('wenns_sein_muss_revision').'</p>';
+$content .= '<p><a class="btn btn-primary" href="'.rex_url::currentBackendPage(['func' => 'revision'] + $csrf->getUrlParams()).'" data-confirm="'.rex_i18n::msg('wenns_sein_muss_revision_warning').'">'.rex_i18n::msg('wenns_sein_muss_revision').'</a></p>';
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'danger', false);
-$fragment->setVar('title', rex_i18n::msg('wenns_sein_muss_demo'), false);
+$fragment->setVar('title', rex_i18n::msg('wenns_sein_muss_revision'), false);
 $fragment->setVar('body', $content, false);
 echo $fragment->parse('core/page/section.php');
-
-/* Config mit Sprog-Keys überschreiben  */
-
-if(rex_addon::get('sprog')->isAvailable()) {
-    $content = "";
-    $content .= '<p>'.rex_i18n::msg('wenns_sein_muss_sprog_import').'</p>';
-    $content .= '<p><a class="btn btn-primary" href="'.rex_url::currentBackendPage(['func' => 'sprog'] + $csrf->getUrlParams()).'" data-confirm="'.rex_i18n::msg('wenns_sein_muss_sprog_warning').'">'.rex_i18n::msg('wenns_sein_muss_sprog').'</a></p>';
-
-
-    $fragment = new rex_fragment();
-    $fragment->setVar('class', 'danger', false);
-    $fragment->setVar('title', rex_i18n::msg('wenns_sein_muss_sprog'), false);
-    $fragment->setVar('body', $content, false);
-    echo $fragment->parse('core/page/section.php');
-}

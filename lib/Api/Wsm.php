@@ -2,7 +2,7 @@
 
 namespace Alexplusde\Wsm;
 
-class Api extends \rex_api_function
+class ApiWsm extends \rex_api_function
 {
     protected $published = true;
 

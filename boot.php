@@ -46,6 +46,13 @@ if(!rex_addon::get('yrewrite')->isAvailable()) {
 // rex_extension::register('YFORM_DATA_UPDATED', ['wsm','yform_data_added']);
 rex_extension::register('YFORM_DATA_DELETED', ['Alexplusde\Wsm\Wsm', 'yformDataDeleted']);
 
+if(rex::isFrontend()) {
+    \rex_api_function::register('wsm', ApiWsm::class);
+    \rex_api_function::register('iframe', ApiWsmIframe::class);
+
+}
+
+
 if (rex::isBackend()) {
     rex_extension::register('YFORM_DATA_LIST', function ($ep) {
         if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_service") {
