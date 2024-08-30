@@ -46,6 +46,7 @@ wsm_entry_type = Typ
 wsm_entry_name = Name / Schlüssel
 wsm_entry_duration = Speicherdauer
 wsm_entry_description = Erläuterung
+wsm_entry_service_id = Drittanbieter
 
 wsm_protocol_website = Website
 wsm_protocol_consent_id = ID
