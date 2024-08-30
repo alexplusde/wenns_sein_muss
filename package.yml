@@ -5,10 +5,11 @@ supportpage: https://github.com/alexplusde/wenns_sein_muss
 
 requires:
     php:
-        version: '^8'
-    redaxo: ^5.14
+        version: '>=8.2,<9'
+    redaxo: ^5.17
     packages:
         yform: "^4.1"
+        yform/manager: "^4.1"
 
 page:
     title: translate:wenns_sein_muss_title
@@ -74,7 +75,7 @@ pages:
 
 default_config:
     #settings page: basic
-    revision: 0
+    revision: 1
     auto_lang: 1
     iframemanager: 1
     disable_page_interaction: 0
@@ -95,9 +96,8 @@ default_config:
     consent_settings_open: Einstellungen öffnen
 
     # settings page: text
-
     consent_settings_title: Einstellungen
-    consent_settings_save: speichern
+    consent_settings_save: Speichern
     consent_settings_accept_all: Alle akzeptieren
     consent_settings_reject_all: Alle ablehnen
     consent_settings_close: Schließen
@@ -120,3 +120,40 @@ default_config:
     iframe_notice_more: Weitere Informationen
     iframe_load_btn: Diesmal anzeigen
     iframe_load_all_btn: Immer anzeigen
+
+sprog_config:
+    # settings page: consent
+    consent_modal_title: true
+    consent_modal_description: true
+    consent_modal_settings: true
+    consent_modal_accept_all: true
+    consent_modal_accept_necessary: true
+
+    consent_modal_open: true
+    consent_settings_open: true
+
+    # settings page: text
+    consent_settings_title: true
+    consent_settings_save: true
+    consent_settings_accept_all: true
+    consent_settings_reject_all: true
+    consent_settings_close: true
+    consent_settings_service_counter_badge: true
+    
+    consent_settings_cookie_table_headers_col1: true
+    consent_settings_cookie_table_headers_col2: true
+    consent_settings_cookie_table_headers_col3: true
+    consent_settings_cookie_table_headers_col4: true
+
+    consent_info_domain: true
+    consent_info_uuid: true
+    consent_info_unknown: true
+    consent_info_datestamp: true
+    consent_info_update_datestamp: true
+    consent_info_more: true
+
+    # settings page: iframe
+    iframe_notice: true
+    iframe_notice_more: true
+    iframe_load_btn: true
+    iframe_load_all_btn: true

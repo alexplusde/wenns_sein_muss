@@ -130,3 +130,8 @@ wenns_sein_muss_demo_import = Demo-Daten imporiteren (ohne jegliche Gewähr, pro
 wenns_sein_muss_demo = Demo-Daten importieren
 wenns_sein_muss_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
 wenns_sein_muss_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!
+
+wenns_sein_muss_sprog_import = Sprog verwenden
+wenns_sein_muss_sprog = Sprog-Keys erstellen
+wenns_sein_muss_sprog_warning = Achtung, jetzt wird's ernst! Alle Texte aus den Einstellungen werden durch Sprog-Keys ersetzt. Wirklich fortfahren?
+wenns_sein_muss_sprog_imported = Alle Texte wurden durch Sprog-Keys ausgetauscht. Als nächstes Sprog-Texte anpassen!
