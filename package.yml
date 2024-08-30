@@ -10,6 +10,7 @@ requires:
     packages:
         yform: "^4.1"
         yform/manager: "^4.1"
+        yform_field: "^2.6"
 
 page:
     title: translate:wenns_sein_muss_title
