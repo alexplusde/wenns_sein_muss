@@ -4,7 +4,7 @@ namespace Alexplusde\Wsm;
 
 class Fragment extends \rex_fragment
 {
-    public static function getIframe(string $data_service, string $data_id = "", string $data_params = "", string $data_thumbnail = null)
+    public static function getIframe(string $data_service, string $data_id = "", string $data_params = "", string $data_thumbnail = null)  :string
     {
         $fragment = new self();
         $fragment->setVar("data-service", $data_service);
@@ -13,18 +13,18 @@ class Fragment extends \rex_fragment
         $fragment->setVar("data-thumbnail", $data_thumbnail);
         return $fragment->parse('wsm.iframe.php');
     }
-    public static function getJs()
+    public static function getJs() :string
     {
         $fragment = new self();
         return $fragment->parse('wsm.js.php');
     }
-    public static function getCss()
+    public static function getCss() :string
     {
         $fragment = new self();
         return $fragment->parse('wsm.css.php');
     }
         
-    public static function getScripts()
+    public static function getScripts() :string
     {
         $output = "";
         foreach (Service::findScripts() as $script) {

@@ -2,26 +2,11 @@
 
 namespace Alexplusde\Wsm;
 
+use rex_yform_manager_dataset;
+
 class Entry extends \rex_yform_manager_dataset
 {
-    public function getType() :string
-    {
-        return $this->getValue('type');
-    }
-    public function getName() :string
-    {
-        return $this->getValue('name');
-    }
-    public function getDescription() :string
-    {
-        return $this->getValue('description');
-    }
-    public function getDuration() :string
-    {
-        return $this->getValue('duration');
-    }
-
-    public static function findEntriesArray(int $service_id)
+    public static function findEntriesArray(int $service_id) : array
     {
         $service = Service::get($service_id);
         $entries = Entry::query()->where("service_id", $service_id)->find();
@@ -37,5 +22,58 @@ class Entry extends \rex_yform_manager_dataset
             $return[] = $e;
         }
         return $return;
+    }
+	
+    /* Typ */
+    /** @api */
+    public function getType() : ?string {
+        return $this->getValue("type");
+    }
+    /** @api */
+    public function setType(mixed $value) : self {
+        $this->setValue("type", $value);
+        return $this;
+    }
+
+    /* Name / Schlüssel */
+    /** @api */
+    public function getName() : ?string {
+        return $this->getValue("name");
+    }
+    /** @api */
+    public function setName(mixed $value) : self {
+        $this->setValue("name", $value);
+        return $this;
+    }
+
+    /* Speicherdauer */
+    /** @api */
+    public function getDuration() : ?string {
+        return $this->getValue("duration");
+    }
+    /** @api */
+    public function setDuration(mixed $value) : self {
+        $this->setValue("duration", $value);
+        return $this;
+    }
+
+    /* Erläuterung */
+    /** @api */
+    public function getDescription(bool $asPlaintext = false) : ?string {
+        if($asPlaintext) {
+            return strip_tags($this->getValue("description"));
+        }
+        return $this->getValue("description");
+    }
+    /** @api */
+    public function setDescription(mixed $value) : self {
+        $this->setValue("description", $value);
+        return $this;
+    }
+            
+    /* Service */
+    /** @api */
+    public function getService() : ?rex_yform_manager_dataset {
+        return $this->getRelatedDataset("service_id");
     }
 }

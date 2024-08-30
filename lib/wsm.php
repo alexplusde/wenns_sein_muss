@@ -11,7 +11,7 @@ class Wsm
         $domain_id = 0; // default
 
         if (\rex_addon::get('yrewrite')->isAvailable() && !rex::isSafeMode()) {
-            $domain_id = \rex_yrewrite::getCurrentDomain()->getId();
+            $domain_id = \rex_yrewrite::getCurrentDomain()->getId() ?: 0;
         }
         return $domain_id;
     }
@@ -104,6 +104,7 @@ class Wsm
             $services = Service::findServices($group->getId());
 
             foreach ($services as $service) {
+                /** @var Service $service */
                 $s = [];
                 $s['label'] = $service->getService();
                 /* <BEGIN JS> <END_JS> wird ersetzt, um aus dem zurückgegebenen String eine Funktion in JS zu machen */
@@ -146,7 +147,7 @@ class Wsm
         }
         return;
     }
-    public static function yform_data_deleted(\rex_extension_point $ep)
+    public static function yformDataDeleted(\rex_extension_point $ep)
     {
         if ($ep->getParams()['table'] == "rex_wenns_sein_muss" || $ep->getParams()['table'] == "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] == "rex_wenns_sein_muss_group") {
             Wsm::setConfig('revision', Wsm::getConfig('revision')+1);
