@@ -35,6 +35,13 @@ if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
     );
 };
 
+if(!rex_addon::get('yrewrite')->isAvailable()) {
+    $addon = rex_addon::get('wenns_sein_muss');
+    $pages = $addon->getProperty('pages');
+    $pages['domain'] = ['hidden' => 'true'];
+    $addon->setProperty('pages', $pages);
+}
+
 // rex_extension::register('YFORM_DATA_ADDED', ['wsm','yform_data_added']);
 // rex_extension::register('YFORM_DATA_UPDATED', ['wsm','yform_data_added']);
 rex_extension::register('YFORM_DATA_DELETED', ['Alexplusde\Wsm\Wsm', 'yformDataDeleted']);
