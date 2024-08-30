@@ -135,3 +135,8 @@ wenns_sein_muss_sprog_import = Sprog verwenden
 wenns_sein_muss_sprog = Sprog-Keys erstellen
 wenns_sein_muss_sprog_warning = Achtung, jetzt wird's ernst! Alle Texte aus den Einstellungen werden durch Sprog-Keys ersetzt. Wirklich fortfahren?
 wenns_sein_muss_sprog_imported = Alle Texte wurden durch Sprog-Keys ausgetauscht. Als nächstes Sprog-Texte anpassen!
+
+# Zusätzliche Hinweise: Revision
+
+wenns_sein_muss_revision = Versionsnummer aktualisieren
+wenns_sein_muss_revision_updated = Die Versionsnummer wurde aktualisiert, bestehende Nutzer werden den Consent Manager erneut erhalten.
