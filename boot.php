@@ -1,29 +1,37 @@
 <?php
 
+namespace Alexplusde\Wsm;
+
+use rex;
+use rex_article;
+use rex_extension;
+use rex_addon;
+use rex_yform_manager_dataset;
+
 if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
     rex_yform_manager_dataset::setModelClass(
         'rex_wenns_sein_muss_service',
-        wsm_service::class
+        Service::class
     );
     rex_yform_manager_dataset::setModelClass(
         'rex_wenns_sein_muss_group',
-        wsm_group::class
+        Group::class
     );
     rex_yform_manager_dataset::setModelClass(
         'rex_wenns_sein_muss_entry',
-        wsm_entry::class
+        Entry::class
     );
     rex_yform_manager_dataset::setModelClass(
         'rex_wenns_sein_muss_protocol',
-        wsm_protocol::class
+        Protocol::class
     );
     rex_yform_manager_dataset::setModelClass(
         'rex_wenns_sein_muss_iframe',
-        wsm_iframe::class
+        Iframe::class
     );
     rex_yform_manager_dataset::setModelClass(
         'rex_wenns_sein_muss_domain',
-        wsm_domain::class
+        Domain::class
     );
 };
 
@@ -70,7 +78,7 @@ if (rex::isBackend()) {
                 'entry_ids',
                 'custom',
                 function ($a) {
-                    $count = count(wsm_entry::query()->where('service_id', $a['list']->getValue('id'))->find());
+                    $count = count(Entry::query()->where('service_id', $a['list']->getValue('id'))->find());
                     if ($count > 0) {
                         return $count;
                     } else {

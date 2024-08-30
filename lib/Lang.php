@@ -1,6 +1,6 @@
 <?php
 
-namespace Alexplusde\WennsSeinMuss;
+namespace Alexplusde\Wsm;
 
 class Lang
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Alexplusde\WennsSeinMuss;
+namespace Alexplusde\Wsm;
 use rex_clang;
 ?>
 <script defer>

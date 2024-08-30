@@ -1,6 +1,6 @@
 <?php
 
-namespace Alexplusde\WennsSeinMuss;
+namespace Alexplusde\Wsm;
 
 class Entry extends \rex_yform_manager_dataset
 {

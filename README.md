@@ -1,4 +1,4 @@
-# Wenn's sein muss! - Addon für REDAXO 5 CMS für DSGVO-konforme Einwilligungen und Auskunft von verwendeten Drittanbieter-Diensten
+# WSM - Addon für REDAXO 5 CMS für DSGVO-konforme Einwilligungen und Auskunft von verwendeten Drittanbieter-Diensten
 
 Die neue schlanke Alternative zum Consent Manager, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.
 
@@ -45,7 +45,7 @@ Das Addon war ein großer 🌵 an Aufwand, deshalb unterstütze die Entwicklung 
 
 ![Screenshot Settings](https://user-images.githubusercontent.com/3855487/227064030-83755e61-2252-4c3c-83e2-b7f66e17b3e2.png)
 
-Einwiligungen mit einem einfachen Cookie-Consent-Hinweis abfragen - flexibel einsetzbar und kompatibel zu YRewrite. 
+Einwiligungen mit einem einfachen Cookie-Consent-Hinweis abfragen - flexibel einsetzbar und kompatibel zu YRewrite.
 
 Demos: Siehe <https://github.com/orestbida/cookieconsent>.
 
@@ -158,8 +158,8 @@ Siehe <https://github.com/orestbida/cookieconsent#api-methods> und <https://gith
 ## Autoren
 
 **Alexander Walther**  
-http://www.alexplus.de  
-https://github.com/alexplusde  
+<http://www.alexplus.de>  
+<https://github.com/alexplusde>  
 
 **Projekt-Lead**  
 [Alexander Walther](https://github.com/alexplusde)
