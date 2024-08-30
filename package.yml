@@ -42,6 +42,10 @@ pages:
         title: translate:wenns_sein_muss_domain
         icon: rex-icon fa-gear
         perm: admin
+    revision:
+        title: translate:wenns_sein_muss_revision
+        icon: rex-icon fa-history
+        perm: admin
     docs:
         title: translate:wenns_sein_muss_docs
         subPath: README.md
