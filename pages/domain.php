@@ -4,6 +4,10 @@ echo rex_view::title(rex_i18n::msg('wenns_sein_muss_title'));
 
 $addon = rex_addon::get('wenns_sein_muss');
 
+if (!rex_addon::get('yrewrite')->isAvailable() || count(rex_yrewrite::getDomains()) < 2) {
+    echo rex_view::error(rex_i18n::rawMsg('wenns_sein_muss_error_no_domains', '<a href="'.rex_url::backendPage('wenns_sein_muss/settings/basic').'">WSM Einstellungen</a>'));
+}
+
 $yform = $addon->getProperty('yform', []);
 $yform = $yform[\rex_be_controller::getCurrentPage()] ?? [];
 
