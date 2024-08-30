@@ -135,3 +135,7 @@ wenns_sein_muss_sprog_import = Sprog verwenden
 wenns_sein_muss_sprog = Sprog-Keys erstellen
 wenns_sein_muss_sprog_warning = Achtung, jetzt wird's ernst! Alle Texte aus den Einstellungen werden durch Sprog-Keys ersetzt. Wirklich fortfahren?
 wenns_sein_muss_sprog_imported = Alle Texte wurden durch Sprog-Keys ausgetauscht. Als nächstes Sprog-Texte anpassen!
+
+# Zusätzliche Hinweise: Domain
+
+wenns_sein_muss_error_no_domains = Es wurden keine Domains in YRewrite konfiguriert, die Verwaltung hierüber ist nicht notwendig. Wechsle in die {0}, um Aritkel für Impressum und Datenschutzerklärung festzulegen.
