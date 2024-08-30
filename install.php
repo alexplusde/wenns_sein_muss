@@ -59,6 +59,7 @@ rex_sql_table::get(rex::getTable('wenns_sein_muss_service'))
     ->ensureColumn(new rex_sql_column('rex_domain', 'varchar(191)'))
     ->ensureColumn(new rex_sql_column('script', 'text'))
     ->ensureColumn(new rex_sql_column('updatedate', 'datetime'))
+    ->ensureColumn(new rex_sql_column('status', 'tinyint(1)'))
     ->ensureIndex(new rex_sql_index('group', ['group']))
     ->ensure();
 
