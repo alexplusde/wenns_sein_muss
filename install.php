@@ -67,11 +67,11 @@ rex_sql_table::get(rex::getTable('wenns_sein_muss_service'))
 
 $addon = rex_addon::get("wenns_sein_muss");
 if (rex_addon::get('yform')->isAvailable()) {
-    rex_yform_manager_table_api::importTablesets(rex_file::get(rex_path::addon($addon->getName(), '/install/rex_wenns_sein_muss_domain.json')));
-    rex_yform_manager_table_api::importTablesets(rex_file::get(rex_path::addon($addon->getName(), '/install/rex_wenns_sein_muss_entry.json')));
-    rex_yform_manager_table_api::importTablesets(rex_file::get(rex_path::addon($addon->getName(), '/install/rex_wenns_sein_muss_group.json')));
-    rex_yform_manager_table_api::importTablesets(rex_file::get(rex_path::addon($addon->getName(), '/install/rex_wenns_sein_muss_iframe.json')));
-    rex_yform_manager_table_api::importTablesets(rex_file::get(rex_path::addon($addon->getName(), '/install/rex_wenns_sein_muss_protocol.json')));
-    rex_yform_manager_table_api::importTablesets(rex_file::get(rex_path::addon($addon->getName(), '/install/rex_wenns_sein_muss_service.json')));
+    rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_domain.json'));
+    rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_entry.json'));
+    rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_group.json'));
+    rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_iframe.json'));
+    rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_protocol.json'));
+    rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_service.json'));
     rex_yform_manager_table::deleteCache();
 }
