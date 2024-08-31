@@ -1,4 +1,4 @@
--- Adminer 4.8.1 MySQL 10.4.24-MariaDB dump
+-- Adminer 4.8.4 MySQL 10.11.9-MariaDB-log dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -6,11 +6,6 @@ SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
-
-TRUNCATE `rex_wenns_sein_muss_domain`;
-INSERT INTO `rex_wenns_sein_muss_domain` (`id`, `domain_id`, `privacy_policy_id`, `imprint_id`) VALUES
-(1,	'0',	'5',	'4'),
-(2,	'0',	'5',	'4');
 
 TRUNCATE `rex_wenns_sein_muss_entry`;
 INSERT INTO `rex_wenns_sein_muss_entry` (`id`, `type`, `name`, `duration`, `description`, `service_id`) VALUES
@@ -34,32 +29,33 @@ INSERT INTO `rex_wenns_sein_muss_group` (`id`, `prio`, `name`, `title`, `descrip
 (5,	5,	'unknown',	'Nicht klassifiziert',	'Nicht klassifizierte Cookies und ähnliche Technologien versuchen wir aktuell zu klassifizieren und warten auf Informationen der Drittanbieter, die diese verwenden und darüber Auskunft geben können.',	0,	0);
 
 TRUNCATE `rex_wenns_sein_muss_iframe`;
-INSERT INTO `rex_wenns_sein_muss_iframe` (`id`, `key`, `embedUrl`) VALUES
-(5,	'youtube',	'https://www.youtube-nocookie.com/embed/{data-id}'),
-(6,	'vimeo',	'https://player.vimeo.com/video/{data-id}');
+INSERT INTO `rex_wenns_sein_muss_iframe` (`id`, `embedUrl`, `key`) VALUES
+(1,	'https://www.youtube-nocookie.com/embed/{data-id}',	'youtube'),
+(2,	'https://player.vimeo.com/video/{data-id}',	'vimeo'),
+(3,	'https://www.google.com/maps/embed?pb={data-id}',	'google_maps');
 
 TRUNCATE `rex_wenns_sein_muss_service`;
-INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_name`, `company_address`, `privacy_policy_url`, `iframe`, `rex_domain`, `script`, `updatedate`) VALUES
-(1,	1,	'Diese Website',	'',	'',	'',	0,	'0',	'',	'2023-02-18 17:02:40'),
-(3,	2,	'Microsoft',	'Microsoft Ireland Operations Limited',	'One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland',	'https://privacy.microsoft.com/en-us/privacystatement',	0,	'',	'',	'2023-02-18 16:51:06'),
-(4,	2,	'YouTube',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	5,	'0',	'',	'2023-03-23 00:20:00'),
-(5,	2,	'Google Fonts',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 15:36:37'),
-(6,	2,	'Facebook',	'Meta Platforms Ireland Limited',	'4 Grand Canal Square, Dublin 2, Irland',	'https://www.facebook.com/privacy/policy/',	0,	'',	'',	'2022-12-17 15:13:00'),
-(9,	2,	'Vimeo',	'Vimeo Inc.',	'555 West 18th Street, New York, New York 10011, USA',	'https://vimeo.com/privacy',	0,	'',	'',	'2022-12-17 15:13:00'),
-(10,	3,	'Google Analytics',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://support.google.com/analytics/answer/6004245',	0,	'',	'',	'2023-02-18 15:36:47'),
-(13,	4,	'Google Ads',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 16:50:39'),
-(14,	4,	'LinkedIn',	'LinkedIn Corporation',	'2029 Stierlin Court, Mountain View, CA 94043, USA',	'https://www.linkedin.com/legal/privacy-policy',	0,	'',	'',	'2022-12-17 15:13:00'),
-(15,	4,	'WhatsApp',	'WhatsApp Inc.',	'1601 Willow Road, Menlo Park, California 94025, USA',	'https://www.whatsapp.com/legal/#privacy-policy',	0,	'',	'',	'2022-12-17 15:13:00'),
-(16,	4,	'Vimeo',	'Vimeo Inc.',	'555 West 18th Street, New York, New York 10011, USA',	'https://vimeo.com/privacy',	0,	'',	'',	'2022-12-17 15:13:00'),
-(17,	2,	'Google Maps',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 15:36:40'),
-(18,	2,	'Microsoft Teams',	'Microsoft Ireland Operations Limited',	'One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland',	'https://privacy.microsoft.com/de-de/privacystatement',	0,	'',	'',	'2022-12-17 15:13:00'),
-(20,	2,	'MyFonts',	'Monotype Imaging Holdings Inc.',	'600 Unicorn Park Drive, Woburn, Massachusetts 01801, USA',	'https://www.monotype.com/de/rechtshinweise/datenschutzrichtlinie/datenschutzrichtlinie-zum-tracking-von-webschriften',	0,	'',	'',	'2022-12-17 15:13:00'),
-(21,	2,	'Font Awesome',	'6 Porter Road Apartment 3R, Cambridge, Massachusetts, USA',	'Fonticons, Inc.',	'https://fontawesome.com/privacy',	0,	'',	'',	'2022-12-17 15:13:00'),
-(22,	4,	'Adobe Fonts',	'Adobe Systems Incorporated',	'345 Park Avenue, San Jose, CA 95110-2704, USA.',	'https://www.adobe.com/de/privacy/policies/adobe-fonts.html',	0,	'',	'',	'2023-02-18 16:51:35'),
-(23,	3,	'Google Conversion-Tracking',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 15:36:50'),
-(24,	3,	'Matomo',	'',	'',	'',	0,	'',	'',	'2022-12-17 15:13:00'),
-(25,	2,	'Google Tag Manager',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 15:36:43'),
-(26,	2,	'Instagram',	'Meta Platforms Ireland Limited',	'4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland',	'https://instagram.com/about/legal/privacy/',	0,	'',	'',	'2022-12-17 15:13:00'),
-(27,	2,	'Twitter',	'Twitter International Company',	'One Cumberland Place, Fenian Street, Dublin 2, D02 AX07, Irland',	'https://twitter.com/de/privacy',	0,	'',	'',	'2022-12-17 15:13:00');
+INSERT INTO `rex_wenns_sein_muss_service` (`id`, `group`, `service`, `company_name`, `company_address`, `privacy_policy_url`, `iframe`, `rex_domain`, `script`, `updatedate`, `status`) VALUES
+(1,	1,	'Diese Website',	'',	'',	'',	0,	'0',	'',	'2024-08-31 17:27:12',	1),
+(3,	2,	'Microsoft',	'Microsoft Ireland Operations Limited',	'One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland',	'https://privacy.microsoft.com/en-us/privacystatement',	0,	'',	'',	'2023-02-18 16:51:06',	0),
+(4,	2,	'YouTube',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	1,	'0',	'',	'2023-03-23 00:20:00',	0),
+(5,	2,	'Google Fonts',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 15:36:37',	0),
+(6,	2,	'Facebook',	'Meta Platforms Ireland Limited',	'4 Grand Canal Square, Dublin 2, Irland',	'https://www.facebook.com/privacy/policy/',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(9,	2,	'Vimeo',	'Vimeo Inc.',	'555 West 18th Street, New York, New York 10011, USA',	'https://vimeo.com/privacy',	2,	'',	'',	'2024-08-31 17:27:02',	0),
+(10,	3,	'Google Analytics',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://support.google.com/analytics/answer/6004245',	0,	'',	'',	'2023-02-18 15:36:47',	0),
+(13,	4,	'Google Ads',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 16:50:39',	0),
+(14,	4,	'LinkedIn',	'LinkedIn Corporation',	'2029 Stierlin Court, Mountain View, CA 94043, USA',	'https://www.linkedin.com/legal/privacy-policy',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(15,	4,	'WhatsApp',	'WhatsApp Inc.',	'1601 Willow Road, Menlo Park, California 94025, USA',	'https://www.whatsapp.com/legal/#privacy-policy',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(16,	4,	'Vimeo',	'Vimeo Inc.',	'555 West 18th Street, New York, New York 10011, USA',	'https://vimeo.com/privacy',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(17,	2,	'Google Maps',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	3,	'',	'',	'2024-08-31 17:26:37',	0),
+(18,	2,	'Microsoft Teams',	'Microsoft Ireland Operations Limited',	'One Microsoft Place, South County Business Park, Leopardstown, Dublin 18, Irland',	'https://privacy.microsoft.com/de-de/privacystatement',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(20,	2,	'MyFonts',	'Monotype Imaging Holdings Inc.',	'600 Unicorn Park Drive, Woburn, Massachusetts 01801, USA',	'https://www.monotype.com/de/rechtshinweise/datenschutzrichtlinie/datenschutzrichtlinie-zum-tracking-von-webschriften',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(21,	2,	'Font Awesome',	'6 Porter Road Apartment 3R, Cambridge, Massachusetts, USA',	'Fonticons, Inc.',	'https://fontawesome.com/privacy',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(22,	4,	'Adobe Fonts',	'Adobe Systems Incorporated',	'345 Park Avenue, San Jose, CA 95110-2704, USA.',	'https://www.adobe.com/de/privacy/policies/adobe-fonts.html',	0,	'',	'',	'2023-02-18 16:51:35',	0),
+(23,	3,	'Google Conversion-Tracking',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 15:36:50',	0),
+(24,	3,	'Matomo',	'',	'',	'',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(25,	2,	'Google Tag Manager',	'Google Ireland Limited',	'Gordon House, Barrow Street, Dublin 4, Irland',	'https://policies.google.com/privacy',	0,	'',	'',	'2023-02-18 15:36:43',	0),
+(26,	2,	'Instagram',	'Meta Platforms Ireland Limited',	'4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland',	'https://instagram.com/about/legal/privacy/',	0,	'',	'',	'2022-12-17 15:13:00',	0),
+(27,	2,	'Twitter',	'Twitter International Company',	'One Cumberland Place, Fenian Street, Dublin 2, D02 AX07, Irland',	'https://twitter.com/de/privacy',	0,	'',	'',	'2022-12-17 15:13:00',	0);
 
--- 2023-03-23 00:01:04
+-- 2024-08-31 15:43:01

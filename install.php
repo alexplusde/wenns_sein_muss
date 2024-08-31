@@ -76,4 +76,17 @@ if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
     rex_yform_manager_table::deleteCache();
 }
 
+/* Wenn YRewrite installiert ist, dann Domain hinzufügen */
+if (rex_addon::get('yrewrite')->isAvailable()) {
+    $domains = rex_yrewrite::getDomains();
+    foreach($domains as $domain) {
+        /** @var \rex_yrwewrite_domain $domain */
+        $wsm_domain = ALexplusde\Wsm\Domain::create();
+        $wsm_domain->setDomainId($domain->getId());
+        $wsm_domain->setPrivacyPolicyId($domain->getStartId());
+        $wsm_domain->setImprintId($domain->getStartId());
+        $wsm_domain->save();
+    }
+}
+
 \Alexplusde\Wsm\Wsm::setConfig('lastchange', date('Y-m-d H:i:s'));
