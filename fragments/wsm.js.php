@@ -61,8 +61,7 @@ use rex_clang;
 				default: '<?= rex_clang::getCurrent()->getCode(); ?>',
 
 				translations: {
-					<?= rex_clang::getCurrent()->getCode(); ?>
-					: '/?rex-api-call=wsm&wsm=lang&lang=<?= rex_clang::getCurrent()->getCode(); ?>',
+					<?= rex_clang::getCurrent()->getCode(); ?>: '/?rex-api-call=wsm&wsm=lang&lang=<?= rex_clang::getCurrent()->getCode(); ?>',
 				},
 			},
 

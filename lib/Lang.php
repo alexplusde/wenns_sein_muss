@@ -16,7 +16,7 @@ class Lang
 
         /* Intro */
 
-        $sections[0]['description'] = Wsm::getConfigText('consent_modal_description');
+        $sections[]['description'] = Wsm::getConfigText('consent_modal_description');
 
         /* Gruppen, Drittanbieter und ihre Einträge */
 
@@ -24,12 +24,17 @@ class Lang
 
         foreach ($groups as $group) {
             /** @var Group $group */
+
+            $services = Service::findServices($group->getId());
+            if(count($services) === 0) {
+                continue;
+            }
+            
             $g = [];
             $g["title"] = $group->getTitle();
             $g["description"] = $group->getDescription();
             $g["linkedCategory"] = $group->getName();
 
-            $services = Service::findServices($group->getId());
             
             foreach ($services as $service) {
                 /** @var Service $service */
@@ -61,17 +66,16 @@ class Lang
         }
 
         if($privacy_policy instanceof \rex_article && $imprint instanceof \rex_article) {
-            $sections = [];
             $sections[] = ['title' => Wsm::getConfigText('consent_info_domain'), 'description' => '
-            <p>'.Wsm::getConfigText('consent_info_uuid').': <span id="consent-id">'.Wsm::getConfigText('consent_info_unknown').'</span></p>
-            <p>'.Wsm::getConfigText('consent_info_datestamp').': <span id="consent-timestamp"></span></p>
-            <p>'.Wsm::getConfigText('consent_info_update_datestamp').': <span id="last-consent-timestamp"></span></p>
-            <p>'.Wsm::getConfigText('consent_info_more').': <a href="'.$privacy_policy->getUrl().'">'.$privacy_policy->getName().'</a>
-                <a href="'.$imprint->getUrl().'">'.$imprint->getName().'</a></p>'];
+            <div>'.Wsm::getConfigText('consent_info_uuid').': <span id="consent-id">'.Wsm::getConfigText('consent_info_unknown').'</span><br></div>
+            <div>'.Wsm::getConfigText('consent_info_datestamp').': <span id="consent-timestamp"></span><br></div>
+            <div>'.Wsm::getConfigText('consent_info_update_datestamp').': <span id="last-consent-timestamp"></span><br></div>
+            <div>'.Wsm::getConfigText('consent_info_more').': <a href="'.$privacy_policy->getUrl().'">'.$privacy_policy->getName().'</a>
+                <a href="'.$imprint->getUrl().'">'.$imprint->getName().'</a></div>'];
         }
 
         $return['preferencesModal']['sections'] = $sections;
-        
+
         return $return;
     }
     public static function getLangAsJson() :string|false
