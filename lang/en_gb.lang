@@ -1,0 +1,154 @@
+wsm_title = WSM Consent Management
+
+# Backend pages
+wsm_config = Settings
+wsm_settings = Settings
+wsm_docs = Help
+wsm_service = Third-party
+wsm_iframe = Iframe Manager
+wsm_group = Groups
+wsm_protocol = Consent Protocol
+wsm_domain = Imprint and Privacy Policy
+
+wsm_settings_basic = Basic Settings
+wsm_settings_consent = Appearance
+wsm_settings_text = Texts
+wsm_settings_iframe = Texts (iframe manager)
+
+# YForm tables
+wsm_table_iframe = ✔️ Iframe Manager
+wsm_table_domain = ✔️ Domains
+wsm_table_service = ✔️ Third-party
+wsm_table_group = ✔️ Groups
+wsm_table_entry = ✔️ Entries
+wsm_table_protocol = ✔️ Consent Protocol
+
+# Labels table fields
+
+wsm_service_group = Group
+
+wsm_service_company_name = Company Name
+wsm_service_company_address = Address
+wsm_service_privacy_policy_url = Privacy Policy
+wsm_service_iframe = Iframe Manager
+wsm_service_domain = Domain(s)
+wsm_service_entry_ids = Cookies, LocalStorage and Tracking Images
+wsm_service_script = JavaScript (after consent)
+wsm_service_status = Status
+wsm_service_status_draft = 🟡 Draft
+wsm_service_status_published = 🟢 Published
+
+wsm_group_name = Name
+wsm_group_title = Title
+wsm_group_description = Description
+wsm_group_enabled = Preselection
+wsm_group_required = Mandatory Field
+
+wsm_entry_type = Type
+wsm_entry_name = Name / Key
+wsm_entry_duration = Storage Duration
+wsm_entry_description = Description
+wsm_entry_service_id = Third-party
+
+wsm_protocol_website = Website
+wsm_protocol_consent_id = Consent ID
+wsm_protocol_accept_type = Consent
+wsm_protocol_accepted_categories = accepted (Category)
+wsm_protocol_rejected_categories = rejected (Category)
+wsm_protocol_accepted_services = accepted (Third-party)
+wsm_protocol_rejected_services = rejected (Third-party)
+wsm_protocol_consentdate = Timestamp
+wsm_protocol_revision = Revision Number
+wsm_protocol_preferences = Settings
+
+wsm_domain_id = Domain
+wsm_domain_imprint_id = Imprint
+wsm_domain_privacy_policy_id = Privacy Policy
+
+wsm_iframe_key = Key
+wsm_iframe_embed_url = Embed URL
+wsm_iframe_attributes = Attributes
+# Settings page Basics
+
+wsm_config_auto_lang_label = Automatically detect language
+wsm_config_iframemanager_label = Iframe Manager
+wsm_config_iframemanager_active = active
+wsm_config_iframemanager_inactive = inactive
+
+# Settings page Layout
+
+consent_modal_layout = Layout (small overlay)
+consent_modal_position = Position
+consent_modal_swap_buttons = Swap button order
+
+consent_settings_layout = Layout (Advanced Settings)
+disable_page_interaction = Force selection?
+
+# Settings page Texts
+
+consent_modal = Small Overlay (Modal)
+
+consent_modal_title = Title
+consent_modal_description = Introduction
+consent_modal_settings = Settings
+consent_modal_accept_all = Accept all
+consent_modal_accept_necessary = Accept only necessary
+
+consent_settings = Settings Dialog
+
+consent_settings_title = Title
+consent_settings_save = Save selection
+consent_settings_accept_all = Accept all
+consent_settings_reject_all = Reject all
+consent_settings_close = Close
+consent_settings_service_counter_badge = Service(s)
+consent_settings_cookie_table_headers_col1 = Name
+consent_settings_cookie_table_headers_col2 = Domain
+consent_settings_cookie_table_headers_col3 = Expiry Date
+consent_settings_cookie_table_headers_col4 = Description
+consent_settings_block_more_title = Title
+consent_settings_block_more_description = Description
+consent_settings_service_counter_label = Service,Services
+
+consent_open = Buttons to reopen dialogs
+consent_modal_open = Open modal
+consent_settings_open = Open settings
+
+consent_info_domain = Consent Protocol
+consent_info_uuid = Your Consent ID
+consent_info_datestamp = Consented on...
+consent_info_update_datestamp = Consent last renewed on...
+consent_info_unknown = No consent given yet
+consent_info_more = More information
+
+# Settings page Iframe Manager
+
+iframe_notice = Notice text
+iframe_notice_more = More information
+iframe_load_btn = Allow this time
+iframe_load_all_btn = Always allow
+
+# Settings page Demo Import
+
+wsm_demo_import = Import demo data (without any guarantee, project-specific adjustments must be made by the operator and developer together.)
+wsm_demo = Import demo data
+wsm_demo_warning = Warning, this is serious! All previously selected third-party groups and settings will be lost. Really proceed?
+wsm_demo_imported = All demo data has been imported. Next, adjust the demo data!
+
+wsm_sprog_import = Use Sprog
+wsm_sprog = Create Sprog keys
+wsm_sprog_warning = Warning, this is serious! All texts from the settings will be replaced by Sprog keys. Really proceed?
+wsm_sprog_imported = All texts have been replaced by Sprog keys. Next, adjust the Sprog texts!
+
+# Additional notes: Revision
+
+wsm_revision = Update version number
+wsm_revision_updated = The version number has been updated, existing users will receive the consent manager again.
+wsm_revision_warning = Warning, this is serious! The version number will be updated, existing users will receive the consent manager again. Really proceed?
+# Additional notes: Domain
+
+wsm_error_no_domains = No domains have been configured in YRewrite, management through this is not necessary. Switch to the {0} to set articles for imprint and privacy policy.
+
+# EP
+
+wsm_success_yform_data_changed = The configuration has been changed. Once all desired changes have been made, <a href="{0}">update the version number</a> to prompt website visitors for consent again.
