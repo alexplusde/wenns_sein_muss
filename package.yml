@@ -118,6 +118,7 @@ default_config:
     iframe_load_btn: Diesmal anzeigen
     iframe_load_all_btn: Immer anzeigen
 
+# Diese werden in den Einstellungen mit der Sprog-Option eingespielt 
 sprog_config:
     # settings page: consent
     consent_modal_title: true
