@@ -6,6 +6,7 @@ use rex;
 use rex_article;
 use rex_extension;
 use rex_addon;
+use rex_i18n;
 use rex_list;
 use rex_yform_manager_table;
 use rex_yform_manager_dataset;
@@ -137,6 +138,53 @@ if (rex::isBackend()) {
                 'custom',
                 function ($a) {
                     return $a['list']->getValue('description');
+                }
+            );
+        }
+        if ($table->getTableName() === "rex_wenns_sein_muss_protocol") {
+            $list = $ep->getSubject();
+            /** @var rex_list $list */
+
+            $list->removeColumn('accept_type');
+            $list->removeColumn('accepted_categories');
+            $list->removeColumn('accepted_services');
+            $list->removeColumn('rejected_categories');
+            $list->removeColumn('rejected_services');
+
+            /* add column */
+            $list->addColumn('preferences', rex_i18n::msg('wsm_protocol_preferences'), 5);
+            $list->setColumnLabel('preferences', rex_i18n::msg('wsm_protocol_preferences'));
+
+            $list->setColumnFormat(
+                'preferences',
+                'custom',
+                function ($a) {
+                    /* accepted/rejected ausgeben und mit emojis versehen */
+                    $accepted = $a['list']->getValue('accepted_categories');
+                    $rejected = $a['list']->getValue('rejected_categories');
+
+                    $accepted_services = $a['list']->getValue('accepted_services');
+                    $rejected_services = $a['list']->getValue('rejected_services');
+
+                    $accepted_services = json_decode($accepted_services, true);
+                    $rejected_services = json_decode($rejected_services, true);
+
+                    $output = "";
+                    $output .= '✅<br>';
+                    foreach ($accepted_services as $category => $services) {
+                        if (!empty($services)) {
+                            $output .= '<small>'.$category.': '.implode(', ', $services).'</small><br>';
+                        }
+                    }
+
+                    $output .= '❌<br>';
+                    foreach ($rejected_services as $category => $services) {
+                        if (!empty($services)) {
+                            $output .= '<small>'.$category.': '.implode(', ', $services).'</small><br>';
+                        }
+                    }
+
+                    return $output;
                 }
             );
         }
