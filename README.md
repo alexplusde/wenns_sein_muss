@@ -35,9 +35,11 @@ Das Addon war ein großer 🌵 an Aufwand, deshalb unterstütze die Entwicklung 
 | Mehrsprachigkeit | ✅ Eigene Oberfläche | ✅ Sprog / Wildcard |
 | Multidomain | ✅ Eigene Verwaltung | ✅ Durch YRewrite |
 | Anpassung der Texte | ✅ | ✅ |
-| Vorgefertigte Themes | ✅ | ❌ |
-| IFrame-Manager | ❌ | ✅ |
+| Vorgefertigte Themes | ✅ (siehe Addon) | ✅ (z.B. Darkmode) |
+| Iframe-Manager | ❌ | ✅ |
 | Adhoc-Einwilligung | ❌ | ✅ |
+| Laden von Skripten ohne Seiten-Reload | ❌ | ✅ |
+| Revisions-Management und Protokollierung | ❌ | ✅ (teilweise) |
 
 ### Cookie-Consent-Hinweis
 
