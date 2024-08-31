@@ -64,10 +64,7 @@ class Wsm
             }
             $sections[] = $g;
         }
-
         
-        $sections[] = ['title' => Wsm::getConfigText('consent_settings_block_more_title'), 'description' => Wsm::getConfigText('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
-
         return $sections;
     }
 
