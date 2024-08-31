@@ -6,6 +6,8 @@ use rex;
 use rex_article;
 use rex_extension;
 use rex_addon;
+use rex_list;
+use rex_yform_manager_table;
 use rex_yform_manager_dataset;
 
 if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
@@ -38,7 +40,9 @@ if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
 if(!rex_addon::get('yrewrite')->isAvailable()) {
     $addon = rex_addon::get('wenns_sein_muss');
     $pages = $addon->getProperty('pages');
-    $pages['domain'] = ['hidden' => 'true'];
+    if(is_array($pages) && array_key_exists('domain', $pages) && \array_key_exists('hidden', $pages['domain'])) {
+        $pages['domain']['hidden'] = 'true';
+    }
     $addon->setProperty('pages', $pages);
 }
 
@@ -54,9 +58,12 @@ if(rex::isFrontend()) {
 
 
 if (rex::isBackend()) {
-    rex_extension::register('YFORM_DATA_LIST', function ($ep) {
-        if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_service") {
+    rex_extension::register('YFORM_DATA_LIST', function (\rex_extension_point $ep) {
+        $table = $ep->getParam('table');
+        /** @var rex_yform_manager_table $table */
+        if ($table->getTableName() === "rex_wenns_sein_muss_service") {
             $list = $ep->getSubject();
+            /** @var rex_list $list */
 
             $list->setColumnPosition('script', 3);
             $list->setColumnLabel('script', 'JS');
@@ -64,7 +71,7 @@ if (rex::isBackend()) {
                 'script',
                 'custom',
                 function ($a) {
-                    if ($a['list']->getValue('script') != "") {
+                    if ($a['list']->getValue('script') !== "") {
                         return '<i class="fa fa-code"></i>';
                     } else {
                         return "";
@@ -115,9 +122,9 @@ if (rex::isBackend()) {
                 'custom',
                 function ($a) {
                     $url = $a['list']->getValue('privacy_policy_url');
-                    if ($url != "" && strlen($url) >= 64) {
+                    if ($url !== "" && strlen($url) >= 64) {
                         return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.substr($url, 0, 64) .'...</a>';
-                    } elseif ($url != "") {
+                    } elseif ($url !== "") {
                         return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.$url.'</a>';
                     } else {
                         return "❌";
@@ -125,8 +132,9 @@ if (rex::isBackend()) {
                 }
             );
         }
-        if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_group") {
+        if ($table->getTableName() === "rex_wenns_sein_muss_group") {
             $list = $ep->getSubject();
+            /** @var rex_list $list */
 
             $list->setColumnFormat(
                 'description',
@@ -136,8 +144,9 @@ if (rex::isBackend()) {
                 }
             );
         }
-        if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_iframe") {
+        if ($table->getTableName() === "rex_wenns_sein_muss_iframe") {
             $list = $ep->getSubject();
+            /** @var rex_list $list */
 
             $list->setColumnFormat(
                 'description',
@@ -147,15 +156,16 @@ if (rex::isBackend()) {
                 }
             );
         }
-        if ($ep->getParam('table')->getTableName() == "rex_wenns_sein_muss_domain") {
+        if ($table->getTableName() === "rex_wenns_sein_muss_domain") {
             $list = $ep->getSubject();
+            /** @var rex_list $list */
 
             $list->setColumnFormat(
                 'imprint_id',
                 'custom',
                 function ($a) {
                     $id = $a['list']->getValue('imprint_id');
-                    if ($id && rex_article::get($id)) {
+                    if (is_integer($id) && rex_article::get($id) instanceof rex_article) {
                         return rex_article::get($id)->getName().'<br><small>'. rex_article::get($id)->getUrl().'</small>';
                     }
                     return "❌";
@@ -166,7 +176,7 @@ if (rex::isBackend()) {
                 'custom',
                 function ($a) {
                     $id = $a['list']->getValue('privacy_policy_id');
-                    if ($id && rex_article::get($id)) {
+                    if (is_integer($id) && rex_article::get($id instanceof rex_article)) {
                         return rex_article::get($id)->getName().'<br><small>'. rex_article::get($id)->getUrl().'</small>';
                     }
                     return "❌";

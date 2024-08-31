@@ -34,7 +34,7 @@ use rex_clang;
 			revision: <?= Wsm::getRevisionNumber(); ?> ,
 			page_scripts: true,
 			/* 		autoShow: false, */
-			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction') ?? "false" ?> ,
+			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction') ?: "false" ?> ,
 
 			guiOptions: {
 				consentModal: {

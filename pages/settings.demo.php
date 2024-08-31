@@ -15,8 +15,8 @@ if ($func !== '') {
         }
         if ($func === 'sprog') {
             $package = rex_package::get('wenns_sein_muss');
-            $sprog_config = $package->getProperty('sprog_config');
-            foreach($sprog_config as $key) {
+            $sprog_config = $package->getProperty('sprog_config') ?? [];
+            foreach($sprog_config as $key => $value) {
                 rex_config::set('wenns_sein_muss', $key, Sprog\Wildcard::getOpenTag() . $key .Sprog\Wildcard::getCloseTag());
             }
         }

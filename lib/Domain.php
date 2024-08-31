@@ -36,7 +36,7 @@ class Domain extends \rex_yform_manager_dataset
         return rex_yrewrite::getDomainById($this->getValue("domain_id"));
     }
     /** @api */
-    public function getDomainId() : ?int {
+    public function getDomainId() : int {
         return $this->getValue("domain_id");
     }
     /** @api */
@@ -47,39 +47,41 @@ class Domain extends \rex_yform_manager_dataset
 
     /* Datenschutzerklärung */
     /** @api */
-    public function getPrivacyPolicyId() : ?int {
+    public function getPrivacyPolicyId() : int {
         return $this->getValue("privacy_policy_id");
     }
 
     /** @api */
-    public function getPrivacyPolicyUrl() : ?string {
-        if($article = rex_article::get($this->getPrivacyPolicyId())) {
+    public function getPrivacyPolicyUrl() : string {
+        if(($article = rex_article::get($this->getPrivacyPolicyId())) instanceof rex_article) {
             return $article->getUrl();
         }
+        return "";
     }
     /** @api */
-    public function setPrivacyPolicyId(string $id) : self {
-        if(rex_article::get($id)) {
-            $this->getValue("privacy_policy_id", $id);
+    public function setPrivacyPolicyId(int $id) : self {
+        if(rex_article::get($id) instanceof rex_article) {
+            $this->setValue("privacy_policy_id", $id);
         }
         return $this;
     }
 
     /* Impressum */
     /** @api */
-    public function getImprintId() : ?int {
+    public function getImprintId() : int {
         return $this->getValue("imprint_id");
     }
     /** @api */
-    public function getImprintUrl() : ?string {
-        if($article = rex_article::get($this->getImprintId())) {
+    public function getImprintUrl() : string {
+        if(($article = rex_article::get($this->getImprintId())) instanceof rex_article) {
             return $article->getUrl();
         }
+        return "";
     }
     /** @api */
-    public function setImprintId(string $id) : self {
-        if(rex_article::get($id)) {
-            $this->getValue("imprint_id", $id);
+    public function setImprintId(int $id) : self {
+        if(rex_article::get($id) instanceof rex_article) {
+            $this->setValue("imprint_id", $id);
         }
         return $this;
     }

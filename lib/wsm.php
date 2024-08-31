@@ -3,10 +3,11 @@
 namespace Alexplusde\Wsm;
 
 use rex;
+use rex_extension_point;
 
 class Wsm
 {
-    public static function getDomainId()
+    public static function getDomainId() :int
     {
         $domain_id = 0; // default
 
@@ -18,16 +19,17 @@ class Wsm
     
     /* Erhalte das passende JSON für die Ausgabe der Drittanbieter-Services im Frontend */
 
-    public static function getServicesAsArray() :array
+    private static function getServicesAsArray() :array
     {
-        $return = [];
+        $sections = [];
 
         $groups =  Group::query()->find();
 
         foreach ($groups as $group) {
+            /** @var Group $group */
             $services = Service::findServices($group->getId());
 
-            if (count($services) == 0) {
+            if (count($services) === 0) {
                 continue;
             }
 
@@ -38,6 +40,7 @@ class Wsm
 
 
             foreach ($services as $service) {
+                /** @var Service $service */
                 $entries = Entry::findEntriesArray($service->getId());
 
                 $g["cookieTable"]["headers"]['name'] = "Name";
@@ -52,10 +55,10 @@ class Wsm
         
         $sections[] = ['title' => Wsm::getConfigText('consent_settings_block_more_title'), 'description' => Wsm::getConfigText('consent_settings_block_more_description') ."<a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."];
 
-        return $return;
+        return $sections;
     }
 
-    public static function getServicesAsJson() :string
+    public static function getServicesAsJson() :string|false
     {
         return @json_encode(self::getServicesAsArray());
     }
@@ -67,8 +70,11 @@ class Wsm
         $services =  Service::query()->where("iframe", "0", ">")->find();
 
         foreach ($services as $service) {
+            /** @var Service $service */
             $iframe = $service->getRelatedDataset('iframe');
-           
+            /** @var Iframe $iframe */
+
+            $s = [];
             $s['embedUrl'] = $iframe->getValue('embedUrl');
             $s['thumbnail'] = urldecode(rex_getUrl(null, null, array('rex-api-call' => "wsm_iframe", 'service' => \rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
 //          $s['iframe'] = $iframe->getValue('attributes');
@@ -76,7 +82,7 @@ class Wsm
             $s['languages'][\rex_clang::getCurrent()->getCode()]['loadBtn'] = Wsm::getConfigText('iframe_load_btn');
             $s['languages'][\rex_clang::getCurrent()->getCode()]['loadAllBtn'] = Wsm::getConfigText('iframe_load_all_btn');
             
-            $return[\rex_string::normalize($service->getValue('service'))] = $s;
+            $return[\rex_string::normalize($service->getService())] = $s;
         }
         return $return;
     }
@@ -84,19 +90,20 @@ class Wsm
 
     public static function getIframeServicesAsJson() :string
     {
-        $code = @json_encode(self::getIframeServicesAsArray());
-        return str_replace(['"<BEGIN_JS>', '<END_JS>"'], "", $code);
+        $code = (string)@json_encode(self::getIframeServicesAsArray());
+        return str_replace(['"<BEGIN_JS>', '<END_JS>"'], ["", ""], $code);
     }
 
     /* Auswahl-Liste an Gruppen und deren Services */
 
-    public static function getCategoriesAsArray() :array
+    private static function getCategoriesAsArray() :array
     {
         $categories = [];
 
         $groups =  Group::query()->find();
 
         foreach ($groups as $group) {
+            /** @var Group $group */
             $g = [];
             $g["readOnly"] = (bool)$group->getRequired();
             $g["enabled"] = (bool)$group->getEnabled();
@@ -127,29 +134,40 @@ class Wsm
 
     /* Erhöhe mit jeder Änderung an Drittanbieter-Einstellungen die Revisionsnummer, um die Einwilligung erneut einzuholen */
 
-    public static function getRevisionNumber()
+    public static function getRevisionNumber() :int
     {
-        return self::getConfig('revision');
+        return (int)self::getConfig('revision');
     }
 
+    /**
+     * @api
+     * @return string 
+     */
     public static function getRevisionTimestamp() :string
     {
-        return self::getConfig('revision_timestamp') ?? "";
+        return self::getConfig('revision_timestamp');
     }
 
-    public static function yform_data_added(\rex_extension_point $ep)
+    /**
+     * @api
+     */
+    public static function yformDataAdded(\rex_extension_point $ep) :void
     {
         $subject = $ep->getSubject();
-
-        if ($subject && $subject->objparams['main_table'] == "rex_wenns_sein_muss" || $subject->objparams['main_table'] == "rex_wenns_sein_muss_entry" || $subject->objparams()['table'] == "rex_wenns_sein_muss_group") {
+        /* @var \rex_yform_manager_table $subject */
+        if (isset($subject) && $subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams()['table'] === "rex_wenns_sein_muss_group") {
             Wsm::setConfig('revision', Wsm::getConfig('revision')+1);
             Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
         return;
     }
-    public static function yformDataDeleted(\rex_extension_point $ep)
+
+    /**
+     * @api
+     */
+    public static function yformDataDeleted(\rex_extension_point $ep) :void
     {
-        if ($ep->getParams()['table'] == "rex_wenns_sein_muss" || $ep->getParams()['table'] == "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] == "rex_wenns_sein_muss_group") {
+        if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] === "rex_wenns_sein_muss_group") {
             Wsm::setConfig('revision', Wsm::getConfig('revision')+1);
             Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
@@ -158,9 +176,9 @@ class Wsm
 
     /* Shortcut für eigene Konfigurationswerte */
     
-    public static function getConfig(string $key) :mixed
+    public static function getConfig(string $key) :string
     {
-        return \rex_config::get("wenns_sein_muss", $key);
+        return strval(\rex_config::get("wenns_sein_muss", $key));
     }
     public static function setConfig(string $key, mixed $value) :bool
     {
@@ -171,19 +189,23 @@ class Wsm
 
     public static function getConfigText(string $key, string $lang_code = "de") :string
     {
+        $clang_id = 1;
+        
         if(rex_get('lang')) {
             $lang_code = rex_get('lang');
         }
         $rex_clangs = \rex_clang::getAll();
         foreach($rex_clangs as $rex_clang) {
-            if($rex_clang->getCode() == $lang_code) {
+            /* @var \rex_clang $rex_clang */
+            if($rex_clang->getCode() === $lang_code) {
                 $clang_id = $rex_clang->getId();
                 break;
             }
         }
+
         $text = Wsm::getConfig($key);
         if (\rex_addon::get('sprog')->isAvailable() && !\rex::isSafeMode()) {
-            if ($key != sprogcard($key, $clang_id)) {
+            if ($key !== sprogcard($key, $clang_id)) {
                 $text = sprogcard($key, $clang_id);
             }
         }

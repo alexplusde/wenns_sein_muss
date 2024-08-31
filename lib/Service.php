@@ -18,15 +18,19 @@ class Service extends \rex_yform_manager_dataset
         return $this->getService();
     }
 
+    /**
+     * 
+     * @return rex_yform_manager_collection<Service> 
+     */
     public static function findScripts() : rex_yform_manager_collection
     {
-        return self::query()->whereRaw('`script` != "" AND (FIND_IN_SET(0, `rex_domain`) || FIND_IN_SET('.wsm::getDomainId().', `rex_domain`))')->joinRelation('group', 'g')->select('g.name', 'group_name')->find();
+        return self::query()->whereRaw('`script` != "" AND (FIND_IN_SET(0, `rex_domain`) || FIND_IN_SET('.Wsm::getDomainId().', `rex_domain`))')->joinRelation('group', 'g')->select('g.name', 'group_name')->find();
     }
     
 
     public static function findServices(int $group_id): rex_yform_manager_collection
     {
-        return self::query()->whereRaw('`group` = '.$group_id.' AND (FIND_IN_SET(0, `rex_domain`) || FIND_IN_SET('.wsm::getDomainId() .', `rex_domain`))')->find();
+        return self::query()->whereRaw('`group` = '.$group_id.' AND (FIND_IN_SET(0, `rex_domain`) || FIND_IN_SET('.Wsm::getDomainId() .', `rex_domain`))')->find();
     }
 
     /* Gruppe */

@@ -9,7 +9,7 @@ if ($func !== '') {
         echo rex_view::error(rex_i18n::msg('csrf_token_invalid'));
     } else {
         if ($func === 'revision') {
-            rex_config::set('wenns_sein_muss', 'revision', rex_config::get('wenns_sein_muss', 'revision') + 1);
+            rex_config::set('wenns_sein_muss', 'revision', intval(Alexplusde\Wsm\Wsm::getConfig('revision')) + 1);
             echo rex_view::success(rex_i18n::msg('wenns_sein_muss_revision_updated'));
         }
     }

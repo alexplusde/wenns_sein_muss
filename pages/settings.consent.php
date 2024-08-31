@@ -30,8 +30,8 @@ $select->addOption('top right', 'top right');
 $field = $form->addSelectField('consent_modal_swap_buttons', null, ['class'=>'form-control selectpicker']);
 $field->setLabel($addon->i18n("consent_modal_swap_buttons"));
 $select = $field->getSelect();
-$select->addOption('invert buttons', true);
-$select->addOption('do not invert buttons', false);
+$select->addOption('invert buttons', 1);
+$select->addOption('do not invert buttons', 0);
 
 $field = $form->addSelectField('consent_settings_layout', null, ['class'=>'form-control selectpicker']);
 $field->setLabel($addon->i18n("consent_settings_layout"));

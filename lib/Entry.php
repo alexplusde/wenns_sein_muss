@@ -6,12 +6,21 @@ use rex_yform_manager_dataset;
 
 class Entry extends \rex_yform_manager_dataset
 {
+    /**
+     * 
+     * @param int $service_id 
+     * @return array<array>
+     */
     public static function findEntriesArray(int $service_id) : array
     {
         $service = Service::get($service_id);
+        if($service === null) {
+            return [];
+        }
         $entries = Entry::query()->where("service_id", $service_id)->find();
         $return = [];
         foreach ($entries as $entry) {
+            /* @var Entry $entry */
             $e = [];
             $e["name"] = $entry->getName();
             $e["service"] = $service->getName();
@@ -26,7 +35,7 @@ class Entry extends \rex_yform_manager_dataset
 	
     /* Typ */
     /** @api */
-    public function getType() : ?string {
+    public function getType() : string {
         return $this->getValue("type");
     }
     /** @api */
@@ -37,7 +46,7 @@ class Entry extends \rex_yform_manager_dataset
 
     /* Name / Schlüssel */
     /** @api */
-    public function getName() : ?string {
+    public function getName() : string {
         return $this->getValue("name");
     }
     /** @api */
@@ -48,7 +57,7 @@ class Entry extends \rex_yform_manager_dataset
 
     /* Speicherdauer */
     /** @api */
-    public function getDuration() : ?string {
+    public function getDuration() : string {
         return $this->getValue("duration");
     }
     /** @api */
@@ -59,7 +68,7 @@ class Entry extends \rex_yform_manager_dataset
 
     /* Erläuterung */
     /** @api */
-    public function getDescription(bool $asPlaintext = false) : ?string {
+    public function getDescription(bool $asPlaintext = false) : string {
         if($asPlaintext) {
             return strip_tags($this->getValue("description"));
         }

@@ -15,17 +15,18 @@ class RexVar extends rex_var
     {
         $fragment = new Fragment();
 
-        if ($this->hasArg('type') && $this->getArg('type') == "css") {
+        if ($this->hasArg('type') && $this->getArg('type') === "css") {
             return self::quote($fragment->parse('wsm.css.php'));
         }
-        if ($this->hasArg('type') && $this->getArg('type') == "js") {
+        if ($this->hasArg('type') && $this->getArg('type') === "js") {
             return self::quote($fragment->parse('wsm.js.php'));
         }
-        if ($this->hasArg('type') && $this->getArg('type') == "manage") {
+        if ($this->hasArg('type') && $this->getArg('type') === "manage") {
             return self::quote($fragment->parse('wsm.manage.php'));
         }
-        if ($this->hasArg('type') && $this->getArg('type') == "iframe") {
+        if ($this->hasArg('type') && $this->getArg('type') === "iframe") {
             return self::quote(Fragment::getIframe($this->getArg('service'), $this->getArg('id'), $this->getArg('params'), $this->getArg('thumbnail')));
         }
+        return "";
     }
 }

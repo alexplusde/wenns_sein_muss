@@ -7,7 +7,7 @@ class Group extends \rex_yform_manager_dataset
 	
     /* Name */
     /** @api */
-    public function getName() : ?string {
+    public function getName() : string {
         return $this->getValue("name");
     }
     /** @api */
@@ -18,7 +18,7 @@ class Group extends \rex_yform_manager_dataset
 
     /* Titel */
     /** @api */
-    public function getTitle() : ?string {
+    public function getTitle() : string {
         return $this->getValue("title");
     }
     /** @api */
@@ -29,7 +29,7 @@ class Group extends \rex_yform_manager_dataset
 
     /* Erläuterung */
     /** @api */
-    public function getDescription(bool $asPlaintext = false) : ?string {
+    public function getDescription(bool $asPlaintext = false) : string {
         if($asPlaintext) {
             return strip_tags($this->getValue("description"));
         }

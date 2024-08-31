@@ -7,7 +7,7 @@ class Protocol extends \rex_yform_manager_dataset
 	
     /* Website */
     /** @api */
-    public function getUrl() : ?string {
+    public function getUrl() : string {
         return $this->getValue("url");
     }
     /** @api */
@@ -18,7 +18,7 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* ID */
     /** @api */
-    public function getConsentId() : ?string {
+    public function getConsentId() : string {
         return $this->getValue("consent_id");
     }
     /** @api */
@@ -29,7 +29,7 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* Einwilligung */
     /** @api */
-    public function getAcceptType() : ?string {
+    public function getAcceptType() : string {
         return $this->getValue("accept_type");
     }
     /** @api */
@@ -40,7 +40,7 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* eingewilligt (Kategorie) */
     /** @api */
-    public function getAcceptedCategories() : ?string {
+    public function getAcceptedCategories() : string {
         return $this->getValue("accepted_categories");
     }
     /** @api */
@@ -51,7 +51,7 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* eingewilligt (Drittanbieter) */
     /** @api */
-    public function getAcceptedServices() : ?string {
+    public function getAcceptedServices() : string {
         return $this->getValue("accepted_services");
     }
     /** @api */
@@ -62,7 +62,7 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* abgelehnt (Kategorie) */
     /** @api */
-    public function getRejectedCategories() : ?string {
+    public function getRejectedCategories() : string {
         return $this->getValue("rejected_categories");
     }
     /** @api */
@@ -73,7 +73,7 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* abgelehnt (Drittanbieter) */
     /** @api */
-    public function getRejectedServices() : ?string {
+    public function getRejectedServices() : string {
         return $this->getValue("rejected_services");
     }
     /** @api */
@@ -84,7 +84,7 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* Zeitstempel */
     /** @api */
-    public function getConsentdate() : ?string {
+    public function getConsentdate() : string {
         return $this->getValue("consentdate");
     }
     /** @api */

@@ -28,11 +28,11 @@ class ApiWsm extends \rex_api_function
 
 
 
-    private static function log() {
+    private static function log() : string|false {
 
-        $consentId = rex_post('consentId', 'string');
+        $consentId = rex_post('consentId', 'string', "");
 
-        if ($consentId != "") {
+        if ($consentId !== "") {
 
             $protocol = Protocol::create();
 
@@ -53,8 +53,10 @@ class ApiWsm extends \rex_api_function
             ->setRevision(rex_post('revision', 'int'))
             ->save();
             
-            return json_encode($_POST);
+            return json_encode($protocol);
 
         }
+
+        return false;
     }
 }
