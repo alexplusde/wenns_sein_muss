@@ -148,3 +148,7 @@ wsm_revision_warning = Achtung, jetzt wird's ernst! Die Versionsnummer wird aktu
 # Zusätzliche Hinweise: Domain
 
 wsm_error_no_domains = Es wurden keine Domains in YRewrite konfiguriert, die Verwaltung hierüber ist nicht notwendig. Wechsle in die {0}, um Aritkel für Impressum und Datenschutzerklärung festzulegen.
+
+# EP
+
+wsm_success_yform_data_changed = Die Konfiguration wurde geändert. Sobald alle gewünschten Änderungen erfolgt sind, <a href="{0}">aktualisieren Sie die Revisionsnummer</a>, um bei Website-Besuchern erneut die Einwilligung abzufragen.

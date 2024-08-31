@@ -4,7 +4,7 @@ $addon = rex_addon::get('wenns_sein_muss');
 
 echo rex_view::title($addon->i18n('wsm_title'));
 
-echo rex_view::info("Die aktuelle Revisionsnummer lautet: " . \Alexplusde\Wsm\Wsm::getRevisionNumber() ."(". \Alexplusde\Wsm\Wsm::getRevisionTimestamp().")");
+echo rex_view::info("Die aktuelle Revisionsnummer lautet: " . \Alexplusde\Wsm\Wsm::getRevisionNumber() ." (". rex_formatter::intlDateTime(\Alexplusde\Wsm\Wsm::getRevisionTimestamp()).").");
 
 $table_name = 'rex_wenns_sein_muss_service';
 

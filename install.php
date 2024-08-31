@@ -39,7 +39,7 @@ rex_sql_table::get(rex::getTable('wenns_sein_muss_protocol'))
     ->ensureColumn(new rex_sql_column('url', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('consent_id', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('accept_type', 'varchar(191)', false, ''))
-    ->ensureColumn(new rex_sql_column('revision', 'int(11)', true))
+    ->ensureColumn(new rex_sql_column('revision', 'datetime'))
     ->ensureColumn(new rex_sql_column('accepted_categories', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('accepted_services', 'varchar(191)', false, ''))
     ->ensureColumn(new rex_sql_column('rejected_categories', 'varchar(191)', false, ''))
@@ -75,3 +75,5 @@ if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
     rex_yform_manager_table_api::importTablesets((string)rex_file::get(rex_path::addon($addon->getName(), 'install/rex_wenns_sein_muss_service.tableset.json')));
     rex_yform_manager_table::deleteCache();
 }
+
+\Alexplusde\Wsm\Wsm::setConfig('lastchange', date('Y-m-d H:i:s'));

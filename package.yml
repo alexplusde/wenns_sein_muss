@@ -71,7 +71,8 @@ pages:
 
 default_config:
     #settings page: basic
-    revision: 1
+    revision: "2024-08-31 00:00:00"
+    lastchange: "2024-08-31 00:00:00"
     auto_lang: 1
     iframemanager: 1
     disable_page_interaction: 0
