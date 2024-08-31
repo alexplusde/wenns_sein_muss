@@ -63,7 +63,7 @@ class Wsm
     /** @api */
     public static function getServicesAsJson() :string|false
     {
-        return @json_encode(self::getServicesAsArray(), JSON_PRETTY_PRINT);
+        return json_encode(self::getServicesAsArray(), JSON_PRETTY_PRINT);
     }
 
     /** @api */
@@ -71,7 +71,7 @@ class Wsm
     {
         $return = [];
 
-        $services =  Service::query()->where("iframe", "0", ">")->find();
+        $services =  Service::query()->where("iframe", "0", ">")->where("status", "1")->find();
 
         foreach ($services as $service) {
             /** @var Service $service */
