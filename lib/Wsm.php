@@ -83,8 +83,8 @@ class Wsm
             $s['thumbnail'] = urldecode(rex_getUrl(null, null, array('rex-api-call' => "wsm_iframe", 'service' => \rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
 //          $s['iframe'] = $iframe->getValue('attributes');
             $s['languages'][\rex_clang::getCurrent()->getCode()]['notice'] = \rex_formatter::sprintf($service->getCompanyName(), Wsm::getConfigText('iframe_notice')) .' <a rel="noreferrer noopener" href="'.$service->getValue('privacy_policy_url').'" target="_blank">'.Wsm::getConfigText('iframe_notice_more').'</a>';
-            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadBtn'] = "xxx" . Wsm::getConfigText('iframe_load_btn');
-            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadAllBtn'] = "xxx" . Wsm::getConfigText('iframe_load_all_btn');
+            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadBtn'] = Wsm::getConfigText('iframe_load_btn');
+            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadAllBtn'] = Wsm::getConfigText('iframe_load_all_btn');
             
             $return[\rex_string::normalize($service->getService())] = $s;
         }
