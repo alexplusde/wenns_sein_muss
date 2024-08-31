@@ -34,19 +34,19 @@ use rex_clang;
 			revision: <?= Wsm::getRevisionNumber(); ?> ,
 			page_scripts: true,
 			/* 		autoShow: false, */
-			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction') ?: "false" ?> ,
+			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction', 'bool', false) ?> ,
 
 			guiOptions: {
 				consentModal: {
-					layout: '<?= Wsm::getConfig('consent_settings_layout') ?>',
-					position: '<?= Wsm::getConfig('consent_modal_position') ?>',
+					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
+					position: '<?= Wsm::getConfig('consent_modal_position', 'string', '') ?>',
 					equalWeightButtons: true,
-					flipButtons: <?= (int)Wsm::getConfig('consent_modal_swap_buttons') ?> ,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool', false) ?> ,
 				},
 				preferencesModal: {
-					layout: '<?= Wsm::getConfig('consent_settings_layout') ?>',
+					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
 					equalWeightButtons: true,
-					flipButtons: <?= (bool)Wsm::getConfig('consent_modal_swap_buttons') ?> ,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool', false) ?> ,
 				},
 			},
 

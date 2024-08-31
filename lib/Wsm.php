@@ -3,6 +3,8 @@
 namespace Alexplusde\Wsm;
 
 use rex;
+use rex_config;
+use rex_type;
 use rex_extension_point;
 
 class Wsm
@@ -150,6 +152,12 @@ class Wsm
         return self::getConfig('revision_timestamp');
     }
 
+    public static function newRevision() :void
+    {
+        self::setConfig('revision', intval(self::getConfig('revision', 'int', 0))+1);
+        self::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
+    }
+
     /**
      * @api
      */
@@ -158,8 +166,7 @@ class Wsm
         $subject = $ep->getSubject();
         /* @var \rex_yform_manager_table $subject */
         if ($subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams['table'] === "rex_wenns_sein_muss_group") {
-            Wsm::setConfig('revision', intval(Wsm::getConfig('revision'))+1);
-            Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
+            self::newRevision();
         }
         return;
     }
@@ -170,17 +177,23 @@ class Wsm
     public static function yformDataDeleted(\rex_extension_point $ep) :void
     {
         if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] === "rex_wenns_sein_muss_group") {
-            Wsm::setConfig('revision', intval(Wsm::getConfig('revision'))+1);
-            Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
+            self::newRevision();
         }
         return;
     }
 
     /* Shortcut für eigene Konfigurationswerte */
     
-    public static function getConfig(string $key) :string
+    public static function getConfig(string $key, string $vartype = "string", mixed $default = "") :mixed
     {
-        return strval(\rex_config::get("wenns_sein_muss", $key));
+        if (\rex_config::has("wenns_sein_muss", $key)) {
+            return \rex_type::cast(rex_config::get("wenns_sein_muss", $key), $vartype);
+        }
+
+        if ('' === $default) {
+            return rex_type::cast($default, $vartype);
+        }
+        return $default;
     }
     public static function setConfig(string $key, mixed $value) :bool
     {
@@ -205,7 +218,7 @@ class Wsm
             }
         }
 
-        $text = Wsm::getConfig($key);
+        $text = self::getConfig($key, 'string');
         if (\rex_addon::get('sprog')->isAvailable() && !\rex::isSafeMode()) {
             if ($key !== sprogcard($key, $clang_id)) {
                 $text = sprogcard($key, $clang_id);
