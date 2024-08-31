@@ -1,7 +1,7 @@
 <?php
 $addon = rex_addon::get('wenns_sein_muss');
 
-echo rex_view::title($addon->i18n('wenns_sein_muss_title'));
+echo rex_view::title($addon->i18n('wsm_title'));
 
 $form = rex_config_form::factory($addon->getName());
 
@@ -19,6 +19,6 @@ $field->setLabel($addon->i18n('iframe_load_all_btn'));
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'edit', false);
-$fragment->setVar('title', $addon->i18n('wenns_sein_muss_config'), false);
+$fragment->setVar('title', $addon->i18n('wsm_config'), false);
 $fragment->setVar('body', $form->get(), false);
 echo $fragment->parse('core/page/section.php');
