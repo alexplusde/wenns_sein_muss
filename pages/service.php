@@ -4,10 +4,6 @@ $addon = rex_addon::get('wenns_sein_muss');
 
 echo rex_view::title($addon->i18n('wsm_title'));
 
-/* Wenn Revisions-Zeitstempel kleiner als Letzter Änderungs Zeitstempel, dann auf die Backend-Seite */
-//if (\Alexplusde\Wsm\Wsm::getRevisionTimestamp() < \Alexplusde\Wsm\Wsm::getLastChangeTimestamp()) {
-echo rex_view::warning("Die Konfiguration wurde seit der letzten Revision geändert:". \Alexplusde\Wsm\Wsm::getLastChangeTimestamp()." Bitte speichern Sie die Konfiguration erneut.");
-//}
 echo rex_view::info("Die aktuelle Revisionsnummer lautet: " . \Alexplusde\Wsm\Wsm::getRevisionNumber() ." (". rex_formatter::intlDateTime(\Alexplusde\Wsm\Wsm::getRevisionTimestamp()).").");
 
 $table_name = 'rex_wenns_sein_muss_service';

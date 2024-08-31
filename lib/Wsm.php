@@ -6,9 +6,20 @@ use rex;
 use rex_config;
 use rex_type;
 use rex_extension_point;
+use rex_formatter;
+use rex_i18n;
 
 class Wsm
 {
+
+    const TABLES = [
+        'service' => 'rex_wenns_sein_muss_service',
+        'group' => 'rex_wenns_sein_muss_group',
+        'entry' => 'rex_wenns_sein_muss_entry',
+        'iframe' => 'rex_wenns_sein_muss_iframe',
+        'domain' => 'rex_wenns_sein_muss_domain'
+    ];
+
     public static function getDomainId() :int
     {
         $domain_id = 0; // default
@@ -173,23 +184,15 @@ class Wsm
     /**
      * @api
      */
-    public static function yformDataAdded(\rex_extension_point $ep) :void
+    public static function yformDataChanged(\rex_extension_point $ep) :void
     {
-        $subject = $ep->getSubject();
-        /* @var \rex_yform_manager_table $subject */
-        if ($subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams['table'] === "rex_wenns_sein_muss_group") {
+        $table = $ep->getParam('table');
+        $table_name = $table->getTableName();
+        /* @var \rex_yform_manager_table $table */
+        if (in_array($table_name, self::TABLES)) {
             self::newChange();
-        }
-        return;
-    }
-
-    /**
-     * @api
-     */
-    public static function yformDataDeleted(\rex_extension_point $ep) :void
-    {
-        if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] === "rex_wenns_sein_muss_group") {
-            self::newChange();
+            /* Link to Backend Page to update the revision: page=wenns_sein_muss/revision */
+            echo \rex_view::success(\rex_i18n::rawMsg("wsm_success_yform_data_changed", \rex_url::currentBackendPage(['page' => 'wenns_sein_muss/revision'])));
         }
         return;
     }
