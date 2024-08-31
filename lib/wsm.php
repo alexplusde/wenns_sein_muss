@@ -169,7 +169,7 @@ class Wsm
      */
     public static function yformDataDeleted(\rex_extension_point $ep) :void
     {
-        if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams['table'] === "rex_wenns_sein_muss_group") {
+        if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] === "rex_wenns_sein_muss_group") {
             Wsm::setConfig('revision', intval(Wsm::getConfig('revision'))+1);
             Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
