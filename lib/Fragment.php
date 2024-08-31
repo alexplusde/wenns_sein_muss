@@ -7,7 +7,7 @@ class Fragment extends \rex_fragment
     /**
      * @api
      */
-    public static function getIframe(string $data_service, string $data_id = "", string $data_params = "", string $data_thumbnail = null)  :string
+    public static function getIframe(string|null $data_service, string|null $data_id = "", string|null $data_params = "", string $data_thumbnail = null)  :string
     {
         $fragment = new self();
         $fragment->setVar("data-service", $data_service);

@@ -157,7 +157,7 @@ class Wsm
     {
         $subject = $ep->getSubject();
         /* @var \rex_yform_manager_table $subject */
-        if (isset($subject) && $subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams['table'] === "rex_wenns_sein_muss_group") {
+        if ($subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams['table'] === "rex_wenns_sein_muss_group") {
             Wsm::setConfig('revision', intval(Wsm::getConfig('revision'))+1);
             Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
