@@ -1,19 +1,19 @@
-wenns_sein_muss_title = WSM Consent Management
+wsm_title = WSM Consent Management
 
 # Backend-Seiten
-wenns_sein_muss_config = Einstellungen
-wenns_sein_muss_settings = Einstellungen
-wenns_sein_muss_docs = Hilfe
-wenns_sein_muss_service = Drittanbieter
-wenns_sein_muss_iframe = Iframe-Manager
-wenns_sein_muss_group = Gruppen
-wenns_sein_muss_protocol = Einwilligungs-Protokoll
-wenns_sein_muss_domain = Impressum und Datenschutz
+wsm_config = Einstellungen
+wsm_settings = Einstellungen
+wsm_docs = Hilfe
+wsm_service = Drittanbieter
+wsm_iframe = Iframe-Manager
+wsm_group = Gruppen
+wsm_protocol = Einwilligungs-Protokoll
+wsm_domain = Impressum und Datenschutz
 
-wenns_sein_muss_settings_basic = Grundeinstellungen
-wenns_sein_muss_settings_consent = Optik
-wenns_sein_muss_settings_text = Texte
-wenns_sein_muss_settings_iframe = Texte (iframe-Manager)
+wsm_settings_basic = Grundeinstellungen
+wsm_settings_consent = Optik
+wsm_settings_text = Texte
+wsm_settings_iframe = Texte (iframe-Manager)
 
 # YForm Tabellen
 wsm_table_iframe = ✔️ Iframe-Manager
@@ -59,7 +59,7 @@ wsm_protocol_rejected_categories = abgelehnt (Kategorie)
 wsm_protocol_accepted_services = eingewilligt (Drittanbieter)
 wsm_protocol_rejected_services = abgelehnt (Drittanbieter)
 wsm_protocol_consentdate = Zeitstempel
-wenns_sein_muss_protocol_revision = Revisionsnummer
+wsm_protocol_revision = Revisionsnummer
 
 wsm_domain_id = Domain
 wsm_domain_imprint_id = Impressum
@@ -130,21 +130,21 @@ iframe_load_all_btn = Grundsätzlich erlauben
 
 # Einstellungsseite Demo-Import
 
-wenns_sein_muss_demo_import = Demo-Daten imporiteren (ohne jegliche Gewähr, projektspezifische Anpassungen müssen von Betreiber und Entwickler gemeinsam vorgenommen werden.)
-wenns_sein_muss_demo = Demo-Daten importieren
-wenns_sein_muss_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
-wenns_sein_muss_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!
+wsm_demo_import = Demo-Daten imporiteren (ohne jegliche Gewähr, projektspezifische Anpassungen müssen von Betreiber und Entwickler gemeinsam vorgenommen werden.)
+wsm_demo = Demo-Daten importieren
+wsm_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
+wsm_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!
 
-wenns_sein_muss_sprog_import = Sprog verwenden
-wenns_sein_muss_sprog = Sprog-Keys erstellen
-wenns_sein_muss_sprog_warning = Achtung, jetzt wird's ernst! Alle Texte aus den Einstellungen werden durch Sprog-Keys ersetzt. Wirklich fortfahren?
-wenns_sein_muss_sprog_imported = Alle Texte wurden durch Sprog-Keys ausgetauscht. Als nächstes Sprog-Texte anpassen!
+wsm_sprog_import = Sprog verwenden
+wsm_sprog = Sprog-Keys erstellen
+wsm_sprog_warning = Achtung, jetzt wird's ernst! Alle Texte aus den Einstellungen werden durch Sprog-Keys ersetzt. Wirklich fortfahren?
+wsm_sprog_imported = Alle Texte wurden durch Sprog-Keys ausgetauscht. Als nächstes Sprog-Texte anpassen!
 
 # Zusätzliche Hinweise: Revision
 
-wenns_sein_muss_revision = Versionsnummer aktualisieren
-wenns_sein_muss_revision_updated = Die Versionsnummer wurde aktualisiert, bestehende Nutzer werden den Consent Manager erneut erhalten.
-wenns_sein_muss_revision_warning = Achtung, jetzt wird's ernst! Die Versionsnummer wird aktualisiert, bestehende Nutzer werden den Consent Manager erneut erhalten. Wirklich fortfahren?
+wsm_revision = Versionsnummer aktualisieren
+wsm_revision_updated = Die Versionsnummer wurde aktualisiert, bestehende Nutzer werden den Consent Manager erneut erhalten.
+wsm_revision_warning = Achtung, jetzt wird's ernst! Die Versionsnummer wird aktualisiert, bestehende Nutzer werden den Consent Manager erneut erhalten. Wirklich fortfahren?
 # Zusätzliche Hinweise: Domain
 
-wenns_sein_muss_error_no_domains = Es wurden keine Domains in YRewrite konfiguriert, die Verwaltung hierüber ist nicht notwendig. Wechsle in die {0}, um Aritkel für Impressum und Datenschutzerklärung festzulegen.
+wsm_error_no_domains = Es wurden keine Domains in YRewrite konfiguriert, die Verwaltung hierüber ist nicht notwendig. Wechsle in die {0}, um Aritkel für Impressum und Datenschutzerklärung festzulegen.

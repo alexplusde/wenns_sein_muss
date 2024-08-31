@@ -13,60 +13,60 @@ requires:
         yform_field: "^2.6"
 
 page:
-    title: translate:wenns_sein_muss_title
+    title: translate:wsm_title
     icon: rex-icon fa-check
 
 pages:
     service:
-        title: translate:wenns_sein_muss_service
+        title: translate:wsm_service
         icon: rex-icon fa-check
         perm: admin
     group:
-        title: translate:wenns_sein_muss_group
+        title: translate:wsm_group
         icon: rex-icon fa-asterisk
         perm: admin
     iframemanager:
-        title: translate:wenns_sein_muss_iframe
+        title: translate:wsm_iframe
         icon: rex-icon fa-play-circle-o
         perm: admin
     protocol:
-        title: translate:wenns_sein_muss_protocol
+        title: translate:wsm_protocol
         icon: rex-icon fa-user
         perm: admin
     revision:
-        title: translate:wenns_sein_muss_revision
+        title: translate:wsm_revision
         icon: rex-icon fa-history
         perm: admin
     docs:
-        title: translate:wenns_sein_muss_docs
+        title: translate:wsm_docs
         subPath: README.md
         icon: rex-icon fa-info-circle
         itemClass: pull-right
-        perm: wenns_sein_muss[docs]
+        perm: wsm[docs]
     settings:
-        title: translate:wenns_sein_muss_settings
+        title: translate:wsm_settings
         icon: rex-icon fa-gear
         itemClass: pull-right
         perm: admin
         subpages:
             basic:
-                title: translate:wenns_sein_muss_settings_basic
+                title: translate:wsm_settings_basic
                 icon: rex-icon fa-gear
                 perm: admin
             consent:
-                title: translate:wenns_sein_muss_settings_consent
+                title: translate:wsm_settings_consent
                 icon: rex-icon fa-eye
                 perm: admin
             text:
-                title: translate:wenns_sein_muss_settings_text
+                title: translate:wsm_settings_text
                 icon: rex-icon fa-font
                 perm: admin
             iframe:
-                title: translate:wenns_sein_muss_settings_iframe
+                title: translate:wsm_settings_iframe
                 icon: rex-icon fa-code
                 perm: admin
             demo:
-                title: translate:wenns_sein_muss_demo
+                title: translate:wsm_demo
                 perm: admin
 
 default_config:
