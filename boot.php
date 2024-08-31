@@ -113,24 +113,20 @@ if (rex::isBackend()) {
                 'service',
                 'custom',
                 function ($a) {
-                    return ''.$a['list']->getValue('service').'<br /><small><strong>'.$a['list']->getValue('company_name').'</strong></small><br /><small>'.$a['list']->getValue('company_address').'</small>';
-                }
-            );
-
-            $list->setColumnFormat(
-                'privacy_policy_url',
-                'custom',
-                function ($a) {
+                    $service = ''.$a['list']->getValue('service').'<br /><small><strong>'.$a['list']->getValue('company_name').'</strong></small><br /><small>'.$a['list']->getValue('company_address').'</small><br />';
                     $url = $a['list']->getValue('privacy_policy_url');
                     if ($url !== "" && strlen($url) >= 64) {
-                        return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.substr($url, 0, 64) .'...</a>';
+                        $service .= '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.substr($url, 0, 64) .'...</a>';
                     } elseif ($url !== "") {
-                        return '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.$url.'</a>';
+                        $service .= '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.$url.'</a>';
                     } else {
-                        return "❌";
+                        $service .= "❌";
                     }
+
+                    return $service;
                 }
             );
+            $list->removeColumn('privacy_policy_url');
         }
         if ($table->getTableName() === "rex_wenns_sein_muss_group") {
             $list = $ep->getSubject();
