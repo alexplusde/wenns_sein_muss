@@ -26,7 +26,6 @@ wsm_table_protocol = ✔️ Einwilligungs-Protokoll
 # Labels Tabellenfelder
 
 wsm_service_group = Gruppe
-wsm_service = Name
 
 wsm_service_company_name = Name des Unternehmens
 wsm_service_company_address = Anschrift
