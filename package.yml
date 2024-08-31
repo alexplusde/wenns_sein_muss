@@ -76,6 +76,7 @@ default_config:
     auto_lang: 1
     iframemanager: 1
     disable_page_interaction: 0
+    first_install: 1
 
     # settings page: consent
     consent_modal_title: Diese Webseite verwendet Cookies und Drittanbieter-Dienste

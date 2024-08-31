@@ -75,3 +75,5 @@ if (rex_addon::get('yform')->isAvailable()) {
     rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_service.json'));
     rex_yform_manager_table::deleteCache();
 }
+
+\rex_config::set('wenns_sein_muss', 'lastchange', date('Y-m-d H:i:s'));
