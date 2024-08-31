@@ -289,7 +289,7 @@
                 "list_hidden": 1,
                 "search": 0,
                 "name": "updatedate",
-                "label": "Aktualisiert am...",
+                "label": "translate:wsm_service_updatedate",
                 "not_required": "",
                 "no_db": "0",
                 "only_empty": "0",
