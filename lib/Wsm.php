@@ -63,7 +63,7 @@ class Wsm
     /** @api */
     public static function getServicesAsJson() :string|false
     {
-        return @json_encode(self::getServicesAsArray());
+        return @json_encode(self::getServicesAsArray(), JSON_PRETTY_PRINT);
     }
 
     /** @api */
@@ -83,8 +83,8 @@ class Wsm
             $s['thumbnail'] = urldecode(rex_getUrl(null, null, array('rex-api-call' => "wsm_iframe", 'service' => \rex_string::normalize($service->getValue('service')), 'id' => "{data_id}"), "&"));
 //          $s['iframe'] = $iframe->getValue('attributes');
             $s['languages'][\rex_clang::getCurrent()->getCode()]['notice'] = \rex_formatter::sprintf($service->getCompanyName(), Wsm::getConfigText('iframe_notice')) .' <a rel="noreferrer noopener" href="'.$service->getValue('privacy_policy_url').'" target="_blank">'.Wsm::getConfigText('iframe_notice_more').'</a>';
-            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadBtn'] = Wsm::getConfigText('iframe_load_btn');
-            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadAllBtn'] = Wsm::getConfigText('iframe_load_all_btn');
+            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadBtn'] = "xxx" . Wsm::getConfigText('iframe_load_btn');
+            $s['languages'][\rex_clang::getCurrent()->getCode()]['loadAllBtn'] = "xxx" . Wsm::getConfigText('iframe_load_all_btn');
             
             $return[\rex_string::normalize($service->getService())] = $s;
         }
@@ -94,7 +94,7 @@ class Wsm
 
     public static function getIframeServicesAsJson() :string
     {
-        $code = (string)@json_encode(self::getIframeServicesAsArray());
+        $code = (string)@json_encode(self::getIframeServicesAsArray(), JSON_PRETTY_PRINT);
         return str_replace(['"<BEGIN_JS>', '<END_JS>"'], ["", ""], $code);
     }
 
@@ -132,7 +132,7 @@ class Wsm
 
     public static function getCategoriesAsJson() :string
     {
-        $code = strval(@json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT, JSON_FORCE_OBJECT));
+        $code = strval(@json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT|JSON_FORCE_OBJECT));
         return str_replace(['"<BEGIN_JS>', '<END_JS>"'], ["", ""], $code);
     }
 
@@ -220,10 +220,11 @@ class Wsm
 
         $text = self::getConfig($key, 'string');
         if (\rex_addon::get('sprog')->isAvailable() && !\rex::isSafeMode()) {
-            if ($key !== sprogcard($key, $clang_id)) {
+            if (false !== sprogcard($key, $clang_id)) {
                 $text = sprogcard($key, $clang_id);
             }
         }
+
         if ($text === null) {
             return "missing text for key <code>". $key . "</code>";
         }

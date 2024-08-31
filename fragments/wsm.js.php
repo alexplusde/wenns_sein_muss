@@ -51,9 +51,9 @@ use rex_clang;
 			},
 
 
-			sections: <?= Wsm::getServicesAsJson() ?> ,
+			sections: <?= Wsm::getServicesAsJson() ?>,
 
-			categories: <?= Wsm::getCategoriesAsJson() ?> ,
+			categories: <?= Wsm::getCategoriesAsJson() ?>,
 
 
 

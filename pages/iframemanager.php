@@ -1,7 +1,7 @@
 <?php
 $addon = rex_addon::get('wenns_sein_muss');
 
-echo rex_view::title($addon->i18n('wenns_sein_muss_title'));
+echo rex_view::title($addon->i18n('wsm_title'));
 
 $table_name = 'rex_wenns_sein_muss_iframe';
 

@@ -53,7 +53,7 @@ class ApiWsm extends \rex_api_function
             ->setRevision(rex_post('revision', 'int'))
             ->save();
             
-            return json_encode($protocol);
+            return json_encode($protocol, JSON_PRETTY_PRINT);
 
         }
 
