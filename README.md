@@ -1,6 +1,6 @@
-# WSM - Addon für REDAXO 5 CMS für DSGVO-konforme Einwilligungen und Auskunft von verwendeten Drittanbieter-Diensten
+# WSM Consent Manager - Addon für REDAXO 5 CMS für DSGVO-konforme Einwilligungen und Auskunft von verwendeten Drittanbieter-Diensten
 
-Die neue schlanke Alternative zum Consent Manager, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.
+Die moderne schlanke Alternative zum REDAXO Consent Manager, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.
 
 * Geringe Dateigröße
 * Kompatibel zu (IE10+ *)
@@ -8,6 +8,7 @@ Die neue schlanke Alternative zum Consent Manager, um Einwilligungen vom Nutzer 
 * DSGVO-kompatibel (bei korrekter Einrichtung / Verwendung)
 * Mehrsprachigkeit
 * Barrierearm (WAI-ARIA compliant)
+* Kontrolliertes Revisions-Management (seit 5.0.0)
 
 Außerdem angepasst an REDAXO:
 
@@ -15,31 +16,30 @@ Außerdem angepasst an REDAXO:
 * Basiert auf YForm - einfacher Import/Export von Drittanbieter-Informationen
 * Schlanker Addon-Code - und damit einfacher zu warten und weiterzuentwickeln
 * Kompatibel zu YRewrite - verwende bestehende Domains und Sprachen
-* Kompatibel zu Sprog - verwende Übersetzungen wie gewohnt aus Sprog
+* Kompatibel zu Sprog & Wildcard - verwende Übersetzungen wie gewohnt aus Sprog
 
 Das Addon war ein großer 🌵 an Aufwand, deshalb unterstütze die Entwicklung nachträglich mit einer Beauftraung des Addon-Autors.
 
 ## Features
 
-### Vergleich zu FriendsOfREDAXO \ Consent Manager
+### Vergleich zu FriendsOfREDAXO\consent_manager
 
-# Tabelle mit Vergleich zwischen Consent Manager und "Wenns sein Muss" Addon für REDAXO
-
-| Feature | Consent Manager | Wenns sein Muss |
-|---------|-----------------|-----------------|
-| Opt-In für einzelne Kategorien | ✅ | ✅ |
-| Opt-Out für einzelne Kategorien | ✅ | ✅ |
-| Opt-In für einzelne Services |❌ | ✅ |
-| Opt-Out für einzelne Services | ❌ | ✅ |
-| Informationen zu einzelnen Cookies | ❌ | ✅ |
-| Mehrsprachigkeit | ✅ Eigene Oberfläche | ✅ Sprog / Wildcard |
-| Multidomain | ✅ Eigene Verwaltung | ✅ Durch YRewrite |
-| Anpassung der Texte | ✅ | ✅ |
-| Vorgefertigte Themes | ✅ (siehe Addon) | ✅ (z.B. Darkmode) |
-| Iframe-Manager | ❌ | ✅ |
-| Adhoc-Einwilligung | ❌ | ✅ |
-| Laden von Skripten ohne Seiten-Reload | ❌ | ✅ |
-| Revisions-Management und Protokollierung | ❌ | ✅ (teilweise) |
+| Feature                                  | Consent Manager      | WSM Consent Manager |
+|------------------------------------------|----------------------|---------------------|
+| Opt-In für einzelne Kategorien           | ✅                   | ✅                  |
+| Opt-Out für einzelne Kategorien          | ✅                   | ✅                  |
+| Opt-In für einzelne Services             | ❌                   | ✅                  |
+| Opt-Out für einzelne Services            | ❌                   | ✅                  |
+| Informationen zu einzelnen Cookies       | ❌                   | ✅                  |
+| Mehrsprachigkeit                         | ✅ Eigene Oberfläche | ✅ Sprog / Wildcard |
+| Multidomain                              | ✅ Eigene Verwaltung | ✅ Durch YRewrite   |
+| Anpassung der Texte                      | ✅                   | ✅                  |
+| Vorgefertigte Themes                     | ✅ (siehe Addon)     | ✅ (z.B. Darkmode)  |
+| Iframe-Manager                           | ❌                   | ✅                  |
+| Adhoc-Einwilligung                       | ❌                   | ✅                  |
+| Laden von Skripten ohne Seiten-Reload    | ❌                   | ✅                  |
+| Revisions-Management und Protokollierung | ❌                   | ✅ (teilweise)      |
+| Sprog-Platzhalter mit einem Klick        | ❌                   | ✅                  |
 
 ### Cookie-Consent-Hinweis
 
@@ -155,7 +155,7 @@ Siehe <https://github.com/orestbida/cookieconsent#api-methods> und <https://gith
 
 ## Lizenz
 
-(c) 2023 alex+ Digitales Marketing - Alexander Walther. Alle Rechte vorbehalten.
+(c) 2024 alex+ Digitales Marketing - Alexander Walther. Alle Rechte vorbehalten.
 
 ## Autoren
 
