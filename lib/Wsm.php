@@ -3,6 +3,8 @@
 namespace Alexplusde\Wsm;
 
 use rex;
+use rex_config;
+use rex_type;
 use rex_extension_point;
 
 class Wsm
@@ -178,9 +180,16 @@ class Wsm
 
     /* Shortcut für eigene Konfigurationswerte */
     
-    public static function getConfig(string $key) :string
+    public static function getConfig(string $key, string $vartype = "string", mixed $default = "") :mixed
     {
-        return strval(\rex_config::get("wenns_sein_muss", $key));
+        if (\rex_config::has("wenns_sein_muss", $key)) {
+            return \rex_type::cast(rex_config::get("wenns_sein_muss", $key), $vartype);
+        }
+
+        if ('' === $default) {
+            return rex_type::cast($default, $vartype);
+        }
+        return $default;
     }
     public static function setConfig(string $key, mixed $value) :bool
     {
