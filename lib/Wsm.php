@@ -143,7 +143,7 @@ class Wsm
 
     public static function getRevisionNumber() :int
     {
-        return (int)self::getConfig('revision');
+        return strtotime(self::getConfig('revision'));
     }
 
     /**
@@ -152,13 +152,22 @@ class Wsm
      */
     public static function getRevisionTimestamp() :string
     {
-        return self::getConfig('revision_timestamp');
+        return self::getConfig('revision');
+    }
+
+    public static function getLastChangeTimestamp() :string
+    {
+        return self::getConfig('lastchange');
     }
 
     public static function newRevision() :void
     {
-        self::setConfig('revision', intval(self::getConfig('revision', 'int', 0))+1);
-        self::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
+        self::setConfig('revision', date("Y-m-d H:i:s"));
+    }
+
+    public static function newChange() :void
+    {
+        self::setConfig('lastchange', date("Y-m-d H:i:s"));
     }
 
     /**
@@ -169,7 +178,7 @@ class Wsm
         $subject = $ep->getSubject();
         /* @var \rex_yform_manager_table $subject */
         if ($subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams['table'] === "rex_wenns_sein_muss_group") {
-            self::newRevision();
+            self::newChange();
         }
         return;
     }
@@ -180,7 +189,7 @@ class Wsm
     public static function yformDataDeleted(\rex_extension_point $ep) :void
     {
         if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] === "rex_wenns_sein_muss_group") {
-            self::newRevision();
+            self::newChange();
         }
         return;
     }
