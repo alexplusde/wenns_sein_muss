@@ -159,15 +159,11 @@ if (rex::isBackend()) {
                 'preferences',
                 'custom',
                 function ($a) {
-                    /* accepted/rejected ausgeben und mit emojis versehen */
-                    $accepted = $a['list']->getValue('accepted_categories');
-                    $rejected = $a['list']->getValue('rejected_categories');
-
                     $accepted_services = $a['list']->getValue('accepted_services');
                     $rejected_services = $a['list']->getValue('rejected_services');
 
-                    $accepted_services = json_decode($accepted_services, true);
-                    $rejected_services = json_decode($rejected_services, true);
+                    $accepted_services = json_decode($accepted_services, true) ?? [];
+                    $rejected_services = json_decode($rejected_services, true) ?? [];
 
                     $output = "";
                     $output .= '✅<br>';
