@@ -56,8 +56,8 @@ class Lang
             $privacy_policy = $domain->getPrivacyPolicyArticle();
             $imprint = $domain->getImprintArticle();
         } else {
-            $privacy_policy = \rex_article::get(Wsm::getConfig("wsm_domain_imprint_id", 'int'));
-            $imprint = \rex_article::get(Wsm::getConfig("wsm_domain_privacy_policy_id", 'int'));
+            $privacy_policy = \rex_article::get(Wsm::getConfig("wsm_domain_imprint_id", 'int', 0));
+            $imprint = \rex_article::get(Wsm::getConfig("wsm_domain_privacy_policy_id", 'int', 0));
         }
 
         if($privacy_policy instanceof \rex_article && $imprint instanceof \rex_article) {
@@ -96,9 +96,9 @@ class Lang
             $privacy_policy = $domain->getPrivacyPolicyArticle();
             $imprint = $domain->getImprintArticle();
         } else {
-            $privacy_policy = \rex_article::get(Wsm::getConfig("wsm_domain_privacy_policy_id", 'int'));
+            $privacy_policy = \rex_article::get(Wsm::getConfig("wsm_domain_privacy_policy_id", 'int', 0));
             
-            $imprint = \rex_article::get(Wsm::getConfig("wsm_domain_imprint_id", 'int'));
+            $imprint = \rex_article::get(Wsm::getConfig("wsm_domain_imprint_id", 'int', 0));
         }
         if($privacy_policy instanceof \rex_article && $imprint instanceof \rex_article) {
             $consentModal["footer"] = '<a href="'.$privacy_policy->getUrl().'">'.$privacy_policy->getName().'</a>
