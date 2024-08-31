@@ -20,7 +20,7 @@ class Entry extends \rex_yform_manager_dataset
         $entries = Entry::query()->where("service_id", $service_id)->find();
         $return = [];
         foreach ($entries as $entry) {
-            /* @var Entry $entry */
+            /** @var Entry $entry */
             $e = [];
             $e["name"] = $entry->getName();
             $e["service"] = $service->getName();

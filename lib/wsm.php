@@ -58,11 +58,13 @@ class Wsm
         return $sections;
     }
 
+    /** @api */
     public static function getServicesAsJson() :string|false
     {
         return @json_encode(self::getServicesAsArray());
     }
 
+    /** @api */
     public static function getIframeServicesAsArray() :array
     {
         $return = [];
@@ -128,8 +130,8 @@ class Wsm
 
     public static function getCategoriesAsJson() :string
     {
-        $code = @json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT, JSON_FORCE_OBJECT);
-        return str_replace(['"<BEGIN_JS>', '<END_JS>"'], "", $code);
+        $code = strval(@json_encode(self::getCategoriesAsArray(), JSON_PRETTY_PRINT, JSON_FORCE_OBJECT));
+        return str_replace(['"<BEGIN_JS>', '<END_JS>"'], ["", ""], $code);
     }
 
     /* Erhöhe mit jeder Änderung an Drittanbieter-Einstellungen die Revisionsnummer, um die Einwilligung erneut einzuholen */
@@ -155,8 +157,8 @@ class Wsm
     {
         $subject = $ep->getSubject();
         /* @var \rex_yform_manager_table $subject */
-        if (isset($subject) && $subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams()['table'] === "rex_wenns_sein_muss_group") {
-            Wsm::setConfig('revision', Wsm::getConfig('revision')+1);
+        if (isset($subject) && $subject->objparams['main_table'] === "rex_wenns_sein_muss" || $subject->objparams['main_table'] === "rex_wenns_sein_muss_entry" || $subject->objparams['table'] === "rex_wenns_sein_muss_group") {
+            Wsm::setConfig('revision', intval(Wsm::getConfig('revision'))+1);
             Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
         return;
@@ -167,8 +169,8 @@ class Wsm
      */
     public static function yformDataDeleted(\rex_extension_point $ep) :void
     {
-        if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams()['table'] === "rex_wenns_sein_muss_group") {
-            Wsm::setConfig('revision', Wsm::getConfig('revision')+1);
+        if ($ep->getParams()['table'] === "rex_wenns_sein_muss" || $ep->getParams()['table'] === "rex_wenns_sein_muss_entry" || $ep->getParams['table'] === "rex_wenns_sein_muss_group") {
+            Wsm::setConfig('revision', intval(Wsm::getConfig('revision'))+1);
             Wsm::setConfig('revision_timestamp', date("Y-m-d H:i:s"));
         }
         return;
@@ -191,7 +193,7 @@ class Wsm
     {
         $clang_id = 1;
         
-        if(rex_get('lang')) {
+        if(rex_get('lang', 'string', "") !== "") {
             $lang_code = rex_get('lang');
         }
         $rex_clangs = \rex_clang::getAll();

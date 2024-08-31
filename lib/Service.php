@@ -9,7 +9,7 @@ use rex_yrewrite;
 class Service extends \rex_yform_manager_dataset
 {
 
-    const STATUS_OPTIONS = [
+    private const STATUS_OPTIONS = [
         0 => 'translate:wsm_service_status_draft',
         1 => 'translate:wsm_service_status_published',
     ];
@@ -20,7 +20,7 @@ class Service extends \rex_yform_manager_dataset
 
     /**
      * 
-     * @return rex_yform_manager_collection<Service> 
+     * @return rex_yform_manager_collection<self> 
      */
     public static function findScripts() : rex_yform_manager_collection
     {
@@ -28,6 +28,10 @@ class Service extends \rex_yform_manager_dataset
     }
     
 
+    /**
+     * 
+     * @return rex_yform_manager_collection<self> 
+     */
     public static function findServices(int $group_id): rex_yform_manager_collection
     {
         return self::query()->whereRaw('`group` = '.$group_id.' AND (FIND_IN_SET(0, `rex_domain`) || FIND_IN_SET('.Wsm::getDomainId() .', `rex_domain`))')->find();
@@ -41,7 +45,7 @@ class Service extends \rex_yform_manager_dataset
 
     /* Name */
     /** @api */
-    public function getService() : ?string {
+    public function getService() : string {
         return $this->getValue("service");
     }
     /** @api */
@@ -52,7 +56,7 @@ class Service extends \rex_yform_manager_dataset
 
     /* Name des Unternehmens */
     /** @api */
-    public function getCompanyName() : ?string {
+    public function getCompanyName() : string {
         return $this->getValue("company_name");
     }
     /** @api */
@@ -63,7 +67,7 @@ class Service extends \rex_yform_manager_dataset
 
     /* Anschrift */
     /** @api */
-    public function getCompanyAddress() : ?string {
+    public function getCompanyAddress() : string {
         return $this->getValue("company_address");
     }
     /** @api */
@@ -74,7 +78,7 @@ class Service extends \rex_yform_manager_dataset
 
     /* Datenschutzerklärung */
     /** @api */
-    public function getPrivacyPolicyUrl() : ?string {
+    public function getPrivacyPolicyUrl() : string {
         return $this->getValue("privacy_policy_url");
     }
     /** @api */
@@ -92,11 +96,11 @@ class Service extends \rex_yform_manager_dataset
     /* Domain(s) */
     /** @api */
     public function getRexDomain() : ? \rex_yrewrite_domain {
-        return rex_yrewrite::getDomainById($this->getValue("rex_domain"));
+        return rex_yrewrite::getDomainById($this->getRexDomainId());
     }
     /** @api */
-    public function getRexDomainId() : ?int {
-        return $this->getValue("rex_domain");
+    public function getRexDomainId() : int {
+        return intval($this->getValue("rex_domain"));
     }
     /** @api */
     public function setRexDomain(int $value) : self {
@@ -112,7 +116,7 @@ class Service extends \rex_yform_manager_dataset
 
     /* JavaScript (nach Einwilligung) */
     /** @api */
-    public function getScript() : ?string {
+    public function getScript() : string {
         return $this->getValue("script");
     }
     /** @api */
@@ -123,7 +127,7 @@ class Service extends \rex_yform_manager_dataset
             
     /* Aktualisiert am... */
     /** @api */
-    public function getUpdatedate() : ?string {
+    public function getUpdatedate() : string {
         return $this->getValue("updatedate");
     }
     /** @api */
@@ -143,6 +147,9 @@ class Service extends \rex_yform_manager_dataset
         return $this;
     }
 
+    /** @api 
+     * @return array<int, string>
+    */
     public static function getStatusOptions() : array {
         return self::STATUS_OPTIONS;
     }

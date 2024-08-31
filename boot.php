@@ -40,8 +40,8 @@ if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
 if(!rex_addon::get('yrewrite')->isAvailable()) {
     $addon = rex_addon::get('wenns_sein_muss');
     $pages = $addon->getProperty('pages');
-    if(is_array($pages) && array_key_exists('domain', $pages) && \array_key_exists('hidden', $pages['domain'])) {
-        $pages['domain']['hidden'] = 'true';
+    if (is_array($pages) && isset($pages['domain']['hidden'])) {
+        $pages['domain']['hidden'] = true;
     }
     $addon->setProperty('pages', $pages);
 }
@@ -176,7 +176,7 @@ if (rex::isBackend()) {
                 'custom',
                 function ($a) {
                     $id = $a['list']->getValue('privacy_policy_id');
-                    if (is_integer($id) && rex_article::get($id instanceof rex_article)) {
+                    if (is_integer($id) && rex_article::get($id) instanceof rex_article) {
                         return rex_article::get($id)->getName().'<br><small>'. rex_article::get($id)->getUrl().'</small>';
                     }
                     return "❌";

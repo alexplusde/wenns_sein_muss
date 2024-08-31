@@ -25,7 +25,7 @@ class ApiWsmIframe extends rex_api_function
                 $body = json_decode($response->getBody());
             }
             rex_response::setStatus("301");
-            if(is_array($body) && array_key_exists(0, $body) && property_exists("thumbnail_large", $body[0])) {
+            if(is_array($body) && array_key_exists(0, $body) && property_exists($body[0], "thumbnail_large")) {
                 rex_response::sendRedirect($body[0]->thumbnail_large);
             }
         }
