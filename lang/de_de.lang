@@ -59,6 +59,7 @@ wsm_protocol_accepted_services = eingewilligt (Drittanbieter)
 wsm_protocol_rejected_services = abgelehnt (Drittanbieter)
 wsm_protocol_consentdate = Zeitstempel
 wsm_protocol_revision = Revisionsnummer
+wsm_protocol_preferences = Einstellungen
 
 wsm_domain_id = Domain
 wsm_domain_imprint_id = Impressum
