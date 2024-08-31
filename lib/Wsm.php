@@ -116,6 +116,9 @@ class Wsm
 
             foreach ($services as $service) {
                 /** @var Service $service */
+                if(!($service->getIframe() instanceof Iframe)) {
+                    continue;
+                }
                 $s = [];
                 $s['label'] = $service->getService();
                 /* <BEGIN JS> <END_JS> wird ersetzt, um aus dem zurückgegebenen String eine Funktion in JS zu machen */
