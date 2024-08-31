@@ -36,8 +36,8 @@ wsm_service_domain = Domain(s)
 wsm_service_entry_ids = Cookies, LocalStorage und Tracking-Bilder
 wsm_service_script = JavaScript (nach Einwilligung)
 wsm_service_status = Status
-wsm_service_status_draft = Entwurf
-wsm_service_status_published = Veröffentlicht
+wsm_service_status_draft = 🟡 Entwurf
+wsm_service_status_published = 🟢 Veröffentlicht
 
 wsm_group_name = Name
 wsm_group_title = Titel
@@ -52,7 +52,7 @@ wsm_entry_description = Erläuterung
 wsm_entry_service_id = Drittanbieter
 
 wsm_protocol_website = Website
-wsm_protocol_consent_id = ID
+wsm_protocol_consent_id = Consent-ID
 wsm_protocol_accept_type = Einwilligung
 wsm_protocol_accepted_categories = eingewilligt (Kategorie)
 wsm_protocol_rejected_categories = abgelehnt (Kategorie)
