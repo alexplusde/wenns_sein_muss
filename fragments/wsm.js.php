@@ -24,29 +24,29 @@ use rex_clang;
 
 			currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
 
-			services: <?= Wsm::getIframeServicesAsJson() ?> ,
+			services: <?= Wsm::getIframeServicesAsJson() ?>,
 
 		});
 
 		const wsm_cc = CookieConsent;
 
 		wsm_cc.run({
-			revision: <?= Wsm::getRevisionNumber(); ?> ,
+			revision: <?= Wsm::getRevisionNumber(); ?>,
 			page_scripts: true,
 			/* 		autoShow: false, */
-			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction', 'bool', false) ?> ,
+			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction', 'bool') ? "true" : "false" ?>,
 
 			guiOptions: {
 				consentModal: {
 					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
 					position: '<?= Wsm::getConfig('consent_modal_position', 'string', '') ?>',
 					equalWeightButtons: true,
-					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool', false) ?> ,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool') ? "true" : "false" ?>,
 				},
 				preferencesModal: {
 					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
 					equalWeightButtons: true,
-					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool', false) ?> ,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool')  ? "true" : "false" ?>,
 				},
 			},
 
