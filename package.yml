@@ -17,30 +17,21 @@ page:
     icon: rex-icon fa-check
 
 pages:
-    consent:
+    service:
         title: translate:wenns_sein_muss_service
         icon: rex-icon fa-check
         perm: admin
-        subpages:
-            service:
-                title: translate:wenns_sein_muss_service
-                icon: rex-icon fa-check
-                perm: admin
-            group:
-                title: translate:wenns_sein_muss_group
-                icon: rex-icon fa-asterisk
-                perm: admin
-            iframemanager:
-                title: translate:wenns_sein_muss_iframe
-                icon: rex-icon fa-play-circle-o
-                perm: admin
-            protocol:
-                title: translate:wenns_sein_muss_protocol
-                icon: rex-icon fa-user
-                perm: admin
-    domain:
-        title: translate:wenns_sein_muss_domain
-        icon: rex-icon fa-gear
+    group:
+        title: translate:wenns_sein_muss_group
+        icon: rex-icon fa-asterisk
+        perm: admin
+    iframemanager:
+        title: translate:wenns_sein_muss_iframe
+        icon: rex-icon fa-play-circle-o
+        perm: admin
+    protocol:
+        title: translate:wenns_sein_muss_protocol
+        icon: rex-icon fa-user
         perm: admin
     revision:
         title: translate:wenns_sein_muss_revision
