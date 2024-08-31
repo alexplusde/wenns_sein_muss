@@ -50,7 +50,7 @@ class ApiWsm extends \rex_api_function
             ->setRejectedCategories(rex_post('rejectedCategories', 'string'))
             ->setAcceptedServices(rex_post('acceptedServices', 'string'))
             ->setRejectedServices(rex_post('rejectedServices', 'string'))
-            ->setRevision(rex_post('revision', 'int'))
+            ->setRevision(date('Y-m-d H:i:s', rex_post('revision', 'int')))
             ->save();
             
             return json_encode($protocol, JSON_PRETTY_PRINT);

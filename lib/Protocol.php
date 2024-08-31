@@ -95,11 +95,11 @@ class Protocol extends \rex_yform_manager_dataset
 
     /* Revision */
     /** @api */
-    public function getRevision() : ?int {
+    public function getRevision() : ?string {
         return $this->getValue("revision");
     }
     /** @api */
-    public function setRevision(int $value) : self {
+    public function setRevision(string $value) : self {
         $this->setValue("revision", $value);
         return $this;
     }
