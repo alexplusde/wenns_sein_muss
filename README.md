@@ -84,14 +84,23 @@ Das REDAXO-Addon Sprog eigenet sich hervoragend bei mehrsprachigen Websites, um 
 
 ### Integration
 
-1. Integriere `REX_WSM[type="css"]` im Template im `<head>`-Bereich, um das benötigte CSS zu laden.
-2. Integriere `REX_WSM[type="js"]` im Template vor dem schließenden `</body>`-Tag, um das benötigte JS zu laden.
-3. (optional): Stelle deinen HTML-Ausgabe-Code in Templates, Modulen und Fragmenten auf den in <https://github.com/orestbida/cookieconsent> und <https://github.com/orestbida/iframemanager> empfohlenen Code um.
-4. Mit `REX_WSM[type="manage"]` erhält der Nutzer - bspw. auf der Datenschutz-Seite - nachträglich Kontrollmöglichkeiten, vorher muss jedoch zuerst `REX_WSM[type="js"]` geladen sein.
+Füge CSS, eigene Skritpe und JS in dein Template ein, z.B. vor `</body>`. Die eigenen Skripte werden über einen Callback erst nach Einwilligung geladen.
+
+```php
+if (rex_addon::get('wenns_sein_muss') && rex_addon::get('wenns_sein_muss')->isAvailable()) {
+    echo Alexplusde\Wsm\Fragment::getCss();
+    echo Alexplusde\Wsm\Fragment::getScripts();
+    echo Alexplusde\Wsm\Fragment::getJs();
+} ?>
+```
+
+Optional: Stelle deinen HTML-Ausgabe-Code in Templates, Modulen und Fragmenten auf den in <https://github.com/orestbida/cookieconsent> und <https://github.com/orestbida/iframemanager> empfohlenen Code um.
+
+Mit `REX_WSM[type="manage"]` erhält der Nutzer - bspw. auf der Datenschutz-Seite - nachträglich Kontrollmöglichkeiten.
 
 #### Beispiel-Scriptcode
 
-##### Consent-basiertes Laden von JS
+##### Consent-basiertes Laden von eigenem JS (ohne Nutzung des Eingabefelds im Backend)
 
 ```html
 <script type="text/plain" data-cookiecategory="analytics" src="analytics.js" defer></script>
@@ -109,6 +118,13 @@ link.href = 'https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap';
 link.rel = 'stylesheet';
 
 document.getElementsByTagName('head')[0].appendChild(link);
+```
+
+```js
+script = document.createElement('script');
+script.src = 'https://example.org/js/script.js';
+
+document.getElementsByTagName('head')[0].appendChild(script);
 ```
 
 Siehe <https://github.com/orestbida/cookieconsent#how-to-blockmanage-scripts>.
