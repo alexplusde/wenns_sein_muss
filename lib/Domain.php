@@ -3,6 +3,8 @@
 namespace Alexplusde\Wsm;
 
 use rex_article;
+use rex_extension_point;
+use rex_yform_list;
 use rex_yrewrite_domain;
 use rex_yrewrite;
 
@@ -84,5 +86,42 @@ class Domain extends \rex_yform_manager_dataset
             $this->setValue("imprint_id", $id);
         }
         return $this;
+    }
+
+    /**
+     * @param rex_extension_point<rex_yform_list> $ep
+     * @return void|rex_yform_list
+     */
+    public static function epYformDataList(rex_extension_point $ep) 
+    {
+        if ($ep->getParam('table')->getTableName() !== self::table()->getTableName()) {
+            return;
+        }
+
+        /** @var rex_yform_list $list */
+        $list = $ep->getSubject();
+
+        $list->setColumnFormat(
+            'imprint_id',
+            'custom',
+            function ($a) {
+                $id = $a['list']->getValue('imprint_id');
+                if (is_integer($id) && rex_article::get($id) instanceof rex_article) {
+                    return rex_article::get($id)->getName().'<br><small>'. rex_article::get($id)->getUrl().'</small>';
+                }
+                return '❌';
+            }
+        );
+        $list->setColumnFormat(
+            'privacy_policy_id',
+            'custom',
+            function ($a) {
+                $id = $a['list']->getValue('privacy_policy_id');
+                if (is_integer($id) && rex_article::get($id) instanceof rex_article) {
+                    return rex_article::get($id)->getName().'<br><small>'. rex_article::get($id)->getUrl().'</small>';
+                }
+                return '❌';
+            }
+        );
     }
 }

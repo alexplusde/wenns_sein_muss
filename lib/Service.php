@@ -2,9 +2,14 @@
 
 namespace Alexplusde\Wsm;
 
+use rex_exception;
+use rex_extension_point;
+use rex_sql_exception;
+use rex_yform_list;
 use rex_yform_manager_collection;
 use rex_yform_manager_dataset;
 use rex_yrewrite;
+use RuntimeException;
 
 class Service extends \rex_yform_manager_dataset
 {
@@ -152,5 +157,82 @@ class Service extends \rex_yform_manager_dataset
     */
     public static function getStatusOptions() : array {
         return self::STATUS_OPTIONS;
+    }
+
+    /**
+     * @param rex_extension_point<rex_yform_list> $ep
+     * @return void|rex_yform_list
+     */
+    public static function epYformDataList(rex_extension_point $ep) 
+    {
+        if ($ep->getParam('table')->getTableName() !== self::table()->getTableName()) {
+            return;
+        }
+
+        /** @var rex_yform_list $list */
+        $list = $ep->getSubject();
+
+        $list->setColumnPosition('script', 3);
+        $list->setColumnLabel('script', 'JS');
+        $list->setColumnFormat(
+            'script',
+            'custom',
+            function ($a) {
+                if ($a['list']->getValue('script') !== "") {
+                    return '<i class="fa fa-code"></i>';
+                } else {
+                    return '';
+                }
+            }
+        );
+
+        $list->setColumnPosition('iframe', 4);
+        $list->setColumnLabel('iframe', 'IM');
+        $list->setColumnFormat(
+            'iframe',
+            'custom',
+            function ($a) {
+                if ($a['list']->getValue('iframe') > 0) {
+                    return '<i class="fa fa-play-circle-o"></i>';
+                } else {
+                    return '';
+                }
+            }
+        );
+
+        $list->setColumnPosition('entry_ids', 5);
+        $list->setColumnLabel('entry_ids', '🍪');
+        $list->setColumnFormat(
+            'entry_ids',
+            'custom',
+            function ($a) {
+                $count = count(Entry::query()->where('service_id', $a['list']->getValue('id'))->find());
+                if ($count > 0) {
+                    return $count;
+                } else {
+                    return '';
+                }
+            }
+        );
+
+
+        $list->setColumnFormat(
+            'service',
+            'custom',
+            function ($a) {
+                $service = ''.$a['list']->getValue('service').'<br /><small><strong>'.$a['list']->getValue('company_name').'</strong></small><br /><small>'.$a['list']->getValue('company_address').'</small><br />';
+                $url = $a['list']->getValue('privacy_policy_url');
+                if ($url !== "" && strlen($url) >= 64) {
+                    $service .= '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.substr($url, 0, 64) .'...</a>';
+                } elseif ($url !== "") {
+                    $service .= '<a href="'.$a['list']->getValue('privacy_policy_url') .'">'.$url.'</a>';
+                } else {
+                    $service .= '❌';
+                }
+
+                return $service;
+            }
+        );
+        $list->removeColumn('privacy_policy_url');
     }
 }
