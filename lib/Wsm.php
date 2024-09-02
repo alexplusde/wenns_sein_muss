@@ -3,11 +3,13 @@
 namespace Alexplusde\Wsm;
 
 use rex;
+use rex_addon;
 use rex_config;
 use rex_type;
 use rex_extension_point;
 use rex_formatter;
 use rex_i18n;
+use rex_yrewrite;
 
 class Wsm
 {
@@ -232,8 +234,8 @@ class Wsm
 
         $text = self::getConfig($key, 'string');
         if (\rex_addon::get('sprog')->isAvailable() && !\rex::isSafeMode()) {
-            if (false !== sprogcard($key, $clang_id)) {
-                $text = sprogcard($key, $clang_id);
+            if (false !== \sprogcard($key, $clang_id)) {
+                $text = \sprogcard($key, $clang_id);
             }
         }
 
@@ -242,5 +244,22 @@ class Wsm
         }
 
         return $text;
+    }
+
+    public static function InitOnFirstBoot(): void
+    {
+        self::setConfig('first_run', false);
+        /* Wenn YRewrite installiert ist, dann Domain hinzufügen */
+        if (rex_addon::get('yrewrite')->isAvailable()) {
+            $domains = rex_yrewrite::getDomains();
+            foreach($domains as $domain) {
+                /** @var rex_yrwewrite_domain $domain */
+                $wsm_domain = Domain::create();
+                $wsm_domain->setDomainId($domain->getId());
+                $wsm_domain->setPrivacyPolicyId($domain->getStartId());
+                $wsm_domain->setImprintId($domain->getStartId());
+                $wsm_domain->save();
+            }
+        }
     }
 }

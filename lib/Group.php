@@ -2,6 +2,9 @@
 
 namespace Alexplusde\Wsm;
 
+use rex_extension_point;
+use rex_yform_list;
+
 class Group extends \rex_yform_manager_dataset 
 {
 	
@@ -68,5 +71,27 @@ class Group extends \rex_yform_manager_dataset
         $this->setValue("required", $value);
         return $this;
     }
-            
-}?>
+
+    /**
+     * @param rex_extension_point<rex_yform_list> $ep
+     * @return void|rex_yform_list
+     */
+    public static function epYformDataList(rex_extension_point $ep) 
+    {
+        if ($ep->getParam('table')->getTableName() !== self::table()->getTableName()) {
+            return;
+        }
+
+        /** @var rex_yform_list $list */
+        $list = $ep->getSubject();
+
+        $list->setColumnFormat(
+            'description',
+            'custom',
+            function ($a) {
+                return $a['list']->getValue('description');
+            }
+        );
+    }
+
+}

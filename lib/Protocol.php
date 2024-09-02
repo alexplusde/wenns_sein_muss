@@ -2,6 +2,10 @@
 
 namespace Alexplusde\Wsm;
 
+use rex_extension_point;
+use rex_i18n;
+use rex_yform_list;
+
 class Protocol extends \rex_yform_manager_dataset
 {
 	
@@ -103,4 +107,58 @@ class Protocol extends \rex_yform_manager_dataset
         $this->setValue("revision", $value);
         return $this;
     }
+
+    /**
+     * @param rex_extension_point<rex_yform_list> $ep
+     * @return void|rex_yform_list
+     */
+    public static function epYformDataList(rex_extension_point $ep) 
+    {
+        if ($ep->getParam('table')->getTableName() !== self::table()->getTableName()) {
+            return;
+        }
+
+        /** @var rex_yform_list $list */
+        $list = $ep->getSubject();
+
+        $list->removeColumn('accept_type');
+        $list->removeColumn('accepted_categories');
+        $list->removeColumn('accepted_services');
+        $list->removeColumn('rejected_categories');
+        $list->removeColumn('rejected_services');
+
+        /* add column */
+        $list->addColumn('preferences', rex_i18n::msg('wsm_protocol_preferences'), 5);
+        $list->setColumnLabel('preferences', rex_i18n::msg('wsm_protocol_preferences'));
+
+        $list->setColumnFormat(
+            'preferences',
+            'custom',
+            function ($a) {
+                $accepted_services = $a['list']->getValue('accepted_services');
+                $rejected_services = $a['list']->getValue('rejected_services');
+
+                $accepted_services = json_decode($accepted_services, true) ?? [];
+                $rejected_services = json_decode($rejected_services, true) ?? [];
+
+                $output = '';
+                $output .= '✅<br>';
+                foreach ($accepted_services as $category => $services) {
+                    if (!empty($services)) {
+                        $output .= '<small>'.$category.': '.implode(', ', $services).'</small><br>';
+                    }
+                }
+
+                $output .= '❌<br>';
+                foreach ($rejected_services as $category => $services) {
+                    if (!empty($services)) {
+                        $output .= '<small>'.$category.': '.implode(', ', $services).'</small><br>';
+                    }
+                }
+
+                return $output;
+            }
+        );
+    }
+
 }
