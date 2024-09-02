@@ -47,9 +47,9 @@ if(!rex_addon::get('yrewrite')->isAvailable()) {
     $addon->setProperty('pages', $pages);
 }
 
-rex_extension::register('YFORM_DATA_ADDED', ['Alexplusde\Wsm\Wsm','yformDataChanged']);
-rex_extension::register('YFORM_DATA_UPDATED', ['Alexplusde\Wsm\Wsm','yformDataChanged']);
-rex_extension::register('YFORM_DATA_DELETED', ['Alexplusde\Wsm\Wsm', 'yformDataChanged']);
+rex_extension::register('YFORM_DATA_ADDED', Wsm::yformDataChanged(...));
+rex_extension::register('YFORM_DATA_UPDATED', Wsm::yformDataChanged(...));
+rex_extension::register('YFORM_DATA_DELETED', Wsm::yformDataChanged(...));
 
 if(rex::isFrontend()) {
     \rex_api_function::register('wsm', ApiWsm::class);
