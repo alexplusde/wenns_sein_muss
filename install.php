@@ -30,7 +30,7 @@ rex_sql_table::get(rex::getTable('wenns_sein_muss_group'))
 
 rex_sql_table::get(rex::getTable('wenns_sein_muss_iframe'))
     ->ensurePrimaryIdColumn()
-    ->ensureColumn(new rex_sql_column('embedUrl', 'text', false, '\'\''))
+    ->ensureColumn(new rex_sql_column('embedUrl', 'text', false, ''))
     ->ensureColumn(new rex_sql_column('key', 'varchar(191)', false, ''))
     ->ensure();
 
