@@ -65,7 +65,7 @@ rex_sql_table::get(rex::getTable('wenns_sein_muss_service'))
 
 /* Tablesets aktualisieren */
 
-$addon = rex_addon::get("wenns_sein_muss");
+$addon = rex_addon::get('wenns_sein_muss');
 if (rex_addon::get('yform')->isAvailable()) {
     rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_domain.json'));
     rex_yform_manager_table_api::importTablesets(rex_file::get(__DIR__ . '/install/rex_wenns_sein_muss_entry.json'));
@@ -76,4 +76,4 @@ if (rex_addon::get('yform')->isAvailable()) {
     rex_yform_manager_table::deleteCache();
 }
 
-\rex_config::set('wenns_sein_muss', 'lastchange', date('Y-m-d H:i:s'));
+rex_config::set('wenns_sein_muss', 'lastchange', date('Y-m-d H:i:s'));

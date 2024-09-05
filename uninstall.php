@@ -2,12 +2,12 @@
 
 namespace Alexplusde\Wsm;
 
-use rex_addon;
-use rex_yform_manager_table_api;
 use rex;
+use rex_addon;
 use rex_config;
+use rex_yform_manager_table_api;
 
-rex_config::removeNamespace("wenns_sein_muss");
+rex_config::removeNamespace('wenns_sein_muss');
 
 if (rex_addon::get('yform')->isAvailable() && !rex::isSafeMode()) {
     rex_yform_manager_table_api::removeTable('wenns_sein_muss_domain');

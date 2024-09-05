@@ -4,29 +4,35 @@ namespace Alexplusde\Wsm;
 
 use rex_extension_point;
 use rex_yform_list;
+use rex_yform_manager_dataset;
 
-class Iframe extends \rex_yform_manager_dataset
+class Iframe extends rex_yform_manager_dataset
 {
-	
     /* Schlüssel */
     /** @api */
-    public function getKey() : ?string {
-        return $this->getValue("key");
+    public function getKey(): ?string
+    {
+        return $this->getValue('key');
     }
+
     /** @api */
-    public function setKey(mixed $value) : self {
-        $this->setValue("key", $value);
+    public function setKey(mixed $value): self
+    {
+        $this->setValue('key', $value);
         return $this;
     }
 
     /* Embed-URL */
     /** @api */
-    public function getEmbedUrl() : ?string {
-        return $this->getValue("embedUrl");
+    public function getEmbedUrl(): ?string
+    {
+        return $this->getValue('embedUrl');
     }
+
     /** @api */
-    public function setEmbedUrl(mixed $value) : self {
-        $this->setValue("embedUrl", $value);
+    public function setEmbedUrl(mixed $value): self
+    {
+        $this->setValue('embedUrl', $value);
         return $this;
     }
 
@@ -34,7 +40,7 @@ class Iframe extends \rex_yform_manager_dataset
      * @param rex_extension_point<rex_yform_list> $ep
      * @return void|rex_yform_list
      */
-    public static function epYformDataList(rex_extension_point $ep) 
+    public static function epYformDataList(rex_extension_point $ep)
     {
         if ($ep->getParam('table')->getTableName() !== self::table()->getTableName()) {
             return;
@@ -46,10 +52,9 @@ class Iframe extends \rex_yform_manager_dataset
         $list->setColumnFormat(
             'description',
             'custom',
-            function ($a) {
+            static function ($a) {
                 return $a['list']->getValue('description');
-            }
+            },
         );
     }
-
 }

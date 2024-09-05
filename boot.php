@@ -53,7 +53,7 @@ rex_extension::register('YFORM_DATA_UPDATED', Wsm::yformDataChanged(...));
 rex_extension::register('YFORM_DATA_DELETED', Wsm::yformDataChanged(...));
 
 /**
- * nur im Frontend
+ * nur im Frontend.
  */
 if (rex::isFrontend()) {
     rex_api_function::register('wsm', ApiWsm::class);
@@ -62,7 +62,7 @@ if (rex::isFrontend()) {
 }
 
 /**
- * nur im Backend
+ * nur im Backend.
  */
 if (in_array(rex_be_controller::getCurrentPagePart(1), ['yform', 'wenns_sein_muss'])) {
     rex_extension::register('YFORM_DATA_LIST', Service::epYformDataList(...));
