@@ -5,106 +5,133 @@ namespace Alexplusde\Wsm;
 use rex_extension_point;
 use rex_i18n;
 use rex_yform_list;
+use rex_yform_manager_dataset;
 
-class Protocol extends \rex_yform_manager_dataset
+class Protocol extends rex_yform_manager_dataset
 {
-	
     /* Website */
     /** @api */
-    public function getUrl() : string {
-        return $this->getValue("url");
+    public function getUrl(): string
+    {
+        return $this->getValue('url');
     }
+
     /** @api */
-    public function setUrl(mixed $value) : self {
-        $this->setValue("url", $value);
+    public function setUrl(mixed $value): self
+    {
+        $this->setValue('url', $value);
         return $this;
     }
 
     /* ID */
     /** @api */
-    public function getConsentId() : string {
-        return $this->getValue("consent_id");
+    public function getConsentId(): string
+    {
+        return $this->getValue('consent_id');
     }
+
     /** @api */
-    public function setConsentId(mixed $value) : self {
-        $this->setValue("consent_id", $value);
+    public function setConsentId(mixed $value): self
+    {
+        $this->setValue('consent_id', $value);
         return $this;
     }
 
     /* Einwilligung */
     /** @api */
-    public function getAcceptType() : string {
-        return $this->getValue("accept_type");
+    public function getAcceptType(): string
+    {
+        return $this->getValue('accept_type');
     }
+
     /** @api */
-    public function setAcceptType(mixed $value) : self {
-        $this->setValue("accept_type", $value);
+    public function setAcceptType(mixed $value): self
+    {
+        $this->setValue('accept_type', $value);
         return $this;
     }
 
     /* eingewilligt (Kategorie) */
     /** @api */
-    public function getAcceptedCategories() : string {
-        return $this->getValue("accepted_categories");
+    public function getAcceptedCategories(): string
+    {
+        return $this->getValue('accepted_categories');
     }
+
     /** @api */
-    public function setAcceptedCategories(mixed $value) : self {
-        $this->setValue("accepted_categories", $value);
+    public function setAcceptedCategories(mixed $value): self
+    {
+        $this->setValue('accepted_categories', $value);
         return $this;
     }
 
     /* eingewilligt (Drittanbieter) */
     /** @api */
-    public function getAcceptedServices() : string {
-        return $this->getValue("accepted_services");
+    public function getAcceptedServices(): string
+    {
+        return $this->getValue('accepted_services');
     }
+
     /** @api */
-    public function setAcceptedServices(mixed $value) : self {
-        $this->setValue("accepted_services", $value);
+    public function setAcceptedServices(mixed $value): self
+    {
+        $this->setValue('accepted_services', $value);
         return $this;
     }
 
     /* abgelehnt (Kategorie) */
     /** @api */
-    public function getRejectedCategories() : string {
-        return $this->getValue("rejected_categories");
+    public function getRejectedCategories(): string
+    {
+        return $this->getValue('rejected_categories');
     }
+
     /** @api */
-    public function setRejectedCategories(mixed $value) : self {
-        $this->setValue("rejected_categories", $value);
+    public function setRejectedCategories(mixed $value): self
+    {
+        $this->setValue('rejected_categories', $value);
         return $this;
     }
 
     /* abgelehnt (Drittanbieter) */
     /** @api */
-    public function getRejectedServices() : string {
-        return $this->getValue("rejected_services");
+    public function getRejectedServices(): string
+    {
+        return $this->getValue('rejected_services');
     }
+
     /** @api */
-    public function setRejectedServices(mixed $value) : self {
-        $this->setValue("rejected_services", $value);
+    public function setRejectedServices(mixed $value): self
+    {
+        $this->setValue('rejected_services', $value);
         return $this;
     }
 
     /* Zeitstempel */
     /** @api */
-    public function getConsentdate() : string {
-        return $this->getValue("consentdate");
+    public function getConsentdate(): string
+    {
+        return $this->getValue('consentdate');
     }
+
     /** @api */
-    public function setConsentdate(string $value) : self {
-        $this->setValue("consentdate", $value);
+    public function setConsentdate(string $value): self
+    {
+        $this->setValue('consentdate', $value);
         return $this;
     }
 
     /* Revision */
     /** @api */
-    public function getRevision() : ?string {
-        return $this->getValue("revision");
+    public function getRevision(): ?string
+    {
+        return $this->getValue('revision');
     }
+
     /** @api */
-    public function setRevision(string $value) : self {
-        $this->setValue("revision", $value);
+    public function setRevision(string $value): self
+    {
+        $this->setValue('revision', $value);
         return $this;
     }
 
@@ -112,7 +139,7 @@ class Protocol extends \rex_yform_manager_dataset
      * @param rex_extension_point<rex_yform_list> $ep
      * @return void|rex_yform_list
      */
-    public static function epYformDataList(rex_extension_point $ep) 
+    public static function epYformDataList(rex_extension_point $ep)
     {
         if ($ep->getParam('table')->getTableName() !== self::table()->getTableName()) {
             return;
@@ -134,7 +161,7 @@ class Protocol extends \rex_yform_manager_dataset
         $list->setColumnFormat(
             'preferences',
             'custom',
-            function ($a) {
+            static function ($a) {
                 $accepted_services = $a['list']->getValue('accepted_services');
                 $rejected_services = $a['list']->getValue('rejected_services');
 
@@ -145,20 +172,19 @@ class Protocol extends \rex_yform_manager_dataset
                 $output .= '✅<br>';
                 foreach ($accepted_services as $category => $services) {
                     if (!empty($services)) {
-                        $output .= '<small>'.$category.': '.implode(', ', $services).'</small><br>';
+                        $output .= '<small>' . $category . ': ' . implode(', ', $services) . '</small><br>';
                     }
                 }
 
                 $output .= '❌<br>';
                 foreach ($rejected_services as $category => $services) {
                     if (!empty($services)) {
-                        $output .= '<small>'.$category.': '.implode(', ', $services).'</small><br>';
+                        $output .= '<small>' . $category . ': ' . implode(', ', $services) . '</small><br>';
                     }
                 }
 
                 return $output;
-            }
+            },
         );
     }
-
 }

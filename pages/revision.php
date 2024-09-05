@@ -1,15 +1,17 @@
 <?php
 
+use Alexplusde\Wsm\Wsm;
+
 echo rex_view::title(rex_i18n::msg('wsm_title'));
 
 $func = rex_request('func', 'string');
 $csrf = rex_csrf_token::factory('wsm_revision');
-if ($func !== '') {
+if ('' !== $func) {
     if (!$csrf->isValid()) {
         echo rex_view::error(rex_i18n::msg('csrf_token_invalid'));
     } else {
-        if ($func === 'revision') {
-            \Alexplusde\Wsm\Wsm::newRevision();
+        if ('revision' === $func) {
+            Wsm::newRevision();
             echo rex_view::success(rex_i18n::msg('wsm_revision_updated'));
         }
     }
@@ -17,9 +19,9 @@ if ($func !== '') {
 
 /* Revision updaten */
 
-$content = "";
-$content .= '<p>'.rex_i18n::msg('wsm_revision').'</p>';
-$content .= '<p><a class="btn btn-primary" href="'.rex_url::currentBackendPage(['func' => 'revision'] + $csrf->getUrlParams()).'" data-confirm="'.rex_i18n::msg('wsm_revision_warning').'">'.rex_i18n::msg('wsm_revision').'</a></p>';
+$content = '';
+$content .= '<p>' . rex_i18n::msg('wsm_revision') . '</p>';
+$content .= '<p><a class="btn btn-primary" href="' . rex_url::currentBackendPage(['func' => 'revision'] + $csrf->getUrlParams()) . '" data-confirm="' . rex_i18n::msg('wsm_revision_warning') . '">' . rex_i18n::msg('wsm_revision') . '</a></p>';
 
 $fragment = new rex_fragment();
 $fragment->setVar('class', 'danger', false);

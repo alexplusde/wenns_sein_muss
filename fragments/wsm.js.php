@@ -1,6 +1,9 @@
 <?php
+
 namespace Alexplusde\Wsm;
+
 use rex_clang;
+
 ?>
 <script defer>
 	window.addEventListener('DOMContentLoaded', (event) => {
@@ -22,7 +25,7 @@ use rex_clang;
 				}
 			},
 
-			currLang: '<?= rex_clang::getCurrent()->getCode(); ?>',
+			currLang: '<?= rex_clang::getCurrent()->getCode() ?>',
 
 			services: <?= Wsm::getIframeServicesAsJson() ?>,
 
@@ -31,22 +34,22 @@ use rex_clang;
 		const wsm_cc = CookieConsent;
 
 		wsm_cc.run({
-			revision: <?= Wsm::getRevisionNumber(); ?>,
+			revision: <?= Wsm::getRevisionNumber() ?>,
 			page_scripts: true,
 			/* 		autoShow: false, */
-			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction', 'bool') ? "true" : "false" ?>,
+			disablePageInteraction: <?= Wsm::getConfig('disable_page_interaction', 'bool') ? 'true' : 'false' ?>,
 
 			guiOptions: {
 				consentModal: {
 					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
 					position: '<?= Wsm::getConfig('consent_modal_position', 'string', '') ?>',
 					equalWeightButtons: true,
-					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool') ? "true" : "false" ?>,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool') ? 'true' : 'false' ?>,
 				},
 				preferencesModal: {
 					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
 					equalWeightButtons: true,
-					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool')  ? "true" : "false" ?>,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool') ? 'true' : 'false' ?>,
 				},
 			},
 
@@ -58,10 +61,10 @@ use rex_clang;
 
 
 			language: {
-				default: '<?= rex_clang::getCurrent()->getCode(); ?>',
+				default: '<?= rex_clang::getCurrent()->getCode() ?>',
 
 				translations: {
-					<?= rex_clang::getCurrent()->getCode(); ?>: '/?rex-api-call=wsm&wsm=lang&lang=<?= rex_clang::getCurrent()->getCode(); ?>',
+					<?= rex_clang::getCurrent()->getCode() ?>: '/?rex-api-call=wsm&wsm=lang&lang=<?= rex_clang::getCurrent()->getCode() ?>',
 				},
 			},
 
