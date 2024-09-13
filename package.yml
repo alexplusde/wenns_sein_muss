@@ -77,6 +77,7 @@ default_config:
     iframemanager: 1
     disable_page_interaction: 0
     first_install: 1
+    media_manager_type: 'wsm'
 
     # settings page: consent
     consent_modal_title: Diese Webseite verwendet Cookies und Drittanbieter-Dienste
