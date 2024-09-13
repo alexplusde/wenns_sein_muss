@@ -1,11 +1,13 @@
 <?php
 
-rex_sql_table::get(rex::getTable('wenns_sein_muss_domain'))
+
+\rex_sql_table::get(rex::getTable('wenns_sein_muss_domain'))
     ->ensurePrimaryIdColumn()
-    ->ensureColumn(new rex_sql_column('domain_id', 'int(11)'))
-    ->ensureColumn(new rex_sql_column('privacy_policy_id', 'int(11)'))
-    ->ensureColumn(new rex_sql_column('imprint_id', 'int(11)'))
-    ->ensureIndex(new rex_sql_index('domain_id', ['domain_id'], rex_sql_index::UNIQUE))
+    ->removeIndex('domain_id')
+    ->ensureColumn(new \rex_sql_column('domain_id', 'int(10) unsigned'))
+    ->ensureColumn(new \rex_sql_column('privacy_policy_id', 'int(10) unsigned'))
+    ->ensureColumn(new \rex_sql_column('imprint_id', 'int(10) unsigned'))
+    ->ensureIndex(new \rex_sql_index('domain_id', ['domain_id'], \rex_sql_index::UNIQUE))
     ->ensure();
 
 rex_sql_table::get(rex::getTable('wenns_sein_muss_entry'))
