@@ -165,6 +165,10 @@ z.B. für Google Maps
 
 Siehe <https://github.com/orestbida/iframemanager#configuration-options>.
 
+#### Themes
+
+Siehe <https://cookieconsent.orestbida.com/advanced/ui-customization.html#color-schemes>
+
 #### Weitere API-Methoden
 
 Siehe <https://github.com/orestbida/cookieconsent#api-methods> und <https://github.com/orestbida/iframemanager#apis>.
