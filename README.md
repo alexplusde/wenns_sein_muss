@@ -1,6 +1,8 @@
-# WSM Consent Manager - Addon für REDAXO 5 CMS für DSGVO-konforme Einwilligungen und Auskunft von verwendeten Drittanbieter-Diensten
+# WSM Consent Manager für REDAXO 5 CMS
 
-Die moderne schlanke Alternative zum REDAXO Consent Manager, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.
+**Die moderne schlanke Alternative zum REDAXO Consent Manager, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.**
+
+## Vorteile 
 
 * Geringe Dateigröße
 * Kompatibel zu (IE10+ *)
@@ -19,8 +21,6 @@ Außerdem angepasst an REDAXO:
 * Kompatibel zu Sprog & Wildcard - verwende Übersetzungen wie gewohnt aus Sprog
 
 Das Addon war ein großer 🌵 an Aufwand, deshalb unterstütze die Entwicklung nachträglich mit einer Beauftraung des Addon-Autors.
-
-## Features
 
 ### Vergleich zu FriendsOfREDAXO\consent_manager
 
@@ -164,6 +164,10 @@ z.B. für Google Maps
 ```
 
 Siehe <https://github.com/orestbida/iframemanager#configuration-options>.
+
+#### Themes
+
+Siehe <https://cookieconsent.orestbida.com/advanced/ui-customization.html#color-schemes>
 
 #### Weitere API-Methoden
 
