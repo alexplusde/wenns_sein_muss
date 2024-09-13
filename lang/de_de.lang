@@ -93,6 +93,10 @@ consent_modal_description = Einleitung
 consent_modal_settings = Einstellungen
 consent_modal_accept_all = Alle zulassen
 consent_modal_accept_necessary = Nur notwendige zulassen
+consent_modal_equal_weight_buttons = Buttons gleich gewichten
+consent_modal_equal_weight_buttons_yes = Ja (empfohlen)
+consent_modal_equal_weight_buttons_no = Nein, "Alle zulassen" optisch hervorheben (nicht empfohlen)
+
 
 consent_settings = Einstellungs-Dialog
 
