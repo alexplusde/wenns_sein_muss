@@ -44,7 +44,6 @@ $select = $field->getSelect();
 $select->addOption('box', 'box');
 $select->addOption('bar', 'bar');
 
-
 $field = $form->addSelectField('disable_page_interaction', null, ['class' => 'form-control selectpicker']);
 $field->setLabel($addon->i18n('disable_page_interaction'));
 $select = $field->getSelect();
