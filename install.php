@@ -79,7 +79,6 @@ if (rex_addon::get('yform')->isAvailable()) {
 
 rex_config::set('wenns_sein_muss', 'lastchange', date('Y-m-d H:i:s'));
 
-
 rex_dir::create(rex_path::addonData('wenns_sein_muss'));
 
 /* via rex_sql überprüfen, ob es bereits ein Media Manager Profil gibt - wenn nicht, dann anlegen */
@@ -92,7 +91,7 @@ foreach ($media_manager_types as $profile) {
     }
 }
 
-if(!$profile_exists) {
+if (!$profile_exists) {
     $sql = rex_sql::factory();
     $sql->setTable(rex::getTable('media_manager_type'));
     $sql->setValue('name', 'wenns_sein_muss');

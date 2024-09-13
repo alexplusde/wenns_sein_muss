@@ -3,11 +3,13 @@
 namespace Alexplusde\Wsm;
 
 use rex_api_function;
+use rex_file;
+use rex_logger;
+use rex_path;
 use rex_response;
 use rex_socket;
+use rex_socket_exception;
 use rex_string;
-use rex_path;
-use rex_file;
 use rex_url;
 
 use function array_key_exists;
@@ -47,11 +49,9 @@ class ImThumbnail extends rex_api_function
         exit;
     }
 
-    
-    private static function getImgFromYoutube(string $id) :string
+    private static function getImgFromYoutube(string $id): string
     {
-        
-        if (null !== \rex_file::get(rex_path::addonData('wenns_sein_muss', self::generateFileName('youtube', $id)))) {
+        if (null !== rex_file::get(rex_path::addonData('wenns_sein_muss', self::generateFileName('youtube', $id)))) {
             return self::getThumbUrl('youtube', $id);
         }
 
@@ -59,7 +59,7 @@ class ImThumbnail extends rex_api_function
             $socket = rex_socket::factory('i3.ytimg.com', 443, true);
             $socket->setPath('/vi/' . $id . '/hqdefault.jpg');
             $socket->followRedirects(1);
-            
+
             $response = $socket->doGet();
 
             if ($response->isOk()) {
@@ -67,16 +67,15 @@ class ImThumbnail extends rex_api_function
                 $response->writeBodyTo($image_path);
                 return self::getThumbUrl('youtube', $id);
             }
-        } catch(\rex_socket_exception $e) {
-            \rex_logger::factory()->notice($e->getMessage());
+        } catch (rex_socket_exception $e) {
+            rex_logger::factory()->notice($e->getMessage());
         }
         return '';
     }
 
-    private static function getImgFromVimeo(string $id, string $url) :string
+    private static function getImgFromVimeo(string $id, string $url): string
     {
-        
-        if (null !== \rex_file::get(rex_path::addonData('wenns_sein_muss', self::generateFileName('vimeo', $id)))) {
+        if (null !== rex_file::get(rex_path::addonData('wenns_sein_muss', self::generateFileName('vimeo', $id)))) {
             return self::getThumbUrl('vimeo', $id);
         }
 
@@ -89,24 +88,24 @@ class ImThumbnail extends rex_api_function
                 $response->writeBodyTo($image_path);
                 return self::getThumbUrl('vimeo', $id);
             }
-        } catch(\rex_socket_exception $e) {
-            \rex_logger::factory()->notice($e->getMessage());
+        } catch (rex_socket_exception $e) {
+            rex_logger::factory()->notice($e->getMessage());
         }
         return '';
     }
 
-    private static function generateFileName(string $service = '', string $id, string $filetype = '.jpg') :string
+    private static function generateFileName(string $service, string $id, string $filetype = '.jpg'): string
     {
         return rex_string::normalize($service . '_' . $id) . $filetype;
     }
-    
-    public static function getThumbUrl(string $service = '', string $id, string $filetype = '.jpg') :string
+
+    public static function getThumbUrl(string $service, string $id, string $filetype = '.jpg'): string
     {
         $filename = self::generateFilename($service, $id, $filetype);
         $file = rex_path::addonData('wenns_sein_muss', $filename);
 
         $timestamp = filemtime($file);
-        $frontend_url = rex_url::media(). Wsm::getConfig('media_manager_type', 'string', 'wsm').'/'.$filename.'?timestamp='.$timestamp;
+        $frontend_url = rex_url::media() . Wsm::getConfig('media_manager_type', 'string', 'wsm') . '/' . $filename . '?timestamp=' . $timestamp;
         return $frontend_url;
     }
 }
