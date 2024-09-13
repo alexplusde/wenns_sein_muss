@@ -32,11 +32,18 @@ $select = $field->getSelect();
 $select->addOption('invert buttons', 1);
 $select->addOption('do not invert buttons', 0);
 
+$field = $form->addSelectField('consent_modal_equal_weight_buttons', null, ['class' => 'form-control selectpicker']);
+$field->setLabel($addon->i18n('consent_modal_equal_weight_buttons'));
+$select = $field->getSelect();
+$select->addOption($addon->i18n('consent_modal_equal_weight_buttons_yes'), 1);
+$select->addOption($addon->i18n('consent_modal_equal_weight_buttons_no'), 0);
+
 $field = $form->addSelectField('consent_settings_layout', null, ['class' => 'form-control selectpicker']);
 $field->setLabel($addon->i18n('consent_settings_layout'));
 $select = $field->getSelect();
 $select->addOption('box', 'box');
 $select->addOption('bar', 'bar');
+
 
 $field = $form->addSelectField('disable_page_interaction', null, ['class' => 'form-control selectpicker']);
 $field->setLabel($addon->i18n('disable_page_interaction'));
