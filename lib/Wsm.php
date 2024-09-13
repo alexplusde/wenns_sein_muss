@@ -98,7 +98,7 @@ class Wsm
 
             $s = [];
             $s['embedUrl'] = $iframe->getValue('embedUrl');
-            $s['thumbnail'] = urldecode(rex_getUrl(null, null, ['rex-api-call' => 'wsm_iframe', 'service' => rex_string::normalize($service->getValue('service')), 'id' => '{data_id}'], '&'));
+            $s['thumbnailUrl'] = urldecode(rex_getUrl(null, null, ['rex-api-call' => 'wsm_im_thumbnail', 'service' => rex_string::normalize($service->getValue('service')), 'id' => '{data-id}'], '&'));
             //          $s['iframe'] = $iframe->getValue('attributes');
             $s['languages'][rex_clang::getCurrent()->getCode()]['notice'] = rex_formatter::sprintf($service->getCompanyName(), self::getConfigText('iframe_notice')) . ' <a rel="noreferrer noopener" href="' . $service->getValue('privacy_policy_url') . '" target="_blank">' . self::getConfigText('iframe_notice_more') . '</a>';
             $s['languages'][rex_clang::getCurrent()->getCode()]['loadBtn'] = self::getConfigText('iframe_load_btn');
