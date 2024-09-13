@@ -77,6 +77,11 @@ if (rex_addon::get('yform')->isAvailable()) {
     rex_yform_manager_table::deleteCache();
 }
 
+
+rex_sql_table::get(rex::getTable('wenns_sein_muss_domain'))
+    ->ensureIndex(new rex_sql_index('domain_id', ['domain_id'], rex_sql_index::UNIQUE))
+    ->ensure();
+
 rex_config::set('wenns_sein_muss', 'lastchange', date('Y-m-d H:i:s'));
 
 rex_dir::create(rex_path::addonData('wenns_sein_muss'));
