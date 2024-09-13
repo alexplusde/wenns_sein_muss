@@ -13,7 +13,7 @@ use rex_url;
 use function array_key_exists;
 use function is_array;
 
-class ApiWsmIframe extends rex_api_function
+class ImThumbnail extends rex_api_function
 {
     protected $published = true;
 
@@ -32,19 +32,18 @@ class ApiWsmIframe extends rex_api_function
                 // liest die Informationen aus der Datei
                 $body = json_decode($response->getBody());
             }
-            if (is_array($body) && array_key_exists(0, $body) && property_exists($body[0], 'thumbnail_large')) {                
+            if (is_array($body) && array_key_exists(0, $body) && property_exists($body[0], 'thumbnail_large')) {
                 $url = self::getImgFromVimeo($id, $body[0]->thumbnail_large);
-                rex_response::setStatus('301');
-                rex_response::sendRedirect($url);
+                rex_response::sendFile(rex_path::addonData('wenns_sein_muss', self::generateFileName('youtube', $id)), 'image/jpeg');
             }
         }
 
         if ('youtube' === $service) {
             $url = self::getImgFromYoutube($id);
-            rex_response::setStatus('301');
-            rex_response::sendRedirect($url);
+            rex_response::sendFile(rex_path::addonData('wenns_sein_muss', self::generateFileName('youtube', $id)), 'image/jpeg');
         }
 
+        rex_response::setStatus('404');
         exit;
     }
 

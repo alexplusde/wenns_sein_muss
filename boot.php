@@ -57,7 +57,7 @@ rex_extension::register('YFORM_DATA_DELETED', Wsm::yformDataChanged(...));
  */
 if (rex::isFrontend()) {
     rex_api_function::register('wsm', ApiWsm::class);
-    rex_api_function::register('iframe', ApiWsmIframe::class);
+    rex_api_function::register('wsm_im_thumbnail', ImThumbnail::class);
     return;
 }
 
