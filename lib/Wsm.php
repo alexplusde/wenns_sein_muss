@@ -16,6 +16,7 @@ use rex_type;
 use rex_url;
 use rex_view;
 use rex_yrewrite;
+use ZipArchive;
 
 use function count;
 use function in_array;
@@ -281,13 +282,13 @@ class Wsm
 
         foreach($group as $group) {
             $return[$group->getName()] = $group->getData();
-            $services = Service::get($group->getId());
+            $services = Service::query()->where('group', $group->getId())->find();
             if(empty($services)) {
                 continue;
             }
             foreach($services as $service) {
                 $return[$group->getName()]['service'][$service->getName()] = $service->getData();
-                $entries = Entry::get($service->getId());
+                $entries = Entry::query()->where('service_id', $service->getId())->find();
                 if(empty($entries)) {
                     continue;
                 }
@@ -298,12 +299,25 @@ class Wsm
         }
 
         $revisionNumber = self::getRevisionNumber();
-        $backupFolder = rex_path::addon('wenns_sein_muss', 'backup');
+        $backupFolder = rex_path::addonData('wenns_sein_muss', 'backup');
         if (!is_dir($backupFolder)) {
             mkdir($backupFolder);
         }
         $backupFile = $backupFolder . '/' . $revisionNumber . '.json';
-        return rex_file::put($backupFile, json_encode($return, JSON_PRETTY_PRINT));
+        rex_file::put($backupFile, json_encode($return, JSON_PRETTY_PRINT));
+
+        $backupFile = $backupFolder . '/' . $revisionNumber . '.json';
+        $zipFile = $backupFolder . '/' . $revisionNumber . '.zip';
+        $zip = new ZipArchive();
+        if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+            $zip->addFile($backupFile, basename($backupFile));
+            $zip->close();
+            unlink($backupFile);
+            return $zipFile;
+        } else {
+            return false;
+        }
+
 
     }
 
