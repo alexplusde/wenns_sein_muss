@@ -7,8 +7,10 @@ use rex_addon;
 use rex_clang;
 use rex_config;
 use rex_extension_point;
+use rex_file;
 use rex_formatter;
 use rex_i18n;
+use rex_path;
 use rex_string;
 use rex_type;
 use rex_url;
@@ -178,7 +180,9 @@ class Wsm
 
     public static function newRevision(): void
     {
-        self::setConfig('revision', date('Y-m-d H:i:s'));
+        if(self::backupRevision()) {
+            self::setConfig('revision', date('Y-m-d H:i:s'));
+        }
     }
 
     public static function newChange(): void
@@ -268,4 +272,40 @@ class Wsm
             }
         }
     }
+
+    public static function backupRevision(): bool
+    {
+        $group = Group::query()->find();
+
+        $return = [];
+
+        foreach($group as $group) {
+            $return[$group->getName()] = $group->getData();
+            $services = Service::get($group->getId());
+            if(empty($services)) {
+                continue;
+            }
+            foreach($services as $service) {
+                $return[$group->getName()]['service'][$service->getName()] = $service->getData();
+                $entries = Entry::get($service->getId());
+                if(empty($entries)) {
+                    continue;
+                }
+                foreach($entries as $entry) {
+                    $return[$group->getName()]['service'][$service->getName()]['entry'][$entry->getName()] = $entry->getData();
+                }
+            }
+        }
+
+        $revisionNumber = self::getRevisionNumber();
+        $backupFolder = rex_path::addon('wenns_sein_muss', 'backup');
+        if (!is_dir($backupFolder)) {
+            mkdir($backupFolder);
+        }
+        $backupFile = $backupFolder . '/' . $revisionNumber . '.json';
+        return rex_file::put($backupFile, json_encode($return, JSON_PRETTY_PRINT));
+
+    }
+
+
 }
