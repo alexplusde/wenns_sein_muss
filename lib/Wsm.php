@@ -181,7 +181,7 @@ class Wsm
 
     public static function newRevision(): void
     {
-        if(self::backupRevision()) {
+        if (self::backupRevision()) {
             self::setConfig('revision', date('Y-m-d H:i:s'));
         }
     }
@@ -280,19 +280,19 @@ class Wsm
 
         $return = [];
 
-        foreach($group as $group) {
+        foreach ($group as $group) {
             $return[$group->getName()] = $group->getData();
             $services = Service::query()->where('group', $group->getId())->find();
-            if(empty($services)) {
+            if (empty($services)) {
                 continue;
             }
-            foreach($services as $service) {
+            foreach ($services as $service) {
                 $return[$group->getName()]['service'][$service->getName()] = $service->getData();
                 $entries = Entry::query()->where('service_id', $service->getId())->find();
-                if(empty($entries)) {
+                if (empty($entries)) {
                     continue;
                 }
-                foreach($entries as $entry) {
+                foreach ($entries as $entry) {
                     $return[$group->getName()]['service'][$service->getName()]['entry'][$entry->getName()] = $entry->getData();
                 }
             }
@@ -309,17 +309,12 @@ class Wsm
         $backupFile = $backupFolder . '/' . $revisionNumber . '.json';
         $zipFile = $backupFolder . '/' . $revisionNumber . '.zip';
         $zip = new ZipArchive();
-        if ($zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE) === true) {
+        if (true === $zip->open($zipFile, ZipArchive::CREATE | ZipArchive::OVERWRITE)) {
             $zip->addFile($backupFile, basename($backupFile));
             $zip->close();
             unlink($backupFile);
             return $zipFile;
-        } else {
-            return false;
         }
-
-
+        return false;
     }
-
-
 }
