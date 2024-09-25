@@ -29,6 +29,15 @@ use function in_array;
 use const PHP_EOL;
 
 /**
+ * Im SafeMode nix tun, nur das Addon "abschalten" ohne Tabellen und Tablesets zu entfernen
+ * Grund: Tablesets können nicht ohne Weiteres entfernt werden. Verbleiben aber nur
+ * die Tablesets ohne Tabellen, ist das auch unschön.
+ */
+if (rex::isSafeMode()) {
+    return;
+}
+
+/**
  * Url-Parameter scope auswerten: unbekannt oder ungültig lösen die
  * "Fehlermeldung" mit der Abfrage aus
  * (Text als Markdown schreiben; dann muss man hier nicht soviel HTML basteln).
