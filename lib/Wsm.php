@@ -293,7 +293,7 @@ class Wsm
             foreach ($domains as $domain) {
                 /** @var \rex_yrewrite_domain $domain */
                 $wsm_domain = Domain::create();
-                $wsm_domain->setDomainId($domain->getId());
+                $wsm_domain->setDomainId($domain->getId() ?? 0);
                 $wsm_domain->setPrivacyPolicyId($domain->getStartId());
                 $wsm_domain->setImprintId($domain->getStartId());
                 $wsm_domain->save();
@@ -328,7 +328,10 @@ class Wsm
             mkdir($backupFolder);
         }
         $backupFile = $backupFolder . '/' . $revisionNumber . '.json';
-        rex_file::put($backupFile, json_encode($return, JSON_PRETTY_PRINT));
+        $content = json_encode($return, JSON_PRETTY_PRINT);
+        if(false !== $content) {
+            rex_file::put($backupFile, $content);
+        }
 
         $backupFile = $backupFolder . '/' . $revisionNumber . '.json';
         $zipFile = $backupFolder . '/' . $revisionNumber . '.zip';
