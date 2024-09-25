@@ -7,7 +7,7 @@ use rex_yform_manager_dataset;
 class Entry extends rex_yform_manager_dataset
 {
     /**
-     * @return array<array>
+     * @return array<string,string>[]
      */
     public static function findEntriesArray(int $service_id): array
     {
@@ -18,7 +18,6 @@ class Entry extends rex_yform_manager_dataset
         $entries = self::query()->where('service_id', $service_id)->find();
         $return = [];
         foreach ($entries as $entry) {
-            /** @var Entry $entry */
             $e = [];
             $e['name'] = $entry->getName();
             $e['service'] = $service->getName();

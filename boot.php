@@ -64,7 +64,7 @@ if (rex::isFrontend()) {
 /**
  * nur im Backend.
  */
-if (in_array(rex_be_controller::getCurrentPagePart(1), ['yform', 'wenns_sein_muss'])) {
+if (in_array(rex_be_controller::getCurrentPagePart(1), ['yform', 'wenns_sein_muss'], true)) {
     rex_extension::register('YFORM_DATA_LIST', Service::epYformDataList(...));
     rex_extension::register('YFORM_DATA_LIST', Group::epYformDataList(...));
     rex_extension::register('YFORM_DATA_LIST', Protocol::epYformDataList(...));
