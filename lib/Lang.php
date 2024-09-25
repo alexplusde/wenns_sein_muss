@@ -2,7 +2,12 @@
 
 namespace Alexplusde\Wsm;
 
+use InvalidArgumentException;
+use LogicException;
 use rex_article;
+use rex_exception;
+use rex_sql_exception;
+use RuntimeException;
 
 use function count;
 
@@ -11,7 +16,9 @@ use const JSON_PRETTY_PRINT;
 class Lang
 {
     /* Erhalte das passende JSON für die Ausgabe der Sprache Frontend */
-
+    /**
+     * @return array<string,mixed>[]
+     */
     private static function getLangAsArray(): array
     {
         $return = [];
@@ -88,6 +95,9 @@ class Lang
         return @json_encode(self::getLangAsArray(), JSON_PRETTY_PRINT);
     }
 
+    /**
+     * @return array<string,string>
+     */
     private static function getConsentModal(): array
     {
         $consentModal = [];
@@ -117,6 +127,9 @@ class Lang
         return $consentModal;
     }
 
+    /**
+     * @return array<string,string>
+     */
     private static function getPreferencesModal(): array
     {
         $preferencesModal = [];

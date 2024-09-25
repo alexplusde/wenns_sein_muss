@@ -25,7 +25,7 @@ class Service extends rex_yform_manager_dataset
     }
 
     /**
-     * @return rex_yform_manager_collection<self>
+     * @return rex_yform_manager_collection<static>
      */
     public static function findScripts(): rex_yform_manager_collection
     {
@@ -33,7 +33,7 @@ class Service extends rex_yform_manager_dataset
     }
 
     /**
-     * @return rex_yform_manager_collection<self>
+     * @return rex_yform_manager_collection<static>
      */
     public static function findServices(int $group_id): rex_yform_manager_collection
     {
@@ -131,7 +131,9 @@ class Service extends rex_yform_manager_dataset
     }
 
     /* Cookies, LocalStorage und Tracking-Bilder */
-    /** @api */
+    /**
+     * @return rex_yform_manager_collection<Entry>
+     * @api */
     public function getEntry(): ?rex_yform_manager_collection
     {
         return $this->getRelatedCollection('entry_ids');

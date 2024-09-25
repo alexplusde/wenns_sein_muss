@@ -2,6 +2,7 @@
 
 namespace Alexplusde\Wsm;
 
+use InvalidArgumentException;
 use rex_api_function;
 use rex_file;
 use rex_logger;
@@ -33,15 +34,17 @@ class ImThumbnail extends rex_api_function
             if ($response->isOk()) {
                 // liest die Informationen aus der Datei
                 $body = json_decode($response->getBody());
+                if (is_array($body) && array_key_exists(0, $body) && property_exists($body[0], 'thumbnail_large')) {
+                    // TODO: Prüfen, ob noch notwendig
+                    // $url = self::getImgFromVimeo($id, $body[0]->thumbnail_large);
+                    rex_response::sendFile(rex_path::addonData('wenns_sein_muss', self::generateFileName('youtube', $id)), 'image/jpeg');
+                }
             }
-            if (is_array($body) && array_key_exists(0, $body) && property_exists($body[0], 'thumbnail_large')) {
-                $url = self::getImgFromVimeo($id, $body[0]->thumbnail_large);
-                rex_response::sendFile(rex_path::addonData('wenns_sein_muss', self::generateFileName('youtube', $id)), 'image/jpeg');
-            }
-        }
+    }
 
         if ('youtube' === $service) {
-            $url = self::getImgFromYoutube($id);
+            // TODO: Prüfen, ob noch notwendig
+            // $url = self::getImgFromYoutube($id);
             rex_response::sendFile(rex_path::addonData('wenns_sein_muss', self::generateFileName('youtube', $id)), 'image/jpeg');
         }
 
@@ -94,14 +97,20 @@ class ImThumbnail extends rex_api_function
         return '';
     }
 
+    /**
+     * @api
+     */
     private static function generateFileName(string $service, string $id, string $filetype = '.jpg'): string
     {
         return rex_string::normalize($service . '_' . $id) . $filetype;
     }
 
+    /**
+     * @api
+     */
     public static function getThumbUrl(string $service, string $id, string $filetype = '.jpg'): string
     {
-        $filename = self::generateFilename($service, $id, $filetype);
+        $filename = self::generateFileName($service, $id, $filetype);
         $file = rex_path::addonData('wenns_sein_muss', $filename);
 
         $timestamp = filemtime($file);

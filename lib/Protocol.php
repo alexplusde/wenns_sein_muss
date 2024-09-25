@@ -165,22 +165,20 @@ class Protocol extends rex_yform_manager_dataset
                 $accepted_services = $a['list']->getValue('accepted_services');
                 $rejected_services = $a['list']->getValue('rejected_services');
 
-                $accepted_services = json_decode($accepted_services, true) ?? [];
-                $rejected_services = json_decode($rejected_services, true) ?? [];
+                $accepted_services = array_filter(json_decode($accepted_services, true) ?? [], fn (string $value): bool => strlen($value) > 0);
+                $rejected_services = array_filter(json_decode($rejected_services, true) ?? [], fn (string $value): bool => strlen($value) > 0);
 
                 $output = '';
                 $output .= '✅<br>';
+                // TODO: Überprüfen, was $services enthält und ggf. Tags / Badges daraus machen
                 foreach ($accepted_services as $category => $services) {
-                    if (!empty($services)) {
-                        $output .= '<small>' . $category . ': ' . implode(', ', $services) . '</small><br>';
-                    }
+                    $output .= '<small>' . $category . ': ' . $services . '</small><br>';
                 }
 
                 $output .= '❌<br>';
+                // TODO: Überprüfen, was $services enthält und ggf. Tags / Badges daraus machen
                 foreach ($rejected_services as $category => $services) {
-                    if (!empty($services)) {
-                        $output .= '<small>' . $category . ': ' . implode(', ', $services) . '</small><br>';
-                    }
+                    $output .= '<small>' . $category . ': ' . $services . '</small><br>';
                 }
 
                 return $output;

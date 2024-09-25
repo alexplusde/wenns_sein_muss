@@ -43,8 +43,8 @@ use rex_clang;
 				consentModal: {
 					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
 					position: '<?= Wsm::getConfig('consent_modal_position', 'string', '') ?>',
-					equalWeightButtons: <?= Wsm::getConfig('consent_modal_equal_weight_buttons', 'bool') ? 'true' : 'false' ?>,
-					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool') ? 'true' : 'false' ?>,
+					equalWeightButtons: <?= Wsm::getConfig('consent_modal_equal_weight_buttons', 'bool', null) ? 'true' : 'false' ?>,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool', null) ? 'true' : 'false' ?>,
 				},
 				preferencesModal: {
 					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
