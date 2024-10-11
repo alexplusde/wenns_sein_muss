@@ -153,6 +153,17 @@ z.B. für YouTube
 </div>
 ```
 
+z.B. für YouTube Thumbnail-Proxy
+
+```html
+<div class="video"
+    data-service="youtube"
+    data-id="dQw4w9WgXcQ"
+    data-params="loop=1&autoplay=0&mute=1"
+    data-autoscale data-ratio="16:9">
+</div>
+```
+
 z.B. für Google Maps
 
 ```html
