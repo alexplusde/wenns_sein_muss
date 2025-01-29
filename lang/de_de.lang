@@ -134,7 +134,7 @@ iframe_load_all_btn = Grundsätzlich erlauben
 
 # Einstellungsseite Demo-Import
 
-wsm_demo_import = Demo-Daten imporiteren (ohne jegliche Gewähr, projektspezifische Anpassungen müssen von Betreiber und Entwickler gemeinsam vorgenommen werden.)
+wsm_demo_import = Demo-Daten importieren (ohne jegliche Gewähr, projektspezifische Anpassungen müssen von Betreiber und Entwickler gemeinsam vorgenommen werden.)
 wsm_demo = Demo-Daten importieren
 wsm_demo_warning = Achtung, jetzt wird's ernst! Alle bisher gewählten Drittanbieter-Gruppen und Einstellungen gehen verloren. Wirklich fortfahren?
 wsm_demo_imported = Alle Demo-Daten wurden importiert. Als nächstes Demo-Daten anpassen!
