@@ -272,8 +272,8 @@ class Wsm
 
         $text = self::getConfig($key, 'string');
         if (rex_addon::get('sprog')->isAvailable() && !rex::isSafeMode()) {
-            if (false !== sprogcard($key, $clang_id)) {
-                $text = sprogcard($key, $clang_id);
+            if (false !== sprogcard($text, $clang_id)) {
+                $text = sprogcard($text, $clang_id);
             }
         }
 
