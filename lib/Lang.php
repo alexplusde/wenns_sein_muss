@@ -48,20 +48,24 @@ class Lang
             $g['description'] = $group->getDescription();
             $g['linkedCategory'] = $group->getName();
 
+            $entries = [];
             foreach ($services as $service) {
                 /** @var Service $service */
-                $entries = Entry::findEntriesArray($service->getId());
-
-                if (count($entries) > 0) {
-                    $g['cookieTable']['headers']['name'] = 'Name';
-                    $g['cookieTable']['headers']['service'] = 'Service';
-                    $g['cookieTable']['headers']['description'] = 'Description';
-                    $g['cookieTable']['headers']['duration'] = 'Duration';
-                    $g['cookieTable']['headers']['type'] = 'Type';
-                    $g['cookieTable']['body'] = $entries;
-                }
+                $entries[] = Entry::findEntriesArray($service->getId());
             }
+            if (0 === count($entries)) {
+                continue;
+            }
+
+            $g['cookieTable']['headers']['name'] = 'Name';
+            $g['cookieTable']['headers']['service'] = 'Service';
+            $g['cookieTable']['headers']['description'] = 'Description';
+            $g['cookieTable']['headers']['duration'] = 'Duration';
+            $g['cookieTable']['headers']['type'] = 'Type';
+            $g['cookieTable']['body'] = call_user_func_array('array_merge', $entries);
+
             $sections[] = $g;
+            
         }
 
         /* Einwilligungs-Protokoll darstellen */
