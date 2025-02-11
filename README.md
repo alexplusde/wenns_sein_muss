@@ -2,6 +2,9 @@
 
 **Die moderne schlanke Alternative zum REDAXO Consent Manager, um Einwilligungen vom Nutzer abzufragen und Drittanbieter-Dienste einzusetzen.**
 
+![image](https://github.com/user-attachments/assets/b2a61498-45fb-479d-87bd-b422267d007e)
+
+
 ## Vorteile 
 
 * Geringe Dateigröße
@@ -43,11 +46,9 @@ Das Addon war ein großer 🌵 an Aufwand, deshalb unterstütze die Entwicklung 
 
 ### Cookie-Consent-Hinweis
 
-![Screenshot Modal](https://user-images.githubusercontent.com/3855487/227064026-477a77fb-7f25-43f8-bd94-b5666651fb50.png)
+Einwiligungen mit einem einfachen Cookie-Consent-Hinweis abfragen - flexibel einsetzbar und kompatibel zu YRewrite. Auf Wunsch Transparenz und individuelle Einstellungen tätigen.
 
-![Screenshot Settings](https://user-images.githubusercontent.com/3855487/227064030-83755e61-2252-4c3c-83e2-b7f66e17b3e2.png)
-
-Einwiligungen mit einem einfachen Cookie-Consent-Hinweis abfragen - flexibel einsetzbar und kompatibel zu YRewrite.
+![image](https://github.com/user-attachments/assets/659d76be-0ffb-4f77-9653-9f495d21be23)
 
 Demos: Siehe <https://github.com/orestbida/cookieconsent>.
 
@@ -55,11 +56,13 @@ Demos: Siehe <https://github.com/orestbida/cookieconsent>.
 
 Einwilligungen direkt an Ort und Stelle abfragen - z.B. von eingebetteten Inhalten wie Videos (YouTube, Vimeo, etc.), Social Media Postings (Twitter, Instagram, Facebook), interaktiven Karten (z.B. Google Maps) u.a.
 
+![image](https://github.com/user-attachments/assets/2c0a34ea-2c04-46f1-92f0-0c4eb9cef0da)
+
 Demos: Siehe <https://github.com/orestbida/iframemanager>.
 
 ### Einstellungen
 
-![Screenshot Backend](https://user-images.githubusercontent.com/3855487/227064057-32d8b868-9c6c-4688-afc7-75d91e546024.png)
+![image](https://github.com/user-attachments/assets/631df790-ff1c-4407-a455-5ca1f6c38da2)
 
 #### Gruppen
 
