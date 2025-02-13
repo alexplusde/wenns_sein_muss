@@ -82,6 +82,7 @@ consent_modal_position = Position
 consent_modal_swap_buttons = Swap button order
 
 consent_settings_layout = Layout (Advanced Settings)
+consent_settings_position = Position (Advanced Settings)
 disable_page_interaction = Force selection?
 
 # Settings page Texts

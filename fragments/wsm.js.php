@@ -41,13 +41,14 @@ use rex_clang;
 
 			guiOptions: {
 				consentModal: {
-					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
+					layout: '<?= Wsm::getConfig('consent_modal_layout', 'string', '') ?>',
 					position: '<?= Wsm::getConfig('consent_modal_position', 'string', '') ?>',
-					equalWeightButtons: <?= Wsm::getConfig('consent_modal_equal_weight_buttons', 'bool', null) ? 'true' : 'false' ?>,
-					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool', null) ? 'true' : 'false' ?>,
+					equalWeightButtons: <?= Wsm::getConfig('consent_modal_equal_weight_buttons', 'bool') ? 'true' : 'false' ?>,
+					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool') ? 'true' : 'false' ?>,
 				},
 				preferencesModal: {
 					layout: '<?= Wsm::getConfig('consent_settings_layout', 'string', '') ?>',
+					position: '<?= Wsm::getConfig('consent_settings_position', 'string', '') ?>',
 					equalWeightButtons: true,
 					flipButtons: <?= Wsm::getConfig('consent_modal_swap_buttons', 'bool') ? 'true' : 'false' ?>,
 				},

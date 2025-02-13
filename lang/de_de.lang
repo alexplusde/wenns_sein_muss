@@ -82,6 +82,7 @@ consent_modal_position = Position
 consent_modal_swap_buttons = Button-Reihenfolge umgekehren
 
 consent_settings_layout = Layout (Erweiterte Einstellungen)
+consent_settings_position = Position (Erweiterte Einstellungen)
 disable_page_interaction = Auswahl erzwingen?
 
 # Einstellungsseite Texte
