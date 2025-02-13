@@ -90,6 +90,7 @@ default_config:
     consent_modal_position: bottom center
     consent_modal_swap_buttons: 1
     consent_settings_layout: box
+    consent_settings_position: bottom center
 
     consent_modal_open: Einstellungen öffnen
     consent_settings_open: Einstellungen öffnen
